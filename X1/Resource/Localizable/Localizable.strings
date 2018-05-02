@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  X1
+
+  Created by Rohit Kumar on 16/04/2018.
+  Copyright © 2018 AstraQube. All rights reserved.
+*/
+
+
+// MARK: - Validation messsage
+
+"emailMissing"          = "Email requried";
+"nameMissing"           = "Name requried";
+"firstNameMissing"      = "First name requried";
+"lastNameMissing"       = "Last name requried";
+"nameOverFlowing"       = "First name and last name cannot be greater than 15 characters.";
+"fullnameOverFlowing"   = "Name cannot be greater than 20 characters.";
+"usernameMissing"       = "Username requried";
+"passwordMissing"       = "Password requried";
+"allFieldsRequired"     = "All fields are required";
+"genderMissing"         = "Please select a gender";
+"invalidEmail"          = "Incorrect email";
+"invalidPassword"       = "At least 6 characters";
+"unmatchedPassword"     = "Both passwords should be same";
+"invalidUsername"       = "At least 6 characters";
+"overflowingChars"      = "Max 32 chars are allowed";
+"agreeToTerms"          = "Agree to Terms and Condition to continue";
+"nameRequired"          = "First Name and Last Name are requried";
+"invalidMobile"         = "Incorrect mobile number";
+"enableLocation"        = "Please allow Solviant to access your current location in Settings";
+"validationPassed"      = "All values are entered correctly";
+"loggedIn"              = "Welcome back buddy!";
+"signedUp"              = "Congratualtions, use Solviant to gain or spread knowledge.";
+"unexpectedErrorTitle"  = "Server Unreachable";
+"unableToProceed"       = "Something Went Wrong";
+"unexpectedErrorMessage" = "Please check your network connection and try again.";
+"underage"               = "Min 13 years required";
+
+
+// MARK: - TextField Placeholder
+
+"gender"       = "Gender";
+"dob"          = "Date of Birth";
+"mobile"       = "Mobile";
+"zip"          = "Zip";
+"city"         = "City";
+"state"        = "State";
+"country"      = "Country";
+"addressLine"  = "Address";
+
+// MARK: - Gender
+
+"male"          = "Male";
+"female"        = "Female";
+"unisex"        = "Transgender";
+"selectGender"  = "Select a Gender";
+
