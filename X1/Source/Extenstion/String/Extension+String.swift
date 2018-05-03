@@ -55,10 +55,9 @@ extension String {
     
     func isValidMobile() -> Bool {
         // Validate mobile number
-        let mobile = self.replacingOccurrences(of: " ", with: "")
         let mobileRegex = "^[0-9]{10}$"
         let mobileTest = NSPredicate(format:"SELF MATCHES %@", mobileRegex)
-        return mobileTest.evaluate(with: mobile)
+        return mobileTest.evaluate(with: self)
     }
     
     func dobDate() -> Date? {

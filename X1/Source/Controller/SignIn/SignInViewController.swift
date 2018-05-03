@@ -18,12 +18,15 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var linkedInActivityIndicator: UIActivityIndicatorView!
     
     // MARK: - Other Property
     
     let webManager           = WebRequestManager()
     let linkedInManager      = LinkedIn()
+    var linkedInUser:LinkedInUser!
     let user                 = User()
+    var isProcessing         = false
     
     // MARK: - Life Cycle
     
@@ -52,12 +55,15 @@ class SignInViewController: UIViewController {
     // MARK: - IB Action
     
     @IBAction func goBack(_ sender: Any) {
+        guard !isProcessing else {
+            return
+        }
         navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func signIn(_ sender: Any) {
-        guard !activityIndicator.isAnimating else {
+        guard !isProcessing else {
             return
         }
         let status = isValid()
@@ -73,11 +79,15 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func signInWithLinkedIn(_ sender: Any) {
-        guard  !activityIndicator.isAnimating else {
+        guard  !isProcessing else {
             return
         }
+        weak var weakSelf = self
         linkedInManager.loginWithLinkedIn { (linkedInUser) in
             // Autheticated
+            weakSelf?.linkedInUser = linkedInUser
+            let parameters = linkedInUser.parameteres()
+            weakSelf?.requestLinkedInLogin(withParameters: parameters)
         }
     }
     
@@ -157,10 +167,18 @@ class SignInViewController: UIViewController {
     }
     
     private func gotoHomeScreen(forUser user: User) {
-        // Move to next screen after Sign Up
+        // Move to next screen after Sign In
         if let homeViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.home) as? HomeViewController {
             homeViewController.user = user
             navigationController?.pushViewController(homeViewController, animated: true)
+        }
+    }
+    
+    private func gotoUserRoleScreen(forUser user: User) {
+        // Move to next screen for linked in new user
+        if let selectRoleViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.selectRole) as? SelectRoleViewController {
+            selectRoleViewController.user = user
+            navigationController?.pushViewController(selectRoleViewController, animated: true)
         }
     }
     
@@ -193,7 +211,7 @@ extension SignInViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return !activityIndicator.isAnimating
+        return !isProcessing
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -209,14 +227,35 @@ extension SignInViewController {
         // Create user account using filled details
         activityIndicator.startAnimating()
         weak var weakSelf = self
-        activityIndicator.startAnimating()
         let url = APIURL.url(apiEndPoint: APIEndPoint.signIn)
+        isProcessing = true
         webManager.httpRequest(method: .post, apiURL: url, body: parameters, completion: { (response) in
             // User account created
+            weakSelf?.activityIndicator.stopAnimating()
             weakSelf?.didSignIn(withResponse: response)
+            weakSelf?.isProcessing = false
         }) { (error) in
             // Request failed
             weakSelf?.activityIndicator.stopAnimating()
+            weakSelf?.isProcessing = false
+            weakSelf?.showAlert(withMessage: NSLocalizedString("unexpectedErrorMessage", comment: ""))
+        }
+    }
+    
+    private func requestLinkedInLogin(withParameters parameters: Dictionary<String, Any>) {
+        linkedInActivityIndicator.startAnimating()
+        weak var weakSelf = self
+        let url = APIURL.url(apiEndPoint: APIEndPoint.linkedInLogin)
+        isProcessing = true
+        webManager.httpRequest(method: .post, apiURL: url, body: parameters, completion: { (response) in
+            // User account created
+            weakSelf?.linkedInActivityIndicator.stopAnimating()
+            weakSelf?.didLinkedSignIn(withResponse: response)
+            weakSelf?.isProcessing = false
+        }) { (error) in
+            // Request failed
+            weakSelf?.linkedInActivityIndicator.stopAnimating()
+            weakSelf?.isProcessing = false
             weakSelf?.showAlert(withMessage: NSLocalizedString("unexpectedErrorMessage", comment: ""))
         }
     }
@@ -224,12 +263,45 @@ extension SignInViewController {
     // MARK: - Request Completion
     
     private func didSignIn(withResponse response: Dictionary<String, Any>) {
-        activityIndicator.stopAnimating()
+        // User sign in response received
         if let statusCode = response[APIKeys.status] as? String {
+            // Logged in successfully
             if statusCode == HTTPStatus.success {
                 guard let result = response[APIKeys.result] as? Dictionary<String, Any>,
                     let userInfo = result[APIKeys.userInfo] as? Dictionary<String, Any>,
                     let accessToken = result[UserKey.accessToken] as? String else {
+                        return    
+                }
+                // Go to next screen
+                if let loggedInUser = User.init(response: userInfo) {
+                    loggedInUser.accessToken = accessToken
+                    loggedInUser.save()
+                    gotoHomeScreen(forUser: loggedInUser)
+                }
+            }
+        }
+        else if let errorMessage = response[APIKeys.errorMessage] as? String {
+            // Show  error
+            showAlert(withMessage: errorMessage)
+        }
+    }
+    
+    private func didLinkedSignIn(withResponse response: Dictionary<String, Any>) {
+        // User sign in response received
+        if let statusCode = response[APIKeys.status] as? String {
+            // Logged in successfully
+            if statusCode == HTTPStatus.success {
+                guard let result = response[APIKeys.result] as? Dictionary<String, Any>,
+                    let userInfo = result[APIKeys.userInfo] as? Dictionary<String, Any>,
+                    let accessToken = result[UserKey.accessToken] as? String else {
+                        // Check if this is for the new user
+                        if let httpCode = response[APIKeys.statusCode] as? Int, httpCode == HTTPStatus.ok {
+                            // This is the new user. Go to Select Role screen with this user
+                            if let user = User.init(withLinkedIn: linkedInUser) {
+                                gotoUserRoleScreen(forUser: user)
+                            }
+                            
+                        }
                         return
                 }
                 // Go to next screen

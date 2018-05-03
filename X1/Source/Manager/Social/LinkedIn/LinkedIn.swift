@@ -70,15 +70,17 @@ struct LinkedInUser {
     
     func parameteres() -> Dictionary<String,Any> {
         var parameters = Dictionary<String, Any>()
-        if let value = firstName {
+        if let value = email {
+            parameters[LinkedInKeys.email] = value
+        }
+        
+       /* if let value = firstName {
             parameters[LinkedInKeys.firstName] = value
         }
         if let value = lastName {
             parameters[LinkedInKeys.lastName] = value
         }
-        if let value = email {
-            parameters[LinkedInKeys.email] = value
-        }
+        
         if let value = profileURL {
             parameters[LinkedInKeys.liProfileUrl] = value
         }
@@ -96,7 +98,7 @@ struct LinkedInUser {
         }
         if let deviceId =  DeviceIdentifier.deviceId {
             parameters[UserKey.deviceId] = deviceId
-        }
+        } */
         return parameters
     }
 }

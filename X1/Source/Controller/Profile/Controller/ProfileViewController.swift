@@ -30,11 +30,13 @@ class ProfileViewController: UIViewController {
     let genderPicker         = UIPickerView()
     let locationManager      = LocationManager()
     var genderDatasource     = ["selectGender", "male", "female", "unisex"]
+    
     enum ProfileSection:Int {
         case userImage
         case textField
         case actionButton
     }
+    
     enum TextFieldRow:Int {
         case gender
         case dob
@@ -204,11 +206,14 @@ class ProfileViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
     }
     
-    private func gotoHomeScreen(forUser user: User) {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
+    }
+    
+    private func gotoNextScreen(forUser user: User) {
         // Move to next screen after Sign Up
-        if let homeViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.home) as? HomeViewController {
-            homeViewController.user = user
-            navigationController?.pushViewController(homeViewController, animated: true)
+        if let chooseInterestViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.interest) as? ChooseInterestViewController {
+            navigationController?.pushViewController(chooseInterestViewController, animated: true)
         }
     }
 }
@@ -361,7 +366,7 @@ extension ProfileViewController: UITextFieldDelegate {
             case .dob:
                 user.dob = sender.text
             case .mobile:
-                user.cellNumber = trimmedText
+                user.cellNumber = trimmedText?.replacingOccurrences(of: " ", with: "")
             case .address:
                 user.addressLine = trimmedText
             case .city:
@@ -425,7 +430,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case .userImage:
             // For user images
             tableViewCell = tableView.dequeueReusableCell(withIdentifier: ReusableIdentifier.profileImageViewCell, for: indexPath)
-            if tableViewCell.tag == 0, let userImageViewCell = tableViewCell as? ProfileUserImageTableViewCell {
+            let userImageViewCell = tableViewCell as! ProfileUserImageTableViewCell
+            if let imageURL = user.imageURL {
+                // Set user image if available
+                userImageViewCell.userImageView.setImage(withURL: imageURL, placeholder: #imageLiteral(resourceName: "profile_photo"))
+            }
+            if tableViewCell.tag == 0 {
                 tableViewCell.tag = 1 // Tag is set so that we don't add gesture every time
                 let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(changeImage(_:)))
                 userImageViewCell.addGestureRecognizer(tapGesture)
@@ -527,7 +537,7 @@ extension ProfileViewController {
                 user.save() // Save user details
                 
                 // Go to next screen
-                gotoHomeScreen(forUser: user)
+                gotoNextScreen(forUser: user)
             }
         }
         else if let errorMessage = response[APIKeys.errorMessage] as? String {

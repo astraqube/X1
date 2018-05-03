@@ -11,12 +11,17 @@ import UIKit
 class SelectRoleViewController: UIViewController {
 
     // MARK: - IB Outlets
+    
     @IBOutlet weak var findSolutionButton: UIButton!
     @IBOutlet weak var giveSolutionButton: UIButton!
     @IBOutlet weak var whyHereLabel: UILabel!
     @IBOutlet weak var checkMarkFindSolutionImageView: UIImageView!
     @IBOutlet weak var checkMarkGiveSolutionImageView: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
+    
+    // MARK: - Other Property
+    
+    var user:User?
     
     // MARK: - Life Cycle
     
@@ -50,6 +55,39 @@ class SelectRoleViewController: UIViewController {
         nextButton.isHidden = !(findSolutionButton.isSelected || giveSolutionButton.isSelected)
     }
     
+    @IBAction func nextScreen(_ sender: Any) {
+        // Move to next screen after user role selection
+        
+        // Check for selected user role
+        var userType:UserType!
+        if checkMarkFindSolutionImageView.isHidden {
+            // Resource is selected
+            userType = .resource
+        }
+        else if checkMarkGiveSolutionImageView.isHidden {
+            // Principal is selected
+            userType = .principal
+        }
+        else {
+            // Both are enabled
+            userType = .both
+        }
+        
+        // Decide which screen to appear after that
+        if let user = self.user {
+            // Coming for Linked Login (Go to Complete Profile screen)
+            let profileViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.profile) as! ProfileViewController
+            user.type                  = userType
+            profileViewController.user = user
+            navigationController?.pushViewController(profileViewController, animated: true)
+        }
+        else {
+            // Standrad Sign Up process
+            let signUpViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.signUp) as! SignUpViewController
+            signUpViewController.userType = userType
+            navigationController?.pushViewController(signUpViewController, animated: true)
+        }
+    }
     
     
     // MARK: - Customize UI
@@ -70,22 +108,12 @@ class SelectRoleViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        if let signUpViewController = segue.destination as? SignUpViewController {
-            if checkMarkFindSolutionImageView.isHidden {
-                // Resource is selected
-                signUpViewController.userType = .resource
-            }
-            else if checkMarkGiveSolutionImageView.isHidden {
-                // Principal is selected
-                signUpViewController.userType = .principal
-            }
-            else {
-                // Both are enabled
-                signUpViewController.userType = .both
-            }
-        }
     }
 }

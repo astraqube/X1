@@ -31,7 +31,7 @@ class AutoLogin: NSObject {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         if let _ = User.loggedInUser() {
             // User has already logged in session
-            let homeViewController = storyboard.instantiateViewController(withIdentifier: StoryboardIdentifier.home)
+            let homeViewController = storyboard.instantiateViewController(withIdentifier: StoryboardIdentifier.interest)
             rootViewController     = homeViewController
         }
         else {

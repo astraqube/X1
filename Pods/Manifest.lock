@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.7.1)
+  - Alamofire (4.7.2)
   - ALCameraViewController (3.0.3)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
@@ -7,6 +7,7 @@ PODS:
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
+  - UPCarouselFlowLayout (1.1.1)
   - Whisper (6.0.2)
 
 DEPENDENCIES:
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - ALCameraViewController
   - FMDB
   - SDWebImage (~> 4.0)
+  - UPCarouselFlowLayout
   - Whisper
 
 SPEC REPOS:
@@ -22,15 +24,17 @@ SPEC REPOS:
     - ALCameraViewController
     - FMDB
     - SDWebImage
+    - UPCarouselFlowLayout
     - Whisper
 
 SPEC CHECKSUMS:
-  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   ALCameraViewController: 6398a9282057f709b87a1ecc52a83b48028ade64
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
   Whisper: 169760fc4bab0abf24d5529f9276f95c25cf1025
 
-PODFILE CHECKSUM: 43c56f8f9ca3da59e6568db097898ba1a9351792
+PODFILE CHECKSUM: 162e94f24eebc946404bfeedd546b96b6573a333
 
 COCOAPODS: 1.5.0

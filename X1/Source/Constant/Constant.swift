@@ -24,15 +24,19 @@ enum UserType:Int {
 // MARK: - Struct Constant
 
 struct StoryboardIdentifier {
-    static let home     = "HomeViewController"
-    static let landing  = "LandingViewController"
-    static let profile  = "ProfileViewController"
+    static let home       = "HomeViewController"
+    static let landing    = "LandingViewController"
+    static let profile    = "ProfileViewController"
+    static let interest   = "ChooseInterestViewController"
+    static let selectRole = "SelectRoleViewController"
+    static let signUp     = "SignUpViewController"
 }
 
 struct ReusableIdentifier {
     static let profileImageViewCell     = "ProfileUserImageTableViewCell"
     static let profileTextFieldCell     = "ProfileTextFieldTableViewCell"
     static let profileDoneButtonCell    = "ProfileDoneButtonTableViewCell"
+    static let selecteCategory          = "InterestCategoryCollectionViewCell"
 }
 
 struct APIKeys {
@@ -50,8 +54,9 @@ struct DeviceIdentifier {
 
 
 struct APIEndPoint {
-    static let signIn   = "login"
-    static let signUp   = "register"
+    static let signIn        = "login"
+    static let signUp        = "register"
+    static let linkedInLogin = "login/linkedin"
 }
 
 struct APIURL {
@@ -64,26 +69,27 @@ struct APIURL {
 }
 
 struct UserKey {
-    static let name         = "full_name"
-    static let email        = "email"
-    static let password     = "password"
-    static let userId       = "_id"
-    static let mobile       = "mobile"
-    static let gender       = "gender"
-    static let dob          = "DOB"
-    static let zipcode      = "zipcode"
-    static let city         = "city"
-    static let state        = "state"
-    static let address      = "address"
-    static let country      = "country"
-    static let latitude     = "latitude"
-    static let longitude    = "longitude"
-    static let deviceId     = "deviceId"
-    static let userType     = "user_type"
-    static let accessToken  = "id_token"
-    static let apnsToken    = "apns_token"
-    static let imageURL     = "image_url"
-    static let location     = "location"
+    static let name             = "full_name"
+    static let email            = "email"
+    static let password         = "password"
+    static let userId           = "_id"
+    static let mobile           = "mobile"
+    static let gender           = "gender"
+    static let dob              = "DOB"
+    static let zipcode          = "zipcode"
+    static let city             = "city"
+    static let state            = "state"
+    static let address          = "address"
+    static let country          = "country"
+    static let latitude         = "latitude"
+    static let longitude        = "longitude"
+    static let deviceId         = "deviceId"
+    static let userType         = "user_type"
+    static let accessToken      = "id_token"
+    static let apnsToken        = "apns_token"
+    static let imageURL         = "image_url"
+    static let location         = "location"
+    static let linkedInAccess   = "linkedin_access"
 }
 
 struct HTTPStatus {

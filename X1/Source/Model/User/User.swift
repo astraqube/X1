@@ -31,6 +31,7 @@ class User: NSObject {
     var latitude:CLLocationDegrees?
     var longitude:CLLocationDegrees?
     var type:UserType!
+    var isLinkedInEnabled = false
     
     
     // MARK: Initializers
@@ -68,6 +69,17 @@ class User: NSObject {
             type = UserType(rawValue: userType)
         }
         
+    }
+    
+    init?(withLinkedIn user: LinkedInUser) {
+        guard let emailId = user.email,
+            let fullName = user.firstName else {
+            return nil
+        }
+        email               = emailId
+        name                = fullName + (user.lastName ?? "")
+        imageURL            = user.pictureURL
+        isLinkedInEnabled   = true
     }
     
     override init() {
@@ -136,12 +148,16 @@ class User: NSObject {
      func parameter() -> Dictionary<String, Any> {
         // Add parameters
         var parameters:[String: Any] = Dictionary()
-        parameters[UserKey.name]        = name
-        parameters[UserKey.email]       = email
-        parameters[UserKey.password]    = password
-        parameters[UserKey.userType]    = type.rawValue
+        parameters[UserKey.name]            = name
+        parameters[UserKey.email]           = email
+        parameters[UserKey.password]        = password
+        parameters[UserKey.userType]        = type.rawValue
+        parameters[UserKey.linkedInAccess]  = isLinkedInEnabled.convertForWeb()
         if let mobile = cellNumber {
             parameters[UserKey.mobile]      = mobile
+        }
+        if let imageURL = imageURL {
+            parameters[UserKey.imageURL]    = imageURL
         }
         if let dob = dob {
             parameters[UserKey.dob]         = dob
