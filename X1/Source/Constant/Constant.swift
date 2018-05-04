@@ -36,7 +36,8 @@ struct ReusableIdentifier {
     static let profileImageViewCell     = "ProfileUserImageTableViewCell"
     static let profileTextFieldCell     = "ProfileTextFieldTableViewCell"
     static let profileDoneButtonCell    = "ProfileDoneButtonTableViewCell"
-    static let selecteCategory          = "InterestCategoryCollectionViewCell"
+    static let selectCategoryCell       = "InterestCategoryCollectionViewCell"
+    static let subcategoryCell          = "SubcategoryCollectionViewCell"
 }
 
 struct APIKeys {
@@ -45,6 +46,9 @@ struct APIKeys {
     static let errorMessage = "message"
     static let result       = "result"
     static let userInfo     = "userInfo"
+    static let categoryName = "category_name"
+    static let identifier   = "_id"
+    static let imageURL     = "image_url"
 }
 
 struct DeviceIdentifier {
@@ -57,6 +61,8 @@ struct APIEndPoint {
     static let signIn        = "login"
     static let signUp        = "register"
     static let linkedInLogin = "login/linkedin"
+    static let category      = "category/levelone"
+    static let subcategory   = "category/leveltwo/"
 }
 
 struct APIURL {

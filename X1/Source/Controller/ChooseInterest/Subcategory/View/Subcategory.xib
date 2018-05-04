@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Subcategory" customModule="Solviant" customModuleProvider="target">
+            <connections>
+                <outlet property="leftButton" destination="1Yj-LI-W16" id="x9l-sY-TDx"/>
+                <outlet property="rightButton" destination="W8L-wy-hOW" id="zoa-gY-ZuB"/>
+                <outlet property="subcategoryCollectionView" destination="N9f-Vg-Zsr" id="hmc-CH-yKD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="N9f-Vg-Zsr">
+                    <rect key="frame" x="0.0" y="10" width="375" height="140"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="DeQ-WS-w8T">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="8Me-Rd-pyy"/>
+                        <outlet property="delegate" destination="-1" id="7GF-Hw-Zqo"/>
+                    </connections>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Yj-LI-W16">
+                    <rect key="frame" x="-10" y="57" width="37" height="46"/>
+                    <state key="normal" image="swipe_left_white"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-wy-hOW">
+                    <rect key="frame" x="347" y="57" width="38" height="46"/>
+                    <state key="normal" image="swipe_small"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1Yj-LI-W16" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="-10" id="0ie-JR-t46"/>
+                <constraint firstItem="W8L-wy-hOW" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="10" id="FEq-3M-XKz"/>
+                <constraint firstItem="N9f-Vg-Zsr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UND-aY-Ubj"/>
+                <constraint firstItem="N9f-Vg-Zsr" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="VSp-bE-yy0"/>
+                <constraint firstItem="N9f-Vg-Zsr" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-10" id="XUe-et-485"/>
+                <constraint firstItem="N9f-Vg-Zsr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="ccf-uZ-JsE"/>
+                <constraint firstItem="1Yj-LI-W16" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fqN-Hq-SMI"/>
+                <constraint firstItem="W8L-wy-hOW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yPV-ho-NEu"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="6"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="46.5" y="-202"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="swipe_left_white" width="37" height="46"/>
+        <image name="swipe_small" width="38" height="46"/>
+    </resources>
+</document>

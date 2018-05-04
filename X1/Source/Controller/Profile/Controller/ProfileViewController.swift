@@ -213,6 +213,7 @@ class ProfileViewController: UIViewController {
     private func gotoNextScreen(forUser user: User) {
         // Move to next screen after Sign Up
         if let chooseInterestViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.interest) as? ChooseInterestViewController {
+            chooseInterestViewController.user = user
             navigationController?.pushViewController(chooseInterestViewController, animated: true)
         }
     }

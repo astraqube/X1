@@ -11,11 +11,13 @@ import Alamofire
 
 class WebRequestManager: NSObject {
     
+    var lastRequest:DataRequest?
+    
     func httpRequest(method type:HTTPFunction, apiURL url:String, body parameters:Dictionary<String,Any>, completion success:@escaping(_ response:Dictionary<String, Any>) -> Void, failure errorOccured:@escaping (_ error:String) ->Void ) {
         let requestURL = URL.init(string: url)
         let httpMethod = HTTPMethod.init(rawValue: type.rawValue)!
         print("API Request with URL: \(requestURL!.absoluteString) and Parameters: \(parameters)")
-        Alamofire.request(requestURL!, method: httpMethod, parameters: parameters, encoding:URLEncoding.default, headers: nil).responseJSON { (response) in
+       lastRequest =  Alamofire.request(requestURL!, method: httpMethod, parameters: parameters, encoding:URLEncoding.default, headers: nil).responseJSON { (response) in
             print("Response \(response)")
             switch response.result {
             case .success:
@@ -52,6 +54,9 @@ class WebRequestManager: NSObject {
         }
     }
     
+    func cancelLastRequset() {
+        lastRequest?.cancel()
+    }
 }
 
 enum HTTPFunction: String {

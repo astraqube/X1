@@ -118,7 +118,7 @@ class User: NSObject {
     func delete() {
         // Delete user from local database
         let dbManager   = DBOperation()
-        let deleteQuery = "DELETE FROM user WHERE userId = ?"
+        let deleteQuery = "DELETE FROM user WHERE _id = ?"
         let valuesArray:[Any] = [userId as Any]
         dbManager.executeInsertUpdate(query: deleteQuery, columnValues: valuesArray)
     }
