@@ -15,6 +15,7 @@ class Category: NSObject {
     var imageURL:String?
     var subcategories:[Category]?
     var isSelected = false
+    var cellWidth:CGFloat  = 0.0
     
     init?(with response: Dictionary<String, Any>) {
         guard let id = response[APIKeys.identifier] as? String,
@@ -25,6 +26,7 @@ class Category: NSObject {
         identifier      = id
         name            = categoryName
         imageURL        = response[APIKeys.imageURL] as? String
+        cellWidth       = name.widthOfString(usingFont: UIFont.robotoFont(wityType: .light, size: 17))
     }
 
 }

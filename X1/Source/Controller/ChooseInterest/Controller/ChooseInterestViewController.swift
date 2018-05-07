@@ -18,6 +18,7 @@ class ChooseInterestViewController: UIViewController {
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var subcategoryView: Subcategory!
+    @IBOutlet weak var pickInterestView: PickInterest!
     @IBOutlet weak var categoryActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var subcategoryActivityIndicatorView: UIActivityIndicatorView!
     
@@ -60,6 +61,7 @@ class ChooseInterestViewController: UIViewController {
         
         // Set shadow
         subcategoryView.darkShadow(withRadius: 2)
+        subcategoryView.delegate = self
         updateButton.darkShadow(withRadius: 8)
         
         // Set border
@@ -131,23 +133,16 @@ extension ChooseInterestViewController: UICollectionViewDataSource, UICollection
     }
 }
 
-extension UICollectionView {
+extension ChooseInterestViewController: SubcategoryDelegate {
     
-    var centerPoint : CGPoint {
-        
-        get {
-            return CGPoint(x: self.center.x + self.contentOffset.x, y: self.center.y + self.contentOffset.y);
-        }
-    }
+    // MARK: - Subcateogy Delegate
     
-    var centerCellIndexPath: IndexPath? {
-        
-        if let centerIndexPath: IndexPath  = self.indexPathForItem(at: self.centerPoint) {
-            return centerIndexPath
-        }
-        return nil
+    func didSelect(subcategory: Subcategory, item: Category, selected: Bool) {
+         // Subcategory selected or deselected
     }
+
 }
+
 
 extension ChooseInterestViewController {
     

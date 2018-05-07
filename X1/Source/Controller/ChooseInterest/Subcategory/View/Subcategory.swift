@@ -18,6 +18,9 @@ class Subcategory: UIView {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    // MARK: - Other Property
+    
+    weak var delegate:SubcategoryDelegate?
     
     // MARK: - Initializer
     
@@ -51,6 +54,11 @@ class Subcategory: UIView {
                 else {
                     subcategoryCollectionViewCell.subcategoryTitleLabel.backgroundColor = .clear
                     subcategoryCollectionViewCell.subcategoryTitleLabel.textColor       = .darkGray
+                }
+                
+                // Notify the delegate for selection
+                if let delegate = delegate {
+                    delegate.didSelect(subcategory: self, item: subcategory, selected: subcategory.isSelected)
                 }
             }
         }
@@ -124,4 +132,10 @@ extension Subcategory: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
         
     }
+}
+
+// MARK - Sub Category Delegate
+
+protocol SubcategoryDelegate:class {
+    func didSelect(subcategory: Subcategory, item: Category, selected: Bool)
 }

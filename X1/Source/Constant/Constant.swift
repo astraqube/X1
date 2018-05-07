@@ -33,11 +33,13 @@ struct StoryboardIdentifier {
 }
 
 struct ReusableIdentifier {
-    static let profileImageViewCell     = "ProfileUserImageTableViewCell"
-    static let profileTextFieldCell     = "ProfileTextFieldTableViewCell"
-    static let profileDoneButtonCell    = "ProfileDoneButtonTableViewCell"
-    static let selectCategoryCell       = "InterestCategoryCollectionViewCell"
-    static let subcategoryCell          = "SubcategoryCollectionViewCell"
+    static let profileImageViewCell         = "ProfileUserImageTableViewCell"
+    static let profileTextFieldCell         = "ProfileTextFieldTableViewCell"
+    static let profileDoneButtonCell        = "ProfileDoneButtonTableViewCell"
+    static let selectCategoryCell           = "InterestCategoryCollectionViewCell"
+    static let subcategoryCell              = "SubcategoryCollectionViewCell"
+    static let interestTableViewCell        = "InterestCollectionViewCell"
+    static let interestCollectionViewCell   = "InterestTableViewCell"
 }
 
 struct APIKeys {

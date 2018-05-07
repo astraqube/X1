@@ -10,19 +10,23 @@ import UIKit
 
 extension UIFont {
     
-    static func ralewayFont(wityType type: FontType, size: CGFloat) -> UIFont {
+    static func robotoFont(wityType type: FontType, size: CGFloat) -> UIFont {
         // Return Raleway font with size and type
          // Raleway-Regular
         var fontName:String!
         switch type {
         case .semiBold:
-            fontName = "Raleway-SemiBold"
+            fontName = "Roboto-SemiBold"
         case .bold:
-            fontName = "Raleway-Bold"
+            fontName = "Roboto-Bold"
         case .italics:
-            fontName = "Raleway-Italic"
+            fontName = "Roboto-Italic"
+        case .thin:
+            fontName = "Roboto-Thin"
+        case .light:
+            fontName = "Roboto-Light"
         default:
-            fontName = "Raleway-Regular"
+            fontName = "Roboto-Regular"
         }
         if let font =  UIFont.init(name: fontName, size: size) {
             return font
@@ -36,5 +40,7 @@ enum FontType {
     case semiBold
     case bold
     case italics
+    case thin
+    case light
 }
 

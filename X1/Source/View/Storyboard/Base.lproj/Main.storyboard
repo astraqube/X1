@@ -497,7 +497,7 @@
             <objects>
                 <viewController storyboardIdentifier="ChooseInterestViewController" id="1wy-yk-FG0" customClass="ChooseInterestViewController" customModule="Solviant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LTK-aS-PTC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="817"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your Interests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GK-xb-8c2">
@@ -518,10 +518,10 @@
                                 </connections>
                             </searchBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSr-jY-q4H">
-                                <rect key="frame" x="0.0" y="129" width="375" height="538"/>
+                                <rect key="frame" x="0.0" y="129" width="375" height="688"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jpT-qr-y0N">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="538"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="688"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjW-ld-yGC">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -541,7 +541,7 @@
                                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ko-q7-2ra">
                                                                             <rect key="frame" x="0.0" y="0.0" width="182" height="188"/>
                                                                             <subviews>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="information_technology" translatesAutoresizingMaskIntoConstraints="NO" id="YE7-m5-Crf">
+                                                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YE7-m5-Crf">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="182" height="188"/>
                                                                                 </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="VzH-e6-xMi">
@@ -642,7 +642,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLc-Cf-tTV">
-                                                <rect key="frame" x="93.5" y="448" width="187" height="37"/>
+                                                <rect key="frame" x="93.5" y="598" width="187" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="37" id="Q0H-rU-Nw4"/>
                                                     <constraint firstAttribute="width" constant="187" id="k4S-Rw-3zd"/>
@@ -661,18 +661,26 @@
                                                     <segue destination="EoA-tA-ndl" kind="show" id="rkU-J1-8PC"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TwW-21-Eax" customClass="PickInterest" customModule="Solviant" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="428" width="375" height="136"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="AjW-ld-yGC" firstAttribute="top" secondItem="jpT-qr-y0N" secondAttribute="top" id="3VJ-pL-9XW"/>
                                             <constraint firstAttribute="trailing" secondItem="AjW-ld-yGC" secondAttribute="trailing" id="64d-Qz-7Vk"/>
                                             <constraint firstItem="jLc-Cf-tTV" firstAttribute="centerX" secondItem="jpT-qr-y0N" secondAttribute="centerX" id="JgO-go-MXX"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="538" id="PG9-BH-w3B"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="688" id="PG9-BH-w3B"/>
                                             <constraint firstAttribute="bottom" secondItem="jLc-Cf-tTV" secondAttribute="bottom" constant="53" id="Rhw-tG-BUe"/>
+                                            <constraint firstItem="TwW-21-Eax" firstAttribute="leading" secondItem="jpT-qr-y0N" secondAttribute="leading" id="Wkd-F0-ipa"/>
                                             <constraint firstItem="DzA-wR-eMz" firstAttribute="leading" secondItem="jpT-qr-y0N" secondAttribute="leading" constant="12" id="cop-cf-qhk"/>
+                                            <constraint firstItem="jLc-Cf-tTV" firstAttribute="top" secondItem="TwW-21-Eax" secondAttribute="bottom" constant="34" id="ewK-yU-1zE"/>
                                             <constraint firstItem="AjW-ld-yGC" firstAttribute="leading" secondItem="jpT-qr-y0N" secondAttribute="leading" id="hEL-X8-ZzS"/>
+                                            <constraint firstAttribute="trailing" secondItem="TwW-21-Eax" secondAttribute="trailing" id="u39-zJ-2dz"/>
                                             <constraint firstAttribute="trailing" secondItem="DzA-wR-eMz" secondAttribute="trailing" constant="12" id="vdm-xS-LjU"/>
                                             <constraint firstItem="DzA-wR-eMz" firstAttribute="top" secondItem="AjW-ld-yGC" secondAttribute="bottom" constant="34" id="xin-ls-ekY"/>
+                                            <constraint firstItem="TwW-21-Eax" firstAttribute="top" secondItem="DzA-wR-eMz" secondAttribute="bottom" constant="34" id="xv0-H2-C4d"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -700,10 +708,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yWe-f6-zHo"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="817"/>
                     <connections>
                         <outlet property="carouselFlowLayout" destination="Efq-f7-IwJ" id="yM7-if-flU"/>
                         <outlet property="categoryActivityIndicator" destination="HmB-0i-WJ1" id="iJ1-NX-TJU"/>
                         <outlet property="categoryCollectionView" destination="UBM-I6-oQ3" id="eR0-8G-WXe"/>
+                        <outlet property="pickInterestView" destination="TwW-21-Eax" id="Kmp-aj-Unq"/>
                         <outlet property="subcategoryActivityIndicatorView" destination="a5d-uf-ads" id="jD4-VB-F9u"/>
                         <outlet property="subcategoryView" destination="gwV-4F-lJr" id="xsd-gW-dRp"/>
                         <outlet property="updateButton" destination="jLc-Cf-tTV" id="1K2-76-U8p"/>
@@ -1495,7 +1506,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="FnL-3p-aoD"/>
                                                 </constraints>
-                                                <mutableString key="text">Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality. Infinity War is the most intense of the Marvel Cinematic Universe films so far, due to the villain's genocidal quest and the grave consequences for some well-known characters. It has plenty of humor and lighter moments, but it ultimately goes to places darker than in any previous Marvel Cinematic Universe entry. Also, it requires more knowledge of things that have happened in previous Marvel movies than other Avengers films have; it's the meeting point of several franchises and storylines.</mutableString>
+                                                <string key="text">Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality. Infinity War is the most intense of the Marvel Cinematic Universe films so far, due to the villain's genocidal quest and the grave consequences for some well-known characters. It has plenty of humor and lighter moments, but it ultimately goes to places darker than in any previous Marvel Cinematic Universe entry. Also, it requires more knowledge of things that have happened in previous Marvel movies than other Avengers films have; it's the meeting point of several franchises and storylines.</string>
                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1596,7 +1607,6 @@
         <image name="checkmark_black" width="24" height="24"/>
         <image name="eye_white" width="36" height="36"/>
         <image name="grow_skills" width="35" height="35"/>
-        <image name="information_technology" width="1113" height="451"/>
         <image name="linkedin" width="38" height="38"/>
         <image name="menu" width="20" height="14"/>
         <image name="notification" width="14" height="16"/>
