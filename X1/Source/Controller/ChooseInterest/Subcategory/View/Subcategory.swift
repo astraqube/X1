@@ -21,6 +21,9 @@ class Subcategory: UIView {
     // MARK: - Other Property
     
     weak var delegate:SubcategoryDelegate?
+    var isFullDisplay = true
+    var lastSelectedRow:Int!
+    
     
     // MARK: - Initializer
     
@@ -46,6 +49,7 @@ class Subcategory: UIView {
     private func setSelection(at indexPath: IndexPath) {
         if let subcategory = datasource?[indexPath.row] {
             subcategory.isSelected = !subcategory.isSelected
+            lastSelectedRow = indexPath.row
             if let subcategoryCollectionViewCell = subcategoryCollectionView.cellForItem(at: indexPath)  as? SubcategoryCollectionViewCell {
                 if subcategory.isSelected {
                     subcategoryCollectionViewCell.subcategoryTitleLabel.backgroundColor = UIColor.darkTheme()
@@ -67,8 +71,15 @@ class Subcategory: UIView {
     // MARK: - Reload Data
     
     func reloadSubcategory(with subcategories: Array<Category>?) {
-//        datasource = subcategories
+        datasource = subcategories
         subcategoryCollectionView.reloadData()
+    }
+    
+    func refreshLayout(isFull display: Bool) {
+        isFullDisplay = display
+        subcategoryCollectionView.reloadData()
+        let indexPath = IndexPath.init(item: lastSelectedRow, section: 0)
+        subcategoryCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
 
@@ -114,28 +125,32 @@ extension Subcategory: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Get the selected cell
         setSelection(at: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        let totalCellWidth = cellSize.width * CGFloat(collectionView.numberOfItems(inSection: 0)/2)
-        let totalSpacingWidth = CGFloat(8 * (collectionView.numberOfItems(inSection: 0) - 1)/2)
-        
-        var leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-        if leftInset < 0 {
-            leftInset = 0
+        if isFullDisplay {
+            let totalCellWidth = cellSize.width * CGFloat(collectionView.numberOfItems(inSection: 0)/2)
+            let totalSpacingWidth = CGFloat(8 * (collectionView.numberOfItems(inSection: 0) - 1)/2)
+            
+            var leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+            if leftInset < 0 {
+                leftInset = 0
+            }
+            let rightInset = leftInset
+            
+            
+            return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
         }
-        let rightInset = leftInset
         
-        
-        return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
-        
+        return UIEdgeInsets.zero
     }
 }
 
-// MARK - Sub Category Delegate
+// MARK: - Sub Category Delegate
 
 protocol SubcategoryDelegate:class {
+    // When subcategory is selected
     func didSelect(subcategory: Subcategory, item: Category, selected: Bool)
 }

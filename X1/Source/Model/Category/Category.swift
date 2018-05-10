@@ -14,6 +14,7 @@ class Category: NSObject {
     var name:String!
     var imageURL:String?
     var subcategories:[Category]?
+    var tags:[String]?
     var isSelected = false
     var cellWidth:CGFloat  = 0.0
     

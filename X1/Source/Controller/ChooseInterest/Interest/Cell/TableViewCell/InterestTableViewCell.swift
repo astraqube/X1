@@ -7,59 +7,75 @@
 //
 
 import UIKit
+import TTGTagCollectionView
 
 class InterestTableViewCell: UITableViewCell {
 
     // MARK:- IB Outlet
     
-    @IBOutlet weak var interestCollectionView: UICollectionView!
+    @IBOutlet weak var interestCollectionView: TTGTextTagCollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK:- Other Property
-    let cellPading:CGFloat = 5.0
-    let cellHeight:CGFloat = 21.0
     
-    var datasource:[Category]?
+    weak var delegate:TagSelectionDelegate?
+    
+    var datasource:[String]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        // Register cell for embeded CollectionView
-        registerCell(with: ReusableIdentifier.interestCollectionViewCell)
+        // Configure the view for the selected state
+        configureTagView()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     // MARK:- Utility
     
-    private func registerCell(with identifier: String) {
-        // Register collection view cell
-        interestCollectionView.register(UINib.init(nibName: "InterestCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: identifier)
+    private func configureTagView() {
+        interestCollectionView.alignment       = .fillByExpandingWidth
+        interestCollectionView.delegate        = self
+        interestCollectionView.scrollDirection = .horizontal
+        interestCollectionView.horizontalSpacing = 8
+    }
+
+    
+    // MARK:- Set Datasource
+    
+    func setInterest(for interests: [Category]) {
+        interestCollectionView.removeAllTags()
+        let count = interests.count
+        for index in 0..<count {
+            let tag = interests[index]
+            interestCollectionView.addTag(tag.name.capitalized)
+            if tag.isSelected {
+                interestCollectionView.setTagAt(UInt(index), selected: true)
+            }
+        }
+    }
+    
+    func removeInterest() {
+        interestCollectionView.removeAllTags()
     }
 }
 
-extension InterestTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    // MARK:- CollectionView Datasource and Delegate
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return datasource?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let interest = datasource?[indexPath.row] {
-            return CGSize.init(width: interest.cellWidth + cellPading, height: cellHeight)
-        }
-        return CGSize.zero
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let interestCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableIdentifier.interestCollectionViewCell, for: indexPath) as! InterestCollectionViewCell
-        return interestCollectionViewCell
-    }
-    
+protocol TagSelectionDelegate:class {
+    // To forward tag selection to parent classes
+    func didTap(_ tableCell: UITableViewCell, at Tagindex: Int, selected: Bool)
 }
+
+extension InterestTableViewCell: TTGTextTagCollectionViewDelegate {
+    
+    // MARK: - TagCollectionView Delegate
+    
+    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTapTag tagText: String!, at index: UInt, selected: Bool, tagConfig config: TTGTextTagConfig!) {
+        // Tag Selected
+        if let delegate = delegate {
+            delegate.didTap(self, at: Int(index), selected: selected)
+        }
+    }
+}
+

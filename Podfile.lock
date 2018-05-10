@@ -7,6 +7,7 @@ PODS:
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
+  - TTGTagCollectionView (1.9.0)
   - UPCarouselFlowLayout (1.1.1)
   - Whisper (6.0.2)
 
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - ALCameraViewController
   - FMDB
   - SDWebImage (~> 4.0)
+  - TTGTagCollectionView
   - UPCarouselFlowLayout
   - Whisper
 
@@ -24,6 +26,7 @@ SPEC REPOS:
     - ALCameraViewController
     - FMDB
     - SDWebImage
+    - TTGTagCollectionView
     - UPCarouselFlowLayout
     - Whisper
 
@@ -32,9 +35,10 @@ SPEC CHECKSUMS:
   ALCameraViewController: 6398a9282057f709b87a1ecc52a83b48028ade64
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  TTGTagCollectionView: 958f20b946dee92a8ba20dc37d10a06737641ae9
   UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
   Whisper: 169760fc4bab0abf24d5529f9276f95c25cf1025
 
-PODFILE CHECKSUM: 162e94f24eebc946404bfeedd546b96b6573a333
+PODFILE CHECKSUM: 636dd5ce325d4896b362982704e6edd88644168e
 
 COCOAPODS: 1.5.0

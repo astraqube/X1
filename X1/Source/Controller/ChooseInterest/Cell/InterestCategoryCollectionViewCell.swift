@@ -10,7 +10,7 @@ import UIKit
 
 class InterestCategoryCollectionViewCell: UICollectionViewCell {
  
-    @IBOutlet weak var cotainerView: UIView!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryTitleLabel: UILabel!
     
@@ -22,10 +22,9 @@ class InterestCategoryCollectionViewCell: UICollectionViewCell {
     
     private func customizeUI() {
         // Set appearance for cell
-//        cotainerView.darkShadow(withRadius: 20)
         self.darkShadow(withRadius: 2)
-        cotainerView.layer.borderWidth   = 3.0
-        cotainerView.layer.borderColor   = UIColor.white.cgColor
+        containerView.layer.borderWidth   = 3.0
+        containerView.layer.borderColor   = UIColor.white.cgColor
     }
     
 }

@@ -28,7 +28,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="82" height="23"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uy-H9-LJS">
-                                <rect key="frame" x="1" y="1" width="80" height="21"/>
+                                <rect key="frame" x="4" y="1" width="74" height="21"/>
                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,9 +36,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="6uy-H9-LJS" secondAttribute="trailing" constant="1" id="Jxh-GS-lQf"/>
+                            <constraint firstAttribute="trailing" secondItem="6uy-H9-LJS" secondAttribute="trailing" constant="4" id="Jxh-GS-lQf"/>
                             <constraint firstItem="6uy-H9-LJS" firstAttribute="top" secondItem="VXe-Y5-zPq" secondAttribute="top" constant="1" id="YUx-3k-OgN"/>
-                            <constraint firstItem="6uy-H9-LJS" firstAttribute="leading" secondItem="VXe-Y5-zPq" secondAttribute="leading" constant="1" id="bCe-gK-Raw"/>
+                            <constraint firstItem="6uy-H9-LJS" firstAttribute="leading" secondItem="VXe-Y5-zPq" secondAttribute="leading" constant="4" id="bCe-gK-Raw"/>
                             <constraint firstAttribute="bottom" secondItem="6uy-H9-LJS" secondAttribute="bottom" constant="1" id="udk-dh-uJi"/>
                         </constraints>
                     </view>

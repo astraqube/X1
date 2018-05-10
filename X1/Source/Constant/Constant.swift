@@ -30,6 +30,7 @@ struct StoryboardIdentifier {
     static let interest   = "ChooseInterestViewController"
     static let selectRole = "SelectRoleViewController"
     static let signUp     = "SignUpViewController"
+    static let tags       = "TagPopOverTableViewController"
 }
 
 struct ReusableIdentifier {
@@ -40,6 +41,7 @@ struct ReusableIdentifier {
     static let subcategoryCell              = "SubcategoryCollectionViewCell"
     static let interestTableViewCell        = "InterestCollectionViewCell"
     static let interestCollectionViewCell   = "InterestTableViewCell"
+    static let tagsTableViewCell            = "TagsTableViewCell"
 }
 
 struct APIKeys {
@@ -65,6 +67,7 @@ struct APIEndPoint {
     static let linkedInLogin = "login/linkedin"
     static let category      = "category/levelone"
     static let subcategory   = "category/leveltwo/"
+    static let intersts      = "category/levelthree/"
 }
 
 struct APIURL {

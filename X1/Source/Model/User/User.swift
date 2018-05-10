@@ -68,7 +68,9 @@ class User: NSObject {
         if let userType = response[UserKey.userType] as? Int {
             type = UserType(rawValue: userType)
         }
-        
+        else if let value = response[UserKey.userType] as? String, let userType = Int(value) {
+            type = UserType(rawValue: userType)
+        }
     }
     
     init?(withLinkedIn user: LinkedInUser) {
@@ -101,7 +103,7 @@ class User: NSObject {
             return
         }
     
-        let insertQuery = "INSERT INTO user (_id, full_name, email, password, type, image_url, id_token, address, city, state, country, zip, latitude, longitude, mobile, dob, gender) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+        let insertQuery = "INSERT INTO user (_id, full_name, email, password, user_type, image_url, id_token, address, city, state, country, zip, latitude, longitude, mobile, dob, gender) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
         let valuesArray:[Any] = [userId as Any, name as Any, email as Any, password as Any, type.rawValue as Any, imageURL as Any, accessToken as Any, addressLine as Any, city as Any, state as Any, country as Any, zipCode as Any, latitude as Any, longitude as Any, cellNumber as Any, dob as Any, gender as Any]
         dbManager.executeInsertUpdate(query: insertQuery, columnValues: valuesArray)
     }
@@ -110,7 +112,7 @@ class User: NSObject {
         // Update user
         let dbManager   = DBOperation()
         
-        let updateQuery = "UPDATE user SET (full_name = ?, password = ?, type = ?, image_url = ?, id_token = ?, address = ?, city = ?, state = ?, country = ?, zip = ?, latitude = ?, longitude = ?, mobile = ?, dob = ?, gender = ?) WHERE _id = ?"
+        let updateQuery = "UPDATE user SET (full_name = ?, password = ?, user_type = ?, image_url = ?, id_token = ?, address = ?, city = ?, state = ?, country = ?, zip = ?, latitude = ?, longitude = ?, mobile = ?, dob = ?, gender = ?) WHERE _id = ?"
         let valuesArray:[Any] = [name as Any, password as Any, type.rawValue as Any, imageURL as Any, accessToken as Any, addressLine as Any, city as Any, state as Any, country as Any, zipCode as Any, latitude as Any, longitude as Any, cellNumber as Any, dob as Any, gender as Any, userId as Any]
         dbManager.executeInsertUpdate(query: updateQuery, columnValues: valuesArray)
     }

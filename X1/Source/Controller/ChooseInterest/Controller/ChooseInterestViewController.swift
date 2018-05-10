@@ -21,6 +21,14 @@ class ChooseInterestViewController: UIViewController {
     @IBOutlet weak var pickInterestView: PickInterest!
     @IBOutlet weak var categoryActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var subcategoryActivityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var heightConstraintCategoryView: NSLayoutConstraint!
+    @IBOutlet weak var categoryContainerView: UIView!
+    @IBOutlet weak var heightConstraintSubcategoryView: NSLayoutConstraint!
+    @IBOutlet weak var subcategoryContainerView: UIView!
+    
     
     // MARK: - Other Property
     
@@ -29,7 +37,10 @@ class ChooseInterestViewController: UIViewController {
     var isProcessing = false
     var categories:Array<Category>?
     var selectedCategory:Category!
+    var selectedSubcategories:[Category] = Array()
     var user:User!
+    var isDisplayingCategoryInFull = true
+    var isDisplayingSubCategoryInFull = true
 
     // MARK: - Life Cycle
     
@@ -75,6 +86,38 @@ class ChooseInterestViewController: UIViewController {
         
     }
     
+    // MARK: - Expand Collapse Category/Subcategory
+    
+    private func toggleCategory(full display: Bool) {
+        if display {
+            heightConstraintCategoryView.priority = UILayoutPriority(rawValue: 500)
+            carouselFlowLayout.itemSize.height = 195
+        }
+        else {
+            heightConstraintCategoryView.priority = UILayoutPriority(rawValue: 900)
+            carouselFlowLayout.itemSize.height = 50
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.categoryContainerView.layoutIfNeeded()
+        }
+        isDisplayingCategoryInFull = display
+        categoryCollectionView.reloadData()
+    }
+    
+    private func toggleSubcategory(full display: Bool) {
+        if display {
+            heightConstraintSubcategoryView.priority = UILayoutPriority(rawValue: 500)
+        }
+        else {
+            heightConstraintSubcategoryView.priority = UILayoutPriority(rawValue: 900)
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.subcategoryContainerView.layoutIfNeeded()
+        }
+        isDisplayingSubCategoryInFull = display
+        subcategoryView.refreshLayout(isFull: display)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -105,6 +148,7 @@ extension ChooseInterestViewController: UICollectionViewDataSource, UICollection
         if let category = categories?[indexPath.row] {
             // Configure cell
             categoryCell.categoryTitleLabel.text = category.name.capitalized
+            categoryCell.containerView.layer.cornerRadius = isDisplayingCategoryInFull ? 40 : 2
             if let imageURL = category.imageURL {
                 categoryCell.categoryImageView.setImage(withURL: imageURL, placeholder: nil)
             }
@@ -131,6 +175,12 @@ extension ChooseInterestViewController: UICollectionViewDataSource, UICollection
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !isDisplayingCategoryInFull {
+            toggleCategory(full: true)
+        }
+    }
 }
 
 extension ChooseInterestViewController: SubcategoryDelegate {
@@ -139,10 +189,45 @@ extension ChooseInterestViewController: SubcategoryDelegate {
     
     func didSelect(subcategory: Subcategory, item: Category, selected: Bool) {
          // Subcategory selected or deselected
+        let offset:CGFloat = 110
+        if selected {
+            selectedSubcategories.insert(item, at: 0)
+            containerViewHeightConstraint.constant += offset
+        }
+        else if let index = selectedSubcategories.index(of: item) {
+            selectedSubcategories.remove(at: index)
+            containerViewHeightConstraint.constant -= offset
+        }
+        
+        if user.type != .principal {
+            toggleCategory(full: false)
+        }
+        
+        if !isDisplayingSubCategoryInFull {
+            toggleSubcategory(full: true)
+        }
+        
+        if user.type != .principal {
+            // If user type is resource or both
+            pickInterestView.setInterest(for: selectedSubcategories)
+            pickInterestView.delegate = self
+            self.containerView.updateConstraints()
+            self.scrollView.layoutIfNeeded()
+            scrollView.scrollRectToVisible(containerView.bounds, animated: true)
+        }
     }
-
 }
 
+extension ChooseInterestViewController: InterestSelectionDelegate {
+    
+    // MARK: - Tag Selection Delegate
+    
+    func didSelect(in subcategory: Category, for tag: Category, selected: Bool) {
+        // Tag selected
+        tag.isSelected = selected
+        toggleSubcategory(full: false)
+    }
+}
 
 extension ChooseInterestViewController {
     
@@ -188,6 +273,8 @@ extension ChooseInterestViewController {
         }
     }
     
+    // MARK: - Request Completion
+    
     private func didFetchCategory(with response: Dictionary<String, Any>) {
         // Intialize model from response
         if let categories = response[APIKeys.result] as? Array<Dictionary<String, Any>> {
@@ -230,5 +317,6 @@ extension ChooseInterestViewController {
             subcategoryView.reloadSubcategory(with: selectedCategory.subcategories)
         }
     }
+
     
 }

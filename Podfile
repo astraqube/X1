@@ -13,5 +13,6 @@ target 'Solviant' do
   pod 'ALCameraViewController'
   pod 'SDWebImage', '~> 4.0'
   pod 'UPCarouselFlowLayout'
+  pod 'TTGTagCollectionView'
 
 end

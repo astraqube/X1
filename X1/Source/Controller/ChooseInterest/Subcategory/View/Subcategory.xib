@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="N9f-Vg-Zsr">
-                    <rect key="frame" x="0.0" y="10" width="375" height="140"/>
+                    <rect key="frame" x="5" y="10" width="365" height="140"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="DeQ-WS-w8T">
                         <size key="itemSize" width="50" height="50"/>
@@ -49,8 +49,8 @@
             <constraints>
                 <constraint firstItem="1Yj-LI-W16" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="-10" id="0ie-JR-t46"/>
                 <constraint firstItem="W8L-wy-hOW" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="10" id="FEq-3M-XKz"/>
-                <constraint firstItem="N9f-Vg-Zsr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UND-aY-Ubj"/>
-                <constraint firstItem="N9f-Vg-Zsr" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="VSp-bE-yy0"/>
+                <constraint firstItem="N9f-Vg-Zsr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="UND-aY-Ubj"/>
+                <constraint firstItem="N9f-Vg-Zsr" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-5" id="VSp-bE-yy0"/>
                 <constraint firstItem="N9f-Vg-Zsr" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-10" id="XUe-et-485"/>
                 <constraint firstItem="N9f-Vg-Zsr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="ccf-uZ-JsE"/>
                 <constraint firstItem="1Yj-LI-W16" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fqN-Hq-SMI"/>
