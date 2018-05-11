@@ -28,6 +28,15 @@ extension UIView {
         layer.shadowColor      = UIColor.black.withAlphaComponent(0.3).cgColor
     }
     
+    func darkShadow(withRadius radius:CGFloat, color: UIColor) {
+        // Put dark shadow the the view
+        layer.masksToBounds    = false
+        layer.shadowOffset     = CGSize.zero
+        layer.shadowRadius     = radius
+        layer.shadowOpacity    = 1
+        layer.shadowColor      = color.cgColor
+    }
+    
     func roundCorners(corners:UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()

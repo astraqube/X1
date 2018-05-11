@@ -48,8 +48,9 @@ class LetsBeginViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        if let homeViewController = segue.destination as? HomeViewController {
-            homeViewController.user = user
+        if let homeTabBarController = segue.destination as? HomeTabBarViewController {
+            homeTabBarController.selectedIndex = TabBarIndex.home.rawValue
+            homeTabBarController.user = user
         }
     }
 

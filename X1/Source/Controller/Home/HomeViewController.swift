@@ -14,20 +14,24 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var badgeCountLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var gradientView: UIView!
-    @IBOutlet var buttonContainerViews: [UIView]!
-    @IBOutlet weak var problemContainerView: UIView!
+    @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var askAnythingButton: UIButton!
+    @IBOutlet weak var viewResponseButton: UIButton!
+    @IBOutlet weak var answerNowButtonContaierView: UIView!
+    @IBOutlet weak var answerNowButton: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     
     // MARK: - Other Property
     
-    var user:User!
+    var user:User! = User.loggedInUser()
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Get user
+        
         customizeUI()
     }
 
@@ -36,18 +40,35 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (user.type == .principal) {
+            answerNowButtonContaierView.isHidden = true
+            stackView.isHidden                   = false
+        }
+        else {
+            stackView.isHidden                   = true
+            answerNowButtonContaierView.isHidden = false
+        }
+    }
+    
     // MARK: - Customize UI
     
     private func customizeUI() {
         // Customize for theme appearance
-       
+        separatorView.darkShadow(withRadius: 0.8, color: UIColor.lightGray.withAlphaComponent(0.5))
         badgeCountLabel.layer.cornerRadius  = 9
         badgeCountLabel.layer.masksToBounds = true
-        gradientView.applyGradient(colours: [UIColor.lightTheme(), UIColor.darkTheme()])
-        problemContainerView.darkShadow(withRadius: 4)
-        for view in buttonContainerViews {
-            view.applyGradient(colours: [UIColor.lightTheme(), UIColor.darkTheme()])
-        }
+        
+        askAnythingButton.layer.borderWidth = 1.0
+        askAnythingButton.layer.borderColor = UIColor.lightTheme().cgColor
+        askAnythingButton.darkShadow(withRadius: 5)
+        answerNowButton.layer.borderWidth = 1.0
+        answerNowButton.layer.borderColor = UIColor.lightTheme().cgColor
+        answerNowButton.darkShadow(withRadius: 5)
+        viewResponseButton.layer.borderWidth = 1.0
+        viewResponseButton.layer.borderColor = UIColor.lightTheme().cgColor
+        viewResponseButton.darkShadow(withRadius: 5)
     }
     
     // MARK: - IB Action

@@ -21,6 +21,14 @@ enum UserType:Int {
     case both
 }
 
+enum TabBarIndex: Int {
+    case interest
+    case survey
+    case home
+    case statement
+    case meeting
+}
+
 // MARK: - Struct Constant
 
 struct StoryboardIdentifier {
@@ -31,6 +39,7 @@ struct StoryboardIdentifier {
     static let selectRole = "SelectRoleViewController"
     static let signUp     = "SignUpViewController"
     static let tags       = "TagPopOverTableViewController"
+    static let tabBar     = "HomeTabBarViewController"
 }
 
 struct ReusableIdentifier {

@@ -168,9 +168,10 @@ class SignInViewController: UIViewController {
     
     private func gotoHomeScreen(forUser user: User) {
         // Move to next screen after Sign In
-        if let homeViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.home) as? HomeViewController {
-            homeViewController.user = user
-            navigationController?.pushViewController(homeViewController, animated: true)
+        if let homeTabBarController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.tabBar) as? HomeTabBarViewController {
+            homeTabBarController.selectedIndex = TabBarIndex.home.rawValue
+            homeTabBarController.user = user
+            navigationController?.pushViewController(homeTabBarController, animated: true)
         }
     }
     

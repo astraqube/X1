@@ -31,9 +31,10 @@ class AutoLogin: NSObject {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         if let user = User.loggedInUser() {
             // User has already logged in session
-            let homeViewController = storyboard.instantiateViewController(withIdentifier: StoryboardIdentifier.interest) as! ChooseInterestViewController
-            homeViewController.user = user
-            rootViewController      = homeViewController
+            let tabBarController = storyboard.instantiateViewController(withIdentifier: StoryboardIdentifier.tabBar) as! HomeTabBarViewController
+            tabBarController.user          = user
+            tabBarController.selectedIndex = TabBarIndex.home.rawValue
+            rootViewController             = tabBarController
         }
         else {
             // No user is logged in
