@@ -51,6 +51,7 @@ struct ReusableIdentifier {
     static let interestTableViewCell        = "InterestCollectionViewCell"
     static let interestCollectionViewCell   = "InterestTableViewCell"
     static let tagsTableViewCell            = "TagsTableViewCell"
+    static let questionCollectionViewCell   = "QuestionCollectionViewCell"
 }
 
 struct APIKeys {

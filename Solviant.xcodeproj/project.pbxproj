@@ -30,7 +30,6 @@
 		6524EAAD208480BD0035F2D2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524EAAC208480BD0035F2D2 /* SignInViewController.swift */; };
 		653BDFA6208496EC00B3CAC7 /* Extesnion+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BDFA5208496EC00B3CAC7 /* Extesnion+UIColor.swift */; };
 		653BDFA82084B92000B3CAC7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BDFA72084B92000B3CAC7 /* SignUpViewController.swift */; };
-		654D6BA22099A09A00846294 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654D6BA12099A09A00846294 /* HomeViewController.swift */; };
 		658C23CB20A5A04E001E8A74 /* HomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C23CA20A5A04E001E8A74 /* HomeTabBarViewController.swift */; };
 		65ABA3D520846A0D000A5B42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65ABA3D320846A0D000A5B42 /* Main.storyboard */; };
 		65ABA3D720846A0E000A5B42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65ABA3D620846A0E000A5B42 /* Assets.xcassets */; };
@@ -56,6 +55,8 @@
 		65D34416209C5AEA0095749C /* LetsBeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D34415209C5AEA0095749C /* LetsBeginViewController.swift */; };
 		65DB27E02085178D00938B61 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DB27DF2085178D00938B61 /* Extension+String.swift */; };
 		65DB27E32085198D00938B61 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65DB27E22085198D00938B61 /* Localizable.strings */; };
+		65E0DA0A20A607BD005AE0E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E0DA0820A607BD005AE0E5 /* HomeViewController.swift */; };
+		65E0DA0C20A607F0005AE0E5 /* QuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E0DA0B20A607F0005AE0E5 /* QuestionCollectionViewCell.swift */; };
 		65E389ED20A03361002BA860 /* PickInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E389EC20A03361002BA860 /* PickInterest.swift */; };
 		65E389EF20A03377002BA860 /* PickInterest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65E389EE20A03377002BA860 /* PickInterest.xib */; };
 		65E389F820A03459002BA860 /* InterestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E389F520A03459002BA860 /* InterestTableViewCell.swift */; };
@@ -95,7 +96,6 @@
 		6524EAAC208480BD0035F2D2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		653BDFA5208496EC00B3CAC7 /* Extesnion+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extesnion+UIColor.swift"; sourceTree = "<group>"; };
 		653BDFA72084B92000B3CAC7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		654D6BA12099A09A00846294 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		658C23CA20A5A04E001E8A74 /* HomeTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarViewController.swift; sourceTree = "<group>"; };
 		65ABA3CC20846A0D000A5B42 /* Solviant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solviant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65ABA3D420846A0D000A5B42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +123,8 @@
 		65D34415209C5AEA0095749C /* LetsBeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsBeginViewController.swift; sourceTree = "<group>"; };
 		65DB27DF2085178D00938B61 /* Extension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		65DB27E22085198D00938B61 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		65E0DA0820A607BD005AE0E5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		65E0DA0B20A607F0005AE0E5 /* QuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		65E389EC20A03361002BA860 /* PickInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickInterest.swift; sourceTree = "<group>"; };
 		65E389EE20A03377002BA860 /* PickInterest.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickInterest.xib; sourceTree = "<group>"; };
 		65E389F520A03459002BA860 /* InterestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestTableViewCell.swift; sourceTree = "<group>"; };
@@ -348,7 +350,8 @@
 		6524EA94208473430035F2D2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				654D6BA12099A09A00846294 /* HomeViewController.swift */,
+				65E0DA0920A607BD005AE0E5 /* CollectionViewCell */,
+				65E0DA0720A607BD005AE0E5 /* Controller */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -630,6 +633,22 @@
 			path = Localizable;
 			sourceTree = "<group>";
 		};
+		65E0DA0720A607BD005AE0E5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				65E0DA0820A607BD005AE0E5 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		65E0DA0920A607BD005AE0E5 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				65E0DA0B20A607F0005AE0E5 /* QuestionCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		65E389E920A03342002BA860 /* Interest */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,7 +904,7 @@
 				651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */,
 				65C0203220864E8200971521 /* Extension+UIImageView.swift in Sources */,
 				65C0203120864E8200971521 /* Extension+UIFont.swift in Sources */,
-				654D6BA22099A09A00846294 /* HomeViewController.swift in Sources */,
+				65E0DA0C20A607F0005AE0E5 /* QuestionCollectionViewCell.swift in Sources */,
 				658C23CB20A5A04E001E8A74 /* HomeTabBarViewController.swift in Sources */,
 				65157C15209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift in Sources */,
 				6524EAAD208480BD0035F2D2 /* SignInViewController.swift in Sources */,
@@ -893,6 +912,7 @@
 				6512E741209085D400D2C15D /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				65C0203320864E8200971521 /* Extension+UIImage.swift in Sources */,
 				65E39E4C20984ED1006087F4 /* KeyboardAccessory.swift in Sources */,
+				65E0DA0A20A607BD005AE0E5 /* HomeViewController.swift in Sources */,
 				6512E73F209085D400D2C15D /* SkyFloatingLabelTextField.swift in Sources */,
 				65E39E4720983F50006087F4 /* ProfileUserImageTableViewCell.swift in Sources */,
 				65C0203C208654E700971521 /* WebRequestManager.swift in Sources */,

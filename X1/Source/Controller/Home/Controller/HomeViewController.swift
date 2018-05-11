@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UPCarouselFlowLayout
 
 class HomeViewController: UIViewController {
 
@@ -20,6 +21,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var answerNowButtonContaierView: UIView!
     @IBOutlet weak var answerNowButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var questionCollectionView: UICollectionView!
+    @IBOutlet weak var carouselFlowLayout: UPCarouselFlowLayout!
     
     // MARK: - Other Property
     
@@ -69,7 +72,16 @@ class HomeViewController: UIViewController {
         viewResponseButton.layer.borderWidth = 1.0
         viewResponseButton.layer.borderColor = UIColor.lightTheme().cgColor
         viewResponseButton.darkShadow(withRadius: 5)
+        
+        carouselFlowLayout.scrollDirection = .horizontal
+        var size    = questionCollectionView.frame.size
+        size.width  = size.width - 60
+        carouselFlowLayout.itemSize = size
+        carouselFlowLayout.spacingMode = .fixed(spacing: 5)
+        
+        questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredHorizontally, animated: false)
     }
+    
     
     // MARK: - IB Action
     
@@ -86,4 +98,18 @@ class HomeViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
     }
     
+}
+
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    // MARK: - CollectionView Delegate and Datasource
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let questionCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableIdentifier.questionCollectionViewCell, for: indexPath) as! QuestionCollectionViewCell
+        return questionCollectionViewCell
+    }
 }
