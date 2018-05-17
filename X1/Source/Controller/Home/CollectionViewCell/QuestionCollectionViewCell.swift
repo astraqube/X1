@@ -9,5 +9,9 @@
 import UIKit
 
 class QuestionCollectionViewCell: UICollectionViewCell {
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = .white
+        self.darkShadow(withRadius: 5)
+    }
 }

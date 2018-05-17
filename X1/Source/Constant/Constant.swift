@@ -32,14 +32,16 @@ enum TabBarIndex: Int {
 // MARK: - Struct Constant
 
 struct StoryboardIdentifier {
-    static let home       = "HomeViewController"
-    static let landing    = "LandingViewController"
-    static let profile    = "ProfileViewController"
-    static let interest   = "ChooseInterestViewController"
-    static let selectRole = "SelectRoleViewController"
-    static let signUp     = "SignUpViewController"
-    static let tags       = "TagPopOverTableViewController"
-    static let tabBar     = "HomeTabBarViewController"
+    static let home              = "HomeViewController"
+    static let landing           = "LandingViewController"
+    static let profile           = "ProfileViewController"
+    static let interest          = "ChooseInterestViewController"
+    static let selectRole        = "SelectRoleViewController"
+    static let signUp            = "SignUpViewController"
+    static let tags              = "TagPopOverTableViewController"
+    static let tabBar            = "HomeTabBarViewController"
+    static let letsBegin         = "LetsBeginViewController"
+    static let rateInterest      = "RateInterestViewController"
 }
 
 struct ReusableIdentifier {
@@ -52,6 +54,7 @@ struct ReusableIdentifier {
     static let interestCollectionViewCell   = "InterestTableViewCell"
     static let tagsTableViewCell            = "TagsTableViewCell"
     static let questionCollectionViewCell   = "QuestionCollectionViewCell"
+    
 }
 
 struct APIKeys {

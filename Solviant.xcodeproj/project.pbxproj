@@ -34,6 +34,9 @@
 		65ABA3D520846A0D000A5B42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65ABA3D320846A0D000A5B42 /* Main.storyboard */; };
 		65ABA3D720846A0E000A5B42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65ABA3D620846A0E000A5B42 /* Assets.xcassets */; };
 		65ABA3DA20846A0E000A5B42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65ABA3D820846A0E000A5B42 /* LaunchScreen.storyboard */; };
+		65B55E1920AD99F900231641 /* RateInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B55E1820AD99F900231641 /* RateInterestViewController.swift */; };
+		65B55E1B20ADBF3E00231641 /* SubcategoryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B55E1A20ADBF3E00231641 /* SubcategoryContainer.swift */; };
+		65B55E1F20ADEAB700231641 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B55E1E20ADEAB700231641 /* PaddedLabel.swift */; };
 		65C0201A20864E6900971521 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C0201620864E6900971521 /* LocationManager.swift */; };
 		65C0201B20864E6900971521 /* AutoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C0201820864E6900971521 /* AutoLogin.swift */; };
 		65C0201F20864E7200971521 /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C0201E20864E7200971521 /* linkedin-sdk.framework */; };
@@ -102,6 +105,9 @@
 		65ABA3D620846A0E000A5B42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65ABA3D920846A0E000A5B42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65ABA3DB20846A0E000A5B42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65B55E1820AD99F900231641 /* RateInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateInterestViewController.swift; sourceTree = "<group>"; };
+		65B55E1A20ADBF3E00231641 /* SubcategoryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryContainer.swift; sourceTree = "<group>"; };
+		65B55E1E20ADEAB700231641 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		65C0201620864E6900971521 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		65C0201820864E6900971521 /* AutoLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLogin.swift; sourceTree = "<group>"; };
 		65C0201E20864E7200971521 /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "linkedin-sdk.framework"; sourceTree = "<group>"; };
@@ -197,8 +203,8 @@
 		65157C0C209AF0C9009C1A1F /* ChooseInterest */ = {
 			isa = PBXGroup;
 			children = (
-				65E389E920A03342002BA860 /* Interest */,
 				65157C0E209AF105009C1A1F /* Controller */,
+				65E389E920A03342002BA860 /* Interest */,
 				65D34406209C14570095749C /* Subcategory */,
 				65157C0D209AF105009C1A1F /* Cell */,
 			);
@@ -242,6 +248,7 @@
 				6524EA8B20846B720035F2D2 /* Store */,
 				65C0201C20864E7200971521 /* Library */,
 				6524EA8C20846B720035F2D2 /* Utility */,
+				65B55E1C20ADEAA900231641 /* Subclass */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -249,6 +256,7 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				65B55E1720AD99AC00231641 /* RateInterest */,
 				658C23C920A59F52001E8A74 /* TabBar */,
 				65D34414209C5ADD0095749C /* LetsBegin */,
 				65157C0C209AF0C9009C1A1F /* ChooseInterest */,
@@ -461,6 +469,30 @@
 			path = X1;
 			sourceTree = "<group>";
 		};
+		65B55E1720AD99AC00231641 /* RateInterest */ = {
+			isa = PBXGroup;
+			children = (
+				65B55E1820AD99F900231641 /* RateInterestViewController.swift */,
+			);
+			path = RateInterest;
+			sourceTree = "<group>";
+		};
+		65B55E1C20ADEAA900231641 /* Subclass */ = {
+			isa = PBXGroup;
+			children = (
+				65B55E1D20ADEAA900231641 /* Label */,
+			);
+			path = Subclass;
+			sourceTree = "<group>";
+		};
+		65B55E1D20ADEAA900231641 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				65B55E1E20ADEAB700231641 /* PaddedLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		65C0201320864E6800971521 /* Webconnection */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,6 +629,7 @@
 			children = (
 				65D34409209C14680095749C /* Subcategory.swift */,
 				65D3440B209C14820095749C /* Subcategory.xib */,
+				65B55E1A20ADBF3E00231641 /* SubcategoryContainer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -889,6 +922,7 @@
 				65C0201B20864E6900971521 /* AutoLogin.swift in Sources */,
 				65D3440A209C14680095749C /* Subcategory.swift in Sources */,
 				651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */,
+				65B55E1B20ADBF3E00231641 /* SubcategoryContainer.swift in Sources */,
 				65157C13209B21C8009C1A1F /* Extension+Boolean.swift in Sources */,
 				6524EA8F20846B8C0035F2D2 /* Constant.swift in Sources */,
 				65C0203020864E8200971521 /* Extenstion+UIView.swift in Sources */,
@@ -898,6 +932,7 @@
 				65E39E4520983E3B006087F4 /* ProfileDoneButtonTableViewCell.swift in Sources */,
 				65E39E4320983E2E006087F4 /* ProfileTextFieldTableViewCell.swift in Sources */,
 				65157C10209AF11A009C1A1F /* ChooseInterestViewController.swift in Sources */,
+				65B55E1920AD99F900231641 /* RateInterestViewController.swift in Sources */,
 				65D34416209C5AEA0095749C /* LetsBeginViewController.swift in Sources */,
 				65E38A0220A0531D002BA860 /* Extension+UICollectionView.swift in Sources */,
 				65C0202420864E7900971521 /* DBOperation.swift in Sources */,
@@ -916,6 +951,7 @@
 				6512E73F209085D400D2C15D /* SkyFloatingLabelTextField.swift in Sources */,
 				65E39E4720983F50006087F4 /* ProfileUserImageTableViewCell.swift in Sources */,
 				65C0203C208654E700971521 /* WebRequestManager.swift in Sources */,
+				65B55E1F20ADEAB700231641 /* PaddedLabel.swift in Sources */,
 				653BDFA6208496EC00B3CAC7 /* Extesnion+UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

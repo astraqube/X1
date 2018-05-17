@@ -22,7 +22,7 @@ class Subcategory: UIView {
     
     weak var delegate:SubcategoryDelegate?
     var isFullDisplay = true
-    var lastSelectedRow:Int!
+    var lastSelectedRow = 0
     
     
     // MARK: - Initializer
@@ -36,11 +36,19 @@ class Subcategory: UIView {
             // Register cell
             registerCell(with: ReusableIdentifier.subcategoryCell)
             
+            // Set subcategory touch target
+            let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(showFullSubcateogry))
+            subcategoryView.addGestureRecognizer(tapGesture)
+            tapGesture.delegate = self
         }
         
     }
     
     // MARK: - Utility
+    
+    @objc func showFullSubcateogry() {
+        
+    }
     
     private func registerCell(with Identifer: String) {
         subcategoryCollectionView.register(UINib.init(nibName: "SubcategoryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: Identifer)
@@ -78,8 +86,13 @@ class Subcategory: UIView {
     func refreshLayout(isFull display: Bool) {
         isFullDisplay = display
         subcategoryCollectionView.reloadData()
-        let indexPath = IndexPath.init(item: lastSelectedRow, section: 0)
-        subcategoryCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        if lastSelectedRow > 0, let subcategories = datasource, subcategories.count > lastSelectedRow {
+            let indexPath = IndexPath.init(item: lastSelectedRow, section: 0)
+            subcategoryCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
+        else {
+            lastSelectedRow = 0
+        }
     }
 }
 
@@ -148,9 +161,21 @@ extension Subcategory: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
 }
 
+extension Subcategory: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view is SubcategoryContainer {
+            return false
+        }
+        delegate?.shouldExpand(subcatgory: self)
+        return true
+    }
+}
+
 // MARK: - Sub Category Delegate
 
 protocol SubcategoryDelegate:class {
     // When subcategory is selected
     func didSelect(subcategory: Subcategory, item: Category, selected: Bool)
+    
+    func shouldExpand(subcatgory: Subcategory)
 }

@@ -40,6 +40,7 @@ class InterestTableViewCell: UITableViewCell {
         interestCollectionView.delegate        = self
         interestCollectionView.scrollDirection = .horizontal
         interestCollectionView.horizontalSpacing = 8
+        
     }
 
     
@@ -47,10 +48,16 @@ class InterestTableViewCell: UITableViewCell {
     
     func setInterest(for interests: [Category]) {
         interestCollectionView.removeAllTags()
+        let textConfig = TTGTextTagConfig()
+        textConfig.tagSelectedTextColor = UIColor.white
+        textConfig.tagTextColor         = UIColor.lightTheme()
+        textConfig.tagBackgroundColor   = UIColor.white
+        textConfig.tagSelectedBackgroundColor = UIColor.lightTheme()
         let count = interests.count
         for index in 0..<count {
             let tag = interests[index]
-            interestCollectionView.addTag(tag.name.capitalized)
+            interestCollectionView.addTag(tag.name.capitalized, with: textConfig)
+            
             if tag.isSelected {
                 interestCollectionView.setTagAt(UInt(index), selected: true)
             }

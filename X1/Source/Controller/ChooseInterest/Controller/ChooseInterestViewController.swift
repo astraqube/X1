@@ -38,6 +38,7 @@ class ChooseInterestViewController: UIViewController {
     var categories:Array<Category>?
     var selectedCategory:Category!
     var selectedSubcategories:[Category] = Array()
+    var selectedTags:[Category] = Array()
     var user:User!
     var isDisplayingCategoryInFull = true
     var isDisplayingSubCategoryInFull = true
@@ -75,6 +76,7 @@ class ChooseInterestViewController: UIViewController {
         subcategoryView.delegate = self
         updateButton.darkShadow(withRadius: 8)
         
+        
         // Set border
         updateButton.layer.borderColor   = UIColor.lightTheme().cgColor
         updateButton.layer.borderWidth   = 1.0
@@ -83,7 +85,14 @@ class ChooseInterestViewController: UIViewController {
     // MARK: - IB Action
 
     @IBAction func updateCategory(_ sender: Any) {
-        
+        if user.type == .principal {
+            // For Principal
+            gotToLetsBeginScreen()
+        }
+        else {
+            // For resource and other types of users
+            gotoSelectRatingScreen()
+        }
     }
     
     // MARK: - Expand Collapse Category/Subcategory
@@ -119,13 +128,29 @@ class ChooseInterestViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    
+    private func gotToLetsBeginScreen() {
+        // Let's Begin Screen for Principal
+        let letsBeginViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.letsBegin) as! LetsBeginViewController
+        letsBeginViewController.user = user
+        navigationController?.pushViewController(letsBeginViewController, animated: true)
+    }
+    
+    private func gotoSelectRatingScreen() {
+        // Rating screen for resource
+        let rateIntererstViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.rateInterest) as! RateInterestViewController
+        rateIntererstViewController.user = user
+        rateIntererstViewController.selectedInterests = selectedTags
+        navigationController?.pushViewController(rateIntererstViewController, animated: true)
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        if let letsBeginViewController = segue.destination as? LetsBeginViewController {
-            letsBeginViewController.user = user
-        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
     }
 }
 
@@ -158,32 +183,47 @@ extension ChooseInterestViewController: UICollectionViewDataSource, UICollection
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        // Get the visible cells for collection view here and find out the middle one
-        let selectedRow = categoryCollectionView.centerCellIndexPath!.item
-        
-        // Cancel the previous subcategory fetch request to avoid too many requests if user is scrolling too fast
-        isProcessing = false
-        webManager.cancelLastRequset()
-        
-        if  let category = categories?[selectedRow] {
-            selectedCategory = category
-            subcategoryView.datasource = selectedCategory.subcategories
-            subcategoryView.reloadSubcategory(with: selectedCategory.subcategories)
-            if selectedCategory.subcategories == nil || selectedCategory.subcategories!.count == 0 {
-                // Subcatogies will only be fetched only once during the lifetime of the app
-                requestFetchSubCategory(for: category.identifier)
-            }
-        }
+        // Reload all categories
+        reloadSubcategory(categories: false)
+        toggleSubcategory(full: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isDisplayingCategoryInFull {
             toggleCategory(full: true)
+            toggleSubcategory(full: true)
         }
     }
 }
 
 extension ChooseInterestViewController: SubcategoryDelegate {
+    
+    // MARK: - Reload Subcategory
+    
+    private func reloadSubcategory(categories selected: Bool) {
+        if selected {
+            // When collaprsed, only selected categories will be displayed
+            subcategoryView.reloadSubcategory(with: selectedSubcategories)
+        }
+        else {
+            // Get the visible cells for collection view here and find out the middle one
+            let selectedRow = categoryCollectionView.centerCellIndexPath!.item
+            
+            // Cancel the previous subcategory fetch request to avoid too many requests if user is scrolling too fast
+            isProcessing = false
+            webManager.cancelLastRequset()
+            
+            if  let category = categories?[selectedRow] {
+                selectedCategory = category
+                subcategoryView.datasource = selectedCategory.subcategories
+                subcategoryView.reloadSubcategory(with: selectedCategory.subcategories)
+                if selectedCategory.subcategories == nil || selectedCategory.subcategories!.count == 0 {
+                    // Subcatogies will only be fetched only once during the lifetime of the app
+                    requestFetchSubCategory(for: category.identifier)
+                }
+            }
+        }
+    }
     
     // MARK: - Subcateogy Delegate
     
@@ -216,6 +256,11 @@ extension ChooseInterestViewController: SubcategoryDelegate {
             scrollView.scrollRectToVisible(containerView.bounds, animated: true)
         }
     }
+    
+    func shouldExpand(subcatgory: Subcategory) {
+        reloadSubcategory(categories: false)
+        toggleSubcategory(full: true)
+    }
 }
 
 extension ChooseInterestViewController: InterestSelectionDelegate {
@@ -225,7 +270,14 @@ extension ChooseInterestViewController: InterestSelectionDelegate {
     func didSelect(in subcategory: Category, for tag: Category, selected: Bool) {
         // Tag selected
         tag.isSelected = selected
+        reloadSubcategory(categories: true)
         toggleSubcategory(full: false)
+        if selected {
+            selectedTags.append(tag)
+        }
+        else if let index  = selectedTags.index(of: tag) {
+            selectedTags.remove(at: index)
+        }
     }
 }
 

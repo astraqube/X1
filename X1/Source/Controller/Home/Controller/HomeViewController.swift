@@ -72,14 +72,13 @@ class HomeViewController: UIViewController {
         viewResponseButton.layer.borderWidth = 1.0
         viewResponseButton.layer.borderColor = UIColor.lightTheme().cgColor
         viewResponseButton.darkShadow(withRadius: 5)
-        
-        carouselFlowLayout.scrollDirection = .horizontal
         var size    = questionCollectionView.frame.size
-        size.width  = size.width - 60
+        size.width  = size.width - 40
+        size.height -= 120
         carouselFlowLayout.itemSize = size
         carouselFlowLayout.spacingMode = .fixed(spacing: 5)
-        
-        questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredHorizontally, animated: false)
+        carouselFlowLayout.scrollDirection = .vertical
+        questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
     }
     
     
