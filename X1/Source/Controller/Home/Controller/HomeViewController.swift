@@ -74,10 +74,10 @@ class HomeViewController: UIViewController {
         viewResponseButton.darkShadow(withRadius: 5)
         var size    = questionCollectionView.frame.size
         size.width  = size.width - 40
-        size.height -= 120
+        size.height -= 5
         carouselFlowLayout.itemSize = size
         carouselFlowLayout.spacingMode = .fixed(spacing: 5)
-        carouselFlowLayout.scrollDirection = .vertical
+        carouselFlowLayout.scrollDirection = .horizontal
         questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
     }
     

@@ -10,6 +10,11 @@ import UIKit
 
 class KeyboardAccessory: UIView {
     
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var closeKeyboard: UIButton!
+    
+    
     // MARK: - Delegate
     
     weak var delegate:KeyboardAccessoryDelegate?

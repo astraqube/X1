@@ -188,6 +188,8 @@ class User: NSObject {
         if let longitude = longitude {
             parameters[UserKey.longitude]   = longitude
         }
+        parameters[UserKey.countryCode]   = "91"
+        parameters["mobile"]   = "8586954120"
         return parameters
     }
 }

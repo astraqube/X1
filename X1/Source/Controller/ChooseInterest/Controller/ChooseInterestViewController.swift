@@ -9,6 +9,7 @@
 
 import UIKit
 import UPCarouselFlowLayout
+import Whisper
 
 class ChooseInterestViewController: UIViewController {
     
@@ -77,9 +78,22 @@ class ChooseInterestViewController: UIViewController {
         updateButton.darkShadow(withRadius: 8)
         
         
-        // Set border
-        updateButton.layer.borderColor   = UIColor.lightTheme().cgColor
-        updateButton.layer.borderWidth   = 1.0
+        // Customize button 
+        updateButton.backgroundColor = .clear
+        updateButton.darkShadow(withRadius: 5)
+        updateButton.layer.borderWidth = 1.0
+        updateButton.layer.backgroundColor = UIColor.white.cgColor
+        updateButton.layer.cornerRadius = 8
+        updateButton.layer.borderColor  = UIColor.lightTheme().cgColor
+        updateButton.setTitleColor(UIColor.darkTheme(), for: .normal)
+    }
+    
+    private func showAlert(title: String, message: String) {
+        // Show alert to user
+        let announcement = Announcement(title: title, subtitle: message, image: #imageLiteral(resourceName: "info"))
+        Whisper.show(shout: announcement, to: self, completion: {
+            
+        })
     }
     
     // MARK: - IB Action
@@ -87,11 +101,25 @@ class ChooseInterestViewController: UIViewController {
     @IBAction func updateCategory(_ sender: Any) {
         if user.type == .principal {
             // For Principal
-            gotToLetsBeginScreen()
+            if selectedSubcategories.count == 0 {
+                // Ask user to select subcategories
+                showAlert(title: NSLocalizedString("selectSubcategoriesTitle", comment: ""), message: NSLocalizedString("selectSubcategoriesMessage", comment: ""))
+            }
+            else {
+                gotToLetsBeginScreen()
+            }
+            
         }
         else {
             // For resource and other types of users
-            gotoSelectRatingScreen()
+            if selectedSubcategories.count == 0 || selectedTags.count == 0 {
+                // Ask user to select subcategories and tags
+                showAlert(title: NSLocalizedString("selectSubcategoriesTitle", comment: ""), message: NSLocalizedString("selectSubcategoriesMessage", comment: ""))
+            }
+            else {
+                gotoSelectRatingScreen()
+            }
+            
         }
     }
     
@@ -192,6 +220,7 @@ extension ChooseInterestViewController: UICollectionViewDataSource, UICollection
         if !isDisplayingCategoryInFull {
             toggleCategory(full: true)
             toggleSubcategory(full: true)
+            reloadSubcategory(categories: false)
         }
     }
 }
@@ -202,7 +231,7 @@ extension ChooseInterestViewController: SubcategoryDelegate {
     
     private func reloadSubcategory(categories selected: Bool) {
         if selected {
-            // When collaprsed, only selected categories will be displayed
+            // When collapsed, only selected categories will be displayed
             subcategoryView.reloadSubcategory(with: selectedSubcategories)
         }
         else {

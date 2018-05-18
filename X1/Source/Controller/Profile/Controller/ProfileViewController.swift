@@ -529,7 +529,8 @@ extension ProfileViewController {
                 // User registered successfully
                 guard let result = response[APIKeys.result] as? Dictionary<String, Any>,
                     let userInfo = result[APIKeys.userInfo] as? Dictionary<String, Any>,
-                    let userId   = userInfo[UserKey.userId] as? String,
+                    let userprofile = userInfo["get_userData"] as? Dictionary<String, Any>,
+                    let userId   = userprofile[UserKey.userId] as? String,
                     let accessToken = result[UserKey.accessToken] as? String else {
                         return
                 }

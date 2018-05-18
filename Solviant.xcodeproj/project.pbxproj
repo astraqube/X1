@@ -30,6 +30,9 @@
 		6524EAAD208480BD0035F2D2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524EAAC208480BD0035F2D2 /* SignInViewController.swift */; };
 		653BDFA6208496EC00B3CAC7 /* Extesnion+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BDFA5208496EC00B3CAC7 /* Extesnion+UIColor.swift */; };
 		653BDFA82084B92000B3CAC7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BDFA72084B92000B3CAC7 /* SignUpViewController.swift */; };
+		657318E920AF053900089B16 /* RatingOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657318E820AF053900089B16 /* RatingOverviewViewController.swift */; };
+		657318EB20AF05F200089B16 /* RatingOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657318EA20AF05F200089B16 /* RatingOverviewTableViewCell.swift */; };
+		657318EE20AF2A3500089B16 /* PostStatementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657318ED20AF2A3500089B16 /* PostStatementViewController.swift */; };
 		658C23CB20A5A04E001E8A74 /* HomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C23CA20A5A04E001E8A74 /* HomeTabBarViewController.swift */; };
 		65ABA3D520846A0D000A5B42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65ABA3D320846A0D000A5B42 /* Main.storyboard */; };
 		65ABA3D720846A0E000A5B42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65ABA3D620846A0E000A5B42 /* Assets.xcassets */; };
@@ -99,6 +102,9 @@
 		6524EAAC208480BD0035F2D2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		653BDFA5208496EC00B3CAC7 /* Extesnion+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extesnion+UIColor.swift"; sourceTree = "<group>"; };
 		653BDFA72084B92000B3CAC7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		657318E820AF053900089B16 /* RatingOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingOverviewViewController.swift; sourceTree = "<group>"; };
+		657318EA20AF05F200089B16 /* RatingOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingOverviewTableViewCell.swift; sourceTree = "<group>"; };
+		657318ED20AF2A3500089B16 /* PostStatementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStatementViewController.swift; sourceTree = "<group>"; };
 		658C23CA20A5A04E001E8A74 /* HomeTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarViewController.swift; sourceTree = "<group>"; };
 		65ABA3CC20846A0D000A5B42 /* Solviant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solviant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65ABA3D420846A0D000A5B42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -256,6 +262,8 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				657318EC20AF2A2500089B16 /* PostStatement */,
+				657318E520AF052500089B16 /* RatingOverview */,
 				65B55E1720AD99AC00231641 /* RateInterest */,
 				658C23C920A59F52001E8A74 /* TabBar */,
 				65D34414209C5ADD0095749C /* LetsBegin */,
@@ -429,6 +437,39 @@
 				653BDFA5208496EC00B3CAC7 /* Extesnion+UIColor.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		657318E520AF052500089B16 /* RatingOverview */ = {
+			isa = PBXGroup;
+			children = (
+				657318E720AF052500089B16 /* Controller */,
+				657318E620AF052500089B16 /* TableCell */,
+			);
+			path = RatingOverview;
+			sourceTree = "<group>";
+		};
+		657318E620AF052500089B16 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				657318EA20AF05F200089B16 /* RatingOverviewTableViewCell.swift */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		657318E720AF052500089B16 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				657318E820AF053900089B16 /* RatingOverviewViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		657318EC20AF2A2500089B16 /* PostStatement */ = {
+			isa = PBXGroup;
+			children = (
+				657318ED20AF2A3500089B16 /* PostStatementViewController.swift */,
+			);
+			path = PostStatement;
 			sourceTree = "<group>";
 		};
 		658C23C920A59F52001E8A74 /* TabBar */ = {
@@ -882,6 +923,7 @@
 				"${BUILT_PRODUCTS_DIR}/ALCameraViewController/ALCameraViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTagCollectionView.framework",
 				"${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework",
@@ -892,6 +934,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ALCameraViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTGTagCollectionView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UPCarouselFlowLayout.framework",
@@ -915,6 +958,7 @@
 				65C0201A20864E6900971521 /* LocationManager.swift in Sources */,
 				65C0203420864E8200971521 /* Extension+Date.swift in Sources */,
 				653BDFA82084B92000B3CAC7 /* SignUpViewController.swift in Sources */,
+				657318E920AF053900089B16 /* RatingOverviewViewController.swift in Sources */,
 				65D34413209C2F990095749C /* Category.swift in Sources */,
 				65C0202520864E7900971521 /* FileOperation.swift in Sources */,
 				65E39E3F20983DFF006087F4 /* ProfileViewController.swift in Sources */,
@@ -923,8 +967,10 @@
 				65D3440A209C14680095749C /* Subcategory.swift in Sources */,
 				651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */,
 				65B55E1B20ADBF3E00231641 /* SubcategoryContainer.swift in Sources */,
+				657318EE20AF2A3500089B16 /* PostStatementViewController.swift in Sources */,
 				65157C13209B21C8009C1A1F /* Extension+Boolean.swift in Sources */,
 				6524EA8F20846B8C0035F2D2 /* Constant.swift in Sources */,
+				657318EB20AF05F200089B16 /* RatingOverviewTableViewCell.swift in Sources */,
 				65C0203020864E8200971521 /* Extenstion+UIView.swift in Sources */,
 				6524EA98208473600035F2D2 /* LandingViewController.swift in Sources */,
 				6512E740209085D400D2C15D /* UITextField+fixCaretPosition.swift in Sources */,

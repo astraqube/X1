@@ -29,6 +29,29 @@ enum TabBarIndex: Int {
     case meeting
 }
 
+enum ExpertLevel: Int {
+    case rookie
+    case experienced
+    case professional
+    case expert
+    case solvinat
+    
+    func description () -> (String, String) {
+        switch self {
+        case .rookie:
+            return ("Rookie", "1 year of experience.")
+        case .experienced:
+            return ("Experienced", "3 years of experience.")
+        case .professional:
+            return ("Professional", "3-5 years of experience.")
+        case .expert:
+            return ("Expert", "More than 5 years experience with certification from other experts.")
+        case .solvinat:
+            return ("Solviant", "Champion for Soviant app.")
+        }
+    }
+}
+
 // MARK: - Struct Constant
 
 struct StoryboardIdentifier {
@@ -54,6 +77,7 @@ struct ReusableIdentifier {
     static let interestCollectionViewCell   = "InterestTableViewCell"
     static let tagsTableViewCell            = "TagsTableViewCell"
     static let questionCollectionViewCell   = "QuestionCollectionViewCell"
+    static let ratingOverviewCell           = "RatingOverviewTableViewCell"
     
 }
 
@@ -105,6 +129,7 @@ struct UserKey {
     static let state            = "state"
     static let address          = "address"
     static let country          = "country"
+    static let countryCode      = "country_code"
     static let latitude         = "latitude"
     static let longitude        = "longitude"
     static let deviceId         = "deviceId"

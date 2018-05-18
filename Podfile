@@ -14,5 +14,6 @@ target 'Solviant' do
   pod 'SDWebImage', '~> 4.0'
   pod 'UPCarouselFlowLayout'
   pod 'TTGTagCollectionView'
+  pod 'M13Checkbox'
 
 end

@@ -35,7 +35,10 @@
 "unableToProceed"       = "Something Went Wrong";
 "unexpectedErrorMessage" = "Please check your network connection and try again.";
 "underage"               = "Min 13 years required";
-
+"selectSubcategoriesTitle"    = "Choose Interests";
+"selectSubcategoriesMessage"  = "Select one or more categories.";
+"chooseExpertLevelTitle"      = "Choose Expert Level";
+"chooseExpertLevelMessage"    = "Drag the remaining interests to bucket.";
 
 // MARK: - TextField Placeholder
 
