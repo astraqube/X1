@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OTPBox" customModule="Solviant" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="N49-Aw-O8v" id="4c2-S7-NcP"/>
+                <outlet property="cancelButton" destination="GmP-eQ-4pa" id="brY-VX-KQ5"/>
+                <outlet property="otpContainerView" destination="0bz-2d-9Op" id="MKe-68-PD8"/>
+                <outlet property="resentButton" destination="FMB-D1-Wn3" id="EWT-Gb-2Dg"/>
+                <outlet property="verifyButton" destination="ThP-vG-Yii" id="GCD-YE-XFT"/>
+                <outletCollection property="otpTextFieldCollection" destination="33K-YT-hAH" collectionClass="NSMutableArray" id="dAE-rh-a4u"/>
+                <outletCollection property="otpTextFieldCollection" destination="WhT-nk-y9M" collectionClass="NSMutableArray" id="KCX-MR-MRZ"/>
+                <outletCollection property="otpTextFieldCollection" destination="4xq-gc-dcr" collectionClass="NSMutableArray" id="GFd-w0-O8F"/>
+                <outletCollection property="otpTextFieldCollection" destination="Kdf-yi-Ymj" collectionClass="NSMutableArray" id="Klr-Py-bbP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzt-Mo-oQc">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bz-2d-9Op">
+                    <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="4ZY-uM-eve">
+                            <rect key="frame" x="2" y="153" width="296" height="45"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmP-eQ-4pa">
+                                    <rect key="frame" x="0.0" y="0.0" width="147.5" height="45"/>
+                                    <color key="backgroundColor" red="1" green="0.2274509804" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                    <state key="normal" title="Cancel">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="cancelVerification:" destination="-1" eventType="touchUpInside" id="t2e-YV-If9"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThP-vG-Yii">
+                                    <rect key="frame" x="148.5" y="0.0" width="147.5" height="45"/>
+                                    <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                    <state key="normal" title="Verify">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="verifyCode:" destination="-1" eventType="touchUpInside" id="Bwl-01-Cnw"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="s4d-vz-PTZ"/>
+                            </constraints>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="F8G-ot-KHB">
+                            <rect key="frame" x="65.5" y="80" width="169" height="30"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="c" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33K-YT-hAH" customClass="OTPTextField" customModule="Solviant" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    <connections>
+                                        <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="AOD-xm-qkp"/>
+                                        <outlet property="delegate" destination="-1" id="Wt8-vz-0BW"/>
+                                    </connections>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="o" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhT-nk-y9M" customClass="OTPTextField" customModule="Solviant" customModuleProvider="target">
+                                    <rect key="frame" x="46" y="0.0" width="31" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    <connections>
+                                        <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="iJL-Rs-3LZ"/>
+                                        <outlet property="delegate" destination="-1" id="BiX-IJ-nbs"/>
+                                    </connections>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="d" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4xq-gc-dcr" customClass="OTPTextField" customModule="Solviant" customModuleProvider="target">
+                                    <rect key="frame" x="92" y="0.0" width="31" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    <connections>
+                                        <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="LQc-6p-heO"/>
+                                        <outlet property="delegate" destination="-1" id="U4k-kC-ROb"/>
+                                    </connections>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-yi-Ymj" customClass="OTPTextField" customModule="Solviant" customModuleProvider="target">
+                                    <rect key="frame" x="138" y="0.0" width="31" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    <connections>
+                                        <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="RtN-9F-Ij7"/>
+                                        <outlet property="delegate" destination="-1" id="02U-9k-f3O"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter OTP here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzb-xz-lJc">
+                            <rect key="frame" x="94" y="40" width="112" height="20"/>
+                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMB-D1-Wn3">
+                            <rect key="frame" x="124" y="122" width="52" height="30"/>
+                            <state key="normal" title="Resend">
+                                <color key="titleColor" red="0.0" green="0.40000000000000002" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="resentCode:" destination="-1" eventType="touchUpInside" id="5Ip-vP-PFc"/>
+                            </connections>
+                        </button>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="N49-Aw-O8v">
+                            <rect key="frame" x="262.5" y="165.5" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="1Ho-U5-bPv" firstAttribute="bottom" secondItem="N49-Aw-O8v" secondAttribute="bottom" constant="14.5" id="1lK-Pm-K8C"/>
+                        <constraint firstItem="F8G-ot-KHB" firstAttribute="centerX" secondItem="0bz-2d-9Op" secondAttribute="centerX" id="4KC-bg-NLg"/>
+                        <constraint firstItem="1Ho-U5-bPv" firstAttribute="bottom" secondItem="4ZY-uM-eve" secondAttribute="bottom" constant="2" id="6f5-pD-4Ar"/>
+                        <constraint firstAttribute="height" constant="200" id="7yv-Gy-n5y"/>
+                        <constraint firstItem="Yzb-xz-lJc" firstAttribute="top" secondItem="1Ho-U5-bPv" secondAttribute="top" constant="40" id="QIn-go-G24"/>
+                        <constraint firstItem="F8G-ot-KHB" firstAttribute="top" secondItem="Yzb-xz-lJc" secondAttribute="bottom" constant="20" id="asb-UR-r0S"/>
+                        <constraint firstItem="4ZY-uM-eve" firstAttribute="leading" secondItem="1Ho-U5-bPv" secondAttribute="leading" constant="2" id="con-uk-8Ym"/>
+                        <constraint firstItem="FMB-D1-Wn3" firstAttribute="centerX" secondItem="0bz-2d-9Op" secondAttribute="centerX" id="nfv-Iw-fm2"/>
+                        <constraint firstItem="1Ho-U5-bPv" firstAttribute="trailing" secondItem="N49-Aw-O8v" secondAttribute="trailing" constant="17.5" id="pbt-iO-XBf"/>
+                        <constraint firstItem="1Ho-U5-bPv" firstAttribute="trailing" secondItem="4ZY-uM-eve" secondAttribute="trailing" constant="2" id="qXs-jC-3RZ"/>
+                        <constraint firstItem="FMB-D1-Wn3" firstAttribute="top" secondItem="F8G-ot-KHB" secondAttribute="bottom" constant="12" id="uTF-Tt-sAJ"/>
+                        <constraint firstAttribute="width" constant="300" id="vtW-1e-ESn"/>
+                        <constraint firstItem="Yzb-xz-lJc" firstAttribute="centerX" secondItem="0bz-2d-9Op" secondAttribute="centerX" id="wYg-N8-Q9l"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="1Ho-U5-bPv"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="bzt-Mo-oQc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BxF-Go-nom"/>
+                <constraint firstItem="bzt-Mo-oQc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Nha-fF-joj"/>
+                <constraint firstItem="bzt-Mo-oQc" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Xg8-he-5RP"/>
+                <constraint firstItem="0bz-2d-9Op" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qXI-Kx-N5L"/>
+                <constraint firstItem="0bz-2d-9Op" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wrp-xK-OFq"/>
+                <constraint firstItem="bzt-Mo-oQc" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="zn2-As-Y8t"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

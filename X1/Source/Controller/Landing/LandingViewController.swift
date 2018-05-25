@@ -31,6 +31,16 @@ class LandingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+   /* override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        perform(#selector(presentOTPBox), with: self, afterDelay: 3)
+    }
+    
+    @objc func presentOTPBox() {
+        let otpBox = OTPBox.init(frame: self.view.frame)
+        otpBox.present(on: self.view)
+    } */
+    
     // MARK: - Customize UI
     
     private func customizeUI() {

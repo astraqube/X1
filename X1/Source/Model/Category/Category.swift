@@ -11,6 +11,7 @@ import UIKit
 class Category: NSObject {
     
     var identifier:String!
+    var superIdentifier:String?
     var name:String!
     var imageURL:String?
     var subcategories:[Category]?
@@ -24,6 +25,7 @@ class Category: NSObject {
         else {
             return nil
         }
+        superIdentifier = response[APIKeys.superIdentifier] as? String
         identifier      = id
         name            = categoryName
         imageURL        = response[APIKeys.imageURL] as? String

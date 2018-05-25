@@ -103,7 +103,7 @@ class RateInterestViewController: UIViewController {
         // Set selected tags
         tagCollectionView.backgroundColor = .white
         let count = selectedInterests.count
-        tagCollectionView.scrollDirection       = .vertical
+        
         draggableLabel.textColor                = .white
         draggableLabel.backgroundColor          = UIColor.clear
         draggableLabel.layer.backgroundColor    = UIColor.lightTheme().cgColor
@@ -114,6 +114,11 @@ class RateInterestViewController: UIViewController {
             let tag = selectedInterests[index]
             tagCollectionView.addTag(tag.name.capitalized, with: textConfig)
         }
+        
+        tagCollectionView.scrollDirection       = .horizontal
+        tagCollectionView.numberOfLines         = tagCollectionView.intrinsicContentSize.height > 40 ? 2 : 1
+        tagCollectionView.alignment             = .fillByExpandingWidth
+        print("Intrinsic size \(tagCollectionView.intrinsicContentSize)")
     }
     
     private func setupDraggableView(for tag: Category, at point: CGPoint) {

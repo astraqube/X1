@@ -266,6 +266,11 @@ extension ChooseInterestViewController: SubcategoryDelegate {
         else if let index = selectedSubcategories.index(of: item) {
             selectedSubcategories.remove(at: index)
             containerViewHeightConstraint.constant -= offset
+            
+            // Remove selected third level of categories for this sucategory
+            if selectedTags.count > 0 {
+                selectedTags = selectedTags.filter{$0.superIdentifier! != item.identifier}
+            }
         }
         
         if user.type != .principal {

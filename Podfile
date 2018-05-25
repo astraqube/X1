@@ -15,5 +15,8 @@ target 'Solviant' do
   pod 'UPCarouselFlowLayout'
   pod 'TTGTagCollectionView'
   pod 'M13Checkbox'
+  pod 'Popover'
+  pod 'CountryPickerSwift'
+  pod 'SwiftDate'
 
 end

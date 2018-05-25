@@ -17,7 +17,7 @@ class WebRequestManager: NSObject {
         let requestURL = URL.init(string: url)
         let httpMethod = HTTPMethod.init(rawValue: type.rawValue)!
         print("API Request with URL: \(requestURL!.absoluteString) and Parameters: \(parameters)")
-       lastRequest =  Alamofire.request(requestURL!, method: httpMethod, parameters: parameters, encoding:URLEncoding.default, headers: nil).responseJSON { (response) in
+       lastRequest =  Alamofire.request(requestURL!, method: httpMethod, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             print("Response \(response)")
             switch response.result {
             case .success:

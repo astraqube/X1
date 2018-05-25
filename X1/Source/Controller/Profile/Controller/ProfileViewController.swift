@@ -9,6 +9,7 @@
 import UIKit
 import ALCameraViewController
 import Whisper
+import CountryPicker
 
 class ProfileViewController: UIViewController {
     
@@ -18,13 +19,15 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var oneMomentLabel: UILabel!
     
+    
     // MARK: - Other Property
     
+    var picker:CountryPicker!
     let webManager           = WebRequestManager()
     var user:User!
-    let rowsInSection        = [1, 8, 1]
-    let placeholders         = ["gender", "dob", "mobile", "addressLine", "city", "state", "country", "zip" ]
-    let rowHeights:[CGFloat] = [103, 73, 87]
+    let rowsInSection        = [1, 1, 7, 1]
+    let placeholders         = ["gender", "dob", "addressLine", "city", "state", "country", "zip" ]
+    let rowHeights:[CGFloat] = [103, 73, 73, 87]
     var accessoryView:KeyboardAccessory!
     var datePicker           = UIDatePicker()
     let genderPicker         = UIPickerView()
@@ -33,6 +36,7 @@ class ProfileViewController: UIViewController {
     
     enum ProfileSection:Int {
         case userImage
+        case mobile
         case textField
         case actionButton
     }
@@ -40,7 +44,6 @@ class ProfileViewController: UIViewController {
     enum TextFieldRow:Int {
         case gender
         case dob
-        case mobile
         case address
         case city
         case state
@@ -63,6 +66,16 @@ class ProfileViewController: UIViewController {
         
         // Get user's current location from GPS
         currentLocation()
+        
+        let locale = Locale.current
+        let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
+        //init Picker
+        picker = CountryPicker()
+        let theme = CountryViewTheme(countryCodeTextColor: .white, countryNameTextColor: .white, rowBackgroundColor: .black, showFlagsBorder: false)        //optional for UIPickerView theme changes
+        picker.theme = theme //optional for UIPickerView theme changes
+        picker.countryPickerDelegate = self
+        picker.showPhoneNumbers = true
+        picker.setCountry(code!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,8 +141,8 @@ class ProfileViewController: UIViewController {
         
         // Embedded function to set error messages
         
-        func setError(rowIndex: Int, message: String) {
-            let indexPath = IndexPath.init(row: rowIndex, section: ProfileSection.textField.rawValue)
+        func setError(rowIndex: Int, section: Int, message: String) {
+            let indexPath = IndexPath.init(row: rowIndex, section: section)
             if let textFieldCell = profileTableView.cellForRow(at: indexPath) as? ProfileTextFieldTableViewCell {
                 // If cell is visible
                 textFieldCell.inputTextField.becomeFirstResponder()
@@ -146,7 +159,7 @@ class ProfileViewController: UIViewController {
         if let cellNumber = user.cellNumber, !cellNumber.isEmpty {
             if !cellNumber.isValidMobile() {
                 // Set error message
-                setError(rowIndex: TextFieldRow.mobile.rawValue, message: NSLocalizedString("invalidMobile", comment: ""))
+                setError(rowIndex: 0, section:ProfileSection.mobile.rawValue, message: NSLocalizedString("invalidMobile", comment: ""))
                 return false
             }
         }
@@ -156,7 +169,7 @@ class ProfileViewController: UIViewController {
         if let dob = user.dob, !dob.isEmpty {
             if !dob.isValidDob() {
                 // Set error message
-                setError(rowIndex: TextFieldRow.dob.rawValue, message: NSLocalizedString("underage", comment: ""))
+                setError(rowIndex: TextFieldRow.dob.rawValue, section:ProfileSection.textField.rawValue, message: NSLocalizedString("underage", comment: ""))
                 return false
             }
         }
@@ -219,7 +232,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController: KeyboardAccessoryDelegate {
+extension ProfileViewController: KeyboardAccessoryDelegate, CountryPickerDelegate {
     
     // Keyboard extension
     
@@ -304,6 +317,17 @@ extension ProfileViewController: KeyboardAccessoryDelegate {
             view.endEditing(true)
         }
     }
+    
+    // MARK: - Country picker delegate
+    func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
+        if let editingTextField = self.editingTextField as? SkyFloatingLabelTextFieldWithIcon {
+            editingTextField.text = phoneCode
+            editingTextField.iconType = .image
+            editingTextField.iconImage = flag
+        }
+        user.countryCode = phoneCode
+        user.countryFlag = flag
+    }
 }
 
 extension ProfileViewController {
@@ -360,14 +384,18 @@ extension ProfileViewController: UITextFieldDelegate {
     @IBAction func textFieldEditingChanged(_ sender: SkyFloatingLabelTextField) {
         sender.errorMessage = nil
         let trimmedText = sender.text?.trimmingCharacters(in: .whitespaces)
-        if let textFieldRow = TextFieldRow(rawValue: sender.tag) {
+        guard let section = sender.superview?.superview?.tag else {
+            return
+        }
+        if section == ProfileSection.mobile.rawValue  {
+            user.cellNumber = trimmedText?.replacingOccurrences(of: " ", with: "")
+        }
+        else if let textFieldRow = TextFieldRow(rawValue: sender.tag) {
             switch textFieldRow {
             case .gender:
                 user.gender = sender.text
             case .dob:
                 user.dob = sender.text
-            case .mobile:
-                user.cellNumber = trimmedText?.replacingOccurrences(of: " ", with: "")
             case .address:
                 user.addressLine = trimmedText
             case .city:
@@ -380,7 +408,26 @@ extension ProfileViewController: UITextFieldDelegate {
                 user.zipCode = trimmedText
             }
         }
+        
     }
+}
+
+extension ProfileViewController: OTPBoxDelegate {
+    
+    // MARK: OTP Verification
+    
+    func validateOTP() {
+        let otpBox = OTPBox.init(frame: self.view.frame)
+        otpBox.delegate = self
+        otpBox.present(on: self.view)
+    }
+    
+    // MARK: OTP Delgate
+    
+    func didDismiss(otpbox: OTPBox) {
+        gotoNextScreen(forUser: user)
+    }
+    
 }
 
 extension ProfileViewController: UIPickerViewDataSource, UIPickerViewDelegate {
@@ -413,7 +460,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: TableView Datasource and Delegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -441,6 +488,17 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(changeImage(_:)))
                 userImageViewCell.addGestureRecognizer(tapGesture)
             }
+        case .mobile:
+            let mobileInputCell = tableView.dequeueReusableCell(withIdentifier: ReusableIdentifier.mobileInputCell, for: indexPath) as! ProfileTextFieldTableViewCell
+            mobileInputCell.countryCode.inputView = picker
+            tableViewCell = mobileInputCell
+            
+            mobileInputCell.countryCode.iconType    = .image
+            mobileInputCell.countryCode.text        = user.countryCode
+            mobileInputCell.countryCode.iconImage   = user.countryFlag
+            mobileInputCell.inputTextField.text     = user.cellNumber
+            mobileInputCell.inputTextField.tag      = indexPath.section
+            
         case .textField:
             // For text field cells
             tableViewCell = tableView.dequeueReusableCell(withIdentifier: ReusableIdentifier.profileTextFieldCell, for: indexPath)
@@ -457,11 +515,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                     case .gender:
                         textFieldCell.inputTextField.inputView = genderPicker
                         textFieldCell.inputTextField.text      = user.gender
-                    case .mobile:
-                        textFieldCell.inputTextField.returnKeyType = .next
-                        textFieldCell.inputTextField.textContentType = UITextContentType.telephoneNumber
-                        textFieldCell.inputTextField.keyboardType    = .phonePad
-                        textFieldCell.inputTextField.text            = user.cellNumber
                     case .address:
                         textFieldCell.inputTextField.returnKeyType = .next
                         textFieldCell.inputTextField.textContentType = UITextContentType.streetAddressLine1
@@ -494,6 +547,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             // For Action Button
             tableViewCell = tableView.dequeueReusableCell(withIdentifier: ReusableIdentifier.profileDoneButtonCell, for: indexPath)
         }
+        tableViewCell.tag = indexPath.section
         return tableViewCell
     }
 }
@@ -529,8 +583,8 @@ extension ProfileViewController {
                 // User registered successfully
                 guard let result = response[APIKeys.result] as? Dictionary<String, Any>,
                     let userInfo = result[APIKeys.userInfo] as? Dictionary<String, Any>,
-                    let userprofile = userInfo["get_userData"] as? Dictionary<String, Any>,
-                    let userId   = userprofile[UserKey.userId] as? String,
+//                    let userprofile = userInfo["get_userData"] as? Dictionary<String, Any>,
+                    let userId   = userInfo[UserKey.userId] as? String,
                     let accessToken = result[UserKey.accessToken] as? String else {
                         return
                 }
@@ -539,7 +593,15 @@ extension ProfileViewController {
                 user.save() // Save user details
                 
                 // Go to next screen
-                gotoNextScreen(forUser: user)
+                if let cellNumber =  user.cellNumber, !cellNumber.isEmpty {
+                    // Validate OTP by user
+                    validateOTP()
+                }
+                else {
+                    // User han't provided Mobile Number
+                    gotoNextScreen(forUser: user)
+                }
+                
             }
         }
         else if let errorMessage = response[APIKeys.errorMessage] as? String {

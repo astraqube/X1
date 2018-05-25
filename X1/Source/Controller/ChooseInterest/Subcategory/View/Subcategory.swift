@@ -66,6 +66,13 @@ class Subcategory: UIView {
                 else {
                     subcategoryCollectionViewCell.subcategoryTitleLabel.backgroundColor = .clear
                     subcategoryCollectionViewCell.subcategoryTitleLabel.textColor       = .darkGray
+                    
+                    // Remove all third level selection when subcategory was deselected
+                    if let tags = subcategory.subcategories {
+                        for tag in tags {
+                            tag.isSelected = false
+                        }
+                    }
                 }
                 
                 // Notify the delegate for selection

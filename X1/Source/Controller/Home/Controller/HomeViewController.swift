@@ -23,18 +23,20 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var questionCollectionView: UICollectionView!
     @IBOutlet weak var carouselFlowLayout: UPCarouselFlowLayout!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Other Property
     
     var user:User! = User.loggedInUser()
+    let webManager = WebRequestManager()
+    var statements:[Statement]?
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get user
-        
+        // Customize UI
         customizeUI()
     }
 
@@ -52,6 +54,11 @@ class HomeViewController: UIViewController {
         else {
             stackView.isHidden                   = true
             answerNowButtonContaierView.isHidden = false
+        }
+        
+        // Refresh statements
+        if user.type != .principal {
+            requestFetchStatements()
         }
     }
     
@@ -73,12 +80,11 @@ class HomeViewController: UIViewController {
         viewResponseButton.layer.borderColor = UIColor.lightTheme().cgColor
         viewResponseButton.darkShadow(withRadius: 5)
         var size    = questionCollectionView.frame.size
-        size.width  = size.width - 40
+        size.width  = size.width - 60
         size.height -= 5
         carouselFlowLayout.itemSize = size
         carouselFlowLayout.spacingMode = .fixed(spacing: 5)
         carouselFlowLayout.scrollDirection = .horizontal
-        questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
     }
     
     
@@ -95,6 +101,9 @@ class HomeViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
+        if let destinationController = segue.destination as? PostStatementViewController {
+            destinationController.user = user
+        }
     }
     
 }
@@ -104,11 +113,53 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     // MARK: - CollectionView Delegate and Datasource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return statements?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let questionCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableIdentifier.questionCollectionViewCell, for: indexPath) as! QuestionCollectionViewCell
+        // Configure cell with data
+        if let statement = statements?[indexPath.item] {
+            questionCollectionViewCell.configureCell(with: statement)
+        }
         return questionCollectionViewCell
     }
+}
+
+extension HomeViewController {
+    
+    // MARK: - Network Request
+    
+    private func requestFetchStatements() {
+        // Request fetch all statement
+        activityIndicator.startAnimating()
+        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.fetchPosts)
+        weak var weakSelf = self
+        webManager.httpRequest(method: .get, apiURL: apiURL, body: [:], completion: { (response) in
+            weakSelf?.activityIndicator.stopAnimating()
+            weakSelf?.didFetch(statements: response)
+        }) { (error) in
+            weakSelf?.activityIndicator.stopAnimating()
+        }
+    }
+    
+    // MARK: - Request Completion
+    
+    private func didFetch(statements: Dictionary<String, Any>) {
+        if let resultArray = statements[APIKeys.result] as? Array<Dictionary<String, Any>> {
+            self.statements = Array()
+            for statementInfo in resultArray {
+                if let statement = Statement.init(with: statementInfo) {
+                    self.statements?.append(statement)
+                }
+            }
+            
+            // Reload collectionview
+            questionCollectionView.reloadData()
+            if self.statements!.count > 1 {
+                questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
+            }
+        }
+    }
+    
 }

@@ -1,13 +1,16 @@
 PODS:
   - Alamofire (4.7.2)
   - ALCameraViewController (3.0.3)
+  - CountryPickerSwift (1.7.1)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
   - M13Checkbox (3.2.2)
+  - Popover (1.2.0)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
+  - SwiftDate (4.5.1)
   - TTGTagCollectionView (1.9.0)
   - UPCarouselFlowLayout (1.1.1)
   - Whisper (6.0.2)
@@ -15,9 +18,12 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - ALCameraViewController
+  - CountryPickerSwift
   - FMDB
   - M13Checkbox
+  - Popover
   - SDWebImage (~> 4.0)
+  - SwiftDate
   - TTGTagCollectionView
   - UPCarouselFlowLayout
   - Whisper
@@ -26,9 +32,12 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - ALCameraViewController
+    - CountryPickerSwift
     - FMDB
     - M13Checkbox
+    - Popover
     - SDWebImage
+    - SwiftDate
     - TTGTagCollectionView
     - UPCarouselFlowLayout
     - Whisper
@@ -36,13 +45,16 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   ALCameraViewController: 6398a9282057f709b87a1ecc52a83b48028ade64
+  CountryPickerSwift: d46dcaadc64fd6e0f00c98dd23a432de858a5193
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   M13Checkbox: a8c2491cfbbca10797925fd0b9154a782bf40d89
+  Popover: 28c1ac8e937ab2b3965bd2da7dd18324357abc41
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   TTGTagCollectionView: 958f20b946dee92a8ba20dc37d10a06737641ae9
   UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
   Whisper: 169760fc4bab0abf24d5529f9276f95c25cf1025
 
-PODFILE CHECKSUM: 62fff974357fa1beaac0a1b2399109b67c305210
+PODFILE CHECKSUM: 3c9e68f3af923b280872f8ec2c38fa1a9628b630
 
 COCOAPODS: 1.5.0

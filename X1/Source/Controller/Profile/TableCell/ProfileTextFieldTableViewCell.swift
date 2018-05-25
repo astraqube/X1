@@ -12,6 +12,7 @@ class ProfileTextFieldTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var inputTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var countryCode: SkyFloatingLabelTextFieldWithIcon!
     
     
     override func awakeFromNib() {

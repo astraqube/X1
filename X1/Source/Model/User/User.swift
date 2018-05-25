@@ -27,6 +27,8 @@ class User: NSObject {
     var city:String?
     var state:String?
     var country:String?
+    var countryCode:String?
+    var countryFlag:UIImage?
     var zipCode:String?
     var latitude:CLLocationDegrees?
     var longitude:CLLocationDegrees?
@@ -188,8 +190,13 @@ class User: NSObject {
         if let longitude = longitude {
             parameters[UserKey.longitude]   = longitude
         }
-        parameters[UserKey.countryCode]   = "91"
-        parameters["mobile"]   = "8586954120"
+        if let countrCode = countryCode {
+            parameters[UserKey.countryCode] = countrCode
+        }
+        if let mobile = cellNumber {
+            parameters[UserKey.mobile] = mobile
+        }
+        
         return parameters
     }
 }

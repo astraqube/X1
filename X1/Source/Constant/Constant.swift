@@ -36,6 +36,23 @@ enum ExpertLevel: Int {
     case expert
     case solvinat
     
+    static func expertLevel(by name:String) -> ExpertLevel {
+        switch name {
+        case "rookie":
+           return ExpertLevel.rookie
+        case "experienced":
+            return ExpertLevel.experienced
+        case "professional":
+            return ExpertLevel.professional
+        case "expert":
+            return ExpertLevel.expert
+        case "solviant":
+            return ExpertLevel.solvinat
+        default:
+            return ExpertLevel.rookie
+        }
+    }
+    
     func description () -> (String, String) {
         switch self {
         case .rookie:
@@ -48,6 +65,41 @@ enum ExpertLevel: Int {
             return ("Expert", "More than 5 years experience with certification from other experts.")
         case .solvinat:
             return ("Solviant", "Champion for Soviant app.")
+        }
+    }
+    
+    func identifier () -> (String) {
+        switch self {
+        case .rookie:
+            return "5ac5cf335ccd5e249e939977"
+        case .experienced:
+            return "5ac5cf425ccd5e249e939978"
+        case .professional:
+            return "5ac5cf495ccd5e249e939979"
+        case .expert:
+            return "5ac5cf4e5ccd5e249e93997a"
+        case .solvinat:
+            return "5ac5cf545ccd5e249e93997b"
+        }
+    }
+}
+
+enum PostUrgency: Int {
+    case urgent
+    case high
+    case medium
+    case low
+    
+    func description () -> (String, String) {
+        switch self {
+        case .urgent:
+            return ("Urgent", "Valid for 2 hours")
+        case .high:
+            return ("High", "Valid for 1 day")
+        case .medium:
+            return ("Medium", "Valid fof 1 week")
+        case .low:
+            return ("Low", "Valid for 3 weeks")
         }
     }
 }
@@ -78,7 +130,9 @@ struct ReusableIdentifier {
     static let tagsTableViewCell            = "TagsTableViewCell"
     static let questionCollectionViewCell   = "QuestionCollectionViewCell"
     static let ratingOverviewCell           = "RatingOverviewTableViewCell"
-    
+    static let postUrgencyCell              = "PostUrgencyTableViewCell"
+    static let mobileInputCell              = "MobileNumberInput"
+
 }
 
 struct APIKeys {
@@ -89,7 +143,27 @@ struct APIKeys {
     static let userInfo     = "userInfo"
     static let categoryName = "category_name"
     static let identifier   = "_id"
+    static let superIdentifier   = "categorieleveltwo"
     static let imageURL     = "image_url"
+}
+
+struct PostStatementKey {
+    static let statement      = "statement_name"
+    static let principle      = "principle"
+    static let category       = "category"
+    static let expertLevel    = "expert_level"
+    static let latitude       = "latitude"
+    static let longitude      = "longitude"
+    static let location       = "location"
+    static let global         = "global"
+    static let expertType     = "level_name"
+    static let createdAt      = "created_at"
+    static let principalName  = "full_name"
+    static let tags           = "categoryes"
+    static let city           = "city"
+    static let principal      = "principle"
+    static let principalType  = "expert_level"
+    
 }
 
 struct DeviceIdentifier {
@@ -105,13 +179,21 @@ struct APIEndPoint {
     static let category      = "category/levelone"
     static let subcategory   = "category/leveltwo/"
     static let intersts      = "category/levelthree/"
+    static let createPost    = "statement"
+    static let fetchPosts    = "statements"
 }
 
 struct APIURL {
-    static let baseURL = "http://35.171.22.162:9004/api/v1/"
+    static let baseURL      = "http://35.171.22.162:9004/api/v1/"
+    static let statementURL = "http://35.171.22.162:9002/api/v1/"
     
     static func url(apiEndPoint endPoint: String) -> String {
         let apiURL = baseURL + endPoint
+        return apiURL
+    }
+    
+    static func statementUrl(apiEndPoint endPoint: String) -> String {
+        let apiURL = statementURL + endPoint
         return apiURL
     }
 }
