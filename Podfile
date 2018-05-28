@@ -18,5 +18,6 @@ target 'Solviant' do
   pod 'Popover'
   pod 'CountryPickerSwift'
   pod 'SwiftDate'
+  pod 'Koloda'
 
 end

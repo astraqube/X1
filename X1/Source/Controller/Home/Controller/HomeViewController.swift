@@ -57,9 +57,9 @@ class HomeViewController: UIViewController {
         }
         
         // Refresh statements
-        if user.type != .principal {
+       /* if user.type != .principal {
             requestFetchStatements()
-        }
+        } */
     }
     
     // MARK: - Customize UI
@@ -102,6 +102,9 @@ class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         if let destinationController = segue.destination as? PostStatementViewController {
+            destinationController.user = user
+        }
+        else if let destinationController = segue.destination as? OpenStatementViewController {
             destinationController.user = user
         }
     }

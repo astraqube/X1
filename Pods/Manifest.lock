@@ -5,7 +5,10 @@ PODS:
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
+  - Koloda (4.3.1):
+    - pop (~> 1.0)
   - M13Checkbox (3.2.2)
+  - pop (1.0.10)
   - Popover (1.2.0)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
@@ -20,6 +23,7 @@ DEPENDENCIES:
   - ALCameraViewController
   - CountryPickerSwift
   - FMDB
+  - Koloda
   - M13Checkbox
   - Popover
   - SDWebImage (~> 4.0)
@@ -34,7 +38,9 @@ SPEC REPOS:
     - ALCameraViewController
     - CountryPickerSwift
     - FMDB
+    - Koloda
     - M13Checkbox
+    - pop
     - Popover
     - SDWebImage
     - SwiftDate
@@ -47,7 +53,9 @@ SPEC CHECKSUMS:
   ALCameraViewController: 6398a9282057f709b87a1ecc52a83b48028ade64
   CountryPickerSwift: d46dcaadc64fd6e0f00c98dd23a432de858a5193
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
   M13Checkbox: a8c2491cfbbca10797925fd0b9154a782bf40d89
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   Popover: 28c1ac8e937ab2b3965bd2da7dd18324357abc41
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
@@ -55,6 +63,6 @@ SPEC CHECKSUMS:
   UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
   Whisper: 169760fc4bab0abf24d5529f9276f95c25cf1025
 
-PODFILE CHECKSUM: 3c9e68f3af923b280872f8ec2c38fa1a9628b630
+PODFILE CHECKSUM: 91e2051fcf74e15f212f07015a9babaa6c738ef0
 
 COCOAPODS: 1.5.0

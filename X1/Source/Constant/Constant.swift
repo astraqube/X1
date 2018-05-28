@@ -29,6 +29,13 @@ enum TabBarIndex: Int {
     case meeting
 }
 
+enum SwipeActionDirection: Int {
+    case left
+    case down
+    case right
+    case none
+}
+
 enum ExpertLevel: Int {
     case rookie
     case experienced
