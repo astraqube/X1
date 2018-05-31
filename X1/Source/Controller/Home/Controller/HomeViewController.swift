@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var questionCollectionView: UICollectionView!
     @IBOutlet weak var carouselFlowLayout: UPCarouselFlowLayout!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var noStatementLabel: UILabel!
     
     // MARK: - Other Property
     

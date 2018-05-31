@@ -87,13 +87,13 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="F8G-ot-KHB">
-                            <rect key="frame" x="65.5" y="80" width="169" height="30"/>
+                            <rect key="frame" x="65.5" y="56.5" width="169" height="30"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="c" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33K-YT-hAH" customClass="OTPTextField" customModule="Solviant" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" secureTextEntry="YES"/>
                                     <connections>
                                         <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="AOD-xm-qkp"/>
                                         <outlet property="delegate" destination="-1" id="Wt8-vz-0BW"/>
@@ -103,7 +103,7 @@
                                     <rect key="frame" x="46" y="0.0" width="31" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" secureTextEntry="YES"/>
                                     <connections>
                                         <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="iJL-Rs-3LZ"/>
                                         <outlet property="delegate" destination="-1" id="BiX-IJ-nbs"/>
@@ -113,7 +113,7 @@
                                     <rect key="frame" x="92" y="0.0" width="31" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" secureTextEntry="YES"/>
                                     <connections>
                                         <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="LQc-6p-heO"/>
                                         <outlet property="delegate" destination="-1" id="U4k-kC-ROb"/>
@@ -123,7 +123,7 @@
                                     <rect key="frame" x="138" y="0.0" width="31" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" secureTextEntry="YES"/>
                                     <connections>
                                         <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="RtN-9F-Ij7"/>
                                         <outlet property="delegate" destination="-1" id="02U-9k-f3O"/>
@@ -132,13 +132,13 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter OTP here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzb-xz-lJc">
-                            <rect key="frame" x="94" y="40" width="112" height="20"/>
+                            <rect key="frame" x="94" y="21.5" width="112" height="20"/>
                             <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMB-D1-Wn3">
-                            <rect key="frame" x="124" y="122" width="52" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMB-D1-Wn3">
+                            <rect key="frame" x="124" y="101.5" width="52" height="30"/>
                             <state key="normal" title="Resend">
                                 <color key="titleColor" red="0.0" green="0.40000000000000002" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -156,13 +156,13 @@
                         <constraint firstItem="F8G-ot-KHB" firstAttribute="centerX" secondItem="0bz-2d-9Op" secondAttribute="centerX" id="4KC-bg-NLg"/>
                         <constraint firstItem="1Ho-U5-bPv" firstAttribute="bottom" secondItem="4ZY-uM-eve" secondAttribute="bottom" constant="2" id="6f5-pD-4Ar"/>
                         <constraint firstAttribute="height" constant="200" id="7yv-Gy-n5y"/>
-                        <constraint firstItem="Yzb-xz-lJc" firstAttribute="top" secondItem="1Ho-U5-bPv" secondAttribute="top" constant="40" id="QIn-go-G24"/>
-                        <constraint firstItem="F8G-ot-KHB" firstAttribute="top" secondItem="Yzb-xz-lJc" secondAttribute="bottom" constant="20" id="asb-UR-r0S"/>
+                        <constraint firstItem="Yzb-xz-lJc" firstAttribute="top" secondItem="1Ho-U5-bPv" secondAttribute="top" constant="21.5" id="QIn-go-G24"/>
+                        <constraint firstItem="F8G-ot-KHB" firstAttribute="top" secondItem="Yzb-xz-lJc" secondAttribute="bottom" constant="15" id="asb-UR-r0S"/>
                         <constraint firstItem="4ZY-uM-eve" firstAttribute="leading" secondItem="1Ho-U5-bPv" secondAttribute="leading" constant="2" id="con-uk-8Ym"/>
                         <constraint firstItem="FMB-D1-Wn3" firstAttribute="centerX" secondItem="0bz-2d-9Op" secondAttribute="centerX" id="nfv-Iw-fm2"/>
                         <constraint firstItem="1Ho-U5-bPv" firstAttribute="trailing" secondItem="N49-Aw-O8v" secondAttribute="trailing" constant="17.5" id="pbt-iO-XBf"/>
                         <constraint firstItem="1Ho-U5-bPv" firstAttribute="trailing" secondItem="4ZY-uM-eve" secondAttribute="trailing" constant="2" id="qXs-jC-3RZ"/>
-                        <constraint firstItem="FMB-D1-Wn3" firstAttribute="top" secondItem="F8G-ot-KHB" secondAttribute="bottom" constant="12" id="uTF-Tt-sAJ"/>
+                        <constraint firstItem="FMB-D1-Wn3" firstAttribute="top" secondItem="F8G-ot-KHB" secondAttribute="bottom" constant="15" id="uTF-Tt-sAJ"/>
                         <constraint firstAttribute="width" constant="300" id="vtW-1e-ESn"/>
                         <constraint firstItem="Yzb-xz-lJc" firstAttribute="centerX" secondItem="0bz-2d-9Op" secondAttribute="centerX" id="wYg-N8-Q9l"/>
                     </constraints>

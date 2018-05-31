@@ -22,6 +22,7 @@ class OpenStatementViewController: UIViewController {
     @IBOutlet weak var actionButtonView: UIView!
     @IBOutlet var swipeLabels: [UILabel]!
     @IBOutlet var swipeImageViews: [UIImageView]!
+    @IBOutlet weak var noOpenStatementLabel: UILabel!
     
     
     // MARK: - Other Property
@@ -73,10 +74,11 @@ class OpenStatementViewController: UIViewController {
     
     @IBAction func undoCardSwipe(_ sender: Any) {
         cardCollectionView.revertAction()
-        if var draggedStements = actionedStatements, draggedStements.count > 0 {
-            _ = draggedStements.removeLast()
-            undoButton.isHidden = draggedStements.count > 0
-        }
+        actionedStatements?.removeLast()
+        noOpenStatementLabel.isHidden = true
+        actionButtonView.isHidden     = false
+        undoButton.isHidden           = actionedStatements!.count == 0
+        
     }
     
     
@@ -92,7 +94,29 @@ class OpenStatementViewController: UIViewController {
             default:
                 break
             }
+            resetLabels()
         }
+    }
+    
+    @IBAction func buttonHighlighted(_ sender: UIButton) {
+        if let swipeDirection = SwipeActionDirection(rawValue: sender.tag) {
+            switch swipeDirection {
+            case .left:
+                highlightButton(forSwipe: .left)
+            case .down:
+                highlightButton(forSwipe: .down)
+            case .right:
+                highlightButton(forSwipe: .right)
+            default:
+                break
+            }
+        }
+    }
+    
+    
+    
+    @IBAction func goBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -124,30 +148,8 @@ class OpenStatementViewController: UIViewController {
         cardCollectionView.delegate  = self
         cardCollectionView.dataSource = self
     }
-
-}
-
-extension OpenStatementViewController: KolodaViewDataSource, KolodaViewDelegate {
     
-    func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
-        return statements?.count ?? 0
-    }
-    
-    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
-        return .moderate
-    }
-    
-    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        let cardView = StatementCardView.init(frame: statementCardView.bounds)
-        // Set card data
-        if let datasource = statements, datasource.count > index  {
-             let statement = datasource[index]
-            cardView.setCard(for: statement)
-        }
-        return cardView
-    }
-    
-    func koloda(_ koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
+    private func highlightButton(forSwipe direction: SwipeResultDirection, completion percentage: CGFloat = 50) {
         var label:UILabel?
         var imageView:UIImageView?
         var selectedImage:UIImage?
@@ -183,7 +185,7 @@ extension OpenStatementViewController: KolodaViewDataSource, KolodaViewDelegate 
         }
         
         if let selectedLabel = label, let selectedImageView = imageView {
-            if finishPercentage < 100 {
+            if percentage < 100 {
                 selectedLabel.textColor = UIColor.darkTheme()
                 selectedImageView.image = selectedImage
             }
@@ -193,12 +195,38 @@ extension OpenStatementViewController: KolodaViewDataSource, KolodaViewDelegate 
             }
         }
         
-        // Reset labels if gesture was not detected for one or more second 
+        // Reset labels if gesture was not detected for one or more second
         let currentTimerInteval = Date().timeIntervalSince1970
         if  currentTimerInteval - lastGetureDetectedOn > 1 {
             Thread.cancelPreviousPerformRequests(withTarget: self)
             perform(#selector(resetLabels), with: self, afterDelay: 1)
         }
+    }
+
+}
+
+extension OpenStatementViewController: KolodaViewDataSource, KolodaViewDelegate {
+    
+    func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
+        return statements?.count ?? 0
+    }
+    
+    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
+        return .moderate
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
+        let cardView = StatementCardView.init(frame: statementCardView.bounds)
+        // Set card data
+        if let datasource = statements, datasource.count > index  {
+             let statement = datasource[index]
+            cardView.setCard(for: statement)
+        }
+        return cardView
+    }
+    
+    func koloda(_ koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
+        highlightButton(forSwipe: direction, completion: finishPercentage)
     }
     
     func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
@@ -210,6 +238,34 @@ extension OpenStatementViewController: KolodaViewDataSource, KolodaViewDelegate 
         if let datasource = statements, datasource.count > index {
             let draggedStatment = datasource[index]
             actionedStatements?.append(draggedStatment)
+            if koloda.isRunOutOfCards {
+                actionButtonView.isHidden = true
+                noOpenStatementLabel.text = NSLocalizedString("greatJobSolviant", comment: "")
+                noOpenStatementLabel.isHidden = false
+            }
+            undoButton.isHidden       = false
+            
+            // Record swipe
+            var swipeDirection:SwipeActionDirection?
+            switch direction {
+            case .left:
+                swipeDirection = .left
+            case .right:
+                swipeDirection = .right
+            case .down:
+                swipeDirection = .down
+                break
+            default:
+                break
+            }
+            if let direction = swipeDirection {
+                // Update recorded swipe
+                var parameters:[String:Any]      = Dictionary()
+                parameters[APIKeys.status]       =  direction.rawValue
+                parameters[APIKeys.resource]     = user.userId
+                requestRecordSwipe(statement: draggedStatment.identifier, parameter: parameters)
+            }
+            
         }
     }
     
@@ -245,6 +301,16 @@ extension OpenStatementViewController {
         }
     }
     
+    private func requestRecordSwipe(statement identifier:String, parameter: Dictionary<String, Any>) {
+        // Request fetch all statement
+        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.recordSwipe) + identifier
+        webManager.httpRequest(method: .post, apiURL: apiURL, body: parameter, completion: { (response) in
+            // Recorded statement
+        }) { (error) in
+            
+        }
+    }
+    
     // MARK: - Request Completion
     
     private func didFetch(statements: Dictionary<String, Any>) {
@@ -252,12 +318,20 @@ extension OpenStatementViewController {
         if let resultArray = statements[APIKeys.result] as? Array<Dictionary<String, Any>> {
             self.statements = Array()
             self.actionedStatements = Array()
-            actionButtonView.isHidden = false
             for statementInfo in resultArray {
                 if let statement = Statement.init(with: statementInfo) {
                     self.statements?.append(statement)
                 }
             }
+        }
+        
+        if self.statements != nil && self.statements!.count > 0 {
+            actionButtonView.isHidden = false
+            noOpenStatementLabel.isHidden = true
+        }
+        else {
+            actionButtonView.isHidden     = true
+            noOpenStatementLabel.isHidden = false
         }
         
         // Reload cards

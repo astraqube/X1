@@ -139,19 +139,22 @@ struct ReusableIdentifier {
     static let ratingOverviewCell           = "RatingOverviewTableViewCell"
     static let postUrgencyCell              = "PostUrgencyTableViewCell"
     static let mobileInputCell              = "MobileNumberInput"
+    static let addResponseTableCell         = "AddResponseTableViewCell"
 
 }
 
 struct APIKeys {
-    static let statusCode   = "statusCode"
-    static let status       = "status"
-    static let errorMessage = "message"
-    static let result       = "result"
-    static let userInfo     = "userInfo"
-    static let categoryName = "category_name"
-    static let identifier   = "_id"
-    static let superIdentifier   = "categorieleveltwo"
-    static let imageURL     = "image_url"
+    static let statusCode           = "statusCode"
+    static let status               = "status"
+    static let errorMessage         = "message"
+    static let result               = "result"
+    static let userInfo             = "userInfo"
+    static let categoryName         = "category_name"
+    static let identifier           = "_id"
+    static let superIdentifier      = "categorieleveltwo"
+    static let imageURL             = "image_url"
+    static let isMobileVerified     = "verify_mobile"
+    static let resource             = "resource"
 }
 
 struct PostStatementKey {
@@ -170,6 +173,7 @@ struct PostStatementKey {
     static let city           = "city"
     static let principal      = "principle"
     static let principalType  = "expert_level"
+    static let identifier     = "_id"
     
 }
 
@@ -186,8 +190,11 @@ struct APIEndPoint {
     static let category      = "category/levelone"
     static let subcategory   = "category/leveltwo/"
     static let intersts      = "category/levelthree/"
-    static let createPost    = "statement"
     static let fetchPosts    = "statements"
+    static let verifyOTP     = "mobile/verification"
+    static let resendOTP     = "resend"
+    static let createPost    = "statement"
+    static let recordSwipe   = "assign/statement/"
 }
 
 struct APIURL {
@@ -228,6 +235,9 @@ struct UserKey {
     static let imageURL         = "image_url"
     static let location         = "location"
     static let linkedInAccess   = "linkedin_access"
+    static let phoneNumber      = "phone_number"
+    static let otpCode          = "verification_code"
+    static let userIdentifier   = "user_id"
 }
 
 struct HTTPStatus {

@@ -43,6 +43,7 @@ class StatementCardView: UIView {
         self.layer.backgroundColor = UIColor.white.cgColor
         self.layer.sublayers?.last?.cornerRadius = 8.0
         self.layer.sublayers?.last?.masksToBounds = true
+        tagCollectionView.scrollDirection = .horizontal
     }
     
     required init?(coder aDecoder: NSCoder) {

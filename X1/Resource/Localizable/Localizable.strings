@@ -39,6 +39,7 @@
 "selectSubcategoriesMessage"  = "Select one or more categories.";
 "chooseExpertLevelTitle"      = "Choose Expert Level";
 "chooseExpertLevelMessage"    = "Drag the remaining interests to bucket.";
+"greatJobSolviant"            = "Great job! We'll show more cards\nwhen we have it.";
 
 // MARK: - TextField Placeholder
 

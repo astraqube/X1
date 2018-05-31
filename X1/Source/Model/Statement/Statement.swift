@@ -12,6 +12,7 @@ import UIKit
 
 class Statement: NSObject {
     
+    var identifier:String!
     var name:String!
     var city:String?
     var tags:[String]?
@@ -22,12 +23,14 @@ class Statement: NSObject {
     
     
     init?(with response: Dictionary<String, Any>) {
-        guard let principal = response[PostStatementKey.principal] as? Dictionary<String, Any>,
+        guard let id = response[PostStatementKey.identifier] as? String,
+            let principal = response[PostStatementKey.principal] as? Dictionary<String, Any>,
             let principalName = principal[PostStatementKey.principalName] as? String,
         let text = response[PostStatementKey.statement] as? String else {
             return
         }
         
+        identifier   = id
         name         = principalName
         problemText  = text
         tags         = response[PostStatementKey.tags] as? Array

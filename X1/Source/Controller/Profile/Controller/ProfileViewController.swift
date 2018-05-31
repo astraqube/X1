@@ -419,6 +419,7 @@ extension ProfileViewController: OTPBoxDelegate {
     func validateOTP() {
         let otpBox = OTPBox.init(frame: self.view.frame)
         otpBox.delegate = self
+        otpBox.user     = user
         otpBox.present(on: self.view)
     }
     

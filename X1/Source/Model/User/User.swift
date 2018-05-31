@@ -190,8 +190,8 @@ class User: NSObject {
         if let longitude = longitude {
             parameters[UserKey.longitude]   = longitude
         }
-        if let countrCode = countryCode {
-            parameters[UserKey.countryCode] = countrCode
+        if let countryCode = countryCode {
+            parameters[UserKey.countryCode] = String(countryCode.dropFirst())
         }
         if let mobile = cellNumber {
             parameters[UserKey.mobile] = mobile
