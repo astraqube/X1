@@ -17,6 +17,12 @@ class AddResponseTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // Customize TextView
+        questionTextView.layer.borderColor = UIColor.lightTheme().cgColor
+        questionTextView.layer.borderWidth    = 2.0
+        questionTextView.backgroundColor      = .clear
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

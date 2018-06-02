@@ -89,7 +89,6 @@ extension RespondViewController: UITextViewDelegate {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             responseTableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         }
-//        perform(#selector(scrollTableView), with: self, afterDelay: 1.0)
         
         let indexPath = IndexPath.init(row: editingTextView!.tag, section: 0)
         responseTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
@@ -104,6 +103,10 @@ extension RespondViewController: UITextViewDelegate {
             let indexPath = responseTableView.indexPath(for: cell) {
             responseTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
@@ -135,7 +138,9 @@ extension RespondViewController: UITableViewDataSource, UITableViewDelegate {
             shouldOpenKeyboard = false
             tableViewCell.questionTextView.becomeFirstResponder()
         }
-        tableViewCell.questionTextView.tag = indexPath.row
+        tableViewCell.questionTextView.tag  = indexPath.row
+        tableViewCell.questionLabel.text    = "Question \(responses.count - indexPath.row)"
+        tableViewCell.questionTextView.text = responses[indexPath.row]
         return tableViewCell
     }
     
