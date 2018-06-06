@@ -19,5 +19,6 @@ target 'Solviant' do
   pod 'CountryPickerSwift'
   pod 'SwiftDate'
   pod 'Koloda'
+  pod 'GrowingTextView', '~> 0.5'
 
 end

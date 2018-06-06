@@ -11,17 +11,13 @@ import UIKit
 class AddResponseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var questionTextView: UITextView!
+    @IBOutlet weak var questionCountLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        // Customize TextView
-        questionTextView.layer.borderColor = UIColor.lightTheme().cgColor
-        questionTextView.layer.borderWidth    = 2.0
-        questionTextView.backgroundColor      = .clear
         
     }
 

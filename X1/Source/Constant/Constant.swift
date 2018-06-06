@@ -109,6 +109,22 @@ enum PostUrgency: Int {
             return ("Low", "Valid for 3 weeks")
         }
     }
+    
+    func expirationInterval() -> TimeInterval {
+        var validInterval:TimeInterval! // In seconds
+        switch self {
+        case .urgent:
+            validInterval = 3600
+        case .high:
+            validInterval = 86400 // Seconds in one day
+        case .medium:
+            validInterval = 604800 // Seconds in one week
+        case .low:
+            validInterval = 1814400 // Seconds in 3 weeks
+        }
+        let expirationTime = (NSDate().timeIntervalSince1970 + validInterval) * 1000 // Converted to milliseconds
+        return expirationTime
+    }
 }
 
 // MARK: - Struct Constant
@@ -162,6 +178,7 @@ struct PostStatementKey {
     static let principle      = "principle"
     static let category       = "category"
     static let expertLevel    = "expert_level"
+    static let priority       = "priority"
     static let latitude       = "latitude"
     static let longitude      = "longitude"
     static let location       = "location"
@@ -174,6 +191,9 @@ struct PostStatementKey {
     static let principal      = "principle"
     static let principalType  = "expert_level"
     static let identifier     = "_id"
+    static let statementId    = "id"
+    static let resourceId     = "r_id"
+    static let response       = "response_statement"
     
 }
 
@@ -184,17 +204,23 @@ struct DeviceIdentifier {
 
 
 struct APIEndPoint {
-    static let signIn        = "login"
-    static let signUp        = "register"
-    static let linkedInLogin = "login/linkedin"
-    static let category      = "category/levelone"
-    static let subcategory   = "category/leveltwo/"
-    static let intersts      = "category/levelthree/"
-    static let fetchPosts    = "statements"
-    static let verifyOTP     = "mobile/verification"
-    static let resendOTP     = "resend"
-    static let createPost    = "statement"
-    static let recordSwipe   = "assign/statement/"
+    static let signIn               = "login"
+    static let signUp               = "register"
+    static let linkedInLogin        = "login/linkedin"
+    static let category             = "category/levelone"
+    static let subcategory          = "category/leveltwo/"
+    static let intersts             = "category/levelthree/"
+    static let fetchPosts           = "statements"
+    static let verifyOTP            = "mobile/verification"
+    static let resendOTP            = "resend"
+    static let createPost           = "statement"
+    static let recordSwipe          = "assign/statement/"
+    static let resourceStatements   = "statements/resource/"
+    
+    static func submitResponse(with resourceId: String, statementId: String) -> String {
+        let addResponse = "response/resource/" + resourceId + "/statement/" + statementId
+        return addResponse
+    }
 }
 
 struct APIURL {

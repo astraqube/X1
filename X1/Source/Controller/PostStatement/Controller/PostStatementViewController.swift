@@ -163,6 +163,7 @@ class PostStatementViewController: UIViewController {
             parameters[PostStatementKey.category] = tags
         }
         parameters[PostStatementKey.expertLevel] = selectedLevel.identifier()
+        parameters[PostStatementKey.priority]    = selectedPriority.expirationInterval()
         if let coordinate = currentLocation {
             parameters[PostStatementKey.latitude]  = coordinate.latitude
             parameters[PostStatementKey.longitude] = coordinate.longitude

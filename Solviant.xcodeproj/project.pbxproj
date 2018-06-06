@@ -30,6 +30,7 @@
 		6524EAAD208480BD0035F2D2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524EAAC208480BD0035F2D2 /* SignInViewController.swift */; };
 		653BDFA6208496EC00B3CAC7 /* Extesnion+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BDFA5208496EC00B3CAC7 /* Extesnion+UIColor.swift */; };
 		653BDFA82084B92000B3CAC7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BDFA72084B92000B3CAC7 /* SignUpViewController.swift */; };
+		655D79C820C68D3600B110B8 /* ViewResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655D79C720C68D3600B110B8 /* ViewResponseViewController.swift */; };
 		657318E920AF053900089B16 /* RatingOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657318E820AF053900089B16 /* RatingOverviewViewController.swift */; };
 		657318EB20AF05F200089B16 /* RatingOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657318EA20AF05F200089B16 /* RatingOverviewTableViewCell.swift */; };
 		6579698020C0056B009564E0 /* RespondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6579697F20C0056B009564E0 /* RespondViewController.swift */; };
@@ -116,6 +117,7 @@
 		6524EAAC208480BD0035F2D2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		653BDFA5208496EC00B3CAC7 /* Extesnion+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extesnion+UIColor.swift"; sourceTree = "<group>"; };
 		653BDFA72084B92000B3CAC7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		655D79C720C68D3600B110B8 /* ViewResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewResponseViewController.swift; sourceTree = "<group>"; };
 		657318E820AF053900089B16 /* RatingOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingOverviewViewController.swift; sourceTree = "<group>"; };
 		657318EA20AF05F200089B16 /* RatingOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingOverviewTableViewCell.swift; sourceTree = "<group>"; };
 		6579697F20C0056B009564E0 /* RespondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				655D79C620C68D2300B110B8 /* ViewResponse */,
 				6579697C20C00531009564E0 /* Respond */,
 				65E47E8D20BBB9B400CAC575 /* OpenStatement */,
 				657318EC20AF2A2500089B16 /* PostStatement */,
@@ -470,6 +473,14 @@
 				653BDFA5208496EC00B3CAC7 /* Extesnion+UIColor.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		655D79C620C68D2300B110B8 /* ViewResponse */ = {
+			isa = PBXGroup;
+			children = (
+				655D79C720C68D3600B110B8 /* ViewResponseViewController.swift */,
+			);
+			path = ViewResponse;
 			sourceTree = "<group>";
 		};
 		657318E520AF052500089B16 /* RatingOverview */ = {
@@ -1074,6 +1085,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
 				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
@@ -1090,6 +1102,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
@@ -1152,6 +1165,7 @@
 				65C0203120864E8200971521 /* Extension+UIFont.swift in Sources */,
 				65E0DA0C20A607F0005AE0E5 /* QuestionCollectionViewCell.swift in Sources */,
 				659E9F9A20B80FD700FD697A /* PostStatementViewController.swift in Sources */,
+				655D79C820C68D3600B110B8 /* ViewResponseViewController.swift in Sources */,
 				658C23CB20A5A04E001E8A74 /* HomeTabBarViewController.swift in Sources */,
 				65157C15209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift in Sources */,
 				6524EAAD208480BD0035F2D2 /* SignInViewController.swift in Sources */,

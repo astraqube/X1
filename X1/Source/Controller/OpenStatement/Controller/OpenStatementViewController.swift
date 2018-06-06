@@ -44,6 +44,9 @@ class OpenStatementViewController: UIViewController {
         // Do any additional setup after loading the view.
         customizeUI()
         setupCardView()
+        
+        // Fetch user statements
+        requestFetchStatements(with: user.userId)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,9 +56,6 @@ class OpenStatementViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Fetch user statements
-        requestFetchStatements()
     }
     
 
@@ -63,7 +63,11 @@ class OpenStatementViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        
+        if let respondViewController = segue.destination as? RespondViewController, let statement = statements?[cardCollectionView.currentCardIndex] {
+            respondViewController.user          = user
+            respondViewController.delegate      = self
+            respondViewController.statement     = statement
+        }
     }
     
     // MARK: - IB Action
@@ -78,7 +82,6 @@ class OpenStatementViewController: UIViewController {
         noOpenStatementLabel.isHidden = true
         actionButtonView.isHidden     = false
         undoButton.isHidden           = actionedStatements!.count == 0
-        
     }
     
     
@@ -112,8 +115,6 @@ class OpenStatementViewController: UIViewController {
             }
         }
     }
-    
-    
     
     @IBAction func goBack(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -205,7 +206,7 @@ class OpenStatementViewController: UIViewController {
 
 }
 
-extension OpenStatementViewController: KolodaViewDataSource, KolodaViewDelegate {
+extension OpenStatementViewController: KolodaViewDataSource, KolodaViewDelegate, ResponseSubmitDelegate {
     
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
         return statements?.count ?? 0
@@ -283,16 +284,25 @@ extension OpenStatementViewController: KolodaViewDataSource, KolodaViewDelegate 
         }
     }
     
+    // MARK: - Response Submit Delegate
+    
+    func didSubmitResponse(_ respondViewController: RespondViewController, statement: Statement) {
+        if let indexOfStatment = statements?.index(of: statement) {
+            statements?.remove(at: indexOfStatment)
+            let countableRange = CountableRange.init(indexOfStatment...indexOfStatment)
+            cardCollectionView.removeCardInIndexRange(countableRange, animated: true)
+        }
+    }
 }
 
 extension OpenStatementViewController {
     
     // MARK: - Network Request
     
-    private func requestFetchStatements() {
+    private func requestFetchStatements(with resouceId: String) {
         // Request fetch all statement
         activityIndicator.startAnimating()
-        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.fetchPosts)
+        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.resourceStatements + resouceId)
         weak var weakSelf = self
         webManager.httpRequest(method: .get, apiURL: apiURL, body: [:], completion: { (response) in
             weakSelf?.didFetch(statements: response)
@@ -314,7 +324,6 @@ extension OpenStatementViewController {
     // MARK: - Request Completion
     
     private func didFetch(statements: Dictionary<String, Any>) {
-        activityIndicator.stopAnimating()
         if let resultArray = statements[APIKeys.result] as? Array<Dictionary<String, Any>> {
             self.statements = Array()
             self.actionedStatements = Array()
@@ -323,8 +332,16 @@ extension OpenStatementViewController {
                     self.statements?.append(statement)
                 }
             }
+            
+            perform(#selector(shouldHide), with: self, afterDelay: 2)
         }
         
+        // Reload cards
+        cardCollectionView.reloadData()
+    }
+    
+    @objc private func shouldHide() {
+        activityIndicator.stopAnimating()
         if self.statements != nil && self.statements!.count > 0 {
             actionButtonView.isHidden = false
             noOpenStatementLabel.isHidden = true
@@ -333,9 +350,6 @@ extension OpenStatementViewController {
             actionButtonView.isHidden     = true
             noOpenStatementLabel.isHidden = false
         }
-        
-        // Reload cards
-        cardCollectionView.reloadData()
     }
     
 }

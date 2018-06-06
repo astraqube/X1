@@ -44,6 +44,7 @@ class StatementCardView: UIView {
         self.layer.sublayers?.last?.cornerRadius = 8.0
         self.layer.sublayers?.last?.masksToBounds = true
         tagCollectionView.scrollDirection = .horizontal
+        tagCollectionView.enableTagSelection   = false
     }
     
     required init?(coder aDecoder: NSCoder) {

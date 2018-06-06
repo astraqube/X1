@@ -5,6 +5,7 @@ PODS:
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
+  - GrowingTextView (0.5.6)
   - Koloda (4.3.1):
     - pop (~> 1.0)
   - M13Checkbox (3.2.2)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - ALCameraViewController
   - CountryPickerSwift
   - FMDB
+  - GrowingTextView (~> 0.5)
   - Koloda
   - M13Checkbox
   - Popover
@@ -33,11 +35,12 @@ DEPENDENCIES:
   - Whisper
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - ALCameraViewController
     - CountryPickerSwift
     - FMDB
+    - GrowingTextView
     - Koloda
     - M13Checkbox
     - pop
@@ -53,6 +56,7 @@ SPEC CHECKSUMS:
   ALCameraViewController: 6398a9282057f709b87a1ecc52a83b48028ade64
   CountryPickerSwift: d46dcaadc64fd6e0f00c98dd23a432de858a5193
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  GrowingTextView: 8958f4fb7419de58dd622021b2d0696487e00e70
   Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
   M13Checkbox: a8c2491cfbbca10797925fd0b9154a782bf40d89
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
@@ -63,6 +67,6 @@ SPEC CHECKSUMS:
   UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
   Whisper: 169760fc4bab0abf24d5529f9276f95c25cf1025
 
-PODFILE CHECKSUM: 91e2051fcf74e15f212f07015a9babaa6c738ef0
+PODFILE CHECKSUM: 8e38c524c013cb30ca78deb28090cbf66f2cca7b
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
