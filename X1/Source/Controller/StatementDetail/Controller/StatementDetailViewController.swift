@@ -54,11 +54,12 @@ class StatementDetailViewController: UIViewController {
     
 
 //MARK: - actions
-    @IBAction func actionBackButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+
+    @IBAction func goBack(_ sender: Any) {
+          self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func actionConnect(_ sender: Any) {
+    @IBAction func connectStatement(_ sender: Any) {
         self.performSegue(withIdentifier: String(describing: ConnectPopUpViewController.self), sender: self)
     }
    
@@ -67,8 +68,6 @@ class StatementDetailViewController: UIViewController {
     private func customizeUI() {
         // Customize for theme appearance
         self.detailView.darkShadow(withRadius: 10.0, color: UIColor.black.withAlphaComponent(0.3))
-
-        
         buttonConnect.layer.borderWidth = 1.0
         buttonConnect.layer.borderColor = UIColor.lightTheme().cgColor
         buttonConnect.darkShadow(withRadius: 5)

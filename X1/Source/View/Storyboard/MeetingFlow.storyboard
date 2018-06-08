@@ -130,7 +130,7 @@
                                 </constraints>
                                 <state key="normal" image="back_black"/>
                                 <connections>
-                                    <action selector="actionBackButton:" destination="FFA-si-RaH" eventType="touchUpInside" id="zWy-MB-vfO"/>
+                                    <action selector="goBack:" destination="FFA-si-RaH" eventType="touchUpInside" id="mJa-zH-jcG"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0M-fE-E2t">
@@ -220,9 +220,9 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQJ-ta-mAZ">
-                                        <rect key="frame" x="264" y="5" width="30" height="30"/>
-                                        <state key="normal" title="Flag"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQJ-ta-mAZ">
+                                        <rect key="frame" x="269" y="5" width="25" height="25"/>
+                                        <state key="normal" image="flag"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -258,7 +258,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="actionConnect:" destination="FFA-si-RaH" eventType="touchUpInside" id="T4s-nA-a3m"/>
+                                    <action selector="connectStatement:" destination="FFA-si-RaH" eventType="touchUpInside" id="Qrg-b5-ZRJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -303,6 +303,28 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="307" id="nsP-hG-zlG"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopUpCell" id="aT9-9q-5g9" customClass="PopUpCell" customModule="Solviant" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aT9-9q-5g9" id="O5J-XP-08i">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YW-bQ-boV">
+                                                    <rect key="frame" x="15" y="12" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6YW-bQ-boV" firstAttribute="centerY" secondItem="O5J-XP-08i" secondAttribute="centerY" id="3nC-9F-U79"/>
+                                                <constraint firstItem="6YW-bQ-boV" firstAttribute="leading" secondItem="O5J-XP-08i" secondAttribute="leading" constant="15" id="iaN-UA-GS0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="dbs-IG-fMb" id="hhk-8o-Y4x"/>
                                     <outlet property="delegate" destination="dbs-IG-fMb" id="Nd0-l9-xu5"/>
@@ -329,8 +351,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="actionConnect:" destination="FFA-si-RaH" eventType="touchUpInside" id="83U-dx-572"/>
-                                            <action selector="actionSubmit:" destination="dbs-IG-fMb" eventType="touchUpInside" id="6Ch-sr-Mir"/>
+                                            <action selector="submit:" destination="dbs-IG-fMb" eventType="touchUpInside" id="CLY-vK-YSC"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -354,8 +375,8 @@
                         <viewLayoutGuide key="safeArea" id="k8f-6I-stz"/>
                     </view>
                     <connections>
+                        <outlet property="popupTableView" destination="edv-NP-l18" id="Bkk-ck-IcQ"/>
                         <outlet property="submitButton" destination="ZfZ-ca-Exg" id="2mZ-PT-7Ho"/>
-                        <outlet property="tablePopUp" destination="edv-NP-l18" id="qxZ-5B-rbj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mBn-9I-yBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,6 +405,7 @@
     </scenes>
     <resources>
         <image name="back_black" width="20" height="14"/>
+        <image name="flag" width="25" height="25"/>
         <image name="hamburger" width="24" height="24"/>
         <image name="meetings" width="24" height="24"/>
         <image name="notification" width="24" height="24"/>

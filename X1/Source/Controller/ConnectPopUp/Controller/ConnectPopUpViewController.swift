@@ -12,7 +12,7 @@ class ConnectPopUpViewController: UIViewController {
 
     //MARK: - outlet
     @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var tablePopUp: UITableView!
+    @IBOutlet weak var popupTableView: UITableView!
     
     //MARK: - other property
 
@@ -47,9 +47,8 @@ class ConnectPopUpViewController: UIViewController {
     */
 
     //MARK: - button actions
-    
-    @IBAction func actionSubmit(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
+    @IBAction func submit(_ sender: Any) {
+          self.dismiss(animated: false, completion: nil)
     }
     
     //MARK: - utility
@@ -84,22 +83,17 @@ extension ConnectPopUpViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellReuseIdentifier = "cell"
-        var cell: PopUpCell! = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as? PopUpCell
-        if cell == nil {
-            tableView.register(UINib(nibName: String(describing: PopUpCell.self), bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
-            cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as? PopUpCell
-        }
+        let cellReuseIdentifier = ReusableIdentifier.popUpTableCell
+        let popupTableCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! PopUpCell
+
         //Configure Cell....
-        configure(cell: cell, indexPath: indexPath)
-        return cell
+        configure(cell: popupTableCell, indexPath: indexPath)
+        return popupTableCell
     }
     
     
     func configure(cell: PopUpCell, indexPath: IndexPath)  {
         // UI configure
-        
-        
     }
     
 }
@@ -117,7 +111,7 @@ extension ConnectPopUpViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             return 70;
         }
-        return 70;
+        return UITableViewAutomaticDimension;
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

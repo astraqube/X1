@@ -10,7 +10,6 @@
 		38ABFAB220C9393C00148203 /* StatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABFAB120C9393C00148203 /* StatementDetailViewController.swift */; };
 		38ABFAB520C94E7400148203 /* ConnectPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABFAB420C94E7400148203 /* ConnectPopUpViewController.swift */; };
 		38ABFAB820C9683B00148203 /* PopUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABFAB720C9683B00148203 /* PopUpCell.swift */; };
-		38ABFABA20C9684900148203 /* PopUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38ABFAB920C9684900148203 /* PopUpCell.xib */; };
 		38ABFABC20C9720700148203 /* PopUpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABFABB20C9720700148203 /* PopUpHeader.swift */; };
 		38ABFABE20C9721E00148203 /* PopUpHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38ABFABD20C9721E00148203 /* PopUpHeader.xib */; };
 		38BF747B20C82791001D2898 /* MeetingFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38BF747A20C82791001D2898 /* MeetingFlow.storyboard */; };
@@ -102,7 +101,6 @@
 		38ABFAB120C9393C00148203 /* StatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailViewController.swift; sourceTree = "<group>"; };
 		38ABFAB420C94E7400148203 /* ConnectPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectPopUpViewController.swift; sourceTree = "<group>"; };
 		38ABFAB720C9683B00148203 /* PopUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpCell.swift; sourceTree = "<group>"; };
-		38ABFAB920C9684900148203 /* PopUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpCell.xib; sourceTree = "<group>"; };
 		38ABFABB20C9720700148203 /* PopUpHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpHeader.swift; sourceTree = "<group>"; };
 		38ABFABD20C9721E00148203 /* PopUpHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpHeader.xib; sourceTree = "<group>"; };
 		38BF747A20C82791001D2898 /* MeetingFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetingFlow.storyboard; sourceTree = "<group>"; };
@@ -211,8 +209,7 @@
 		38ABFAB020C9264B00148203 /* StatementDetail */ = {
 			isa = PBXGroup;
 			children = (
-				38ABFAB320C94E5500148203 /* ConnectPopUp */,
-				38ABFAB120C9393C00148203 /* StatementDetailViewController.swift */,
+				38F9210A20CA6659004559BF /* Controller */,
 			);
 			path = StatementDetail;
 			sourceTree = "<group>";
@@ -220,21 +217,44 @@
 		38ABFAB320C94E5500148203 /* ConnectPopUp */ = {
 			isa = PBXGroup;
 			children = (
-				38ABFAB620C967E800148203 /* Cell */,
-				38ABFAB420C94E7400148203 /* ConnectPopUpViewController.swift */,
+				38F9210B20CA666D004559BF /* Controller */,
+				38F9210C20CA7186004559BF /* TableViewHeader */,
+				38ABFAB620C967E800148203 /* TableCell */,
 			);
 			path = ConnectPopUp;
 			sourceTree = "<group>";
 		};
-		38ABFAB620C967E800148203 /* Cell */ = {
+		38ABFAB620C967E800148203 /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
 				38ABFAB720C9683B00148203 /* PopUpCell.swift */,
-				38ABFAB920C9684900148203 /* PopUpCell.xib */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		38F9210A20CA6659004559BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38ABFAB120C9393C00148203 /* StatementDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38F9210B20CA666D004559BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38ABFAB420C94E7400148203 /* ConnectPopUpViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38F9210C20CA7186004559BF /* TableViewHeader */ = {
+			isa = PBXGroup;
+			children = (
 				38ABFABB20C9720700148203 /* PopUpHeader.swift */,
 				38ABFABD20C9721E00148203 /* PopUpHeader.xib */,
 			);
-			path = Cell;
+			path = TableViewHeader;
 			sourceTree = "<group>";
 		};
 		651051F92096F4EA00D2C030 /* SelectRole */ = {
@@ -335,6 +355,7 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				38ABFAB320C94E5500148203 /* ConnectPopUp */,
 				38ABFAB020C9264B00148203 /* StatementDetail */,
 				655D79C620C68D2300B110B8 /* ViewResponse */,
 				6579697C20C00531009564E0 /* Respond */,
@@ -1083,7 +1104,6 @@
 				65E47E9A20BC2F0100CAC575 /* CardOverlayView.xib in Resources */,
 				65D16ED920B597D800AC5EF6 /* PostStatmentAccessory.xib in Resources */,
 				38BF747B20C82791001D2898 /* MeetingFlow.storyboard in Resources */,
-				38ABFABA20C9684900148203 /* PopUpCell.xib in Resources */,
 				6524EAAA208475A40035F2D2 /* Roboto-Bold.ttf in Resources */,
 				65E389F920A03459002BA860 /* InterestTableViewCell.xib in Resources */,
 				6524EAA4208475A40035F2D2 /* Roboto-Medium.ttf in Resources */,

@@ -21,7 +21,7 @@ class PopUpHeader: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        if let subView = Bundle.main.loadNibNamed("PopUpHeader", owner: self, options: [:])?.first as? UIView {
+        if let subView = Bundle.main.loadNibNamed(String(describing: PopUpHeader.self), owner: self, options: [:])?.first as? UIView {
             subView.frame = self.bounds
             addSubview(subView)
         }

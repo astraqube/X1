@@ -156,6 +156,7 @@ struct ReusableIdentifier {
     static let postUrgencyCell              = "PostUrgencyTableViewCell"
     static let mobileInputCell              = "MobileNumberInput"
     static let addResponseTableCell         = "AddResponseTableViewCell"
+    static let popUpTableCell               = "PopUpCell"
 
 }
 
