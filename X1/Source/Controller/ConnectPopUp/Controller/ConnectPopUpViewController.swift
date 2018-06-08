@@ -13,8 +13,21 @@ class ConnectPopUpViewController: UIViewController {
     //MARK: - outlet
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var popupTableView: UITableView!
+    @IBOutlet weak var popupTableViewHeightConstraint: NSLayoutConstraint!
+    
     
     //MARK: - other property
+    var options: [ConnectOptions] = [
+        ConnectOptions.init(name: NSLocalizedString("solve", comment: ""), selected: false),
+        ConnectOptions(name: NSLocalizedString("provideFeedback", comment: ""), selected : false),
+        ConnectOptions(name: NSLocalizedString("lacksDetail", comment: ""), selected : false)
+    ]
+    
+    let cellHeight = 60.0
+    let expandedHeightOfCell = 140.0
+    let popupTableHeight = 250.0;
+    let popupTableHeaderHeight = 50.0;
+    var isShareViaEmail = true;
 
     
     //MARK: - view life cycle
@@ -61,6 +74,7 @@ class ConnectPopUpViewController: UIViewController {
         submitButton.darkShadow(withRadius: 5)
         
     }
+
 }
 
 
@@ -79,7 +93,7 @@ extension ConnectPopUpViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return options.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,13 +102,63 @@ extension ConnectPopUpViewController: UITableViewDataSource {
 
         //Configure Cell....
         configure(cell: popupTableCell, indexPath: indexPath)
+        popupTableCell.selectionStyle = .none
         return popupTableCell
     }
     
     
     func configure(cell: PopUpCell, indexPath: IndexPath)  {
         // UI configure
+        let connectOptions = options[indexPath.row]
+        cell.titleLabel.text = connectOptions.name;
+        cell.checkBoxButton.isSelected = connectOptions.isSelected
+        cell.checkBoxButton.tag = indexPath.row;
+        cell.checkBoxButton.addTarget(self, action: #selector(selectCheckbox(sender:)), for: UIControlEvents.touchUpInside)
+        
+        if indexPath.row == 0 && connectOptions.isSelected {
+            cell.solveSubView.isHidden = false;
+            cell.shareViaEmailButton.isSelected = self.isShareViaEmail;
+            cell.shareViaConferenceCallButton.isSelected = !self.isShareViaEmail;
+            
+//            cell.shareViaEmailButton.tag = 0
+//            cell.shareViaConferenceCallButton.tag = 1
+            cell.shareViaEmailButton.addTarget(self, action: #selector(shareVia(sender:)), for: UIControlEvents.touchUpInside)
+            cell.shareViaConferenceCallButton.addTarget(self, action: #selector(shareVia(sender:)), for: UIControlEvents.touchUpInside)
+
+            
+            if self.isShareViaEmail {
+                cell.solveViaConferenceTopConstraint.constant = 50.0
+                cell.selectDurationTopConstraint.constant = 10.0
+               cell.shareViaEmailView.backgroundColor = UIColor.lightGrayTheme()
+            }
+            else{
+                cell.solveViaConferenceTopConstraint.constant = 10.0
+                cell.selectDurationTopConstraint.constant = 50.0
+                cell.shareViaConferenceView.backgroundColor = UIColor.lightGrayTheme()
+
+            }
+            cell.contentView.layoutIfNeeded()
+        }
+        else{
+            cell.solveSubView.isHidden = true;
+        }
+        
     }
+    
+    //MARK: - table action
+    @objc func selectCheckbox(sender: UIButton) {
+        let connectOptions = options[sender.tag]
+        connectOptions.isSelected = !connectOptions.isSelected
+        let selectedIndexPath = IndexPath(row: sender.tag, section: 0)
+        popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
+    }
+    
+    @objc func shareVia(sender: UIButton) {
+        self.isShareViaEmail = !self.isShareViaEmail
+        let selectedIndexPath = IndexPath(row: 0, section: 0)
+        popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
+    }
+    
     
 }
 
@@ -103,19 +167,35 @@ extension ConnectPopUpViewController: UITableViewDataSource {
 extension ConnectPopUpViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+     
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 70;
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.updateHeightOfTableView()
         }
-        return UITableViewAutomaticDimension;
+        let connectOptions = options[indexPath.row]
+        if indexPath.row == 0 && connectOptions.isSelected{
+            return CGFloat(cellHeight + expandedHeightOfCell)
+        }
+//        return UITableViewAutomaticDimension;
+        return CGFloat(cellHeight);
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0;
+        return CGFloat(popupTableHeaderHeight);
+    }
+    
+    func updateHeightOfTableView(){
+         let connectOptions = options[0]
+        if connectOptions.isSelected {
+            self.popupTableViewHeightConstraint.constant = CGFloat(popupTableHeight + expandedHeightOfCell)
+        }
+        else{
+            self.popupTableViewHeightConstraint.constant = CGFloat(popupTableHeight)
+        }
+        self.view.layoutIfNeeded()
     }
 }
 

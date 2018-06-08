@@ -13,6 +13,7 @@
 		38ABFABC20C9720700148203 /* PopUpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABFABB20C9720700148203 /* PopUpHeader.swift */; };
 		38ABFABE20C9721E00148203 /* PopUpHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38ABFABD20C9721E00148203 /* PopUpHeader.xib */; };
 		38BF747B20C82791001D2898 /* MeetingFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38BF747A20C82791001D2898 /* MeetingFlow.storyboard */; };
+		38F9210F20CA9BC3004559BF /* ConnectOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9210E20CA9BC3004559BF /* ConnectOptions.swift */; };
 		5C6BD0E2AB5FE38382F6B048 /* Pods_Solviant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */; };
 		651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */; };
 		651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FE209716BB00D2C030 /* LinkedIn.swift */; };
@@ -104,6 +105,7 @@
 		38ABFABB20C9720700148203 /* PopUpHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpHeader.swift; sourceTree = "<group>"; };
 		38ABFABD20C9721E00148203 /* PopUpHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpHeader.xib; sourceTree = "<group>"; };
 		38BF747A20C82791001D2898 /* MeetingFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetingFlow.storyboard; sourceTree = "<group>"; };
+		38F9210E20CA9BC3004559BF /* ConnectOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectOptions.swift; sourceTree = "<group>"; };
 		53EE2F80D76B4A835E4EDFBC /* Pods-Solviant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solviant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solviant/Pods-Solviant.debug.xcconfig"; sourceTree = "<group>"; };
 		59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solviant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,14 @@
 			path = TableViewHeader;
 			sourceTree = "<group>";
 		};
+		38F9210D20CA9B91004559BF /* ConnectOptions */ = {
+			isa = PBXGroup;
+			children = (
+				38F9210E20CA9BC3004559BF /* ConnectOptions.swift */,
+			);
+			path = ConnectOptions;
+			sourceTree = "<group>";
+		};
 		651051F92096F4EA00D2C030 /* SelectRole */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +408,7 @@
 		6524EA8620846B720035F2D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				38F9210D20CA9B91004559BF /* ConnectOptions */,
 				659E9FA520B88D2300FD697A /* Statement */,
 				65D34411209C2F890095749C /* Category */,
 				65C0203520864FFD00971521 /* User */,
@@ -1250,6 +1261,7 @@
 				6512E73F209085D400D2C15D /* SkyFloatingLabelTextField.swift in Sources */,
 				65E39E4720983F50006087F4 /* ProfileUserImageTableViewCell.swift in Sources */,
 				65C0203C208654E700971521 /* WebRequestManager.swift in Sources */,
+				38F9210F20CA9BC3004559BF /* ConnectOptions.swift in Sources */,
 				65E47E9320BBDF9300CAC575 /* OpenStatementViewController.swift in Sources */,
 				65B55E1F20ADEAB700231641 /* PaddedLabel.swift in Sources */,
 				653BDFA6208496EC00B3CAC7 /* Extesnion+UIColor.swift in Sources */,

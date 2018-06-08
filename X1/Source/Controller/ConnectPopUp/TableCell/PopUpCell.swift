@@ -9,7 +9,21 @@
 import UIKit
 
 class PopUpCell: UITableViewCell {
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var checkBoxButton: UIButton!
+    @IBOutlet weak var solveViaConferenceTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var selectDurationTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var shareViaEmailButton: UIButton!
+    @IBOutlet weak var shareViaConferenceCallButton: UIButton!
+    
+    @IBOutlet weak var solveSubView: UIView!
+    
+    @IBOutlet weak var shareViaEmailView: UIView!
+    @IBOutlet weak var shareViaConferenceView: UIView!
+    @IBOutlet weak var durationView: UIView!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

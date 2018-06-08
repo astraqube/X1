@@ -63,4 +63,14 @@
 
 "question" = "Question";
 
+// MARK: - Statement Detail Screen
+
+"solve" = "Solve";
+"provideFeedback" = "Provide Feedback";
+"lacksDetail" = "Lacks Details";
+"solveViaEmail" = "Solve via E-mail";
+"solveViaConferenceCall" = "Solve via Conference Call";
+"selectDuration" = "Select Duration";
+
+
 

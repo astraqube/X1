@@ -24,4 +24,10 @@ extension UIColor {
         // 29,103,143 // #1d678f
         return UIColor.init(red: 0.11, green: 0.4, blue: 0.56, alpha: 1.0)
     }
+    
+    static func lightGrayTheme() -> UIColor {
+        // 221,220,221
+        return UIColor.init(red: 0.86, green: 0.86, blue: 0.86, alpha: 1.0)
+    }
+    
 }
