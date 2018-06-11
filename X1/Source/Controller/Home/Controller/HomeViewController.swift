@@ -118,7 +118,8 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
+    // TODO: remove code from here
+
     //MARK: - This is temporary whenever storybord link with main it will remove from code
     
     func moveOnStatementDetail(){
