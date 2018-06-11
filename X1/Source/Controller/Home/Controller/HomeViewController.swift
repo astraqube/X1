@@ -76,12 +76,12 @@ class HomeViewController: UIViewController {
         badgeCountLabel.layer.cornerRadius  = 9
         badgeCountLabel.layer.masksToBounds = true
         
-        askAnythingButton.layer.borderWidth = 1.0
+       /* askAnythingButton.layer.borderWidth = 1.0
         askAnythingButton.layer.borderColor = UIColor.lightTheme().cgColor
         askAnythingButton.darkShadow(withRadius: 5)
         answerNowButton.layer.borderWidth = 1.0
         answerNowButton.layer.borderColor = UIColor.lightTheme().cgColor
-        answerNowButton.darkShadow(withRadius: 5)
+        answerNowButton.darkShadow(withRadius: 5) */
         viewResponseButton.layer.borderWidth = 1.0
         viewResponseButton.layer.borderColor = UIColor.lightTheme().cgColor
         viewResponseButton.darkShadow(withRadius: 5)
