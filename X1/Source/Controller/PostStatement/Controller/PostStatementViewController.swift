@@ -37,6 +37,8 @@ class PostStatementViewController: UIViewController {
     @IBOutlet var postUrgencyView: UIView!
     @IBOutlet weak var urgencyTableView: UITableView!
     @IBOutlet weak var ratingButtonsStackView: UIStackView!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var heightConstraintCollectioView: NSLayoutConstraint!
     
     
     
@@ -46,6 +48,7 @@ class PostStatementViewController: UIViewController {
     var selectedLevel        = ExpertLevel.rookie
     var locationManager      = LocationManager()
     var currentLocation:CLLocationCoordinate2D?
+    var selectedImages:[UIImage]?
     
     // MARK: - Property
     
@@ -156,7 +159,6 @@ class PostStatementViewController: UIViewController {
         view.endEditing(true)
         showActivity()
         var parameters:[String: Any] = Dictionary()
-        parameters[PostStatementKey.principle] = user.userId
         parameters[PostStatementKey.statement] = text
         if selectTagsCollectionView.allTags().count > 0 {
             let tags = selectTagsCollectionView.allTags()
@@ -169,7 +171,7 @@ class PostStatementViewController: UIViewController {
             parameters[PostStatementKey.longitude] = coordinate.longitude
         }
         parameters[PostStatementKey.location] = PostStatementKey.global
-        postStatment(with: parameters)
+        postStatment(with: parameters, for: user.userId, attachment: selectedImages?.first)
     }
     
     @IBAction func viewSimilarStatement(_ sender: Any) {
@@ -184,6 +186,8 @@ class PostStatementViewController: UIViewController {
     
     @IBAction func addImage(_ sender: Any) {
         // Add image to the question
+        view.endEditing(true)
+        popover?.dismiss()
         openPhotos()
     }
     
@@ -272,6 +276,16 @@ class PostStatementViewController: UIViewController {
         }
         ratingButtonsStackView.isHidden = false
     }
+    
+    @IBAction func removeImage(_ sender: UIButton) {
+        // Remove attachment
+        if selectedImages!.count > sender.tag {
+            selectedImages?.remove(at: sender.tag)
+            let indexPath = IndexPath.init(item: sender.tag, section: 0)
+            imageCollectionView.deleteItems(at: [indexPath])
+        }
+    }
+    
     
     // MARK: - Navigation
     
@@ -387,8 +401,27 @@ extension PostStatementViewController: PostStatmentAccessoryDelegate, UITextView
     
 }
 
-extension PostStatementViewController {
+// MARK: - Attachment Work
+
+extension PostStatementViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
    
+    // MARK: - UICollectionView Datasource and Delegate
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedImages?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let imageViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableIdentifier.selectImageCollectionCell, for: indexPath) as! ImageSelectionCollectionViewCell
+        imageViewCell.closeButton.tag = indexPath.row
+        imageViewCell.imageView.image = selectedImages?[indexPath.row]
+        return imageViewCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize.init(width: 80, height: 80)
+    }
+    
     // MARK: - Image Picker
     
     func openPhotos() {
@@ -412,7 +445,7 @@ extension PostStatementViewController {
     
     func didPickImage(image:UIImage) {
         // Add the selected image as attachment
-        let resizedImage = image.resize(byWidth: 200)
+       /* let resizedImage = image.resize(byWidth: 200)
         let fullString = NSMutableAttributedString(string: statmentTextView.text + "\n\n")
         fullString.setAttributes([NSAttributedStringKey.font : statmentTextView.font!], range: NSRange.init(location: 0, length: fullString.length))
         let attachment = NSTextAttachment()
@@ -420,7 +453,15 @@ extension PostStatementViewController {
         attachment.bounds = CGRect.init(x: 0, y: 0, width: resizedImage.size.width, height: resizedImage.size.height)
          let stringWithAttachment = NSAttributedString(attachment: attachment)
         fullString.append(stringWithAttachment)
-        statmentTextView.attributedText = fullString
+        statmentTextView.attributedText = fullString */
+        
+        if selectedImages == nil {
+            selectedImages = Array()
+        }
+        selectedImages?.append(image)
+        heightConstraintCollectioView.priority = UILayoutPriority.init(rawValue: 500)
+        imageCollectionView.layoutIfNeeded()
+        imageCollectionView.insertItems(at: [IndexPath.init(item: selectedImages!.count-1, section: 0)])
     }
     
     func showActivity() {
@@ -476,16 +517,16 @@ extension PostStatementViewController {
         }
     }
     
-    private func postStatment(with parameters: Dictionary<String, Any>) {
+    private func postStatment(with parameters: Dictionary<String, Any>, for principal:String, attachment: UIImage?) {
         // Fetch categories
-        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.createPost)
+        let endPoint = APIEndPoint.statement(with: principal)
+        let apiURL   = APIURL.statementUrl(apiEndPoint: endPoint)
         weak var weakSelf = self
-        webManager.httpRequest(method: .post, apiURL: apiURL, body: parameters, completion: { (response) in
-            // Category fetched
+        webManager.uploadImage(htttpMethod: .post, apiURL: apiURL, parameters: parameters, image: attachment, completion: { (response) in
+            // Post created successfully
             weakSelf?.showCheckMark()
-            weakSelf?.activityIndicator.stopAnimating()
         }) { (error) in
-            // Error in fetching category
+            // Error in createing statement
             weakSelf?.activityIndicator.stopAnimating()
             weakSelf?.blurView.isHidden = true
         }

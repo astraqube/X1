@@ -54,6 +54,49 @@ class WebRequestManager: NSObject {
         }
     }
     
+    func uploadImage(htttpMethod method:HTTPFunction, apiURL url:String, parameters:Dictionary<String,Any>, image:UIImage?, completion success:@escaping(_ response:Dictionary<String, Any>) -> Void, failure errorOccured:@escaping (_ error:String) ->Void ) {
+        // Upload user image with access token in
+        let httpMethod = HTTPMethod.init(rawValue: method.rawValue)!
+        var imageData:Data?
+        if let postImage = image {
+            imageData = postImage.compressTo(500) // Compress to 500 KB in
+        }
+        print("API URL: \(url) with parameters :\(parameters)")
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                if let imageData = imageData, imageData.count > 0 {
+                    multipartFormData.append(imageData, withName: "file", fileName: "picture.jpg", mimeType: "image/jpg")
+                }
+                for (key,value) in parameters {
+                    if let parameter = "\(value)".data(using: .utf8) {
+                        multipartFormData.append(parameter, withName: key)
+                    }
+                }
+        },
+            to: url, method: httpMethod,
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        switch response.result {
+                        case .success:
+                            if let responseBody = response.result.value as? Dictionary<String,Any> {
+                                // API request complete with response
+                                print("Image uploaded with response \(responseBody)")
+                                success(responseBody)
+                            }
+                        case .failure(let error):
+                            print("API Failure for image upload \(error.localizedDescription)")
+                        }
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                    errorOccured(encodingError.localizedDescription)
+                }
+        }
+        )
+    }
+    
     func cancelLastRequset() {
         lastRequest?.cancel()
     }

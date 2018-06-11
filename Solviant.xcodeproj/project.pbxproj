@@ -7,13 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38ABFAB220C9393C00148203 /* StatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABFAB120C9393C00148203 /* StatementDetailViewController.swift */; };
-		38ABFAB520C94E7400148203 /* ConnectPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABFAB420C94E7400148203 /* ConnectPopUpViewController.swift */; };
-		38ABFAB820C9683B00148203 /* PopUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABFAB720C9683B00148203 /* PopUpCell.swift */; };
-		38ABFABC20C9720700148203 /* PopUpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ABFABB20C9720700148203 /* PopUpHeader.swift */; };
-		38ABFABE20C9721E00148203 /* PopUpHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38ABFABD20C9721E00148203 /* PopUpHeader.xib */; };
-		38BF747B20C82791001D2898 /* MeetingFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38BF747A20C82791001D2898 /* MeetingFlow.storyboard */; };
-		38F9210F20CA9BC3004559BF /* ConnectOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9210E20CA9BC3004559BF /* ConnectOptions.swift */; };
+		38E6F1EF20CE5E86003A4240 /* MeetingFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */; };
 		5C6BD0E2AB5FE38382F6B048 /* Pods_Solviant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */; };
 		651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */; };
 		651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FE209716BB00D2C030 /* LinkedIn.swift */; };
@@ -99,13 +93,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		38ABFAB120C9393C00148203 /* StatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailViewController.swift; sourceTree = "<group>"; };
-		38ABFAB420C94E7400148203 /* ConnectPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectPopUpViewController.swift; sourceTree = "<group>"; };
-		38ABFAB720C9683B00148203 /* PopUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpCell.swift; sourceTree = "<group>"; };
-		38ABFABB20C9720700148203 /* PopUpHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpHeader.swift; sourceTree = "<group>"; };
-		38ABFABD20C9721E00148203 /* PopUpHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpHeader.xib; sourceTree = "<group>"; };
-		38BF747A20C82791001D2898 /* MeetingFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetingFlow.storyboard; sourceTree = "<group>"; };
-		38F9210E20CA9BC3004559BF /* ConnectOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectOptions.swift; sourceTree = "<group>"; };
+		38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetingFlow.storyboard; sourceTree = "<group>"; };
 		53EE2F80D76B4A835E4EDFBC /* Pods-Solviant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solviant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solviant/Pods-Solviant.debug.xcconfig"; sourceTree = "<group>"; };
 		59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solviant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewController.swift; sourceTree = "<group>"; };
@@ -208,65 +196,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		38ABFAB020C9264B00148203 /* StatementDetail */ = {
-			isa = PBXGroup;
-			children = (
-				38F9210A20CA6659004559BF /* Controller */,
-			);
-			path = StatementDetail;
-			sourceTree = "<group>";
-		};
-		38ABFAB320C94E5500148203 /* ConnectPopUp */ = {
-			isa = PBXGroup;
-			children = (
-				38F9210B20CA666D004559BF /* Controller */,
-				38F9210C20CA7186004559BF /* TableViewHeader */,
-				38ABFAB620C967E800148203 /* TableCell */,
-			);
-			path = ConnectPopUp;
-			sourceTree = "<group>";
-		};
-		38ABFAB620C967E800148203 /* TableCell */ = {
-			isa = PBXGroup;
-			children = (
-				38ABFAB720C9683B00148203 /* PopUpCell.swift */,
-			);
-			path = TableCell;
-			sourceTree = "<group>";
-		};
-		38F9210A20CA6659004559BF /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				38ABFAB120C9393C00148203 /* StatementDetailViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		38F9210B20CA666D004559BF /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				38ABFAB420C94E7400148203 /* ConnectPopUpViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		38F9210C20CA7186004559BF /* TableViewHeader */ = {
-			isa = PBXGroup;
-			children = (
-				38ABFABB20C9720700148203 /* PopUpHeader.swift */,
-				38ABFABD20C9721E00148203 /* PopUpHeader.xib */,
-			);
-			path = TableViewHeader;
-			sourceTree = "<group>";
-		};
-		38F9210D20CA9B91004559BF /* ConnectOptions */ = {
-			isa = PBXGroup;
-			children = (
-				38F9210E20CA9BC3004559BF /* ConnectOptions.swift */,
-			);
-			path = ConnectOptions;
-			sourceTree = "<group>";
-		};
 		651051F92096F4EA00D2C030 /* SelectRole */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,8 +294,6 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				38ABFAB320C94E5500148203 /* ConnectPopUp */,
-				38ABFAB020C9264B00148203 /* StatementDetail */,
 				655D79C620C68D2300B110B8 /* ViewResponse */,
 				6579697C20C00531009564E0 /* Respond */,
 				65E47E8D20BBB9B400CAC575 /* OpenStatement */,
@@ -408,7 +335,6 @@
 		6524EA8620846B720035F2D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				38F9210D20CA9B91004559BF /* ConnectOptions */,
 				659E9FA520B88D2300FD697A /* Statement */,
 				65D34411209C2F890095749C /* Category */,
 				65C0203520864FFD00971521 /* User */,
@@ -504,8 +430,8 @@
 			isa = PBXGroup;
 			children = (
 				65ABA3D320846A0D000A5B42 /* Main.storyboard */,
-				38BF747A20C82791001D2898 /* MeetingFlow.storyboard */,
 				65ABA3D820846A0E000A5B42 /* LaunchScreen.storyboard */,
+				38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -1114,7 +1040,7 @@
 				6524EAA9208475A40035F2D2 /* Roboto-Italic.ttf in Resources */,
 				65E47E9A20BC2F0100CAC575 /* CardOverlayView.xib in Resources */,
 				65D16ED920B597D800AC5EF6 /* PostStatmentAccessory.xib in Resources */,
-				38BF747B20C82791001D2898 /* MeetingFlow.storyboard in Resources */,
+				38E6F1EF20CE5E86003A4240 /* MeetingFlow.storyboard in Resources */,
 				6524EAAA208475A40035F2D2 /* Roboto-Bold.ttf in Resources */,
 				65E389F920A03459002BA860 /* InterestTableViewCell.xib in Resources */,
 				6524EAA4208475A40035F2D2 /* Roboto-Medium.ttf in Resources */,
@@ -1126,7 +1052,6 @@
 				65E389EF20A03377002BA860 /* PickInterest.xib in Resources */,
 				65ABA3D720846A0E000A5B42 /* Assets.xcassets in Resources */,
 				65E47E9720BBE03600CAC575 /* StatementCardView.xib in Resources */,
-				38ABFABE20C9721E00148203 /* PopUpHeader.xib in Resources */,
 				65ABA3D520846A0D000A5B42 /* Main.storyboard in Resources */,
 				65E39E4B20984ED1006087F4 /* KeyboardAccessory.xib in Resources */,
 			);
@@ -1205,13 +1130,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				65DB27E02085178D00938B61 /* Extension+String.swift in Sources */,
-				38ABFAB820C9683B00148203 /* PopUpCell.swift in Sources */,
 				65D3440F209C17680095749C /* SubcategoryCollectionViewCell.swift in Sources */,
 				6524EA8D20846B720035F2D2 /* AppDelegate.swift in Sources */,
 				65C0201A20864E6900971521 /* LocationManager.swift in Sources */,
 				65C0203420864E8200971521 /* Extension+Date.swift in Sources */,
 				653BDFA82084B92000B3CAC7 /* SignUpViewController.swift in Sources */,
-				38ABFABC20C9720700148203 /* PopUpHeader.swift in Sources */,
 				659E9F9C20B80FF000FD697A /* PostUrgencyTableViewCell.swift in Sources */,
 				657318E920AF053900089B16 /* RatingOverviewViewController.swift in Sources */,
 				6579698020C0056B009564E0 /* RespondViewController.swift in Sources */,
@@ -1222,7 +1145,6 @@
 				659E9F9F20B866B000FD697A /* OTPBox.swift in Sources */,
 				65E39E3F20983DFF006087F4 /* ProfileViewController.swift in Sources */,
 				65E389F820A03459002BA860 /* InterestTableViewCell.swift in Sources */,
-				38ABFAB520C94E7400148203 /* ConnectPopUpViewController.swift in Sources */,
 				65C0201B20864E6900971521 /* AutoLogin.swift in Sources */,
 				65D3440A209C14680095749C /* Subcategory.swift in Sources */,
 				651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */,
@@ -1247,7 +1169,6 @@
 				65C0203120864E8200971521 /* Extension+UIFont.swift in Sources */,
 				65E0DA0C20A607F0005AE0E5 /* QuestionCollectionViewCell.swift in Sources */,
 				659E9F9A20B80FD700FD697A /* PostStatementViewController.swift in Sources */,
-				38ABFAB220C9393C00148203 /* StatementDetailViewController.swift in Sources */,
 				655D79C820C68D3600B110B8 /* ViewResponseViewController.swift in Sources */,
 				658C23CB20A5A04E001E8A74 /* HomeTabBarViewController.swift in Sources */,
 				65157C15209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift in Sources */,
@@ -1261,7 +1182,6 @@
 				6512E73F209085D400D2C15D /* SkyFloatingLabelTextField.swift in Sources */,
 				65E39E4720983F50006087F4 /* ProfileUserImageTableViewCell.swift in Sources */,
 				65C0203C208654E700971521 /* WebRequestManager.swift in Sources */,
-				38F9210F20CA9BC3004559BF /* ConnectOptions.swift in Sources */,
 				65E47E9320BBDF9300CAC575 /* OpenStatementViewController.swift in Sources */,
 				65B55E1F20ADEAB700231641 /* PaddedLabel.swift in Sources */,
 				653BDFA6208496EC00B3CAC7 /* Extesnion+UIColor.swift in Sources */,
@@ -1414,7 +1334,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GWZNM9W625;
+				DEVELOPMENT_TEAM = H6ZNMT32K7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/X1/Source/Library/LinkedIn",
@@ -1443,7 +1363,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GWZNM9W625;
+				DEVELOPMENT_TEAM = H6ZNMT32K7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/X1/Source/Library/LinkedIn",

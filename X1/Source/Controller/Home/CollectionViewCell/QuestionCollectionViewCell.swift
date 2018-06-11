@@ -41,16 +41,21 @@ class QuestionCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(with statement: Statement) {
-        if let imageURL = statement.userImageURL {
-            userImageView.setImage(withURL: imageURL, placeholder: #imageLiteral(resourceName: "user-icon"))
-        }
-        usernameLabel.text      = statement.name.capitalized
-        cityLabel.text          = statement.city?.capitalized
+        // Common fields
         timeDurationLabel.text  = (statement.time?.colloquial(to: Date()))?.capitalized
         statementLabel.text     = statement.problemText
         if let tags = statement.tags {
             tagCollectionView.addTags(tags, with: textTagConfig)
         }
+        
+        guard usernameLabel != nil  else {
+            return
+        }
+        if let imageURL = statement.userImageURL {
+            userImageView.setImage(withURL: imageURL, placeholder: #imageLiteral(resourceName: "user-icon"))
+        }
+        usernameLabel.text      = statement.name?.capitalized
+        cityLabel.text          = statement.city?.capitalized
         
         // Set user rating for this post
         let count = statmentRatingImageViews.count

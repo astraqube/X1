@@ -157,6 +157,7 @@ struct ReusableIdentifier {
     static let mobileInputCell              = "MobileNumberInput"
     static let addResponseTableCell         = "AddResponseTableViewCell"
     static let popUpTableCell               = "PopUpCell"
+    static let selectImageCollectionCell    = "ImageSelectionCollectionViewCell"
 
 }
 
@@ -187,6 +188,7 @@ struct PostStatementKey {
     static let expertType     = "level_name"
     static let createdAt      = "created_at"
     static let principalName  = "full_name"
+    static let resourceName   = "full_name"
     static let tags           = "categoryes"
     static let city           = "city"
     static let principal      = "principle"
@@ -216,11 +218,22 @@ struct APIEndPoint {
     static let resendOTP            = "resend"
     static let createPost           = "statement"
     static let recordSwipe          = "assign/statement/"
+    static let responseSwipe        = "assign/response/"
     static let resourceStatements   = "statements/resource/"
     
     static func submitResponse(with resourceId: String, statementId: String) -> String {
         let addResponse = "response/resource/" + resourceId + "/statement/" + statementId
         return addResponse
+    }
+    
+    static func statement(with principalId: String) -> String {
+        let createStatement = "principal/" + principalId  + "/statement"
+        return createStatement
+    }
+    
+    static func fetchResponse(with principalId : String, statementId: String) -> String {
+        let fetchResponse = "response/principal/" + principalId + "/statement/" + statementId
+        return fetchResponse
     }
 }
 
