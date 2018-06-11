@@ -14,6 +14,7 @@ class PopUpCell: UITableViewCell {
     @IBOutlet weak var solveViaConferenceTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var selectDurationTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var shareViaEmailButton: UIButton!
+    @IBOutlet weak var selectDurationButton: UIButton!
     @IBOutlet weak var shareViaConferenceCallButton: UIButton!
     
     @IBOutlet weak var solveSubView: UIView!

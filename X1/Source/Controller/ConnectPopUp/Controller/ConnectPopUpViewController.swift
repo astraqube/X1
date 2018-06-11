@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Popover
 
 class ConnectPopUpViewController: UIViewController {
 
@@ -14,9 +15,12 @@ class ConnectPopUpViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var popupTableView: UITableView!
     @IBOutlet weak var popupTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var timerView: UIView!
     
     
     //MARK: - other property
+    var popover:Popover?
+
     var options: [ConnectOptions] = [
         ConnectOptions.init(name: NSLocalizedString("solve", comment: ""), selected: false),
         ConnectOptions(name: NSLocalizedString("provideFeedback", comment: ""), selected : false),
@@ -25,7 +29,7 @@ class ConnectPopUpViewController: UIViewController {
     
     let cellHeight = 60.0
     let expandedHeightOfCell = 140.0
-    let popupTableHeight = 250.0;
+    let popupTableHeight = 355.0;
     let popupTableHeaderHeight = 50.0;
     var isShareViaEmail = true;
 
@@ -126,7 +130,7 @@ extension ConnectPopUpViewController: UITableViewDataSource {
     //            cell.shareViaConferenceCallButton.tag = 1
                 cell.shareViaEmailButton.addTarget(self, action: #selector(self.shareVia(sender:)), for: UIControlEvents.touchUpInside)
                 cell.shareViaConferenceCallButton.addTarget(self, action: #selector(self.shareVia(sender:)), for: UIControlEvents.touchUpInside)
-
+                cell.selectDurationButton.addTarget(self, action: #selector(self.selectDuration(sender:)), for: UIControlEvents.touchUpInside)
                 
                 if self.isShareViaEmail {
                     cell.solveViaConferenceTopConstraint.constant = 50.0
@@ -169,6 +173,23 @@ extension ConnectPopUpViewController: UITableViewDataSource {
         }
     }
     
+    @objc func selectDuration(sender: UIButton) {
+      
+        popover?.dismiss()
+        popover = nil
+        let options = [
+            .type(.down),
+            .cornerRadius(5),
+            .animationIn(0.3),
+            .blackOverlayColor(UIColor.lightGray.withAlphaComponent(0.3)),
+            .arrowSize(CGSize.init(width: 10, height: 10))
+            ] as [PopoverOption]
+        popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
+        //                warningView.frame = CGRect.init(x: 0, y: 0, width: 240, height: 128)
+        popover?.show(timerView, fromView: sender)
+        
+        
+    }
     
 }
 
