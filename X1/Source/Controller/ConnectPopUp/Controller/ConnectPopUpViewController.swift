@@ -15,7 +15,8 @@ class ConnectPopUpViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var popupTableView: UITableView!
     @IBOutlet weak var popupTableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var timerView: UIView!
+    @IBOutlet var timerView: TimerView!
+    var selectTimerStr = NSLocalizedString("30_minutes", comment: "")
     
     
     //MARK: - other property
@@ -23,8 +24,8 @@ class ConnectPopUpViewController: UIViewController {
 
     var options: [ConnectOptions] = [
         ConnectOptions.init(name: NSLocalizedString("solve", comment: ""), selected: false),
-        ConnectOptions(name: NSLocalizedString("provideFeedback", comment: ""), selected : false),
-        ConnectOptions(name: NSLocalizedString("lacksDetail", comment: ""), selected : false)
+        ConnectOptions.init(name: NSLocalizedString("provideFeedback", comment: ""), selected : false),
+        ConnectOptions.init(name: NSLocalizedString("lacksDetail", comment: ""), selected : false)
     ]
     
     let cellHeight = 60.0
@@ -32,6 +33,7 @@ class ConnectPopUpViewController: UIViewController {
     let popupTableHeight = 355.0;
     let popupTableHeaderHeight = 50.0;
     var isShareViaEmail = true;
+    let animationDuration = 0.2;
 
     
     //MARK: - view life cycle
@@ -76,7 +78,15 @@ class ConnectPopUpViewController: UIViewController {
         submitButton.layer.borderWidth = 1.0
         submitButton.layer.borderColor = UIColor.lightTheme().cgColor
         submitButton.darkShadow(withRadius: 5)
-        
+        timerView.configure()
+        timerView.selectTimer = {(result, error) in
+            if error == nil{
+                self.popover?.dismiss()
+                self.selectTimerStr = (result?.title)!
+                let theIndexpath = IndexPath(row: 0, section: 0)
+                self.popupTableView.reloadRows(at: [theIndexpath], with: .fade)
+            }
+        }
     }
 
 }
@@ -119,7 +129,7 @@ extension ConnectPopUpViewController: UITableViewDataSource {
         cell.checkBoxButton.tag = indexPath.row;
         cell.checkBoxButton.addTarget(self, action: #selector(selectCheckbox(sender:)), for: UIControlEvents.touchUpInside)
         
-          UIView.animate(withDuration: 0.8) {
+          UIView.animate(withDuration: animationDuration) {
         
             if indexPath.row == 0 && connectOptions.isSelected {
                 cell.solveSubView.isHidden = false;
@@ -131,6 +141,11 @@ extension ConnectPopUpViewController: UITableViewDataSource {
                 cell.shareViaEmailButton.addTarget(self, action: #selector(self.shareVia(sender:)), for: UIControlEvents.touchUpInside)
                 cell.shareViaConferenceCallButton.addTarget(self, action: #selector(self.shareVia(sender:)), for: UIControlEvents.touchUpInside)
                 cell.selectDurationButton.addTarget(self, action: #selector(self.selectDuration(sender:)), for: UIControlEvents.touchUpInside)
+                
+                if self.selectTimerStr != nil {
+                    cell.selectDurationButton.setTitle(self.selectTimerStr, for: UIControlState.normal);
+                }
+                
                 
                 if self.isShareViaEmail {
                     cell.solveViaConferenceTopConstraint.constant = 50.0
@@ -163,7 +178,7 @@ extension ConnectPopUpViewController: UITableViewDataSource {
 //        connectOptions.isSelected = !connectOptions.isSelected
 //        let selectedIndexPath = IndexPath(row: sender.tag, section: 0)
         
-        UIView.animate(withDuration: 0.8) {
+        UIView.animate(withDuration: animationDuration) {
 //            self.popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
             self.popupTableView.reloadData()
         }
@@ -174,7 +189,7 @@ extension ConnectPopUpViewController: UITableViewDataSource {
     @objc func shareVia(sender: UIButton) {
         self.isShareViaEmail = !self.isShareViaEmail
         let selectedIndexPath = IndexPath(row: 0, section: 0)
-        UIView.animate(withDuration: 0.8) {
+        UIView.animate(withDuration: animationDuration) {
             self.popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
         }
     }
@@ -210,7 +225,7 @@ extension ConnectPopUpViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        UIView.animate(withDuration: 0.8) {
+        UIView.animate(withDuration: animationDuration) {
             self.updateHeightOfTableView()
         }
  

@@ -157,6 +157,7 @@ struct ReusableIdentifier {
     static let mobileInputCell              = "MobileNumberInput"
     static let addResponseTableCell         = "AddResponseTableViewCell"
     static let popUpTableCell               = "PopUpCell"
+    static let timerTableCell               = "TimerTableCell"
     static let selectImageCollectionCell    = "ImageSelectionCollectionViewCell"
 
 }

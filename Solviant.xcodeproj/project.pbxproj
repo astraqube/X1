@@ -20,6 +20,7 @@
 		38E6F21020CE6127003A4240 /* PopUpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F20C20CE6127003A4240 /* PopUpHeader.swift */; };
 		38E6F21120CE6127003A4240 /* PopUpHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F20D20CE6127003A4240 /* PopUpHeader.xib */; };
 		38E6F21420CE857F003A4240 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F21320CE857F003A4240 /* TimerView.swift */; };
+		38E6F21620CE8D2C003A4240 /* TimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F21520CE8D2C003A4240 /* TimerTableCell.swift */; };
 		5C6BD0E2AB5FE38382F6B048 /* Pods_Solviant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */; };
 		651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */; };
 		651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FE209716BB00D2C030 /* LinkedIn.swift */; };
@@ -118,6 +119,7 @@
 		38E6F20C20CE6127003A4240 /* PopUpHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpHeader.swift; sourceTree = "<group>"; };
 		38E6F20D20CE6127003A4240 /* PopUpHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpHeader.xib; sourceTree = "<group>"; };
 		38E6F21320CE857F003A4240 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		38E6F21520CE8D2C003A4240 /* TimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTableCell.swift; sourceTree = "<group>"; };
 		53EE2F80D76B4A835E4EDFBC /* Pods-Solviant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solviant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solviant/Pods-Solviant.debug.xcconfig"; sourceTree = "<group>"; };
 		59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solviant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				38E6F20A20CE6127003A4240 /* PopUpCell.swift */,
+				38E6F21520CE8D2C003A4240 /* TimerTableCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -1287,6 +1290,7 @@
 				65D16ED720B597C700AC5EF6 /* PostStatmentAccessory.swift in Sources */,
 				65C0202520864E7900971521 /* FileOperation.swift in Sources */,
 				659E9F9F20B866B000FD697A /* OTPBox.swift in Sources */,
+				38E6F21620CE8D2C003A4240 /* TimerTableCell.swift in Sources */,
 				65E39E3F20983DFF006087F4 /* ProfileViewController.swift in Sources */,
 				38E6F1F220CE6007003A4240 /* ImageSelectionCollectionViewCell.swift in Sources */,
 				65E389F820A03459002BA860 /* InterestTableViewCell.swift in Sources */,

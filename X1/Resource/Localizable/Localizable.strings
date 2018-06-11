@@ -73,5 +73,9 @@
 "solveViaConferenceCall" = "Solve via Conference Call";
 "selectDuration" = "Select Duration";
 
-
+// MARK: - timer options
+"5_minutes" = "5 minutes";
+"10_minutes" = "10 minutes";
+"15_minutes" = "15 minutes";
+"30_minutes" = "30 minutes";
 
