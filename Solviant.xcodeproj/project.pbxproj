@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38E6F21D20CEC618003A4240 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F21C20CEC618003A4240 /* NotificationViewController.swift */; };
+		38E6F22020CEC817003A4240 /* NotificationsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F21F20CEC817003A4240 /* NotificationsTableCell.swift */; };
 		5C6BD0E2AB5FE38382F6B048 /* Pods_Solviant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */; };
 		650D317A20CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D317920CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift */; };
 		650D318020CAB4A500A6E4AC /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D317F20CAB4A500A6E4AC /* Response.swift */; };
@@ -98,6 +100,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38E6F21C20CEC618003A4240 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		38E6F21F20CEC817003A4240 /* NotificationsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableCell.swift; sourceTree = "<group>"; };
 		53EE2F80D76B4A835E4EDFBC /* Pods-Solviant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solviant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solviant/Pods-Solviant.debug.xcconfig"; sourceTree = "<group>"; };
 		59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solviant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		650D317920CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +210,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38E6F21A20CEC5D3003A4240 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F21E20CEC7F4003A4240 /* Cell */,
+				38E6F21B20CEC5E3003A4240 /* Controller */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		38E6F21B20CEC5E3003A4240 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F21C20CEC618003A4240 /* NotificationViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38E6F21E20CEC7F4003A4240 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F21F20CEC817003A4240 /* NotificationsTableCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		650D317820CA2F5100A6E4AC /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +383,7 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				38E6F21A20CEC5D3003A4240 /* Notifications */,
 				650D317B20CA880F00A6E4AC /* UnresolvedStatement */,
 				655D79C620C68D2300B110B8 /* ViewResponse */,
 				6579697C20C00531009564E0 /* Respond */,
@@ -1192,8 +1222,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E6F22020CEC817003A4240 /* NotificationsTableCell.swift in Sources */,
 				650D318620CAC13B00A6E4AC /* RespondCardView.swift in Sources */,
 				65DB27E02085178D00938B61 /* Extension+String.swift in Sources */,
+				38E6F21D20CEC618003A4240 /* NotificationViewController.swift in Sources */,
 				65D3440F209C17680095749C /* SubcategoryCollectionViewCell.swift in Sources */,
 				6524EA8D20846B720035F2D2 /* AppDelegate.swift in Sources */,
 				65C0201A20864E6900971521 /* LocationManager.swift in Sources */,
