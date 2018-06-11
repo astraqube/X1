@@ -75,16 +75,7 @@ class ViewResponseViewController: UIViewController {
     // MARK: - Utility
     
     private func customizeUI() {
-        // Customize Button
-        updateButton.backgroundColor = .clear
-        updateButton.darkShadow(withRadius: 5)
-        updateButton.layer.borderWidth = 1.0
-        updateButton.layer.cornerRadius = 8
-        updateButton.layer.backgroundColor = UIColor.white.cgColor
-        updateButton.layer.sublayers?.last?.cornerRadius = 8.0
-        updateButton.layer.sublayers?.last?.masksToBounds = true
-        updateButton.layer.borderColor  = UIColor.lightTheme().cgColor
-        updateButton.setTitleColor(UIColor.darkTheme(), for: .normal)
+        // Customize UI for theme appearance
         
         cardCollectionView.backgroundColor = .clear
         cardCollectionView.darkShadow(withRadius: 10)

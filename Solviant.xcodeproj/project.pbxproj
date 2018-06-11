@@ -21,6 +21,7 @@
 		65157C10209AF11A009C1A1F /* ChooseInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65157C0F209AF11A009C1A1F /* ChooseInterestViewController.swift */; };
 		65157C13209B21C8009C1A1F /* Extension+Boolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65157C12209B21C8009C1A1F /* Extension+Boolean.swift */; };
 		65157C15209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65157C14209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift */; };
+		652034AC20CE7F78004E28AA /* SolviantButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652034AB20CE7F78004E28AA /* SolviantButton.swift */; };
 		6524EA8D20846B720035F2D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524EA8920846B720035F2D2 /* AppDelegate.swift */; };
 		6524EA8F20846B8C0035F2D2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524EA8E20846B8C0035F2D2 /* Constant.swift */; };
 		6524EA98208473600035F2D2 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524EA97208473600035F2D2 /* LandingViewController.swift */; };
@@ -113,6 +114,7 @@
 		65157C0F209AF11A009C1A1F /* ChooseInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewController.swift; sourceTree = "<group>"; };
 		65157C12209B21C8009C1A1F /* Extension+Boolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Boolean.swift"; sourceTree = "<group>"; };
 		65157C14209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		652034AB20CE7F78004E28AA /* SolviantButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolviantButton.swift; sourceTree = "<group>"; };
 		6524EA8920846B720035F2D2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6524EA8E20846B8C0035F2D2 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		6524EA97208473600035F2D2 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -321,6 +323,14 @@
 				65157C12209B21C8009C1A1F /* Extension+Boolean.swift */,
 			);
 			path = Boolean;
+			sourceTree = "<group>";
+		};
+		652034AA20CE7F5F004E28AA /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				652034AB20CE7F78004E28AA /* SolviantButton.swift */,
+			);
+			path = UIButton;
 			sourceTree = "<group>";
 		};
 		6524EA8220846B720035F2D2 /* Source */ = {
@@ -687,6 +697,7 @@
 		65B55E1C20ADEAA900231641 /* Subclass */ = {
 			isa = PBXGroup;
 			children = (
+				652034AA20CE7F5F004E28AA /* UIButton */,
 				659E9FA220B8715900FD697A /* UITextField */,
 				65B55E1D20ADEAA900231641 /* Label */,
 			);
@@ -1219,6 +1230,7 @@
 				650D318020CAB4A500A6E4AC /* Response.swift in Sources */,
 				65D34416209C5AEA0095749C /* LetsBeginViewController.swift in Sources */,
 				65E38A0220A0531D002BA860 /* Extension+UICollectionView.swift in Sources */,
+				652034AC20CE7F78004E28AA /* SolviantButton.swift in Sources */,
 				65C0202420864E7900971521 /* DBOperation.swift in Sources */,
 				651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */,
 				65C0203220864E8200971521 /* Extension+UIImageView.swift in Sources */,

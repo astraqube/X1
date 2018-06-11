@@ -52,15 +52,6 @@ class UnresolvedStatementViewController: UIViewController {
     // MARK: - Customize UI
     
     private func customizeUI() {
-        // Customize for theme appearance
-        
-        viewResponseButton.layer.borderWidth = 1.0
-        viewResponseButton.layer.borderColor = UIColor.lightTheme().cgColor
-        viewResponseButton.darkShadow(withRadius: 5)
-        viewResponseButton.layer.borderWidth = 1.0
-        viewResponseButton.layer.borderColor = UIColor.lightTheme().cgColor
-        viewResponseButton.darkShadow(withRadius: 5)
-        
         // Configure CollectionView Layout
         var size    = statementCollectionView.frame.size
         size.width  = size.width - 60

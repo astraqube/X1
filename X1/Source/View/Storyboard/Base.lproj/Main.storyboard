@@ -1237,7 +1237,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are all set!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcn-9I-W8d">
-                                        <rect key="frame" x="50.5" y="78" width="140.5" height="26"/>
+                                        <rect key="frame" x="50" y="78" width="140.5" height="26"/>
                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1382,7 +1382,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Statements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQX-P5-ojz">
-                                        <rect key="frame" x="144" y="14" width="88.5" height="20"/>
+                                        <rect key="frame" x="143.5" y="14" width="88.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1516,7 +1516,7 @@
                                             <constraint firstAttribute="height" constant="71" id="Wtr-DI-rBk"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4N-LL-UPn">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4N-LL-UPn" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                         <rect key="frame" x="112" y="100" width="150" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1614,7 +1614,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ben_parker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oK-FC-aid">
-                            <rect key="frame" x="108.5" y="11" width="84.5" height="20"/>
+                            <rect key="frame" x="108" y="11" width="84.5" height="20"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                             <color key="textColor" red="1" green="0.22745098039215686" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -1845,7 +1845,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iM0-tz-mAT">
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iM0-tz-mAT" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                 <rect key="frame" x="112.5" y="607" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cWd-4N-YFT"/>
@@ -2167,7 +2167,7 @@
                                                     <constraint firstAttribute="height" constant="71" id="qee-yO-6Ks"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQK-z4-kbQ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQK-z4-kbQ" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                                 <rect key="frame" x="96" y="100" width="150" height="40"/>
                                                 <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2333,7 +2333,7 @@
                                     <constraint firstItem="Gb6-em-278" firstAttribute="top" secondItem="3s5-es-Uoq" secondAttribute="top" constant="14" id="wqt-d0-Tsa"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzW-54-6fR">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzW-54-6fR" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                 <rect key="frame" x="115" y="568" width="145" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2343,7 +2343,7 @@
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="View Response" image="view">
+                                <state key="normal" title="View Response">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -2508,7 +2508,7 @@ Add a new one to get started </string>
                                     <constraint firstAttribute="height" constant="81" id="jx9-m9-iu4"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNY-GU-Rr2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNY-GU-Rr2" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                 <rect key="frame" x="110" y="607" width="155" height="40"/>
                                 <color key="backgroundColor" red="0.5282018141" green="0.68114827700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -2718,7 +2718,7 @@ Add a new one to get started </string>
                                 <rect key="frame" x="16" y="336" width="343" height="251"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(1 year of experience)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNG-vW-AjP">
-                                        <rect key="frame" x="106" y="210" width="132" height="33"/>
+                                        <rect key="frame" x="105.5" y="210" width="132" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="WLi-mh-mGg"/>
                                             <constraint firstAttribute="height" constant="33" id="oxZ-oK-xmi"/>
@@ -2806,7 +2806,7 @@ Add a new one to get started </string>
                                     <constraint firstItem="wzB-Eh-VTc" firstAttribute="top" secondItem="mMN-9M-aDZ" secondAttribute="top" id="upS-Og-pzj"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0m-j9-hn6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0m-j9-hn6" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                 <rect key="frame" x="110" y="607" width="155" height="40"/>
                                 <color key="backgroundColor" red="0.5282018141" green="0.68114827700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -3156,7 +3156,7 @@ Add a new one to get started </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEa-lJ-giM">
                                 <rect key="frame" x="0.0" y="558" width="375" height="60"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W13-PE-cwh">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W13-PE-cwh" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                         <rect key="frame" x="115" y="10" width="145" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3178,12 +3178,11 @@ Add a new one to get started </string>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zdn-JN-TNY">
                                         <rect key="frame" x="115" y="10" width="145" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6N-Gb-IV8">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6N-Gb-IV8" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="145" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
-                                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="New Statement" image="add">
+                                                <state key="normal" title="New Statement">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -3212,7 +3211,7 @@ Add a new one to get started </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6J-lP-7f6">
                                 <rect key="frame" x="6" y="558" width="363" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVg-he-J9I">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVg-he-J9I" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                         <rect key="frame" x="104" y="10" width="155" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -3246,7 +3245,7 @@ Add a new one to get started </string>
                                 <color key="color" red="0.0" green="0.40000000000000002" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No trending statements for you! Select some more interests to see what's trending on Solviant." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJv-GA-pde">
-                                <rect key="frame" x="20" y="303.5" width="335" height="60"/>
+                                <rect key="frame" x="20" y="304" width="335" height="60"/>
                                 <fontDescription key="fontDescription" name="Roboto-Italic" family="Roboto" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -3340,7 +3339,7 @@ Add a new one to get started </string>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0iT-17-BNU">
                                         <rect key="frame" x="41" y="20" width="293" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u23-jp-NCC">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u23-jp-NCC" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="139" height="40"/>
                                                 <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -3356,7 +3355,7 @@ Add a new one to get started </string>
                                                     <action selector="postStatement:" destination="3yr-iy-AwM" eventType="touchUpInside" id="wLA-iV-WcY"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEe-VT-ws7">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEe-VT-ws7" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                                 <rect key="frame" x="154" y="0.0" width="139" height="40"/>
                                                 <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -3394,8 +3393,10 @@ Add a new one to get started </string>
                                             <outlet property="delegate" destination="3yr-iy-AwM" id="QH9-Ls-p0u"/>
                                         </connections>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter new statement here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEI-jj-5Kx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEI-jj-5Kx">
                                         <rect key="frame" x="10" y="10" width="203.5" height="20"/>
+                                        <mutableString key="text">Enter new statement here...  Help: A problem statment should not be a question. 
+e.g. "Why do my knee hurts?"  is not a valid problem statement.  A problem statement should be like "My knee hurts.".   When you post a problem statement, our experts views them and help you taking decisions for your problem.</mutableString>
                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                         <color key="textColor" red="0.33333333333333331" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3537,6 +3538,7 @@ Add a new one to get started </string>
                                     <constraint firstAttribute="trailing" secondItem="JSF-mv-Ji4" secondAttribute="trailing" constant="4" id="Ata-YW-qCv"/>
                                     <constraint firstAttribute="bottom" secondItem="JSF-mv-Ji4" secondAttribute="bottom" constant="4" id="HXU-sY-poE"/>
                                     <constraint firstItem="kyH-j7-n1k" firstAttribute="top" secondItem="9Ez-c5-oNf" secondAttribute="bottom" constant="4" id="Ico-2W-bGL"/>
+                                    <constraint firstAttribute="trailing" secondItem="EEI-jj-5Kx" secondAttribute="trailing" constant="10" id="JhB-U9-hHW"/>
                                     <constraint firstItem="9Ez-c5-oNf" firstAttribute="top" secondItem="IyW-54-1D1" secondAttribute="top" constant="4" id="SNv-0N-I2v"/>
                                     <constraint firstAttribute="trailing" secondItem="kyH-j7-n1k" secondAttribute="trailing" constant="4" id="UI7-qO-z7o"/>
                                     <constraint firstAttribute="trailing" secondItem="9Ez-c5-oNf" secondAttribute="trailing" constant="4" id="YJz-PR-m3c"/>
@@ -3770,7 +3772,7 @@ Add a new one to get started </string>
                             </constraints>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rookie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gB-or-ZMn">
-                            <rect key="frame" x="94" y="95.5" width="52.5" height="20"/>
+                            <rect key="frame" x="94.5" y="95.5" width="52.5" height="20"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -3817,7 +3819,6 @@ Add a new one to get started </string>
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="24" height="24"/>
         <image name="add_response" width="30" height="30"/>
         <image name="app_icon" width="193" height="193"/>
         <image name="app_text" width="127" height="20"/>
@@ -3851,6 +3852,6 @@ Add a new one to get started </string>
         <image name="view" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bzv-rq-pR1"/>
+        <segue reference="lwB-rT-S0V"/>
     </inferredMetricsTieBreakers>
 </document>
