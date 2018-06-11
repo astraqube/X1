@@ -154,12 +154,18 @@ extension ConnectPopUpViewController: UITableViewDataSource {
     
     //MARK: - table action
     @objc func selectCheckbox(sender: UIButton) {
+        
+        for option in options {
+           option.isSelected = false
+        }
         let connectOptions = options[sender.tag]
-        connectOptions.isSelected = !connectOptions.isSelected
-        let selectedIndexPath = IndexPath(row: sender.tag, section: 0)
+        connectOptions.isSelected = true
+//        connectOptions.isSelected = !connectOptions.isSelected
+//        let selectedIndexPath = IndexPath(row: sender.tag, section: 0)
         
         UIView.animate(withDuration: 0.8) {
-            self.popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
+//            self.popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
+            self.popupTableView.reloadData()
         }
         
 
