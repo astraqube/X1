@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		38E6F1EF20CE5E86003A4240 /* MeetingFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */; };
+		38E6F1F220CE6007003A4240 /* ImageSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */; };
+		38E6F1F720CE6093003A4240 /* ConnectOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F420CE6093003A4240 /* ConnectOptions.swift */; };
+		38E6F1F820CE6093003A4240 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F620CE6093003A4240 /* Response.swift */; };
+		38E6F1FF20CE60ED003A4240 /* UnresolvedStatementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1FB20CE60EC003A4240 /* UnresolvedStatementViewController.swift */; };
+		38E6F20020CE60ED003A4240 /* RespondCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1FD20CE60EC003A4240 /* RespondCardView.swift */; };
+		38E6F20120CE60ED003A4240 /* RespondCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F1FE20CE60EC003A4240 /* RespondCardView.xib */; };
+		38E6F20520CE6105003A4240 /* StatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F20420CE6105003A4240 /* StatementDetailViewController.swift */; };
+		38E6F20E20CE6127003A4240 /* ConnectPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F20820CE6127003A4240 /* ConnectPopUpViewController.swift */; };
+		38E6F20F20CE6127003A4240 /* PopUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F20A20CE6127003A4240 /* PopUpCell.swift */; };
+		38E6F21020CE6127003A4240 /* PopUpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F20C20CE6127003A4240 /* PopUpHeader.swift */; };
+		38E6F21120CE6127003A4240 /* PopUpHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F20D20CE6127003A4240 /* PopUpHeader.xib */; };
 		5C6BD0E2AB5FE38382F6B048 /* Pods_Solviant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */; };
 		651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */; };
 		651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FE209716BB00D2C030 /* LinkedIn.swift */; };
@@ -94,6 +105,17 @@
 
 /* Begin PBXFileReference section */
 		38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetingFlow.storyboard; sourceTree = "<group>"; };
+		38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		38E6F1F420CE6093003A4240 /* ConnectOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectOptions.swift; sourceTree = "<group>"; };
+		38E6F1F620CE6093003A4240 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		38E6F1FB20CE60EC003A4240 /* UnresolvedStatementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnresolvedStatementViewController.swift; sourceTree = "<group>"; };
+		38E6F1FD20CE60EC003A4240 /* RespondCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RespondCardView.swift; sourceTree = "<group>"; };
+		38E6F1FE20CE60EC003A4240 /* RespondCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RespondCardView.xib; sourceTree = "<group>"; };
+		38E6F20420CE6105003A4240 /* StatementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatementDetailViewController.swift; sourceTree = "<group>"; };
+		38E6F20820CE6127003A4240 /* ConnectPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectPopUpViewController.swift; sourceTree = "<group>"; };
+		38E6F20A20CE6127003A4240 /* PopUpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpCell.swift; sourceTree = "<group>"; };
+		38E6F20C20CE6127003A4240 /* PopUpHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpHeader.swift; sourceTree = "<group>"; };
+		38E6F20D20CE6127003A4240 /* PopUpHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpHeader.xib; sourceTree = "<group>"; };
 		53EE2F80D76B4A835E4EDFBC /* Pods-Solviant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solviant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solviant/Pods-Solviant.debug.xcconfig"; sourceTree = "<group>"; };
 		59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solviant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +218,107 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38E6F1F020CE6006003A4240 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		38E6F1F320CE6093003A4240 /* ConnectOptions */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F1F420CE6093003A4240 /* ConnectOptions.swift */,
+			);
+			path = ConnectOptions;
+			sourceTree = "<group>";
+		};
+		38E6F1F520CE6093003A4240 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F1F620CE6093003A4240 /* Response.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		38E6F1F920CE60EC003A4240 /* UnresolvedStatement */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F1FA20CE60EC003A4240 /* Controller */,
+				38E6F1FC20CE60EC003A4240 /* ResponseCardView */,
+			);
+			path = UnresolvedStatement;
+			sourceTree = "<group>";
+		};
+		38E6F1FA20CE60EC003A4240 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F1FB20CE60EC003A4240 /* UnresolvedStatementViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38E6F1FC20CE60EC003A4240 /* ResponseCardView */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F1FD20CE60EC003A4240 /* RespondCardView.swift */,
+				38E6F1FE20CE60EC003A4240 /* RespondCardView.xib */,
+			);
+			path = ResponseCardView;
+			sourceTree = "<group>";
+		};
+		38E6F20220CE6105003A4240 /* StatementDetail */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F20320CE6105003A4240 /* Controller */,
+			);
+			path = StatementDetail;
+			sourceTree = "<group>";
+		};
+		38E6F20320CE6105003A4240 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F20420CE6105003A4240 /* StatementDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38E6F20620CE6127003A4240 /* ConnectPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F20720CE6127003A4240 /* Controller */,
+				38E6F20920CE6127003A4240 /* TableCell */,
+				38E6F20B20CE6127003A4240 /* TableViewHeader */,
+			);
+			path = ConnectPopUp;
+			sourceTree = "<group>";
+		};
+		38E6F20720CE6127003A4240 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F20820CE6127003A4240 /* ConnectPopUpViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38E6F20920CE6127003A4240 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F20A20CE6127003A4240 /* PopUpCell.swift */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		38E6F20B20CE6127003A4240 /* TableViewHeader */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F20C20CE6127003A4240 /* PopUpHeader.swift */,
+				38E6F20D20CE6127003A4240 /* PopUpHeader.xib */,
+			);
+			path = TableViewHeader;
+			sourceTree = "<group>";
+		};
 		651051F92096F4EA00D2C030 /* SelectRole */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +417,9 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				38E6F20620CE6127003A4240 /* ConnectPopUp */,
+				38E6F20220CE6105003A4240 /* StatementDetail */,
+				38E6F1F920CE60EC003A4240 /* UnresolvedStatement */,
 				655D79C620C68D2300B110B8 /* ViewResponse */,
 				6579697C20C00531009564E0 /* Respond */,
 				65E47E8D20BBB9B400CAC575 /* OpenStatement */,
@@ -335,6 +461,8 @@
 		6524EA8620846B720035F2D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				38E6F1F320CE6093003A4240 /* ConnectOptions */,
+				38E6F1F520CE6093003A4240 /* Response */,
 				659E9FA520B88D2300FD697A /* Statement */,
 				65D34411209C2F890095749C /* Category */,
 				65C0203520864FFD00971521 /* User */,
@@ -514,6 +642,7 @@
 		657318EC20AF2A2500089B16 /* PostStatement */ = {
 			isa = PBXGroup;
 			children = (
+				38E6F1F020CE6006003A4240 /* CollectionViewCell */,
 				659E9F9720B80FD700FD697A /* Controller */,
 				659E9F9920B80FD700FD697A /* TableCell */,
 			);
@@ -1035,6 +1164,7 @@
 				65C0203A208653AB00971521 /* solviant.db in Resources */,
 				6524EAA6208475A40035F2D2 /* Roboto-Regular.ttf in Resources */,
 				659E9FA120B866C300FD697A /* OTPBox.xib in Resources */,
+				38E6F20120CE60ED003A4240 /* RespondCardView.xib in Resources */,
 				65D34410209C17680095749C /* SubcategoryCollectionViewCell.xib in Resources */,
 				65DB27E32085198D00938B61 /* Localizable.strings in Resources */,
 				6524EAA9208475A40035F2D2 /* Roboto-Italic.ttf in Resources */,
@@ -1052,6 +1182,7 @@
 				65E389EF20A03377002BA860 /* PickInterest.xib in Resources */,
 				65ABA3D720846A0E000A5B42 /* Assets.xcassets in Resources */,
 				65E47E9720BBE03600CAC575 /* StatementCardView.xib in Resources */,
+				38E6F21120CE6127003A4240 /* PopUpHeader.xib in Resources */,
 				65ABA3D520846A0D000A5B42 /* Main.storyboard in Resources */,
 				65E39E4B20984ED1006087F4 /* KeyboardAccessory.xib in Resources */,
 			);
@@ -1133,6 +1264,7 @@
 				65D3440F209C17680095749C /* SubcategoryCollectionViewCell.swift in Sources */,
 				6524EA8D20846B720035F2D2 /* AppDelegate.swift in Sources */,
 				65C0201A20864E6900971521 /* LocationManager.swift in Sources */,
+				38E6F20F20CE6127003A4240 /* PopUpCell.swift in Sources */,
 				65C0203420864E8200971521 /* Extension+Date.swift in Sources */,
 				653BDFA82084B92000B3CAC7 /* SignUpViewController.swift in Sources */,
 				659E9F9C20B80FF000FD697A /* PostUrgencyTableViewCell.swift in Sources */,
@@ -1140,19 +1272,23 @@
 				6579698020C0056B009564E0 /* RespondViewController.swift in Sources */,
 				65E47E9C20BC2F1400CAC575 /* CardOverlayView.swift in Sources */,
 				65D34413209C2F990095749C /* Category.swift in Sources */,
+				38E6F1FF20CE60ED003A4240 /* UnresolvedStatementViewController.swift in Sources */,
 				65D16ED720B597C700AC5EF6 /* PostStatmentAccessory.swift in Sources */,
 				65C0202520864E7900971521 /* FileOperation.swift in Sources */,
 				659E9F9F20B866B000FD697A /* OTPBox.swift in Sources */,
 				65E39E3F20983DFF006087F4 /* ProfileViewController.swift in Sources */,
+				38E6F1F220CE6007003A4240 /* ImageSelectionCollectionViewCell.swift in Sources */,
 				65E389F820A03459002BA860 /* InterestTableViewCell.swift in Sources */,
 				65C0201B20864E6900971521 /* AutoLogin.swift in Sources */,
 				65D3440A209C14680095749C /* Subcategory.swift in Sources */,
 				651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */,
 				65B55E1B20ADBF3E00231641 /* SubcategoryContainer.swift in Sources */,
 				65E47E9520BBE02200CAC575 /* StatementCardView.swift in Sources */,
+				38E6F21020CE6127003A4240 /* PopUpHeader.swift in Sources */,
 				65157C13209B21C8009C1A1F /* Extension+Boolean.swift in Sources */,
 				6524EA8F20846B8C0035F2D2 /* Constant.swift in Sources */,
 				657318EB20AF05F200089B16 /* RatingOverviewTableViewCell.swift in Sources */,
+				38E6F20E20CE6127003A4240 /* ConnectPopUpViewController.swift in Sources */,
 				65C0203020864E8200971521 /* Extenstion+UIView.swift in Sources */,
 				6524EA98208473600035F2D2 /* LandingViewController.swift in Sources */,
 				6512E740209085D400D2C15D /* UITextField+fixCaretPosition.swift in Sources */,
@@ -1161,6 +1297,8 @@
 				65E39E4320983E2E006087F4 /* ProfileTextFieldTableViewCell.swift in Sources */,
 				65157C10209AF11A009C1A1F /* ChooseInterestViewController.swift in Sources */,
 				65B55E1920AD99F900231641 /* RateInterestViewController.swift in Sources */,
+				38E6F1F820CE6093003A4240 /* Response.swift in Sources */,
+				38E6F1F720CE6093003A4240 /* ConnectOptions.swift in Sources */,
 				65D34416209C5AEA0095749C /* LetsBeginViewController.swift in Sources */,
 				65E38A0220A0531D002BA860 /* Extension+UICollectionView.swift in Sources */,
 				65C0202420864E7900971521 /* DBOperation.swift in Sources */,
@@ -1170,6 +1308,7 @@
 				65E0DA0C20A607F0005AE0E5 /* QuestionCollectionViewCell.swift in Sources */,
 				659E9F9A20B80FD700FD697A /* PostStatementViewController.swift in Sources */,
 				655D79C820C68D3600B110B8 /* ViewResponseViewController.swift in Sources */,
+				38E6F20520CE6105003A4240 /* StatementDetailViewController.swift in Sources */,
 				658C23CB20A5A04E001E8A74 /* HomeTabBarViewController.swift in Sources */,
 				65157C15209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift in Sources */,
 				6524EAAD208480BD0035F2D2 /* SignInViewController.swift in Sources */,
@@ -1185,6 +1324,7 @@
 				65E47E9320BBDF9300CAC575 /* OpenStatementViewController.swift in Sources */,
 				65B55E1F20ADEAB700231641 /* PaddedLabel.swift in Sources */,
 				653BDFA6208496EC00B3CAC7 /* Extesnion+UIColor.swift in Sources */,
+				38E6F20020CE60ED003A4240 /* RespondCardView.swift in Sources */,
 				6579698220C00582009564E0 /* AddResponseTableViewCell.swift in Sources */,
 				659E9FA420B8716B00FD697A /* OTPTextField.swift in Sources */,
 			);
