@@ -55,7 +55,7 @@ class StatementCardView: UIView {
 
     func setCard(for statement: Statement) {
         // Set data for card
-        usernameLabel.text          = statement.name.capitalized
+        usernameLabel.text          = statement.name?.capitalized
         locationLabel.text          = statement.city?.capitalized
         dateTimeLabel.text          = (statement.time?.colloquial(to: Date()))?.capitalized
         statementTextLabel.text     = statement.problemText

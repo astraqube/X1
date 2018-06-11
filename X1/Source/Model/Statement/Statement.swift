@@ -43,4 +43,18 @@ class Statement: NSObject {
         }
 
     }
+    
+    init?(my statements: Dictionary<String, Any>) {
+        guard let id = statements[PostStatementKey.identifier] as? String,
+            let text = statements[PostStatementKey.statement] as? String else {
+                return
+        }
+        
+        identifier   = id
+        problemText  = text
+        tags         = statements[PostStatementKey.tags] as? Array
+        if let dateTime = statements[PostStatementKey.createdAt] as? String {
+            time = dateTime.dateFromISOString()
+        }
+    }
 }

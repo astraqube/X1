@@ -61,7 +61,9 @@ class RespondViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-
+    
+    // MARK: - Utility
+    
     private func customizeUI() {
         // Set tableFooterView to remove extra lines
         responseTableView.tableFooterView = UIView.init(frame: CGRect.zero)
@@ -130,7 +132,10 @@ class RespondViewController: UIViewController {
         guard !activityIndicator.isAnimating else {
             return
         }
-        addQuestion(sender)
+        let text = questionTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !text.isEmpty {
+            addQuestion(sender)
+        }
         if responses.count > 0 {
             // Post the response
             let parameters = [PostStatementKey.response: responses]
@@ -156,6 +161,9 @@ class RespondViewController: UIViewController {
             }
             questionTextView.text = nil
         }
+        else {
+            questionTextView.shake()
+        }
         
     }
     
@@ -175,11 +183,13 @@ extension RespondViewController: UITextViewDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             responseTableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            setMaxHeightForTextView(with: keyboardSize.height)
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         responseTableView.contentInset = UIEdgeInsets.zero
+        setMaxHeightForTextView(with: 0)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -195,6 +205,12 @@ extension RespondViewController: UITextViewDelegate {
     }
     
     @objc func scrollTableView() {
+    }
+    
+    private func setMaxHeightForTextView(with keyboardHeight:CGFloat) {
+        // Set maximum height for text view
+        let availableHeight = (self.view.frame.size.height - questionTextView.frame.origin.y) - keyboardHeight
+        questionTextView.maxHeight =  availableHeight > 200 ? 200 : availableHeight
     }
     
 }

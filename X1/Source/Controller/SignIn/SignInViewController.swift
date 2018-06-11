@@ -52,6 +52,10 @@ class SignInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+    }
+    
     // MARK: - IB Action
     
     @IBAction func goBack(_ sender: Any) {

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5C6BD0E2AB5FE38382F6B048 /* Pods_Solviant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */; };
+		650D317A20CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D317920CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift */; };
+		650D318020CAB4A500A6E4AC /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D317F20CAB4A500A6E4AC /* Response.swift */; };
+		650D318420CAC12C00A6E4AC /* UnresolvedStatementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D318320CAC12C00A6E4AC /* UnresolvedStatementViewController.swift */; };
+		650D318620CAC13B00A6E4AC /* RespondCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D318520CAC13B00A6E4AC /* RespondCardView.swift */; };
+		650D318820CAC15300A6E4AC /* RespondCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 650D318720CAC15200A6E4AC /* RespondCardView.xib */; };
 		651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */; };
 		651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FE209716BB00D2C030 /* LinkedIn.swift */; };
 		6512E73F209085D400D2C15D /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512E73C209085D400D2C15D /* SkyFloatingLabelTextField.swift */; };
@@ -94,6 +99,11 @@
 /* Begin PBXFileReference section */
 		53EE2F80D76B4A835E4EDFBC /* Pods-Solviant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solviant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solviant/Pods-Solviant.debug.xcconfig"; sourceTree = "<group>"; };
 		59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solviant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		650D317920CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		650D317F20CAB4A500A6E4AC /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		650D318320CAC12C00A6E4AC /* UnresolvedStatementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnresolvedStatementViewController.swift; sourceTree = "<group>"; };
+		650D318520CAC13B00A6E4AC /* RespondCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondCardView.swift; sourceTree = "<group>"; };
+		650D318720CAC15200A6E4AC /* RespondCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RespondCardView.xib; sourceTree = "<group>"; };
 		651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewController.swift; sourceTree = "<group>"; };
 		651051FE209716BB00D2C030 /* LinkedIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedIn.swift; sourceTree = "<group>"; };
 		651052002097174600D2C030 /* X1-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "X1-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -194,6 +204,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		650D317820CA2F5100A6E4AC /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				650D317920CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		650D317B20CA880F00A6E4AC /* UnresolvedStatement */ = {
+			isa = PBXGroup;
+			children = (
+				650D318220CAC12C00A6E4AC /* Controller */,
+				650D318120CAC12C00A6E4AC /* ResponseCardView */,
+			);
+			path = UnresolvedStatement;
+			sourceTree = "<group>";
+		};
+		650D317E20CAB49200A6E4AC /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				650D317F20CAB4A500A6E4AC /* Response.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		650D318120CAC12C00A6E4AC /* ResponseCardView */ = {
+			isa = PBXGroup;
+			children = (
+				650D318520CAC13B00A6E4AC /* RespondCardView.swift */,
+				650D318720CAC15200A6E4AC /* RespondCardView.xib */,
+			);
+			path = ResponseCardView;
+			sourceTree = "<group>";
+		};
+		650D318220CAC12C00A6E4AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				650D318320CAC12C00A6E4AC /* UnresolvedStatementViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		651051F92096F4EA00D2C030 /* SelectRole */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +344,7 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				650D317B20CA880F00A6E4AC /* UnresolvedStatement */,
 				655D79C620C68D2300B110B8 /* ViewResponse */,
 				6579697C20C00531009564E0 /* Respond */,
 				65E47E8D20BBB9B400CAC575 /* OpenStatement */,
@@ -333,6 +386,7 @@
 		6524EA8620846B720035F2D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				650D317E20CAB49200A6E4AC /* Response */,
 				659E9FA520B88D2300FD697A /* Statement */,
 				65D34411209C2F890095749C /* Category */,
 				65C0203520864FFD00971521 /* User */,
@@ -511,6 +565,7 @@
 		657318EC20AF2A2500089B16 /* PostStatement */ = {
 			isa = PBXGroup;
 			children = (
+				650D317820CA2F5100A6E4AC /* CollectionViewCell */,
 				659E9F9720B80FD700FD697A /* Controller */,
 				659E9F9920B80FD700FD697A /* TableCell */,
 			);
@@ -1043,6 +1098,7 @@
 				6524EAAB208475A40035F2D2 /* Roboto-Thin.ttf in Resources */,
 				6524EAA8208475A40035F2D2 /* Roboto-BoldItalic.ttf in Resources */,
 				65ABA3DA20846A0E000A5B42 /* LaunchScreen.storyboard in Resources */,
+				650D318820CAC15300A6E4AC /* RespondCardView.xib in Resources */,
 				6524EAA5208475A40035F2D2 /* Roboto-Light.ttf in Resources */,
 				6524EAA7208475A40035F2D2 /* Roboto-MediumItalic.ttf in Resources */,
 				65E389EF20A03377002BA860 /* PickInterest.xib in Resources */,
@@ -1125,6 +1181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650D318620CAC13B00A6E4AC /* RespondCardView.swift in Sources */,
 				65DB27E02085178D00938B61 /* Extension+String.swift in Sources */,
 				65D3440F209C17680095749C /* SubcategoryCollectionViewCell.swift in Sources */,
 				6524EA8D20846B720035F2D2 /* AppDelegate.swift in Sources */,
@@ -1140,6 +1197,7 @@
 				65C0202520864E7900971521 /* FileOperation.swift in Sources */,
 				659E9F9F20B866B000FD697A /* OTPBox.swift in Sources */,
 				65E39E3F20983DFF006087F4 /* ProfileViewController.swift in Sources */,
+				650D317A20CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift in Sources */,
 				65E389F820A03459002BA860 /* InterestTableViewCell.swift in Sources */,
 				65C0201B20864E6900971521 /* AutoLogin.swift in Sources */,
 				65D3440A209C14680095749C /* Subcategory.swift in Sources */,
@@ -1155,8 +1213,10 @@
 				65E389ED20A03361002BA860 /* PickInterest.swift in Sources */,
 				65E39E4520983E3B006087F4 /* ProfileDoneButtonTableViewCell.swift in Sources */,
 				65E39E4320983E2E006087F4 /* ProfileTextFieldTableViewCell.swift in Sources */,
+				650D318420CAC12C00A6E4AC /* UnresolvedStatementViewController.swift in Sources */,
 				65157C10209AF11A009C1A1F /* ChooseInterestViewController.swift in Sources */,
 				65B55E1920AD99F900231641 /* RateInterestViewController.swift in Sources */,
+				650D318020CAB4A500A6E4AC /* Response.swift in Sources */,
 				65D34416209C5AEA0095749C /* LetsBeginViewController.swift in Sources */,
 				65E38A0220A0531D002BA860 /* Extension+UICollectionView.swift in Sources */,
 				65C0202420864E7900971521 /* DBOperation.swift in Sources */,
