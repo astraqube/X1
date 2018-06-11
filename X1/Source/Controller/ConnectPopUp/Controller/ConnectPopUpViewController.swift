@@ -115,32 +115,35 @@ extension ConnectPopUpViewController: UITableViewDataSource {
         cell.checkBoxButton.tag = indexPath.row;
         cell.checkBoxButton.addTarget(self, action: #selector(selectCheckbox(sender:)), for: UIControlEvents.touchUpInside)
         
-        if indexPath.row == 0 && connectOptions.isSelected {
-            cell.solveSubView.isHidden = false;
-            cell.shareViaEmailButton.isSelected = self.isShareViaEmail;
-            cell.shareViaConferenceCallButton.isSelected = !self.isShareViaEmail;
-            
-//            cell.shareViaEmailButton.tag = 0
-//            cell.shareViaConferenceCallButton.tag = 1
-            cell.shareViaEmailButton.addTarget(self, action: #selector(shareVia(sender:)), for: UIControlEvents.touchUpInside)
-            cell.shareViaConferenceCallButton.addTarget(self, action: #selector(shareVia(sender:)), for: UIControlEvents.touchUpInside)
+          UIView.animate(withDuration: 0.8) {
+        
+            if indexPath.row == 0 && connectOptions.isSelected {
+                cell.solveSubView.isHidden = false;
+                cell.shareViaEmailButton.isSelected = self.isShareViaEmail;
+                cell.shareViaConferenceCallButton.isSelected = !self.isShareViaEmail;
+                
+    //            cell.shareViaEmailButton.tag = 0
+    //            cell.shareViaConferenceCallButton.tag = 1
+                cell.shareViaEmailButton.addTarget(self, action: #selector(self.shareVia(sender:)), for: UIControlEvents.touchUpInside)
+                cell.shareViaConferenceCallButton.addTarget(self, action: #selector(self.shareVia(sender:)), for: UIControlEvents.touchUpInside)
 
-            
-            if self.isShareViaEmail {
-                cell.solveViaConferenceTopConstraint.constant = 50.0
-                cell.selectDurationTopConstraint.constant = 10.0
-               cell.shareViaEmailView.backgroundColor = UIColor.lightGrayTheme()
+                
+                if self.isShareViaEmail {
+                    cell.solveViaConferenceTopConstraint.constant = 50.0
+                    cell.selectDurationTopConstraint.constant = 10.0
+                   cell.shareViaEmailView.backgroundColor = UIColor.lightGrayTheme()
+                }
+                else{
+                    cell.solveViaConferenceTopConstraint.constant = 10.0
+                    cell.selectDurationTopConstraint.constant = 50.0
+                    cell.shareViaConferenceView.backgroundColor = UIColor.lightGrayTheme()
+
+                }
+                cell.contentView.layoutIfNeeded()
             }
             else{
-                cell.solveViaConferenceTopConstraint.constant = 10.0
-                cell.selectDurationTopConstraint.constant = 50.0
-                cell.shareViaConferenceView.backgroundColor = UIColor.lightGrayTheme()
-
+                cell.solveSubView.isHidden = true;
             }
-            cell.contentView.layoutIfNeeded()
-        }
-        else{
-            cell.solveSubView.isHidden = true;
         }
         
     }
@@ -150,13 +153,20 @@ extension ConnectPopUpViewController: UITableViewDataSource {
         let connectOptions = options[sender.tag]
         connectOptions.isSelected = !connectOptions.isSelected
         let selectedIndexPath = IndexPath(row: sender.tag, section: 0)
-        popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
+        
+        UIView.animate(withDuration: 0.8) {
+            self.popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
+        }
+        
+
     }
     
     @objc func shareVia(sender: UIButton) {
         self.isShareViaEmail = !self.isShareViaEmail
         let selectedIndexPath = IndexPath(row: 0, section: 0)
-        popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
+        UIView.animate(withDuration: 0.8) {
+            self.popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
+        }
     }
     
     
@@ -172,9 +182,11 @@ extension ConnectPopUpViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+
+        UIView.animate(withDuration: 0.8) {
             self.updateHeightOfTableView()
         }
+ 
         let connectOptions = options[indexPath.row]
         if indexPath.row == 0 && connectOptions.isSelected{
             return CGFloat(cellHeight + expandedHeightOfCell)
@@ -187,6 +199,13 @@ extension ConnectPopUpViewController: UITableViewDelegate {
         return CGFloat(popupTableHeaderHeight);
     }
     
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+//        UIView.animate(withDuration: 0.4) {
+//            cell.transform = CGAffineTransform.identity
+//        }
+//    }
+
     func updateHeightOfTableView(){
          let connectOptions = options[0]
         if connectOptions.isSelected {

@@ -98,9 +98,12 @@ class HomeViewController: UIViewController {
     
     @IBAction func openMenu(_ sender: Any) {
         // Log out user temporarily
-        user.delete()
-        let landingViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.landing)
-        navigationController?.setViewControllers([landingViewController!], animated: true)
+//        user.delete()
+//        let landingViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.landing)
+//        navigationController?.setViewControllers([landingViewController!], animated: true)
+        
+        self.moveOnStatementDetail()
+        
     }
     
     // MARK: - Navigation
@@ -114,6 +117,17 @@ class HomeViewController: UIViewController {
             destinationController.user = user
         }
     }
+    
+    
+    //MARK: - This is temporary whenever storybord link with main it will remove from code
+    
+    func moveOnStatementDetail(){
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "MeetingFlow", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: StatementDetailViewController.self)) as! StatementDetailViewController
+        self.present(nextViewController, animated:true, completion:nil)
+    }
+    
     
 }
 
