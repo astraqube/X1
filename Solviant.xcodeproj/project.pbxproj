@@ -1502,7 +1502,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H6ZNMT32K7;
+				DEVELOPMENT_TEAM = GWZNM9W625;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/X1/Source/Library/LinkedIn",
@@ -1531,7 +1531,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H6ZNMT32K7;
+				DEVELOPMENT_TEAM = GWZNM9W625;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/X1/Source/Library/LinkedIn",

@@ -142,9 +142,7 @@ extension ConnectPopUpViewController: UITableViewDataSource {
                 cell.shareViaConferenceCallButton.addTarget(self, action: #selector(self.shareVia(sender:)), for: UIControlEvents.touchUpInside)
                 cell.selectDurationButton.addTarget(self, action: #selector(self.selectDuration(sender:)), for: UIControlEvents.touchUpInside)
                 
-                if self.selectTimerStr != nil {
-                    cell.selectDurationButton.setTitle(self.selectTimerStr, for: UIControlState.normal);
-                }
+                cell.selectDurationButton.setTitle(self.selectTimerStr, for: UIControlState.normal);
                 
                 
                 if self.isShareViaEmail {
@@ -206,7 +204,7 @@ extension ConnectPopUpViewController: UITableViewDataSource {
             .arrowSize(CGSize.init(width: 10, height: 10))
             ] as [PopoverOption]
         popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
-        //                warningView.frame = CGRect.init(x: 0, y: 0, width: 240, height: 128)
+        timerView.frame = CGRect.init(x: 0, y: 0, width: 170, height: 128)
         popover?.show(timerView, fromView: sender)
         
         
