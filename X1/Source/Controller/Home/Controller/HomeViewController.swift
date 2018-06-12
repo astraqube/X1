@@ -124,9 +124,17 @@ class HomeViewController: UIViewController {
     
     func moveOnStatementDetail(){
         
+        
         let storyBoard : UIStoryboard = UIStoryboard(name: "MeetingFlow", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: StatementDetailViewController.self)) as! StatementDetailViewController
-        self.present(nextViewController, animated:true, completion:nil)
+        var nextViewController : UIViewController?
+        if user.type == .principal {
+            nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: PrincipalStatementDetailViewController.self)) as! PrincipalStatementDetailViewController
+        }
+        else{
+            nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: StatementDetailViewController.self)) as! StatementDetailViewController
+        }
+        self.present(nextViewController!, animated:true, completion:nil)
+
     }
     
     

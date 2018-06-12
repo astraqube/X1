@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38BF6C6120CFCD3D006417AD /* PrincipalStatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */; };
 		38E6F1EF20CE5E86003A4240 /* MeetingFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */; };
 		38E6F1F220CE6007003A4240 /* ImageSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */; };
 		38E6F1F720CE6093003A4240 /* ConnectOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F420CE6093003A4240 /* ConnectOptions.swift */; };
@@ -107,6 +108,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalStatementDetailViewController.swift; sourceTree = "<group>"; };
 		38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetingFlow.storyboard; sourceTree = "<group>"; };
 		38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		38E6F1F420CE6093003A4240 /* ConnectOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectOptions.swift; sourceTree = "<group>"; };
@@ -224,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38BF6C5F20CFCCEC006417AD /* PrincipalController */ = {
+			isa = PBXGroup;
+			children = (
+				38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */,
+			);
+			path = PrincipalController;
+			sourceTree = "<group>";
+		};
 		38E6F1F020CE6006003A4240 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,17 +287,18 @@
 		38E6F20220CE6105003A4240 /* StatementDetail */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F20320CE6105003A4240 /* Controller */,
+				38BF6C5F20CFCCEC006417AD /* PrincipalController */,
+				38E6F20320CE6105003A4240 /* ResourceController */,
 			);
 			path = StatementDetail;
 			sourceTree = "<group>";
 		};
-		38E6F20320CE6105003A4240 /* Controller */ = {
+		38E6F20320CE6105003A4240 /* ResourceController */ = {
 			isa = PBXGroup;
 			children = (
 				38E6F20420CE6105003A4240 /* StatementDetailViewController.swift */,
 			);
-			path = Controller;
+			path = ResourceController;
 			sourceTree = "<group>";
 		};
 		38E6F20620CE6127003A4240 /* ConnectPopUp */ = {
@@ -1327,6 +1338,7 @@
 				38E6F1F820CE6093003A4240 /* Response.swift in Sources */,
 				38E6F1F720CE6093003A4240 /* ConnectOptions.swift in Sources */,
 				65D34416209C5AEA0095749C /* LetsBeginViewController.swift in Sources */,
+				38BF6C6120CFCD3D006417AD /* PrincipalStatementDetailViewController.swift in Sources */,
 				65E38A0220A0531D002BA860 /* Extension+UICollectionView.swift in Sources */,
 				65C0202420864E7900971521 /* DBOperation.swift in Sources */,
 				651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */,
