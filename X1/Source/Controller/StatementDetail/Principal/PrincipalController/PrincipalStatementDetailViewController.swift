@@ -30,15 +30,29 @@ class PrincipalStatementDetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if (segue.identifier == String(describing: PrincipalModifiesPopupViewController.self)){
+            if let modifyPopUp = segue.destination as? PrincipalModifiesPopupViewController {
+                modifyPopUp.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+            }
+        }
     }
-    */
+    
+    //MARK: - actions
+    @IBAction func modifyStatement(_ sender: Any) {
+        self.performSegue(withIdentifier: String(describing: PrincipalModifiesPopupViewController.self), sender: self)
+
+    }
+   
+    @IBAction func confirmStatement(_ sender: Any) {
+    }
+    
 
      //MARK: - utility
     

@@ -632,6 +632,9 @@
                                                 <state key="normal" title="Modify">
                                                     <color key="titleColor" red="0.36470588240000001" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="modifyStatement:" destination="gfO-af-fBq" eventType="touchUpInside" id="JDt-4g-g5Z"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qA-bi-20R" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
                                                 <rect key="frame" x="160" y="0.0" width="140" height="40"/>
@@ -639,6 +642,9 @@
                                                 <state key="normal" title="Confirm">
                                                     <color key="titleColor" red="0.36470588240000001" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="confirmStatement:" destination="gfO-af-fBq" eventType="touchUpInside" id="QYC-Vr-3iy"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -670,11 +676,127 @@
                     </view>
                     <connections>
                         <outlet property="detailView" destination="Iha-PM-oMB" id="AUF-nr-iqt"/>
+                        <segue destination="SvS-hd-tFe" kind="presentation" identifier="PrincipalModifiesPopupViewController" modalPresentationStyle="overCurrentContext" id="qHJ-RP-DZw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBq-7B-Zcp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6972" y="2502.9985007496252"/>
+        </scene>
+        <!--Principal Modifies Popup View Controller-->
+        <scene sceneID="Ntt-pV-cPb">
+            <objects>
+                <viewController storyboardIdentifier="PrincipalModifiesPopupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SvS-hd-tFe" customClass="PrincipalModifiesPopupViewController" customModule="Solviant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VIw-03-7IA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j1h-08-clc">
+                                <rect key="frame" x="0.0" y="312" width="375" height="355"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="355" id="esT-sF-4n1"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PrincipalPopupTableCell" rowHeight="70" id="KRh-xp-RtR" customClass="PrincipalPopupTableCell" customModule="Solviant" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KRh-xp-RtR" id="hUo-QA-hi2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6m-GC-7rR">
+                                                    <rect key="frame" x="20" y="25" width="44" height="21.5"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                    <color key="textColor" red="0.36470588240000001" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fp-j6-dds">
+                                                    <rect key="frame" x="315.5" y="16" width="36.5" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="JxQ-Mf-8eB"/>
+                                                        <constraint firstAttribute="width" secondItem="6fp-j6-dds" secondAttribute="height" multiplier="10:11" id="QLS-9C-QxW"/>
+                                                    </constraints>
+                                                    <state key="normal" image="check-box"/>
+                                                    <state key="selected" image="selectedCheckBox"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="6fp-j6-dds" secondAttribute="trailing" constant="23" id="09U-yd-l2k"/>
+                                                <constraint firstItem="u6m-GC-7rR" firstAttribute="top" secondItem="hUo-QA-hi2" secondAttribute="top" constant="25" id="1Pr-VA-TNH"/>
+                                                <constraint firstItem="6fp-j6-dds" firstAttribute="width" secondItem="6fp-j6-dds" secondAttribute="height" multiplier="10:11" id="Aff-Un-NRN"/>
+                                                <constraint firstItem="6fp-j6-dds" firstAttribute="centerY" secondItem="u6m-GC-7rR" secondAttribute="centerY" id="jby-7m-anZ"/>
+                                                <constraint firstItem="u6m-GC-7rR" firstAttribute="leading" secondItem="hUo-QA-hi2" secondAttribute="leading" constant="20" id="uB4-a8-LoJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="SvS-hd-tFe" id="Jq5-sZ-E1f"/>
+                                    <outlet property="delegate" destination="SvS-hd-tFe" id="0dZ-8O-UZm"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTf-1i-lsJ">
+                                <rect key="frame" x="0.0" y="563" width="375" height="104"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ael-xc-JWV">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="PVD-mI-ILs"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS2-3j-xrn" customClass="SolviantButton" customModule="Solviant" customModuleProvider="target">
+                                        <rect key="frame" x="110" y="34" width="155" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="155" id="UnO-9I-t5U"/>
+                                            <constraint firstAttribute="height" constant="40" id="oM1-f2-vHc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Confirm">
+                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submit:" destination="dbs-IG-fMb" eventType="touchUpInside" id="om0-pr-jrJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ael-xc-JWV" firstAttribute="top" secondItem="dTf-1i-lsJ" secondAttribute="top" id="3Tx-n5-vS6"/>
+                                    <constraint firstAttribute="trailing" secondItem="ael-xc-JWV" secondAttribute="trailing" id="4Kf-p2-j2h"/>
+                                    <constraint firstItem="ael-xc-JWV" firstAttribute="leading" secondItem="dTf-1i-lsJ" secondAttribute="leading" id="JFa-o4-3qD"/>
+                                    <constraint firstAttribute="height" constant="104" id="sPg-nf-L2w"/>
+                                    <constraint firstAttribute="bottom" secondItem="sS2-3j-xrn" secondAttribute="bottom" constant="30" id="ujT-mn-7M8"/>
+                                    <constraint firstItem="sS2-3j-xrn" firstAttribute="centerX" secondItem="dTf-1i-lsJ" secondAttribute="centerX" id="wqf-9J-yx4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dTf-1i-lsJ" firstAttribute="top" secondItem="j1h-08-clc" secondAttribute="bottom" constant="-104" id="7Dc-Qa-R6k"/>
+                            <constraint firstItem="j1h-08-clc" firstAttribute="leading" secondItem="dTf-1i-lsJ" secondAttribute="leading" id="959-vS-UpI"/>
+                            <constraint firstItem="j1h-08-clc" firstAttribute="leading" secondItem="2aJ-jg-ova" secondAttribute="leading" id="KtV-56-C3y"/>
+                            <constraint firstItem="j1h-08-clc" firstAttribute="trailing" secondItem="dTf-1i-lsJ" secondAttribute="trailing" id="edK-Lw-UdL"/>
+                            <constraint firstItem="2aJ-jg-ova" firstAttribute="trailing" secondItem="j1h-08-clc" secondAttribute="trailing" id="g0h-1Y-FiI"/>
+                            <constraint firstItem="2aJ-jg-ova" firstAttribute="bottom" secondItem="j1h-08-clc" secondAttribute="bottom" id="uPO-He-v9W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2aJ-jg-ova"/>
+                    </view>
+                    <connections>
+                        <outlet property="principalPopUpTableView" destination="j1h-08-clc" id="yhZ-KE-OY4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FcS-Vl-42J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7760.8000000000002" y="2491.304347826087"/>
         </scene>
         <!--Connect Pop Up View Controller-->
         <scene sceneID="c07-6M-YEQ">

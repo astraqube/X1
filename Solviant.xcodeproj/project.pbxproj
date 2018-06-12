@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		38BF6C6120CFCD3D006417AD /* PrincipalStatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */; };
+		38BF6C6620CFF857006417AD /* PrincipalModifiesPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */; };
+		38BF6C6A20D005C4006417AD /* PrincipalPopupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */; };
 		38E6F1EF20CE5E86003A4240 /* MeetingFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */; };
 		38E6F1F220CE6007003A4240 /* ImageSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */; };
 		38E6F1F720CE6093003A4240 /* ConnectOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F420CE6093003A4240 /* ConnectOptions.swift */; };
@@ -109,6 +111,8 @@
 
 /* Begin PBXFileReference section */
 		38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalStatementDetailViewController.swift; sourceTree = "<group>"; };
+		38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalModifiesPopupViewController.swift; sourceTree = "<group>"; };
+		38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalPopupTableCell.swift; sourceTree = "<group>"; };
 		38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetingFlow.storyboard; sourceTree = "<group>"; };
 		38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		38E6F1F420CE6093003A4240 /* ConnectOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectOptions.swift; sourceTree = "<group>"; };
@@ -234,6 +238,49 @@
 			path = PrincipalController;
 			sourceTree = "<group>";
 		};
+		38BF6C6220CFF714006417AD /* Principal */ = {
+			isa = PBXGroup;
+			children = (
+				38BF6C6420CFF73C006417AD /* PrincipalModifyPopup */,
+				38BF6C5F20CFCCEC006417AD /* PrincipalController */,
+			);
+			path = Principal;
+			sourceTree = "<group>";
+		};
+		38BF6C6320CFF728006417AD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				38E6F20620CE6127003A4240 /* ConnectPopUp */,
+				38E6F20320CE6105003A4240 /* ResourceController */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		38BF6C6420CFF73C006417AD /* PrincipalModifyPopup */ = {
+			isa = PBXGroup;
+			children = (
+				38BF6C6820D00571006417AD /* TableViewCell */,
+				38BF6C6720D00561006417AD /* Controller */,
+			);
+			path = PrincipalModifyPopup;
+			sourceTree = "<group>";
+		};
+		38BF6C6720D00561006417AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38BF6C6820D00571006417AD /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		38E6F1F020CE6006003A4240 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,8 +334,8 @@
 		38E6F20220CE6105003A4240 /* StatementDetail */ = {
 			isa = PBXGroup;
 			children = (
-				38BF6C5F20CFCCEC006417AD /* PrincipalController */,
-				38E6F20320CE6105003A4240 /* ResourceController */,
+				38BF6C6320CFF728006417AD /* Resources */,
+				38BF6C6220CFF714006417AD /* Principal */,
 			);
 			path = StatementDetail;
 			sourceTree = "<group>";
@@ -452,7 +499,6 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F20620CE6127003A4240 /* ConnectPopUp */,
 				38E6F20220CE6105003A4240 /* StatementDetail */,
 				38E6F1F920CE60EC003A4240 /* UnresolvedStatement */,
 				655D79C620C68D2300B110B8 /* ViewResponse */,
@@ -1316,12 +1362,14 @@
 				38E6F21920CEB058003A4240 /* SolviantButton.swift in Sources */,
 				65E39E3F20983DFF006087F4 /* ProfileViewController.swift in Sources */,
 				38E6F1F220CE6007003A4240 /* ImageSelectionCollectionViewCell.swift in Sources */,
+				38BF6C6A20D005C4006417AD /* PrincipalPopupTableCell.swift in Sources */,
 				65E389F820A03459002BA860 /* InterestTableViewCell.swift in Sources */,
 				65C0201B20864E6900971521 /* AutoLogin.swift in Sources */,
 				65D3440A209C14680095749C /* Subcategory.swift in Sources */,
 				651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */,
 				65B55E1B20ADBF3E00231641 /* SubcategoryContainer.swift in Sources */,
 				65E47E9520BBE02200CAC575 /* StatementCardView.swift in Sources */,
+				38BF6C6620CFF857006417AD /* PrincipalModifiesPopupViewController.swift in Sources */,
 				38E6F21020CE6127003A4240 /* PopUpHeader.swift in Sources */,
 				65157C13209B21C8009C1A1F /* Extension+Boolean.swift in Sources */,
 				6524EA8F20846B8C0035F2D2 /* Constant.swift in Sources */,

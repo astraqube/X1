@@ -159,6 +159,7 @@ struct ReusableIdentifier {
     static let popUpTableCell               = "PopUpCell"
     static let timerTableCell               = "TimerTableCell"
     static let selectImageCollectionCell    = "ImageSelectionCollectionViewCell"
+    static let principalPopupTableCell    = "PrincipalPopupTableCell"
 
 }
 
