@@ -11,6 +11,7 @@ import UIKit
 class PopUpHeader: UIView {
 
     @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -29,6 +30,19 @@ class PopUpHeader: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    
+    func updateTitle(titleStr: String){
+        
+        let deadlineTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            if self.titleLabel != nil{
+                self.titleLabel.text = titleStr
+            }
+        }
+        
+       
     }
 
 }

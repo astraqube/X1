@@ -45,6 +45,11 @@ class PrincipalStatementDetailViewController: UIViewController {
     }
     
     //MARK: - actions
+    @IBAction func goBack(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
     @IBAction func modifyStatement(_ sender: Any) {
         self.performSegue(withIdentifier: String(describing: PrincipalModifiesPopupViewController.self), sender: self)
 

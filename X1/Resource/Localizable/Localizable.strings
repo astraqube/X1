@@ -72,6 +72,10 @@
 "solveViaEmail" = "Solve via E-mail";
 "solveViaConferenceCall" = "Solve via Conference Call";
 "selectDuration" = "Select Duration";
+"changeRating" = "Change Rating";
+"changePriority" = "Change Priority";
+"changeLocation" = "Change Location";
+"priceQuote" = "Price Quote";
 
 // MARK: - timer options
 "5_minutes" = "5 minutes";

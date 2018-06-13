@@ -12,9 +12,24 @@ class PrincipalModifiesPopupViewController: UIViewController {
 
     //MARK: - outlets
     @IBOutlet weak var principalPopUpTableView: UITableView!
+
+    
     
     //MARK: - property
+    struct PrincipalPopupOption {
+        let title: String!;
+        let iconImage: UIImage;
+    }
     let popupTableHeaderHeight = 50.0;
+    //MARK: - initializer
+    
+    var popupOptions: [PrincipalPopupOption] = [
+        PrincipalPopupOption(title: NSLocalizedString("changeRating", comment: ""), iconImage: #imageLiteral(resourceName: "star")),
+        PrincipalPopupOption(title: NSLocalizedString("changePriority", comment: ""), iconImage: #imageLiteral(resourceName: "clock")),
+        PrincipalPopupOption(title: NSLocalizedString("changeLocation", comment: ""), iconImage: #imageLiteral(resourceName: "location"))
+        
+    ]
+    
 
     //MARK: - view life cycle
     override func loadView() {
@@ -42,7 +57,29 @@ class PrincipalModifiesPopupViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    //MARK: - action
+    @IBAction func confirm(_ sender: Any) {
+         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func ratingChanged(_ sender: UIButton) {
+   
+        let theIndexpath = IndexPath(row: 0, section: 0)
+        if let cell = principalPopUpTableView.cellForRow(at: theIndexpath) as? PrincipalPopupTableCell {
+//            let selectedExpertLevel = ExpertLevel(rawValue: sender.tag)!
+            for  ratingButton in cell.ratingButtons {
+                ratingButton.isSelected = sender.tag >= ratingButton.tag
+            }
+//            let rating                      = ExpertLevel(rawValue: sender.tag)!
+//            let (name, subtitle)            = rating.description()
+        }
+        
+       
+    }
+    
+    
+    
 }
 
 
@@ -53,9 +90,17 @@ extension PrincipalModifiesPopupViewController: UITableViewDataSource {
         return headerView
     }
     
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = PopUpHeader(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50.0))
+//        let titleStr = "\(NSLocalizedString("priceQuote", comment: "")): $ 50.00"   ///replace its value
+//        footerView.updateTitle(titleStr: titleStr)
+//        return footerView
+//    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,8 +120,26 @@ extension PrincipalModifiesPopupViewController: UITableViewDataSource {
     
     func configure(cell: PrincipalPopupTableCell, indexPath: IndexPath)  {
         // UI configure
+          let currentPopupOptions = popupOptions[indexPath.row];
+        cell.iconImageView.image = currentPopupOptions.iconImage
+        cell.titleLabel.text = currentPopupOptions.title
+        if indexPath.row == 0 {
+            cell.ratingView.isHidden = false;
+            cell.optionDropdownButton.isHidden = true;
+        }
+        else{
+            cell.ratingView.isHidden = true;
+            cell.optionDropdownButton.isHidden = false;
+            if indexPath.row == 1 {
+                
+            }
+            else if (indexPath.row == 2){
+                
+            }
+            
+        }
         
-        
+        cell.selectionStyle = .none
     }
     
 }
@@ -98,6 +161,10 @@ extension PrincipalModifiesPopupViewController: UITableViewDelegate {
         return CGFloat(popupTableHeaderHeight);
     }
     
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return CGFloat(popupTableHeaderHeight);
+//
+//    }
     
 }
 
