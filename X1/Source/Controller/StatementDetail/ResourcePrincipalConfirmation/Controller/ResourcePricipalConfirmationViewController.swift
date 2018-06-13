@@ -33,15 +33,20 @@ class ResourcePricipalConfirmationViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if (segue.identifier == String(describing: ConfirmedPopupViewController.self)){
+            if let confirmPopup = segue.destination as? ConfirmedPopupViewController {
+                confirmPopup.view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+            }
+        }
     }
-    */
+    
     
     //MARK: - actions
     @IBAction func goBack(_ sender: Any) {
@@ -50,6 +55,9 @@ class ResourcePricipalConfirmationViewController: UIViewController {
     @IBAction func reschedule(_ sender: Any) {
     }
     @IBAction func confirm(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: String(describing: ConfirmedPopupViewController.self), sender: self)
+        
     }
     
     

@@ -1270,11 +1270,99 @@
                     </view>
                     <connections>
                         <outlet property="detailView" destination="Vp3-0E-I2o" id="5KH-us-U4E"/>
+                        <segue destination="QUb-EI-X0R" kind="presentation" identifier="ConfirmedPopupViewController" modalPresentationStyle="overCurrentContext" id="ZnX-0p-k3H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtn-yq-h87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8516" y="2353"/>
+        </scene>
+        <!--Confirmed Popup View Controller-->
+        <scene sceneID="66c-Nj-cKl">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmedPopupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QUb-EI-X0R" customClass="ConfirmedPopupViewController" customModule="Solviant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5sE-sL-ogW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DT6-WP-mLf">
+                                <rect key="frame" x="28" y="183.5" width="320" height="320"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirm" translatesAutoresizingMaskIntoConstraints="NO" id="J8W-gH-Ajm">
+                                        <rect key="frame" x="120" y="20" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="bvl-sJ-Q69"/>
+                                            <constraint firstAttribute="width" secondItem="J8W-gH-Ajm" secondAttribute="height" multiplier="1:1" id="oK6-nR-cXc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONFIRMED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a1-CG-Yb7">
+                                        <rect key="frame" x="93" y="102" width="134.5" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28.5" id="4bn-T0-57H"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="24"/>
+                                        <color key="textColor" red="0.92941176469999998" green="0.40784313729999999" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Consultation Details are:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCm-yg-k8x">
+                                        <rect key="frame" x="71.5" y="151" width="177" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="exG-mh-DyJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                        <color key="textColor" red="0.36470588240000001" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQx-0f-GoD">
+                                        <rect key="frame" x="18" y="183" width="284" height="129"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="User: @spidy_kid">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="PCm-yg-k8x" firstAttribute="top" secondItem="4a1-CG-Yb7" secondAttribute="bottom" constant="20.5" id="IHf-b4-FWj"/>
+                                    <constraint firstAttribute="width" secondItem="DT6-WP-mLf" secondAttribute="height" multiplier="1:1" id="IpF-tv-Orj"/>
+                                    <constraint firstItem="J8W-gH-Ajm" firstAttribute="centerX" secondItem="DT6-WP-mLf" secondAttribute="centerX" id="Z2d-1n-Yyp"/>
+                                    <constraint firstItem="iQx-0f-GoD" firstAttribute="top" secondItem="PCm-yg-k8x" secondAttribute="bottom" constant="13" id="bCm-ab-a1m"/>
+                                    <constraint firstItem="PCm-yg-k8x" firstAttribute="centerX" secondItem="4a1-CG-Yb7" secondAttribute="centerX" id="gxo-lR-c8o"/>
+                                    <constraint firstItem="4a1-CG-Yb7" firstAttribute="centerX" secondItem="J8W-gH-Ajm" secondAttribute="centerX" id="owm-kP-XQU"/>
+                                    <constraint firstItem="iQx-0f-GoD" firstAttribute="leading" secondItem="DT6-WP-mLf" secondAttribute="leading" constant="18" id="pZK-Gf-hey"/>
+                                    <constraint firstAttribute="height" constant="320" id="rLr-BT-cdV"/>
+                                    <constraint firstAttribute="bottom" secondItem="iQx-0f-GoD" secondAttribute="bottom" constant="8" id="txr-06-KZj"/>
+                                    <constraint firstAttribute="trailing" secondItem="iQx-0f-GoD" secondAttribute="trailing" constant="18" id="xkt-Cp-oph"/>
+                                    <constraint firstItem="4a1-CG-Yb7" firstAttribute="top" secondItem="J8W-gH-Ajm" secondAttribute="bottom" constant="2" id="zP3-5K-wGl"/>
+                                    <constraint firstItem="J8W-gH-Ajm" firstAttribute="top" secondItem="DT6-WP-mLf" secondAttribute="top" constant="20" id="zQg-Ux-lmQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DT6-WP-mLf" firstAttribute="centerX" secondItem="bnM-il-tkY" secondAttribute="centerX" id="WUE-VZ-J77"/>
+                            <constraint firstItem="DT6-WP-mLf" firstAttribute="centerY" secondItem="bnM-il-tkY" secondAttribute="centerY" id="gsJ-I9-DtL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bnM-il-tkY"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailView" destination="DT6-WP-mLf" id="XEe-1Y-phv"/>
+                        <outlet property="userDetailLabel" destination="iQx-0f-GoD" id="Cur-3j-eST"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ujI-JN-wJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9261.6000000000004" y="2355.472263868066"/>
         </scene>
         <!--Connect Pop Up View Controller-->
         <scene sceneID="c07-6M-YEQ">
@@ -1602,6 +1690,7 @@
         <image name="alertorange" width="27" height="27"/>
         <image name="back_black" width="20" height="14"/>
         <image name="check-box" width="20" height="20"/>
+        <image name="confirm" width="52" height="52"/>
         <image name="flag" width="20" height="20"/>
         <image name="hamburger" width="24" height="24"/>
         <image name="notification" width="24" height="24"/>

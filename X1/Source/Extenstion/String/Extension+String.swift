@@ -96,4 +96,5 @@ extension String {
         let size = self.size(withAttributes: fontAttributes)
         return size.height
     }
+    
 }

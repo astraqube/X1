@@ -83,3 +83,10 @@
 "15_minutes" = "15 minutes";
 "30_minutes" = "30 minutes";
 
+
+// MARK: - confirmed meeting
+"user" = "User";
+"method" = "Method";
+"emailId" = "E-mail ID";
+"timings" = "Timings";
+
