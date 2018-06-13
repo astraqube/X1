@@ -60,7 +60,7 @@ class PrincipalModifiesPopupViewController: UIViewController {
     
     //MARK: - action
     @IBAction func confirm(_ sender: Any) {
-         self.dismiss(animated: true, completion: nil)
+       self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func ratingChanged(_ sender: UIButton) {
