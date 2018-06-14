@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import Popover
 
 class ResourcePricipalConfirmationViewController: UIViewController {
 
     //MARK: - outlets
     @IBOutlet weak var detailView: UIView!
+    @IBOutlet var availablityView: AvailabilityView!
     
-    //MARK: - property
+    //MARK: - Property
+    
+    var selectAvailabilityStr = NSLocalizedString("30_minutes", comment: "")
+    var popover:Popover?
     
     //MARK: - view life cycle
     override func loadView() {
@@ -59,12 +64,36 @@ class ResourcePricipalConfirmationViewController: UIViewController {
         self.performSegue(withIdentifier: String(describing: ConfirmedPopupViewController.self), sender: self)
         
     }
+    @IBAction func addAvailability(_ sender: Any) {
+        popover?.dismiss()
+        popover = nil
+        let options = [
+            .type(.up),
+            .cornerRadius(5),
+            .animationIn(0.3),
+            .blackOverlayColor(UIColor.lightGray.withAlphaComponent(0.3)),
+            .arrowSize(CGSize.init(width: 10, height: 10))
+            ] as [PopoverOption]
+        popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
+        availablityView.frame = CGRect.init(x: 0, y: 0, width: 170, height: 128)
+        popover?.show(availablityView, fromView: sender as! UIView)
+    }
     
     
     //MARK: - utility
     
     func customizeUI(){
         detailView.darkShadow(withRadius: 5.0)
+        availablityView.configure()
+        availablityView.selectAvailability = {(result, error) in
+            if error == nil{
+                self.popover?.dismiss()
+                self.selectAvailabilityStr = (result?.title)!
+            }
+        }
+        
     }
 
+    
+    
 }

@@ -57,9 +57,7 @@ class ConfirmedPopupViewController: UIViewController {
         detailView.layer.borderWidth = 1.0
         detailView.layer.borderColor = UIColor.lightTheme().cgColor
         detailView.darkShadow(withRadius: 5)
-        
-        
-        
+  
         let boldFontSize = 16.0
         
         let boldFontAttribute = [ NSAttributedStringKey.font: UIFont.robotoFont(wityType: .bold, size: CGFloat(boldFontSize)) , NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.3647058824, green: 0.3647058824, blue: 0.3647058824, alpha: 1)] as [NSAttributedStringKey : Any]

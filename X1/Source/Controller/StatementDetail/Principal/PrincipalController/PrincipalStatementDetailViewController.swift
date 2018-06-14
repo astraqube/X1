@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import Popover
 
 class PrincipalStatementDetailViewController: UIViewController {
 
-    //MARK: - outlets
+    //MARK: - Outlets
     @IBOutlet weak var detailView: UIView!
+    @IBOutlet var availabilityView: AvailabilityView!
+    
+    //MARK: - Property
+    
+    var selectAvailabilityStr = NSLocalizedString("30_minutes", comment: "")
+    var popover:Popover?
     
     //MARK: - view life cycle
     override func loadView() {
@@ -62,11 +69,35 @@ class PrincipalStatementDetailViewController: UIViewController {
         
     }
     
-
+    @IBAction func addAvailability(_ sender: Any) {
+        
+        popover?.dismiss()
+        popover = nil
+        let options = [
+            .type(.up),
+            .cornerRadius(5),
+            .animationIn(0.3),
+            .blackOverlayColor(UIColor.lightGray.withAlphaComponent(0.3)),
+            .arrowSize(CGSize.init(width: 10, height: 10))
+            ] as [PopoverOption]
+        popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
+        availabilityView.frame = CGRect.init(x: 0, y: 0, width: 170, height: 128)
+        popover?.show(availabilityView, fromView: sender as! UIView)
+        
+    }
+    
      //MARK: - utility
     
     func customizeUI(){
         detailView.darkShadow(withRadius: 5.0)
+        availabilityView.configure()
+        availabilityView.selectAvailability = {(result, error) in
+            if error == nil{
+                self.popover?.dismiss()
+                self.selectAvailabilityStr = (result?.title)!
+            }
+        }
+        
     }
     
 }

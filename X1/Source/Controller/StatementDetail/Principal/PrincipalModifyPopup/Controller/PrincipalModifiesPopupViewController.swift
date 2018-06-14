@@ -7,22 +7,27 @@
 //
 
 import UIKit
+import Popover
 
 class PrincipalModifiesPopupViewController: UIViewController {
 
     //MARK: - outlets
     @IBOutlet weak var principalPopUpTableView: UITableView!
+    @IBOutlet var priorityView: PriorityView!
+    @IBOutlet var locationView: ChangeLocationView!
+    
+    
+    //MARK: - Property
+    
+    var selectPriorityStr = NSLocalizedString("30_minutes", comment: "")
+    var selectLocationStr = NSLocalizedString("30_minutes", comment: "")
 
-    
-    
-    //MARK: - property
     struct PrincipalPopupOption {
         let title: String!;
         let iconImage: UIImage;
     }
     let popupTableHeaderHeight = 50.0;
-    //MARK: - initializer
-    
+    var popover:Popover?
     var popupOptions: [PrincipalPopupOption] = [
         PrincipalPopupOption(title: NSLocalizedString("changeRating", comment: ""), iconImage: #imageLiteral(resourceName: "star")),
         PrincipalPopupOption(title: NSLocalizedString("changePriority", comment: ""), iconImage: #imageLiteral(resourceName: "clock")),
@@ -34,6 +39,7 @@ class PrincipalModifiesPopupViewController: UIViewController {
     //MARK: - view life cycle
     override func loadView() {
         super.loadView()
+        configureUI()
     }
     
     override func viewDidLoad() {
@@ -67,19 +73,66 @@ class PrincipalModifiesPopupViewController: UIViewController {
    
         let theIndexpath = IndexPath(row: 0, section: 0)
         if let cell = principalPopUpTableView.cellForRow(at: theIndexpath) as? PrincipalPopupTableCell {
-//            let selectedExpertLevel = ExpertLevel(rawValue: sender.tag)!
             for  ratingButton in cell.ratingButtons {
                 ratingButton.isSelected = sender.tag >= ratingButton.tag
             }
-//            let rating                      = ExpertLevel(rawValue: sender.tag)!
-//            let (name, subtitle)            = rating.description()
         }
         
        
     }
     
+    //MARK: - utility
+    
+    func configureUI(){
+      
+        priorityView.configure()
+        priorityView.selectPriority = {(result, error) in
+            if error == nil{
+                self.popover?.dismiss()
+                self.selectPriorityStr = (result?.title)!
+            }
+        }
+        
+        locationView.configure()
+        locationView.selectLocation = {(result, error) in
+            if error == nil{
+                self.popover?.dismiss()
+                self.selectLocationStr = (result?.title)!
+            }
+        }
+    }
     
     
+    func selectPriority(sender: UIButton){
+        popover?.dismiss()
+        popover = nil
+        let options = [
+            .type(.up),
+            .cornerRadius(5),
+            .animationIn(0.3),
+            .blackOverlayColor(UIColor.lightGray.withAlphaComponent(0.3)),
+            .arrowSize(CGSize.init(width: 10, height: 10))
+            ] as [PopoverOption]
+        popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
+        priorityView.frame = CGRect.init(x: 0, y: 0, width: 170, height: 128)
+        popover?.show(priorityView, fromView: sender as UIView)
+    }
+    func selectLocation(sender: UIButton){
+        popover?.dismiss()
+        popover = nil
+        let options = [
+            .type(.up),
+            .cornerRadius(5),
+            .animationIn(0.3),
+            .blackOverlayColor(UIColor.lightGray.withAlphaComponent(0.3)),
+            .arrowSize(CGSize.init(width: 10, height: 10))
+            ] as [PopoverOption]
+        popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
+        locationView.frame = CGRect.init(x: 0, y: 0, width: 170, height: 128)
+        popover?.show(locationView, fromView: sender as UIView)
+    }
+    
+
 }
 
 
@@ -130,16 +183,23 @@ extension PrincipalModifiesPopupViewController: UITableViewDataSource {
         else{
             cell.ratingView.isHidden = true;
             cell.optionDropdownButton.isHidden = false;
-            if indexPath.row == 1 {
-                
-            }
-            else if (indexPath.row == 2){
-                
-            }
+            cell.optionDropdownButton.tag = indexPath.row
+            cell.optionDropdownButton.addTarget(self, action: #selector(self.openDropdown(sender:)), for: UIControlEvents.touchUpInside)
             
         }
         
         cell.selectionStyle = .none
+    }
+    
+    
+    @objc func openDropdown(sender: UIButton){
+        
+        if sender.tag == 1 {
+            self.selectPriority(sender: sender)
+        }
+        else{
+            self.selectLocation(sender: sender)
+        }
     }
     
 }

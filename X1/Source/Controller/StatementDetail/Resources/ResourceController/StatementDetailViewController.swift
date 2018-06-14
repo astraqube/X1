@@ -14,7 +14,6 @@ class StatementDetailViewController: UIViewController {
     //MARK: - outlets
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var buttonConnect: UIButton!
-    @IBOutlet var warningView: UIView!
     
     var popover:Popover?
 
@@ -30,6 +29,12 @@ class StatementDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let deadlineTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            self.showDefineStatementProcessAlert()
+
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -54,6 +59,14 @@ class StatementDetailViewController: UIViewController {
                 connectPopup.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             }
         }
+        
+        if (segue.identifier == String(describing: DefineStatementAlertController.self)){
+            if let defineStatementAlert = segue.destination as? DefineStatementAlertController {
+                defineStatementAlert.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+            }
+        }
+        
+        
     }
     
 
@@ -66,24 +79,7 @@ class StatementDetailViewController: UIViewController {
     @IBAction func connectStatement(_ sender: Any) {
         self.performSegue(withIdentifier: String(describing: ConnectPopUpViewController.self), sender: self)
     }
-    
-    @IBAction func tapFlag(_ sender: Any) {
         
-                popover?.dismiss()
-                popover = nil
-                let options = [
-                    .type(.down),
-                    .cornerRadius(5),
-                    .animationIn(0.3),
-                    .blackOverlayColor(UIColor.lightGray.withAlphaComponent(0.3)),
-                    .arrowSize(CGSize.init(width: 10, height: 10))
-                    ] as [PopoverOption]
-                popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
-//                warningView.frame = CGRect.init(x: 0, y: 0, width: 240, height: 128)
-        popover?.show(warningView, fromView: sender as! UIView)
-        
-    }
-    
    
     //MARK: - utility
     
@@ -95,5 +91,14 @@ class StatementDetailViewController: UIViewController {
         buttonConnect.darkShadow(withRadius: 5)
        
     }
+    
+    //MARK: - Show Define Alert Statement On resource Detail Screen
+    func showDefineStatementProcessAlert(){
+        self.detailView.layer.borderWidth = 1.0
+        self.detailView.layer.borderColor = #colorLiteral(red: 0.9294117647, green: 0.4078431373, blue: 0.1215686275, alpha: 1)
+        self.performSegue(withIdentifier: String(describing: DefineStatementAlertController.self), sender: self)
+
+    }
+   
     
 }

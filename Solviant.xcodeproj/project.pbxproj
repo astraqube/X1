@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380AD71620D26F2000313965 /* DefineStatementAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380AD71520D26F2000313965 /* DefineStatementAlertController.swift */; };
+		3856205A20D276C900912884 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856205920D276C900912884 /* AvailabilityView.swift */; };
+		3856205D20D27FE300912884 /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856205C20D27FE300912884 /* PriorityView.swift */; };
+		3856206020D2802700912884 /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856205F20D2802700912884 /* ChangeLocationView.swift */; };
 		38BF6C6120CFCD3D006417AD /* PrincipalStatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */; };
 		38BF6C6620CFF857006417AD /* PrincipalModifiesPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */; };
 		38BF6C6A20D005C4006417AD /* PrincipalPopupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */; };
@@ -112,6 +116,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		380AD71520D26F2000313965 /* DefineStatementAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineStatementAlertController.swift; sourceTree = "<group>"; };
+		3856205920D276C900912884 /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
+		3856205C20D27FE300912884 /* PriorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
+		3856205F20D2802700912884 /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
 		38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalStatementDetailViewController.swift; sourceTree = "<group>"; };
 		38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalModifiesPopupViewController.swift; sourceTree = "<group>"; };
 		38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalPopupTableCell.swift; sourceTree = "<group>"; };
@@ -234,6 +242,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		380AD71420D26EB600313965 /* DefineStementProcessAlert */ = {
+			isa = PBXGroup;
+			children = (
+				380AD71520D26F2000313965 /* DefineStatementAlertController.swift */,
+			);
+			path = DefineStementProcessAlert;
+			sourceTree = "<group>";
+		};
+		3856205820D2769A00912884 /* AvailabilityView */ = {
+			isa = PBXGroup;
+			children = (
+				3856205920D276C900912884 /* AvailabilityView.swift */,
+			);
+			path = AvailabilityView;
+			sourceTree = "<group>";
+		};
+		3856205B20D27FBF00912884 /* PriorityView */ = {
+			isa = PBXGroup;
+			children = (
+				3856205C20D27FE300912884 /* PriorityView.swift */,
+			);
+			path = PriorityView;
+			sourceTree = "<group>";
+		};
+		3856205E20D27FED00912884 /* ChangeLocation */ = {
+			isa = PBXGroup;
+			children = (
+				3856205F20D2802700912884 /* ChangeLocationView.swift */,
+			);
+			path = ChangeLocation;
+			sourceTree = "<group>";
+		};
 		38BF6C5F20CFCCEC006417AD /* PrincipalController */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +294,7 @@
 		38BF6C6320CFF728006417AD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				380AD71420D26EB600313965 /* DefineStementProcessAlert */,
 				38E6F20620CE6127003A4240 /* ConnectPopUp */,
 				38E6F20320CE6105003A4240 /* ResourceController */,
 			);
@@ -263,6 +304,8 @@
 		38BF6C6420CFF73C006417AD /* PrincipalModifyPopup */ = {
 			isa = PBXGroup;
 			children = (
+				3856205E20D27FED00912884 /* ChangeLocation */,
+				3856205B20D27FBF00912884 /* PriorityView */,
 				38BF6C6820D00571006417AD /* TableViewCell */,
 				38BF6C6720D00561006417AD /* Controller */,
 			);
@@ -288,6 +331,7 @@
 		38D0297820D13D460012A8D1 /* ResourcePrincipalConfirmation */ = {
 			isa = PBXGroup;
 			children = (
+				3856205820D2769A00912884 /* AvailabilityView */,
 				38D0297920D13D820012A8D1 /* Controller */,
 			);
 			path = ResourcePrincipalConfirmation;
@@ -1404,6 +1448,7 @@
 				65E389F820A03459002BA860 /* InterestTableViewCell.swift in Sources */,
 				65C0201B20864E6900971521 /* AutoLogin.swift in Sources */,
 				65D3440A209C14680095749C /* Subcategory.swift in Sources */,
+				3856205A20D276C900912884 /* AvailabilityView.swift in Sources */,
 				651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */,
 				65B55E1B20ADBF3E00231641 /* SubcategoryContainer.swift in Sources */,
 				65E47E9520BBE02200CAC575 /* StatementCardView.swift in Sources */,
@@ -1419,6 +1464,7 @@
 				6512E740209085D400D2C15D /* UITextField+fixCaretPosition.swift in Sources */,
 				65E389ED20A03361002BA860 /* PickInterest.swift in Sources */,
 				65E39E4520983E3B006087F4 /* ProfileDoneButtonTableViewCell.swift in Sources */,
+				380AD71620D26F2000313965 /* DefineStatementAlertController.swift in Sources */,
 				65E39E4320983E2E006087F4 /* ProfileTextFieldTableViewCell.swift in Sources */,
 				65157C10209AF11A009C1A1F /* ChooseInterestViewController.swift in Sources */,
 				65B55E1920AD99F900231641 /* RateInterestViewController.swift in Sources */,
@@ -1435,6 +1481,7 @@
 				65E0DA0C20A607F0005AE0E5 /* QuestionCollectionViewCell.swift in Sources */,
 				659E9F9A20B80FD700FD697A /* PostStatementViewController.swift in Sources */,
 				655D79C820C68D3600B110B8 /* ViewResponseViewController.swift in Sources */,
+				3856206020D2802700912884 /* ChangeLocationView.swift in Sources */,
 				38E6F20520CE6105003A4240 /* StatementDetailViewController.swift in Sources */,
 				658C23CB20A5A04E001E8A74 /* HomeTabBarViewController.swift in Sources */,
 				65157C15209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift in Sources */,
@@ -1446,6 +1493,7 @@
 				65E39E4C20984ED1006087F4 /* KeyboardAccessory.swift in Sources */,
 				65E0DA0A20A607BD005AE0E5 /* HomeViewController.swift in Sources */,
 				38E6F21420CE857F003A4240 /* TimerView.swift in Sources */,
+				3856205D20D27FE300912884 /* PriorityView.swift in Sources */,
 				6512E73F209085D400D2C15D /* SkyFloatingLabelTextField.swift in Sources */,
 				65E39E4720983F50006087F4 /* ProfileUserImageTableViewCell.swift in Sources */,
 				65C0203C208654E700971521 /* WebRequestManager.swift in Sources */,

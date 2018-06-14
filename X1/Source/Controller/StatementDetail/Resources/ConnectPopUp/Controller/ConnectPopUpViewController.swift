@@ -173,9 +173,6 @@ extension ConnectPopUpViewController: UITableViewDataSource {
         }
         let connectOptions = options[sender.tag]
         connectOptions.isSelected = true
-//        connectOptions.isSelected = !connectOptions.isSelected
-//        let selectedIndexPath = IndexPath(row: sender.tag, section: 0)
-        
         UIView.animate(withDuration: animationDuration) {
 //            self.popupTableView.reloadRows(at: [selectedIndexPath], with: .fade);
             self.popupTableView.reloadData()
