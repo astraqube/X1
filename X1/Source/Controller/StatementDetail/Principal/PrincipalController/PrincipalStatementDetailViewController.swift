@@ -19,6 +19,10 @@ class PrincipalStatementDetailViewController: UIViewController {
     
     var selectAvailabilityStr = NSLocalizedString("30_minutes", comment: "")
     var popover:Popover?
+    var user:User! = User.loggedInUser()
+
+    
+    
     
     //MARK: - view life cycle
     override func loadView() {
@@ -49,6 +53,11 @@ class PrincipalStatementDetailViewController: UIViewController {
                 modifyPopUp.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             }
         }
+        else if (segue.identifier == String(describing: PrincipalAvailablityViewController.self)){
+                if let principalAvailability = segue.destination as? PrincipalAvailablityViewController {
+                    principalAvailability.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+                }
+            }
     }
     
     //MARK: - actions
@@ -71,19 +80,24 @@ class PrincipalStatementDetailViewController: UIViewController {
     
     @IBAction func addAvailability(_ sender: Any) {
         
-        popover?.dismiss()
-        popover = nil
-        let options = [
-            .type(.up),
-            .cornerRadius(5),
-            .animationIn(0.3),
-            .blackOverlayColor(UIColor.lightGray.withAlphaComponent(0.3)),
-            .arrowSize(CGSize.init(width: 10, height: 10))
-            ] as [PopoverOption]
-        popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
-        availabilityView.frame = CGRect.init(x: 0, y: 0, width: 170, height: 128)
-        popover?.show(availabilityView, fromView: sender as! UIView)
-        
+        if user.type == .principal {
+            self.performSegue(withIdentifier: String(describing: PrincipalAvailablityViewController.self), sender: self)
+
+        }
+        else{
+            popover?.dismiss()
+            popover = nil
+            let options = [
+                .type(.up),
+                .cornerRadius(5),
+                .animationIn(0.3),
+                .blackOverlayColor(UIColor.lightGray.withAlphaComponent(0.3)),
+                .arrowSize(CGSize.init(width: 10, height: 10))
+                ] as [PopoverOption]
+            popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
+            availabilityView.frame = CGRect.init(x: 0, y: 0, width: 170, height: 128)
+            popover?.show(availabilityView, fromView: sender as! UIView)
+        }
     }
     
      //MARK: - utility

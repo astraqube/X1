@@ -14,7 +14,7 @@ class ConfirmedPopupViewController: UIViewController {
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var userDetailLabel: UILabel!
     
-    //MARK: - view life cycle
+    //MARK: - View Life Cycle
     
     override func loadView() {
         super.loadView()
@@ -51,7 +51,7 @@ class ConfirmedPopupViewController: UIViewController {
         }
     }
     
-    //MARK: - utility
+    //MARK: - Utility
     func customizeUI(){
         
         detailView.layer.borderWidth = 1.0

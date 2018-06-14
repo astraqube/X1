@@ -11,6 +11,8 @@
 		3856205A20D276C900912884 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856205920D276C900912884 /* AvailabilityView.swift */; };
 		3856205D20D27FE300912884 /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856205C20D27FE300912884 /* PriorityView.swift */; };
 		3856206020D2802700912884 /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856205F20D2802700912884 /* ChangeLocationView.swift */; };
+		3856206320D2B3D600912884 /* PrincipalAvailablityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856206220D2B3D600912884 /* PrincipalAvailablityViewController.swift */; };
+		3856206720D2C72D00912884 /* AvailabilityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856206620D2C72D00912884 /* AvailabilityCollectionCell.swift */; };
 		38BF6C6120CFCD3D006417AD /* PrincipalStatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */; };
 		38BF6C6620CFF857006417AD /* PrincipalModifiesPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */; };
 		38BF6C6A20D005C4006417AD /* PrincipalPopupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */; };
@@ -120,6 +122,8 @@
 		3856205920D276C900912884 /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
 		3856205C20D27FE300912884 /* PriorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
 		3856205F20D2802700912884 /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
+		3856206220D2B3D600912884 /* PrincipalAvailablityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalAvailablityViewController.swift; sourceTree = "<group>"; };
+		3856206620D2C72D00912884 /* AvailabilityCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityCollectionCell.swift; sourceTree = "<group>"; };
 		38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalStatementDetailViewController.swift; sourceTree = "<group>"; };
 		38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalModifiesPopupViewController.swift; sourceTree = "<group>"; };
 		38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalPopupTableCell.swift; sourceTree = "<group>"; };
@@ -274,6 +278,31 @@
 			path = ChangeLocation;
 			sourceTree = "<group>";
 		};
+		3856206120D2B38900912884 /* PrincipalAvailabilityController */ = {
+			isa = PBXGroup;
+			children = (
+				3856206520D2C6FF00912884 /* CollectionCell */,
+				3856206420D2B3F400912884 /* Controller */,
+			);
+			path = PrincipalAvailabilityController;
+			sourceTree = "<group>";
+		};
+		3856206420D2B3F400912884 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3856206220D2B3D600912884 /* PrincipalAvailablityViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3856206520D2C6FF00912884 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				3856206620D2C72D00912884 /* AvailabilityCollectionCell.swift */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
 		38BF6C5F20CFCCEC006417AD /* PrincipalController */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +360,7 @@
 		38D0297820D13D460012A8D1 /* ResourcePrincipalConfirmation */ = {
 			isa = PBXGroup;
 			children = (
+				3856206120D2B38900912884 /* PrincipalAvailabilityController */,
 				3856205820D2769A00912884 /* AvailabilityView */,
 				38D0297920D13D820012A8D1 /* Controller */,
 			);
@@ -1430,6 +1460,7 @@
 				65C0201A20864E6900971521 /* LocationManager.swift in Sources */,
 				38E6F20F20CE6127003A4240 /* PopUpCell.swift in Sources */,
 				65C0203420864E8200971521 /* Extension+Date.swift in Sources */,
+				3856206320D2B3D600912884 /* PrincipalAvailablityViewController.swift in Sources */,
 				653BDFA82084B92000B3CAC7 /* SignUpViewController.swift in Sources */,
 				659E9F9C20B80FF000FD697A /* PostUrgencyTableViewCell.swift in Sources */,
 				657318E920AF053900089B16 /* RatingOverviewViewController.swift in Sources */,
@@ -1466,6 +1497,7 @@
 				65E39E4520983E3B006087F4 /* ProfileDoneButtonTableViewCell.swift in Sources */,
 				380AD71620D26F2000313965 /* DefineStatementAlertController.swift in Sources */,
 				65E39E4320983E2E006087F4 /* ProfileTextFieldTableViewCell.swift in Sources */,
+				3856206720D2C72D00912884 /* AvailabilityCollectionCell.swift in Sources */,
 				65157C10209AF11A009C1A1F /* ChooseInterestViewController.swift in Sources */,
 				65B55E1920AD99F900231641 /* RateInterestViewController.swift in Sources */,
 				38E6F1F820CE6093003A4240 /* Response.swift in Sources */,
