@@ -20,5 +20,6 @@ target 'Solviant' do
   pod 'SwiftDate'
   pod 'Koloda'
   pod 'GrowingTextView', '~> 0.5'
+  pod 'SideMenu'
 
 end

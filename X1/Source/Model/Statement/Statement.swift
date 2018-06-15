@@ -22,7 +22,7 @@ class Statement: NSObject {
     var expertLevel = ExpertLevel.rookie
     
     
-    init?(with response: Dictionary<String, Any>) {
+    init?(with response: Dictionary<String, Any>, isRedefined: Bool = false) {
         guard let id = response[PostStatementKey.identifier] as? String,
             let principal = response[PostStatementKey.principal] as? Dictionary<String, Any>,
             let principalName = principal[PostStatementKey.principalName] as? String,
@@ -41,7 +41,17 @@ class Statement: NSObject {
         if let expertLevelInfo = response[PostStatementKey.principalType] as? Dictionary<String, Any>, let expertType =  expertLevelInfo[PostStatementKey.expertType] as? String {
             expertLevel = ExpertLevel.expertLevel(by: expertType)
         }
-
+        
+        if isRedefined, let redefinedStatments = response[APIKeys.redefinedStatment] as? Array<Dictionary<String, Any>>,
+            let redefinedStatment = redefinedStatments.last  {
+            if let text = redefinedStatment[PostStatementKey.statement] as? String {
+                problemText = text
+            }
+            tags       = redefinedStatment[PostStatementKey.tags] as? Array
+            if let dateTime = response[PostStatementKey.createdAt] as? String {
+                time = dateTime.dateFromISOString()
+            }
+        }
     }
     
     init?(my statements: Dictionary<String, Any>) {

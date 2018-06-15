@@ -11,6 +11,7 @@ import ALCameraViewController
 import M13Checkbox
 import Popover
 import CoreLocation
+import Whisper
 
 class PostStatementViewController: UIViewController {
 
@@ -39,8 +40,12 @@ class PostStatementViewController: UIViewController {
     @IBOutlet weak var ratingButtonsStackView: UIStackView!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var heightConstraintCollectioView: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var editPostButtonsStackView: UIStackView!
+    @IBOutlet weak var newPostButtonStackView: UIStackView!
     
-    
+
+    // MARK: - Other Property
     
     var accessoryView:PostStatmentAccessory!
     var popover:Popover?
@@ -49,9 +54,7 @@ class PostStatementViewController: UIViewController {
     var locationManager      = LocationManager()
     var currentLocation:CLLocationCoordinate2D?
     var selectedImages:[UIImage]?
-    
-    // MARK: - Property
-    
+    var selectedStatement:Statement!
     var user:User!
     var hasKeyboardLayoutApplied = false
     let webManager = WebRequestManager()
@@ -68,7 +71,7 @@ class PostStatementViewController: UIViewController {
         let textConfig = TTGTextTagConfig()
         textConfig.tagTextColor = UIColor.white
         textConfig.tagBackgroundColor = UIColor.lightTheme()
-        return textConfig
+        return textTagConfig
     }
     
     // MARK: - Life Cycle
@@ -104,6 +107,23 @@ class PostStatementViewController: UIViewController {
     
     // MARK: - Utility
     
+    private func setRating(with buttonIndex:Int) {
+        // Set selected rating for user
+        let count = ratingButtonsCollections.count
+        for index in 0..<count {
+            let isSelected = index <= buttonIndex
+            let ratingButton         = ratingButtonsCollections[index]
+            let selectedRatingButton = selectedRatingButtons[index]
+            ratingButton.isSelected = isSelected
+            selectedRatingButton.isSelected = isSelected
+        }
+        if let expertLevel = ExpertLevel(rawValue: buttonIndex) {
+            let (name, _) = expertLevel.description()
+            selectedExpertLabel.text = name
+        }
+        ratingButtonsStackView.isHidden = false
+    }
+    
     private func customizeUI() {
         postStatementButton.backgroundColor = .clear
         postStatementButton.darkShadow(withRadius: 5)
@@ -138,21 +158,33 @@ class PostStatementViewController: UIViewController {
         selectTagsCollectionView.enableTagSelection = false
         selectTagsCollectionView.scrollDirection    = .horizontal
         tagsCollectionView.delegate         = self
+        
+        // Check if it is opened in editing mode
+        if selectedStatement != nil {
+            // Set data for this statement
+            placeholderLabel.isHidden = true
+            statmentTextView.text     = selectedStatement.problemText
+            selectedLevel             = selectedStatement.expertLevel
+            setRating(with: selectedLevel.rawValue)
+            priorityLabel.text        = PostUrgency.low.description().0
+            editPostButtonsStackView.isHidden = false
+            newPostButtonStackView.isHidden   = true
+            if let tags = selectedStatement.tags {
+                for tag in tags {
+                    selectTagsCollectionView.addTag(tag.capitalized, with: textTagConfig)
+                }
+            }
+        }
     }
     
-    private func setupKeyboardAccesory() {
-        // Set Keyboard Accessory
-        accessoryView   = PostStatmentAccessory.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 40))
-        accessoryView.delegate = self
-        statmentTextView.inputAccessoryView = accessoryView
-    }
-    
-    // MARK: - Button Action
-    
-    @IBAction func postStatement(_ sender: Any) {
-        // Post statement
+    private func createUpdateStatement(isUpdating: Bool, shouldPublish: Bool = true) {
         let text = statmentTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else {
+            return
+        }
+        let isValidStatement = isValidProblemStatement(with: text)
+        guard isValidStatement  else {
+            showAlert(with: NSLocalizedString("invaildProblemStatmentTitle", comment: ""), message: NSLocalizedString("invaildProblemStatmentMessage", comment: ""))
             return
         }
         popover?.dismiss()
@@ -165,13 +197,68 @@ class PostStatementViewController: UIViewController {
             parameters[PostStatementKey.category] = tags
         }
         parameters[PostStatementKey.expertLevel] = selectedLevel.identifier()
-        parameters[PostStatementKey.priority]    = selectedPriority.expirationInterval()
+        parameters[PostStatementKey.priority]    = selectedPriority.name()
         if let coordinate = currentLocation {
             parameters[PostStatementKey.latitude]  = coordinate.latitude
             parameters[PostStatementKey.longitude] = coordinate.longitude
         }
         parameters[PostStatementKey.location] = PostStatementKey.global
-        postStatment(with: parameters, for: user.userId, attachment: selectedImages?.first)
+        parameters[APIKeys.status] = shouldPublish.convertForWeb()
+        if isUpdating {
+            // Update statement
+            updateStatment(with: parameters, statement: selectedStatement.identifier, for: user.userId, attachment: selectedImages?.first)
+        }
+        else {
+            // New satement
+            postStatment(with: parameters, for: user.userId, attachment: selectedImages?.first)
+        }
+    }
+    
+    private func setupKeyboardAccesory() {
+        // Set Keyboard Accessory
+        accessoryView   = PostStatmentAccessory.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 40))
+        accessoryView.delegate = self
+        statmentTextView.inputAccessoryView = accessoryView
+        if(selectedStatement != nil) {
+            accessoryView.postStatementButton.setTitle(NSLocalizedString("done", comment: ""), for: .normal)
+            accessoryView.postStatementButton.isEnabled = true
+            accessoryView.postStatementButton.alpha     = 1.0
+        }
+        
+    }
+    
+    private func isValidProblemStatement(with text: String) -> Bool {
+        // Validate Problem Statment
+        if text.contains("?") {
+            return false
+        }
+        return true
+    }
+    
+    private func showAlert(with title:String, message: String) {
+        // Show alert to user
+        let announcement = Announcement(title: title, subtitle: message, image: #imageLiteral(resourceName: "info"))
+        Whisper.show(shout: announcement, to: self, completion: {
+            
+        })
+    }
+    
+    // MARK: - IB Action
+    
+    @IBAction func updateStatment(_ sender: Any) {
+        // Save the edited post temporarily
+        createUpdateStatement(isUpdating: true, shouldPublish: false)
+    }
+    
+    @IBAction func repostStatement(_ sender: Any) {
+        // Repost the edited statement
+        createUpdateStatement(isUpdating: true)
+    }
+    
+    
+    @IBAction func postStatement(_ sender: Any) {
+        // Post statement
+        createUpdateStatement(isUpdating: false)
     }
     
     @IBAction func viewSimilarStatement(_ sender: Any) {
@@ -262,19 +349,7 @@ class PostStatementViewController: UIViewController {
     }
     
     @IBAction func selectRatingForPost(_ sender: UIButton) {
-        let count = ratingButtonsCollections.count
-        for index in 0..<count {
-            let isSelected = index <= sender.tag
-            let ratingButton         = ratingButtonsCollections[index]
-            let selectedRatingButton = selectedRatingButtons[index]
-            ratingButton.isSelected = isSelected
-            selectedRatingButton.isSelected = isSelected
-        }
-        if let expertLevel = ExpertLevel(rawValue: sender.tag) {
-            let (name, _) = expertLevel.description()
-            selectedExpertLabel.text = name
-        }
-        ratingButtonsStackView.isHidden = false
+        setRating(with: sender.tag)
     }
     
     @IBAction func removeImage(_ sender: UIButton) {
@@ -293,6 +368,16 @@ class PostStatementViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
     }
     
+    private func dissmissController () {
+        if(selectedStatement != nil) {
+            let rootViewController = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController as! UINavigationController
+            rootViewController.popToViewController(rootViewController.viewControllers[rootViewController.viewControllers.count - 2], animated: true)
+        }
+        dismiss(animated: true) {
+            
+        }
+    }
+    
 }
 
 extension PostStatementViewController: UITableViewDataSource, UITableViewDelegate {
@@ -302,15 +387,16 @@ extension PostStatementViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        return 83
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableViewCell = tableView.dequeueReusableCell(withIdentifier: ReusableIdentifier.postUrgencyCell, for: indexPath) as! PostUrgencyTableViewCell
         if let urgency = PostUrgency(rawValue: indexPath.row) {
-            let (title, subtitle) = urgency.description()
+            let (title, subtitle, duration) = urgency.description()
             tableViewCell.urgencyTitleLabel.text    = title
             tableViewCell.urgencySubTitleLabel.text = subtitle
+            tableViewCell.urgencyValidDuration.text = duration
         }
         tableViewCell.accessoryType = selectedPriority.rawValue == indexPath.row ? .checkmark : .none
         return tableViewCell
@@ -344,7 +430,12 @@ extension PostStatementViewController: PostStatmentAccessoryDelegate, UITextView
         case .rating:
             selectRating(button)
         case .post:
-            postStatement(button)
+            if selectedStatement == nil {
+                postStatement(button)
+            }
+            else {
+                view.endEditing(true)
+            }
         }
     }
     
@@ -377,6 +468,7 @@ extension PostStatementViewController: PostStatmentAccessoryDelegate, UITextView
     // MARK: - Keyboard Notification
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        placeholderLabel.numberOfLines = 1
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if !hasKeyboardLayoutApplied {
                 hasKeyboardLayoutApplied = true
@@ -393,6 +485,7 @@ extension PostStatementViewController: PostStatmentAccessoryDelegate, UITextView
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
+        placeholderLabel.numberOfLines = 0
         textViewHeightConstraint.priority = UILayoutPriority(rawValue: 500)
         UIView.animate(withDuration: 0.5) {
             self.containerView.layoutIfNeeded()
@@ -480,9 +573,7 @@ extension PostStatementViewController: UICollectionViewDataSource, UICollectionV
     }
     
     @objc func closeView() {
-        dismiss(animated: true) {
-            
-        }
+        dissmissController()
     }
 }
 
@@ -517,6 +608,20 @@ extension PostStatementViewController {
         }
     }
     
+    private func updateStatment(with parameters: Dictionary<String, Any>, statement identifier:String, for principal:String, attachment: UIImage?) {
+        // Fetch categories
+        let apiURL   = APIURL.statementUrl(apiEndPoint: APIEndPoint.updateStatement + identifier)
+        weak var weakSelf = self
+        webManager.uploadImage(htttpMethod: .put, apiURL: apiURL, parameters: parameters, image: attachment, completion: { (response) in
+            // Post created successfully
+            weakSelf?.showCheckMark()
+        }) { (error) in
+            // Error in createing statement
+            weakSelf?.activityIndicator.stopAnimating()
+            weakSelf?.blurView.isHidden = true
+        }
+    }
+    
     private func postStatment(with parameters: Dictionary<String, Any>, for principal:String, attachment: UIImage?) {
         // Fetch categories
         let endPoint = APIEndPoint.statement(with: principal)
@@ -541,9 +646,17 @@ extension PostStatementViewController {
             for categoryInfo in subcategories {
                 if let category = Category.init(with: categoryInfo) {
                     hashtags?.append(category.name)
-                    
                     // Add tag
                     tagsCollectionView.addTag(category.name.capitalized, with: textTagConfig)
+                }
+            }
+            
+            // Set selected tags for edit mode
+            if selectedStatement != nil, let selectedTags = selectedStatement.tags {
+                for selectedTag in selectedTags {
+                    if let index = hashtags?.index(of: selectedTag.lowercased()) {
+                        tagsCollectionView.setTagAt(UInt(index), selected: true)
+                    }
                 }
             }
         }

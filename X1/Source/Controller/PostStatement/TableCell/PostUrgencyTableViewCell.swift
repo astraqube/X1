@@ -12,6 +12,7 @@ class PostUrgencyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var urgencyTitleLabel: UILabel!
     @IBOutlet weak var urgencySubTitleLabel: UILabel!
+    @IBOutlet weak var urgencyValidDuration: UILabel!
     
     
     override func awakeFromNib() {

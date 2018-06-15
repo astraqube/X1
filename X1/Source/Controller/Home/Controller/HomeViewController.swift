@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
     
     var user:User! = User.loggedInUser()
     let webManager = WebRequestManager()
-    var statements:[Statement]?
+    var statements:[ProblemEvolution]?
     
     // MARK: - Life Cycle
     
@@ -76,12 +76,6 @@ class HomeViewController: UIViewController {
         badgeCountLabel.layer.cornerRadius  = 9
         badgeCountLabel.layer.masksToBounds = true
         
-       /* askAnythingButton.layer.borderWidth = 1.0
-        askAnythingButton.layer.borderColor = UIColor.lightTheme().cgColor
-        askAnythingButton.darkShadow(withRadius: 5)
-        answerNowButton.layer.borderWidth = 1.0
-        answerNowButton.layer.borderColor = UIColor.lightTheme().cgColor
-        answerNowButton.darkShadow(withRadius: 5) */
         viewResponseButton.layer.borderWidth = 1.0
         viewResponseButton.layer.borderColor = UIColor.lightTheme().cgColor
         viewResponseButton.darkShadow(withRadius: 5)
@@ -98,9 +92,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func openMenu(_ sender: Any) {
         // Log out user temporarily
-        user.delete()
-        let landingViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.landing)
-        navigationController?.setViewControllers([landingViewController!], animated: true)
+        
     }
     
     // MARK: - Navigation
@@ -129,7 +121,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let questionCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableIdentifier.questionCollectionViewCell, for: indexPath) as! QuestionCollectionViewCell
         // Configure cell with data
         if let statement = statements?[indexPath.item] {
-            questionCollectionViewCell.configureCell(with: statement)
+            questionCollectionViewCell.configureRedefinedCell(with: statement)
         }
         return questionCollectionViewCell
     }
@@ -159,15 +151,15 @@ extension HomeViewController {
             self.statements = Array()
             for statementInfo in resultArray {
                 if let statement = Statement.init(with: statementInfo) {
-                    self.statements?.append(statement)
+                    
                 }
             }
             
             // Reload collectionview
             questionCollectionView.reloadData()
-            if self.statements!.count > 1 {
-                questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
-            }
+//            if self.statements!.count > 1 {
+//                questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
+//            }
         }
     }
     

@@ -14,6 +14,7 @@ PODS:
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
+  - SideMenu (4.0.0)
   - SwiftDate (4.5.1)
   - TTGTagCollectionView (1.9.0)
   - UPCarouselFlowLayout (1.1.1)
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - M13Checkbox
   - Popover
   - SDWebImage (~> 4.0)
+  - SideMenu
   - SwiftDate
   - TTGTagCollectionView
   - UPCarouselFlowLayout
@@ -46,6 +48,7 @@ SPEC REPOS:
     - pop
     - Popover
     - SDWebImage
+    - SideMenu
     - SwiftDate
     - TTGTagCollectionView
     - UPCarouselFlowLayout
@@ -62,11 +65,12 @@ SPEC CHECKSUMS:
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   Popover: 28c1ac8e937ab2b3965bd2da7dd18324357abc41
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   TTGTagCollectionView: 958f20b946dee92a8ba20dc37d10a06737641ae9
   UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
   Whisper: 169760fc4bab0abf24d5529f9276f95c25cf1025
 
-PODFILE CHECKSUM: 8e38c524c013cb30ca78deb28090cbf66f2cca7b
+PODFILE CHECKSUM: 7f453d44ee2c44836e226138439d501377de6b6b
 
 COCOAPODS: 1.5.3

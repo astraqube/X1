@@ -24,6 +24,8 @@ class ViewResponseViewController: UIViewController {
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var textViewContainerView: UIView!
+    @IBOutlet weak var closeButton: SolviantButton!
+    @IBOutlet weak var actionStackView: UIStackView!
     
     
     // MARK: - Other Property
@@ -45,6 +47,9 @@ class ViewResponseViewController: UIViewController {
         // Do any additional setup after loading the view.
         customizeUI()
         setupCardView()
+        
+        // Fetch responses for selected statement
+        requestFetchStatements(with: selectedStatement.identifier, for: user.userId)
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +60,6 @@ class ViewResponseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setProblemStatement()
-        requestFetchStatements(with: selectedStatement.identifier, for: user.userId)
     }
     
     // MARK: - IB Action
@@ -65,25 +69,77 @@ class ViewResponseViewController: UIViewController {
     }
     
     @IBAction func undoCardSwipe(_ sender: Any) {
+        guard !activityIndicator.isAnimating else {
+            return
+        }
         cardCollectionView.revertAction()
         actionedResponses?.removeLast()
         noResponsesLabel.isHidden    = true
         actionButtonView.isHidden     = false
         undoButton.isHidden           = actionedResponses!.count == 0
     }
-
+    
+    @IBAction func closeStatement(_ sender: Any) {
+        guard !activityIndicator.isAnimating else {
+            return
+        }
+        // Confirm close statement action first
+        closeStatementConfirmation()
+    }
+    
+    @IBAction func updateStatment(_ sender: Any) {
+        guard !activityIndicator.isAnimating else {
+            return
+        }
+        let createStatmentViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.createStatment) as! PostStatementViewController
+        createStatmentViewController.selectedStatement = selectedStatement
+        createStatmentViewController.user              = user
+        present(createStatmentViewController, animated: true) {
+            
+        }
+    }
+    
+    @IBAction func swipeCard(_ sender: UIButton) {
+        guard !activityIndicator.isAnimating else {
+            return
+        }
+        if let swipeDirection = SwipeActionDirection(rawValue: sender.tag) {
+            switch swipeDirection {
+            case .left:
+                cardCollectionView.swipe(.left)
+            case .down:
+                cardCollectionView.swipe(.down)
+            case .right:
+                cardCollectionView.swipe(.right)
+            default:
+                break
+            }
+            resetLabels()
+        }
+    }
+    
+    @IBAction func buttonHighlighted(_ sender: UIButton) {
+        guard !activityIndicator.isAnimating else {
+            return
+        }
+        if let swipeDirection = SwipeActionDirection(rawValue: sender.tag) {
+            switch swipeDirection {
+            case .left:
+                highlightButton(forSwipe: .left)
+            case .down:
+                highlightButton(forSwipe: .down)
+            case .right:
+                highlightButton(forSwipe: .right)
+            default:
+                break
+            }
+        }
+    }
+    
     // MARK: - Utility
     
     private func customizeUI() {
         // Customize UI for theme appearance
-        
-        cardCollectionView.backgroundColor = .clear
-        cardCollectionView.darkShadow(withRadius: 10)
-        cardCollectionView.layer.cornerRadius = 8
-        cardCollectionView.layer.backgroundColor = UIColor.white.cgColor
-        cardCollectionView.layer.sublayers?.last?.cornerRadius = 8.0
-        cardCollectionView.layer.sublayers?.last?.masksToBounds = true
-        
         textViewContainerView.backgroundColor = .clear
         textViewContainerView.darkShadow(withRadius: 10)
         textViewContainerView.layer.cornerRadius = 8
@@ -100,6 +156,27 @@ class ViewResponseViewController: UIViewController {
         // Configure card view
         cardCollectionView.delegate   = self
         cardCollectionView.dataSource = self
+    }
+    
+    private func closeStatementConfirmation() {
+        // Show action alert for close statement
+        weak var weakSelf = self
+        let alertController = UIAlertController.init(title: NSLocalizedString("closeStatmentTitle", comment: ""), message: NSLocalizedString("closeStatmentMessage", comment: ""), preferredStyle: .actionSheet)
+        let dismissAction   = UIAlertAction.init(title: NSLocalizedString("dontclose", comment: ""), style: .cancel) { (action) in
+            weakSelf?.dismiss(animated: true, completion: {
+                
+            })
+        }
+        let closeAction = UIAlertAction.init(title: NSLocalizedString("close", comment: ""), style: .destructive) { (action) in
+            weakSelf?.dismiss(animated: true, completion: {
+            })
+            weakSelf?.closeStatement(with: weakSelf!.selectedStatement.identifier)
+        }
+        alertController.addAction(dismissAction)
+        alertController.addAction(closeAction)
+        present(alertController, animated: true) {
+            
+        }
     }
     
     private func highlightButton(forSwipe direction: SwipeResultDirection, completion percentage: CGFloat = 50) {
@@ -220,9 +297,9 @@ extension ViewResponseViewController: KolodaViewDataSource, KolodaViewDelegate {
             
             if let direction = swipeDirection {
                 // Update recorded swipe
-                var parameters:[String:Any]      = Dictionary()
-                parameters[APIKeys.status]       =  direction.rawValue
-                parameters[APIKeys.resource]     = user.userId
+                var parameters:[String:Any]                = Dictionary()
+                parameters[APIKeys.status]                 =  direction.rawValue
+                parameters[PostStatementKey.principle]     = user.userId
                 requestRecordSwipe(response: draggedStatment.identifier, parameter: parameters)
             }
             
@@ -262,6 +339,22 @@ extension ViewResponseViewController {
         }
     }
     
+    private func closeStatement(with statement: String) {
+        // Request close statement
+        cardCollectionView.isUserInteractionEnabled = false
+        activityIndicator.startAnimating()
+        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.closeStatement + statement)
+        weak var weakSelf = self
+        webManager.httpRequest(method: .delete, apiURL: apiURL, body: [:], completion: { (response) in
+            // Statement closed successfully
+            weakSelf?.navigationController?.popViewController(animated: true)
+        }) { (error) in
+            // Statement failed to close
+            weakSelf?.cardCollectionView.isUserInteractionEnabled = true
+            weakSelf?.activityIndicator.stopAnimating()
+        }
+    }
+    
     private func requestRecordSwipe(response identifier:String, parameter: Dictionary<String, Any>) {
         // Request fetch all statement
         let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.responseSwipe) + identifier
@@ -294,15 +387,16 @@ extension ViewResponseViewController {
     @objc private func shouldHide() {
         activityIndicator.stopAnimating()
         if self.responses != nil && self.responses!.count > 0 {
-            actionButtonView.isHidden   = false
             noResponsesLabel.isHidden   = true
             cardCollectionView.isHidden = false
+            actionStackView.isHidden    = false
         }
         else {
-            actionButtonView.isHidden       = true
             noResponsesLabel.isHidden       = false
             cardCollectionView.isHidden     = true
+            actionStackView.isHidden        = true
         }
+        actionButtonView.isHidden   = false
     }
     
 }

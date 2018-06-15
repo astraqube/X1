@@ -14,8 +14,6 @@ class SolviantButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        addTarget(self, action: #selector(highlight(_:)), for: .touchDown)
-        addTarget(self, action: #selector(fingerLifted(_:)), for: [.touchUpInside, .touchCancel, .touchDragExit, .touchDragOutside])
         customizeUI()
     }
     

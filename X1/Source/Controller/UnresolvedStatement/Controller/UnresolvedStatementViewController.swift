@@ -126,11 +126,19 @@ extension UnresolvedStatementViewController {
     // MARK: - Request Completion
     
     private func didFetch(statements: Dictionary<String, Any>) {
+        activityIndicator.stopAnimating()
         if let resultArray = statements[APIKeys.result] as? Array<Dictionary<String, Any>> {
             self.statements = Array()
             for statementInfo in resultArray {
-                if let statement = Statement.init(my: statementInfo) {
+                var statemenToShow = statementInfo
+                if let redefinedStatments = statementInfo[APIKeys.redefinedStatment] as? Array<Dictionary<String, Any>>,
+                    let redifinedStatement = redefinedStatments.last {
+                    // Show redefined statement
+                    statemenToShow = redifinedStatement
+                }
+                if let statement = Statement.init(my: statemenToShow), let originalIdentifier = statementInfo[PostStatementKey.identifier] as? String {
                     self.statements?.append(statement)
+                    statement.identifier = originalIdentifier
                 }
             }
             

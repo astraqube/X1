@@ -10,12 +10,12 @@ import UIKit
 
 class NotificationViewController: UIViewController {
     
-    //MARK: - outlets
+    // MARK: - Outlets
     @IBOutlet weak var notificationsTableView: UITableView!
     
     
     
-    //MARK: - view life cycle
+    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

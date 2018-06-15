@@ -18,21 +18,26 @@ class ProfileViewController: UIViewController {
     weak var editingTextField:UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var oneMomentLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     
     // MARK: - Other Property
     
+    var isEditingProfile     = true
     var picker:CountryPicker!
     let webManager           = WebRequestManager()
     var user:User!
-    let rowsInSection        = [1, 1, 7, 1]
-    let placeholders         = ["gender", "dob", "addressLine", "city", "state", "country", "zip" ]
+    let rowsInSection        = [1, 1, 8, 1]
+    let placeholders         = ["name","gender", "dob", "addressLine", "city", "state", "country", "zip" ]
     let rowHeights:[CGFloat] = [103, 73, 73, 87]
     var accessoryView:KeyboardAccessory!
     var datePicker           = UIDatePicker()
     let genderPicker         = UIPickerView()
     let locationManager      = LocationManager()
     var genderDatasource     = ["selectGender", "male", "female", "unisex"]
+    var mobileNumber:String?
+    var shouldVerifyOTP      = true
     
     enum ProfileSection:Int {
         case userImage
@@ -42,6 +47,7 @@ class ProfileViewController: UIViewController {
     }
     
     enum TextFieldRow:Int {
+        case name
         case gender
         case dob
         case address
@@ -65,8 +71,14 @@ class ProfileViewController: UIViewController {
         customizeUI()
         
         // Get user's current location from GPS
-        currentLocation()
+        if(user.userId == nil) {
+            // Fetch user location only user is coming from Sign Up
+            currentLocation()
+        }
         
+        // Store mobile number to compare if it was changed
+        mobileNumber = user.cellNumber
+    
         let locale = Locale.current
         let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
         //init Picker
@@ -94,7 +106,16 @@ class ProfileViewController: UIViewController {
     private func customizeUI() {
         // Setup keyboard accessory view for swtiching between textfields
         setupKeyboardAccesory()
+        
+        // Determine if this screen has openened to view/edit/complete profile
+        if user.userId != nil {
+            isEditingProfile        = false
+            editButton.isHidden     = false
+            backButton.isSelected   = true
+            backButton.setImage(#imageLiteral(resourceName: "red_cancel"), for: .normal)
+        }
     }
+    
     
     private func currentLocation() {
         // Fetch current location and set values
@@ -143,6 +164,7 @@ class ProfileViewController: UIViewController {
         
         func setError(rowIndex: Int, section: Int, message: String) {
             let indexPath = IndexPath.init(row: rowIndex, section: section)
+            profileTableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
             if let textFieldCell = profileTableView.cellForRow(at: indexPath) as? ProfileTextFieldTableViewCell {
                 // If cell is visible
                 textFieldCell.inputTextField.becomeFirstResponder()
@@ -174,16 +196,31 @@ class ProfileViewController: UIViewController {
             }
         }
         
+        // 3. Name Validation
+        
+        if !user.userId.isEmpty, user.name.isEmpty {
+            // Set error message
+            setError(rowIndex: TextFieldRow.name.rawValue, section:ProfileSection.textField.rawValue, message: NSLocalizedString("nameMissing", comment: ""))
+            return false
+        }
+        
         return true
     }
     
     // MARK: - IB Action
     
-    @IBAction func goBack(_ sender: Any) {
+    @IBAction func goBack(_ sender: UIButton) {
         guard  !activityIndicator.isAnimating else {
             return
         }
-        navigationController?.popViewController(animated: true)
+        if sender.isSelected {
+            dismiss(animated: true) {
+                
+            }
+        }
+        else {
+            navigationController?.popViewController(animated: true)
+        }
     }
 
     @IBAction func completeProfile(_ sender: Any) {
@@ -200,7 +237,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func changeImage(_ sender: Any) {
-        guard  !activityIndicator.isAnimating else {
+        guard  !activityIndicator.isAnimating, isEditingProfile  else {
             return
         }
         openPhotos()
@@ -211,6 +248,30 @@ class ProfileViewController: UIViewController {
         user.dob    = dob
         editingTextField.text = dob
         (editingTextField as! SkyFloatingLabelTextField).errorMessage = nil
+    }
+    
+    @IBAction func editOrSaveProfile(_ sender: UIButton) {
+        // Update user profile
+        if sender.isSelected {
+            // Validate and save
+            let status = isValid()
+            if status {
+                var parameters = user.updateParameter()
+                if let prevMobileNumber = mobileNumber, let currentMobileNumber = user.cellNumber, prevMobileNumber == currentMobileNumber {
+                    // Mobile number was not chagned so we'll remove this key to avoid OTP validation
+                    parameters.removeValue(forKey: UserKey.mobile)
+                    shouldVerifyOTP = false
+                }
+                requestUpdateUserProfile(withParameters: parameters, for: user.userId)
+            }
+        }
+        else {
+            // Enable editing mode
+            sender.setTitle(sender.title(for: .selected), for: .normal)
+            sender.isSelected = true
+            isEditingProfile  = true
+            currentLocation()
+        }
     }
     
     // MARK: - Navigation
@@ -280,7 +341,18 @@ extension ProfileViewController: KeyboardAccessoryDelegate, CountryPickerDelegat
     
     func nextResponder() {
         // Go to next textfield
-        let nextCellTag = self.editingTextField.tag + 1
+        var nextCellTag:Int!
+        if let cell = self.editingTextField.superview?.superview, cell.tag == ProfileSection.mobile.rawValue {
+            if user.userId != nil {
+                nextCellTag = TextFieldRow.name.rawValue
+            }
+            else {
+                nextCellTag = TextFieldRow.gender.rawValue
+            }
+        }
+        else {
+            nextCellTag = self.editingTextField.tag + 1
+        }
         if nextCellTag < profileTableView.numberOfRows(inSection: ProfileSection.textField.rawValue) {
             // Not the last cell
             let indexPath = IndexPath.init(row: nextCellTag, section: ProfileSection.textField.rawValue)
@@ -300,10 +372,9 @@ extension ProfileViewController: KeyboardAccessoryDelegate, CountryPickerDelegat
     
     func prevResponder() {
         // Go to prev textfield
-        let prevCellTag = self.editingTextField.tag - 1
-        if prevCellTag >= 0 {
-            // Not the first cell
-            let indexPath = IndexPath.init(row: prevCellTag, section: ProfileSection.textField.rawValue)
+        if self.editingTextField.tag == TextFieldRow.name.rawValue, let cell = self.editingTextField.superview?.superview as? ProfileTextFieldTableViewCell,
+            cell.tag == ProfileSection.textField.rawValue {
+            let indexPath = IndexPath.init(row: 0, section: ProfileSection.mobile.rawValue)
             if let textFieldCell = profileTableView.cellForRow(at: indexPath) as? ProfileTextFieldTableViewCell {
                 // If cell is visible
                 textFieldCell.inputTextField.becomeFirstResponder()
@@ -314,7 +385,22 @@ extension ProfileViewController: KeyboardAccessoryDelegate, CountryPickerDelegat
             }
         }
         else {
-            view.endEditing(true)
+            let prevCellTag = self.editingTextField.tag - 1
+            if prevCellTag >= 0 {
+                // Not the first cell
+                let indexPath = IndexPath.init(row: prevCellTag, section: ProfileSection.textField.rawValue)
+                if let textFieldCell = profileTableView.cellForRow(at: indexPath) as? ProfileTextFieldTableViewCell {
+                    // If cell is visible
+                    textFieldCell.inputTextField.becomeFirstResponder()
+                }
+                else if let textFieldCell = profileTableView.dequeueReusableCell(withIdentifier: ReusableIdentifier.profileTextFieldCell, for: indexPath) as? ProfileTextFieldTableViewCell {
+                    // If cell is not visible
+                    textFieldCell.inputTextField.becomeFirstResponder()
+                }
+            }
+            else {
+                view.endEditing(true)
+            }
         }
     }
     
@@ -366,7 +452,7 @@ extension ProfileViewController: UITextFieldDelegate {
     // MARK: - Text Field Delegate
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return !activityIndicator.isAnimating
+        return !activityIndicator.isAnimating && isEditingProfile
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -392,6 +478,8 @@ extension ProfileViewController: UITextFieldDelegate {
         }
         else if let textFieldRow = TextFieldRow(rawValue: sender.tag) {
             switch textFieldRow {
+            case .name:
+                user.name = sender.text
             case .gender:
                 user.gender = sender.text
             case .dob:
@@ -461,7 +549,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: TableView Datasource and Delegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return user.userId == nil ? 4 : 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -469,6 +557,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == ProfileSection.textField.rawValue && indexPath.row == TextFieldRow.name.rawValue && user.userId == nil {
+            // If coming from Sign Up then Name field won't be visible
+            return 0
+        }
         return rowHeights[indexPath.section]
     }
     
@@ -489,16 +581,19 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(changeImage(_:)))
                 userImageViewCell.addGestureRecognizer(tapGesture)
             }
+            
         case .mobile:
             let mobileInputCell = tableView.dequeueReusableCell(withIdentifier: ReusableIdentifier.mobileInputCell, for: indexPath) as! ProfileTextFieldTableViewCell
             mobileInputCell.countryCode.inputView = picker
             tableViewCell = mobileInputCell
             
-            mobileInputCell.countryCode.iconType    = .image
-            mobileInputCell.countryCode.text        = user.countryCode
-            mobileInputCell.countryCode.iconImage   = user.countryFlag
-            mobileInputCell.inputTextField.text     = user.cellNumber
-            mobileInputCell.inputTextField.tag      = indexPath.section
+            mobileInputCell.countryCode.iconType                = .image
+            mobileInputCell.countryCode.text                    = user.countryCode
+            mobileInputCell.countryCode.iconImage               = user.countryFlag
+            mobileInputCell.inputTextField.text                 = user.cellNumber
+            mobileInputCell.inputTextField.tag                  = indexPath.row
+            mobileInputCell.inputTextField.inputAccessoryView   = accessoryView
+            mobileInputCell.inputTextField.keyboardType         = .phonePad
             
         case .textField:
             // For text field cells
@@ -510,6 +605,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 textFieldCell.inputTextField.tag = indexPath.row
                 if let textFieldType = TextFieldRow(rawValue: indexPath.row) {
                     switch textFieldType {
+                    case .name:
+                        textFieldCell.inputTextField.returnKeyType   = .next
+                        textFieldCell.inputTextField.text            = user.name
+                        textFieldCell.inputTextField.textContentType = UITextContentType.name
+                        textFieldCell.inputTextField.keyboardType    = .default
                     case .dob:
                         textFieldCell.inputTextField.inputView = datePicker
                         textFieldCell.inputTextField.text      = user.dob
@@ -517,7 +617,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                         textFieldCell.inputTextField.inputView = genderPicker
                         textFieldCell.inputTextField.text      = user.gender
                     case .address:
-                        textFieldCell.inputTextField.returnKeyType = .next
+                        textFieldCell.inputTextField.returnKeyType   = .next
                         textFieldCell.inputTextField.textContentType = UITextContentType.streetAddressLine1
                         textFieldCell.inputTextField.keyboardType    = .default
                         textFieldCell.inputTextField.text            = user.addressLine
@@ -544,6 +644,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                     }
                 }
             }
+            
         case .actionButton:
             // For Action Button
             tableViewCell = tableView.dequeueReusableCell(withIdentifier: ReusableIdentifier.profileDoneButtonCell, for: indexPath)
@@ -574,6 +675,24 @@ extension ProfileViewController {
         }
     }
     
+    private func requestUpdateUserProfile(withParameters parameters: Dictionary<String, Any>, for user:String) {
+        // Create user account using filled details
+        activityIndicator.startAnimating()
+        weak var weakSelf = self
+        oneMomentLabel.isHidden = false
+        activityIndicator.startAnimating()
+        let url = APIURL.url(apiEndPoint: APIEndPoint.updatUserProfile + user)
+        webManager.httpRequest(method: .put, apiURL: url, body: parameters, completion: { (response) in
+            // User account created
+            weakSelf?.didUpdateProfile(withResponse: response)
+        }) { (error) in
+            // Request failed
+            weakSelf?.oneMomentLabel.isHidden = true
+            weakSelf?.activityIndicator.stopAnimating()
+            weakSelf?.showAlert(withMessage: NSLocalizedString("unexpectedErrorMessage", comment: ""))
+        }
+    }
+    
     // MARK: - Request Completion
     
      private func didSignUp(withResponse response: Dictionary<String, Any>) {
@@ -584,7 +703,6 @@ extension ProfileViewController {
                 // User registered successfully
                 guard let result = response[APIKeys.result] as? Dictionary<String, Any>,
                     let userInfo = result[APIKeys.userInfo] as? Dictionary<String, Any>,
-//                    let userprofile = userInfo["get_userData"] as? Dictionary<String, Any>,
                     let userId   = userInfo[UserKey.userId] as? String,
                     let accessToken = result[UserKey.accessToken] as? String else {
                         return
@@ -601,6 +719,35 @@ extension ProfileViewController {
                 else {
                     // User han't provided Mobile Number
                     gotoNextScreen(forUser: user)
+                }
+                
+            }
+        }
+        else if let errorMessage = response[APIKeys.errorMessage] as? String {
+            // Show  error
+            showAlert(withMessage: errorMessage)
+        }
+    }
+    
+    // MARK: - Request Completion
+    
+    private func didUpdateProfile(withResponse response: Dictionary<String, Any>) {
+        activityIndicator.stopAnimating()
+        oneMomentLabel.isHidden = true
+        if let statusCode = response[APIKeys.status] as? String {
+            if statusCode == HTTPStatus.success {
+                user.update() // Save user details
+                
+                // Go to next screen
+                if let cellNumber =  user.cellNumber, !cellNumber.isEmpty, shouldVerifyOTP {
+                    // Validate OTP by user
+                    validateOTP()
+                }
+                else {
+                    // Mobile number won't be validated
+                    dismiss(animated: true) {
+                        
+                    }
                 }
                 
             }

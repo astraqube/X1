@@ -114,7 +114,7 @@ class User: NSObject {
         // Update user
         let dbManager   = DBOperation()
         
-        let updateQuery = "UPDATE user SET (full_name = ?, password = ?, user_type = ?, image_url = ?, id_token = ?, address = ?, city = ?, state = ?, country = ?, zip = ?, latitude = ?, longitude = ?, mobile = ?, dob = ?, gender = ?) WHERE _id = ?"
+        let updateQuery = "UPDATE user SET full_name = ?, password = ?, user_type = ?, image_url = ?, id_token = ?, address = ?, city = ?, state = ?, country = ?, zip = ?, latitude = ?, longitude = ?, mobile = ?, dob = ?, gender = ? WHERE _id = ?"
         let valuesArray:[Any] = [name as Any, password as Any, type.rawValue as Any, imageURL as Any, accessToken as Any, addressLine as Any, city as Any, state as Any, country as Any, zipCode as Any, latitude as Any, longitude as Any, cellNumber as Any, dob as Any, gender as Any, userId as Any]
         dbManager.executeInsertUpdate(query: updateQuery, columnValues: valuesArray)
     }
@@ -160,7 +160,54 @@ class User: NSObject {
         if let mobile = cellNumber {
             parameters[UserKey.mobile]      = mobile
         }
-        if let imageURL = imageURL {
+        if let imageURL = imageURL, !imageURL.isEmpty {
+            parameters[UserKey.imageURL]    = imageURL
+        }
+        if let dob = dob {
+            parameters[UserKey.dob]         = dob
+        }
+        if let gender = gender {
+            parameters[UserKey.gender]      = gender
+        }
+        if let addressLine = addressLine {
+            parameters[UserKey.address]     = addressLine
+        }
+        if let city = city {
+            parameters[UserKey.city]        = city
+        }
+        if let state = state {
+            parameters[UserKey.state]       = state
+        }
+        if let country = country {
+            parameters[UserKey.country]     = country
+        }
+        if let zipCode = zipCode {
+            parameters[UserKey.zipcode]     = zipCode
+        }
+        if let latitude = latitude {
+            parameters[UserKey.latitude]    = latitude
+        }
+        if let longitude = longitude {
+            parameters[UserKey.longitude]   = longitude
+        }
+        if let countryCode = countryCode {
+            parameters[UserKey.countryCode] = String(countryCode.dropFirst())
+        }
+        if let mobile = cellNumber {
+            parameters[UserKey.mobile] = mobile
+        }
+        
+        return parameters
+    }
+    
+    func updateParameter() -> Dictionary<String, Any> {
+        // Add parameters
+        var parameters:[String: Any] = Dictionary()
+        parameters[UserKey.name]            = name
+        if let mobile = cellNumber {
+            parameters[UserKey.mobile]      = mobile
+        }
+        if let imageURL = imageURL, !imageURL.isEmpty {
             parameters[UserKey.imageURL]    = imageURL
         }
         if let dob = dob {

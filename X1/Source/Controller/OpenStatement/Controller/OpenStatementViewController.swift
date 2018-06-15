@@ -291,6 +291,11 @@ extension OpenStatementViewController: KolodaViewDataSource, KolodaViewDelegate,
             statements?.remove(at: indexOfStatment)
             let countableRange = CountableRange.init(indexOfStatment...indexOfStatment)
             cardCollectionView.removeCardInIndexRange(countableRange, animated: true)
+            if cardCollectionView.isRunOutOfCards {
+                actionButtonView.isHidden = true
+                noOpenStatementLabel.text = NSLocalizedString("greatJobSolviant", comment: "")
+                noOpenStatementLabel.isHidden = false
+            }
         }
     }
 }
@@ -328,7 +333,7 @@ extension OpenStatementViewController {
             self.statements = Array()
             self.actionedStatements = Array()
             for statementInfo in resultArray {
-                if let statement = Statement.init(with: statementInfo) {
+                if let statement = Statement.init(with: statementInfo, isRedefined: true) {
                     self.statements?.append(statement)
                 }
             }
