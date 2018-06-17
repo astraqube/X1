@@ -12,10 +12,23 @@ class RedefinedStatementTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var problemStatementLabel: UILabel!
+    @IBOutlet weak var tagCollectionView: TTGTextTagCollectionView!
+    @IBOutlet weak var redefinedLabel: UILabel!
+    @IBOutlet weak var viewLeadingSpaceConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        tagCollectionView.enableTagSelection = false
+        tagCollectionView.scrollDirection    = .horizontal
+        tagCollectionView.alignment          = .fillByExpandingWidth
+        tagCollectionView.scrollView.showsHorizontalScrollIndicator = false
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        tagCollectionView.removeAllTags()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -17,6 +17,7 @@ class PostStatementViewController: UIViewController {
 
     // MARK: - IB Outlet
     
+    @IBOutlet weak var searchTagTextField: UITextField!
     @IBOutlet weak var statmentTextView: UITextView!
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
@@ -61,17 +62,18 @@ class PostStatementViewController: UIViewController {
     var hashtags:[String]?
     var textTagConfig:TTGTextTagConfig  {
         let textConfig = TTGTextTagConfig()
-        textConfig.tagSelectedTextColor = UIColor.white
+        textConfig.tagSelectedTextColor = .white
         textConfig.tagTextColor         = UIColor.lightTheme()
-        textConfig.tagBackgroundColor   = UIColor.white
+        textConfig.tagBackgroundColor   = .white
         textConfig.tagSelectedBackgroundColor = UIColor.lightTheme()
         return textConfig
     }
     var textTagConfigSelected:TTGTextTagConfig  {
         let textConfig = TTGTextTagConfig()
-        textConfig.tagTextColor = UIColor.white
+        textConfig.tagTextColor = .white
         textConfig.tagBackgroundColor = UIColor.lightTheme()
-        return textTagConfig
+        textConfig.tagBorderColor     = .clear
+        return textConfig
     }
     
     // MARK: - Life Cycle
@@ -153,8 +155,8 @@ class PostStatementViewController: UIViewController {
         setupKeyboardAccesory()
         
         // Setup tags collectionview
-        tagsCollectionView.alignment        = .fillByExpandingWidth
-        selectTagsCollectionView.alignment  = .center
+        tagsCollectionView.alignment        = .fillByExpandingWidthExceptLastLine
+        selectTagsCollectionView.alignment  = .left
         selectTagsCollectionView.enableTagSelection = false
         selectTagsCollectionView.scrollDirection    = .horizontal
         tagsCollectionView.delegate         = self
@@ -169,9 +171,10 @@ class PostStatementViewController: UIViewController {
             priorityLabel.text        = PostUrgency.low.description().0
             editPostButtonsStackView.isHidden = false
             newPostButtonStackView.isHidden   = true
+            titleLabel.text                   = NSLocalizedString("editStatement", comment: "")
             if let tags = selectedStatement.tags {
                 for tag in tags {
-                    selectTagsCollectionView.addTag(tag.capitalized, with: textTagConfig)
+                    selectTagsCollectionView.addTag(tag, with: textTagConfigSelected)
                 }
             }
         }
@@ -192,9 +195,9 @@ class PostStatementViewController: UIViewController {
         showActivity()
         var parameters:[String: Any] = Dictionary()
         parameters[PostStatementKey.statement] = text
-        if selectTagsCollectionView.allTags().count > 0 {
-            let tags = selectTagsCollectionView.allTags()
-            parameters[PostStatementKey.category] = tags
+        
+        if let selectedTags = selectTagsCollectionView.allTags(), selectedTags.count > 0 {
+            parameters[PostStatementKey.category] = selectedTags
         }
         parameters[PostStatementKey.expertLevel] = selectedLevel.identifier()
         parameters[PostStatementKey.priority]    = selectedPriority.name()
@@ -216,9 +219,10 @@ class PostStatementViewController: UIViewController {
     
     private func setupKeyboardAccesory() {
         // Set Keyboard Accessory
-        accessoryView   = PostStatmentAccessory.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 40))
-        accessoryView.delegate = self
-        statmentTextView.inputAccessoryView = accessoryView
+        accessoryView                           = PostStatmentAccessory.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 40))
+        accessoryView.delegate                  = self
+        statmentTextView.inputAccessoryView     = accessoryView
+        searchTagTextField.inputAccessoryView   = accessoryView
         if(selectedStatement != nil) {
             accessoryView.postStatementButton.setTitle(NSLocalizedString("done", comment: ""), for: .normal)
             accessoryView.postStatementButton.isEnabled = true
@@ -241,6 +245,29 @@ class PostStatementViewController: UIViewController {
         Whisper.show(shout: announcement, to: self, completion: {
             
         })
+    }
+    
+    private func resetTagSearch() {
+        // Finish tag searching
+        searchTagTextField.text = nil
+        if let allTags = hashtags {
+            tagsCollectionView.removeAllTags()
+            tagsCollectionView.alignment  = .fillByExpandingWidthExceptLastLine
+            tagsCollectionView.addTags(allTags, with: textTagConfig)
+            // Set selected tags
+            setSelectedTags(for: tagsCollectionView.allTags())
+        }
+    }
+    
+    private func setSelectedTags(for tagCollection:Array<String>) {
+        // Set selecected tags
+        if let selectedTags = selectTagsCollectionView.allTags(), selectedTags.count > 0 {
+            for tag in selectedTags {
+                if let index = tagCollection.index(of: tag) {
+                    tagsCollectionView.setTagAt(UInt(index), selected: true)
+                }
+            }
+        }
     }
     
     // MARK: - IB Action
@@ -307,6 +334,8 @@ class PostStatementViewController: UIViewController {
             return
         }
         popover = nil
+        resetTagSearch()
+        searchTagTextField.becomeFirstResponder()
         let options = [
             .type(.up),
             .cornerRadius(5),
@@ -317,6 +346,10 @@ class PostStatementViewController: UIViewController {
         popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
         categoryView.frame = CGRect.init(x: 0, y: 0, width: 300, height: 200)
         popover?.show(categoryView, fromView: sender)
+        weak var weakSelf = self
+        popover?.willDismissHandler = {
+            weakSelf?.statmentTextView.becomeFirstResponder()
+        }
         popover?.tag = sender.tag
         if hashtags == nil {
             requestFetchSubCategory()
@@ -358,6 +391,25 @@ class PostStatementViewController: UIViewController {
             selectedImages?.remove(at: sender.tag)
             let indexPath = IndexPath.init(item: sender.tag, section: 0)
             imageCollectionView.deleteItems(at: [indexPath])
+        }
+    }
+    
+    @IBAction func textFieldDidChange(_ sender: UITextField) {
+        if let categories = hashtags {
+            if let text = sender.text?.trimmingCharacters(in: .whitespaces), !text.isEmpty {
+                // Show suggested tags
+                tagsCollectionView.removeAllTags()
+                tagsCollectionView.alignment = .left
+                let filteredArray = categories.filter { $0.starts(with: text)}
+                if filteredArray.count > 0 {
+                    tagsCollectionView.addTags(filteredArray, with: textTagConfig)
+                    setSelectedTags(for: filteredArray)
+                }
+            }
+            else {
+                // Show all tags
+                resetTagSearch()
+            }
         }
     }
     
@@ -414,7 +466,7 @@ extension PostStatementViewController: UITableViewDataSource, UITableViewDelegat
     }
 }
 
-extension PostStatementViewController: PostStatmentAccessoryDelegate, UITextViewDelegate {
+extension PostStatementViewController: PostStatmentAccessoryDelegate, UITextViewDelegate, UITextFieldDelegate {
     
     // MARK: - Keyboard Accessory Delegate
     
@@ -434,6 +486,7 @@ extension PostStatementViewController: PostStatmentAccessoryDelegate, UITextView
                 postStatement(button)
             }
             else {
+                popover?.dismiss()
                 view.endEditing(true)
             }
         }
@@ -459,9 +512,19 @@ extension PostStatementViewController: PostStatmentAccessoryDelegate, UITextView
         }
     }
     
+    // MARK: - TextField Delegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Continue Editing Problem Statment
+        resetTagSearch()
+        popover?.dismiss()
+        statmentTextView.becomeFirstResponder()
+        statmentTextView.text = statmentTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        return true
+    }
+    
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        
         return true
     }
     
@@ -537,17 +600,6 @@ extension PostStatementViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func didPickImage(image:UIImage) {
-        // Add the selected image as attachment
-       /* let resizedImage = image.resize(byWidth: 200)
-        let fullString = NSMutableAttributedString(string: statmentTextView.text + "\n\n")
-        fullString.setAttributes([NSAttributedStringKey.font : statmentTextView.font!], range: NSRange.init(location: 0, length: fullString.length))
-        let attachment = NSTextAttachment()
-        attachment.image = image
-        attachment.bounds = CGRect.init(x: 0, y: 0, width: resizedImage.size.width, height: resizedImage.size.height)
-         let stringWithAttachment = NSAttributedString(attachment: attachment)
-        fullString.append(stringWithAttachment)
-        statmentTextView.attributedText = fullString */
-        
         if selectedImages == nil {
             selectedImages = Array()
         }
@@ -580,7 +632,7 @@ extension PostStatementViewController: UICollectionViewDataSource, UICollectionV
 extension PostStatementViewController: TTGTextTagCollectionViewDelegate {
     // MARK: - Tag selection
     func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTapTag tagText: String!, at index: UInt, selected: Bool, tagConfig config: TTGTextTagConfig!) {
-        if selected {
+        if selected, !selectTagsCollectionView.allTags().contains(tagText) {
             selectTagsCollectionView.addTag(tagText, with: textTagConfigSelected)
         }
         else {
@@ -647,7 +699,7 @@ extension PostStatementViewController {
                 if let category = Category.init(with: categoryInfo) {
                     hashtags?.append(category.name)
                     // Add tag
-                    tagsCollectionView.addTag(category.name.capitalized, with: textTagConfig)
+                    tagsCollectionView.addTag(category.name, with: textTagConfig)
                 }
             }
             

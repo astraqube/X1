@@ -63,9 +63,13 @@ class HomeViewController: UIViewController {
         }
         
         // Refresh statements
-       /* if user.type != .principal {
-            requestFetchStatements()
-        } */
+        if user.type == .principal {
+            requestFetchTrendingStatements(with: user.userId)
+        }
+        else {
+            noStatementLabel.isHidden = false
+        }
+        
     }
     
     // MARK: - Customize UI
@@ -131,10 +135,12 @@ extension HomeViewController {
     
     // MARK: - Network Request
     
-    private func requestFetchStatements() {
+    private func requestFetchTrendingStatements(with principle: String) {
         // Request fetch all statement
-        activityIndicator.startAnimating()
-        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.fetchPosts)
+        if self.statements == nil {
+           activityIndicator.startAnimating()
+        }
+        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.trendingStatement + principle)
         weak var weakSelf = self
         webManager.httpRequest(method: .get, apiURL: apiURL, body: [:], completion: { (response) in
             weakSelf?.activityIndicator.stopAnimating()
@@ -147,19 +153,23 @@ extension HomeViewController {
     // MARK: - Request Completion
     
     private func didFetch(statements: Dictionary<String, Any>) {
-        if let resultArray = statements[APIKeys.result] as? Array<Dictionary<String, Any>> {
+        if let resultArray = statements[APIKeys.result] as? Array<Dictionary<String, Any>>, resultArray.count > 0 {
             self.statements = Array()
+            noStatementLabel.isHidden = true
             for statementInfo in resultArray {
-                if let statement = Statement.init(with: statementInfo) {
-                    
+                if let statement = ProblemEvolution.init(with: statementInfo) {
+                    self.statements?.append(statement)
                 }
             }
             
             // Reload collectionview
             questionCollectionView.reloadData()
-//            if self.statements!.count > 1 {
-//                questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
-//            }
+            if self.statements!.count > 1 {
+                questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
+            }
+        }
+        else {
+            noStatementLabel.isHidden = false
         }
     }
     

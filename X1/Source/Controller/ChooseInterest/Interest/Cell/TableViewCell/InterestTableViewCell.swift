@@ -56,7 +56,7 @@ class InterestTableViewCell: UITableViewCell {
         let count = interests.count
         for index in 0..<count {
             let tag = interests[index]
-            interestCollectionView.addTag(tag.name.capitalized, with: textConfig)
+            interestCollectionView.addTag(tag.name, with: textConfig)
             
             if tag.isSelected {
                 interestCollectionView.setTagAt(UInt(index), selected: true)

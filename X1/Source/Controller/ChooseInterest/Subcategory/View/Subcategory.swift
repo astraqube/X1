@@ -118,7 +118,7 @@ extension Subcategory: UICollectionViewDelegate, UICollectionViewDataSource, UIC
             if let imageURL = subcategory.imageURL {
                 subcategoryCollectionViewCell.subcategoryImageView.setImage(withURL: imageURL, placeholder: nil)
             }
-            subcategoryCollectionViewCell.subcategoryTitleLabel.text = subcategory.name.capitalized
+            subcategoryCollectionViewCell.subcategoryTitleLabel.text = subcategory.name
             
             if subcategory.isSelected {
                 subcategoryCollectionViewCell.subcategoryTitleLabel.backgroundColor = UIColor.darkTheme()

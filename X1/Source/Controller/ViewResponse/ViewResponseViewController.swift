@@ -276,7 +276,7 @@ extension ViewResponseViewController: KolodaViewDataSource, KolodaViewDelegate {
             let draggedStatment = datasource[index]
             actionedResponses?.append(draggedStatment)
             if koloda.isRunOutOfCards {
-                actionButtonView.isHidden = true
+                actionStackView.isHidden = true
                 noResponsesLabel.text = NSLocalizedString("greatJobPrincipal", comment: "")
                 noResponsesLabel.isHidden = false
             }

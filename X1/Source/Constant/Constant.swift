@@ -225,6 +225,7 @@ struct PostStatementKey {
     static let statementId    = "id"
     static let resourceId     = "r_id"
     static let response       = "response_statement"
+    static let isReposted     = "is_active"
     
 }
 
@@ -248,6 +249,7 @@ struct APIEndPoint {
     static let createPost           = "statement"
     static let closeStatement       = "statement/"
     static let updateStatement      = "statement/"
+    static let trendingStatement    = "statements/principal/"
     static let recordSwipe          = "assign/statement/"
     static let responseSwipe        = "assign/response/"
     static let resourceStatements   = "statements/resource/"

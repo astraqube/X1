@@ -112,7 +112,7 @@ class RateInterestViewController: UIViewController {
         
         for index in 0..<count {
             let tag = selectedInterests[index]
-            tagCollectionView.addTag(tag.name.capitalized, with: textConfig)
+            tagCollectionView.addTag(tag.name, with: textConfig)
         }
         
         tagCollectionView.scrollDirection       = .horizontal
@@ -122,7 +122,7 @@ class RateInterestViewController: UIViewController {
     }
     
     private func setupDraggableView(for tag: Category, at point: CGPoint) {
-        draggableLabel.text = tag.name.capitalized
+        draggableLabel.text = tag.name
         let width = tag.name.widthOfString(usingFont: draggableLabel.font) + 16
         var frame = draggableLabel.frame
         frame.size.width = width
@@ -178,13 +178,13 @@ class RateInterestViewController: UIViewController {
                 pickerView.selectRow(0, inComponent: 0, animated: true)
                 pickerView.isHidden = false
                 pickerView.reloadComponent(0)
-                selectedTagLabel.text = tag.name.capitalized
+                selectedTagLabel.text = tag.name
                 selectedTagLabel.isHidden = false
             }
             else {
                 // Add back to TagCollection
                 selectedInterests.append(tag)
-                tagCollectionView.addTag(tag.name.capitalized, with: textConfig)
+                tagCollectionView.addTag(tag.name, with: textConfig)
             }
             selectedTag = nil
             selectedIndex = nil
@@ -222,7 +222,7 @@ class RateInterestViewController: UIViewController {
             if touchPoint.x <= tagCollectionView.frame.size.width && touchPoint.y <= tagCollectionView.frame.size.height {
                 // Successfully dragged back
                 if selectedCategory.count > 0 {
-                    selectedTagLabel.text = selectedCategory[0].name.capitalized
+                    selectedTagLabel.text = selectedCategory[0].name
                 }
                 else {
                     pickerView.isHidden       = true
@@ -230,12 +230,12 @@ class RateInterestViewController: UIViewController {
                 }
                 selectedInterests.append(tag)
                 // Add tag
-                tagCollectionView.addTag(tag.name.capitalized, with: textConfig)
+                tagCollectionView.addTag(tag.name, with: textConfig)
             }
             else if !selectedCategory.contains(tag) {
                 // Failed to drag
                 selectedCategory.insert(tag, at: 0)
-                selectedTagLabel.text = selectedCategory[0].name.capitalized
+                selectedTagLabel.text = selectedCategory[0].name
                 draggedCategories[selectedExpertLevel] = selectedCategory
                 refreshPickerView()
             }
@@ -298,7 +298,7 @@ extension RateInterestViewController: UIPickerViewDataSource, UIPickerViewDelega
         else if let selectedCategories = draggedCategories[selectedExpertLevel] {
             pickerView.isHidden       = false
             selectedTagLabel.isHidden = false
-            selectedTagLabel.text     = selectedCategories[0].name.capitalized
+            selectedTagLabel.text     = selectedCategories[0].name
         }
         pickerView.reloadComponent(0)
     }
@@ -312,12 +312,12 @@ extension RateInterestViewController: UIPickerViewDataSource, UIPickerViewDelega
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return draggedCategories[selectedExpertLevel]![row].name.capitalized
+        return draggedCategories[selectedExpertLevel]![row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let selectedCategory = draggedCategories[selectedExpertLevel], selectedCategory.count > row {
-            selectedTagLabel.text = selectedCategory[row].name.capitalized
+            selectedTagLabel.text = selectedCategory[row].name
         }
     }
     
@@ -333,7 +333,7 @@ extension RateInterestViewController: UIPickerViewDataSource, UIPickerViewDelega
             label.textAlignment             = .center
         }
         if let selectedCategory = draggedCategories[selectedExpertLevel] {
-            label.text = selectedCategory[row].name.capitalized
+            label.text = selectedCategory[row].name
         }
         return label
     }

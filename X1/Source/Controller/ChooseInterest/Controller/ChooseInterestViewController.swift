@@ -207,7 +207,7 @@ extension ChooseInterestViewController: UICollectionViewDataSource, UICollection
         let categoryCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableIdentifier.selectCategoryCell, for: indexPath) as! InterestCategoryCollectionViewCell
         if let category = categories?[indexPath.row] {
             // Configure cell
-            categoryCell.categoryTitleLabel.text = category.name.capitalized
+            categoryCell.categoryTitleLabel.text = category.name
             categoryCell.containerView.layer.cornerRadius = isDisplayingCategoryInFull ? 40 : 2
             if let imageURL = category.imageURL {
                 categoryCell.categoryImageView.setImage(withURL: imageURL, placeholder: nil)

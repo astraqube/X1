@@ -8,32 +8,54 @@
 
 import UIKit
 
-class ProblemEvolution: NSObject {
+class ProblemEvolution: Statement {
     
     // MARK: - Property
     
-    var principleName:String!
-    var location:String?
-    var dateTime:String!
-    var categories:[String]?
-    var statement:String!
-    var redefinedStatements:[ProblemEvolution]?
+    var redefinedStatements:[RedefinedStatement]?
     
-    init?(with response: Dictionary<String, Any>) {
-        // Initialize Model
-        principleName = "Peter Parker"
-        location      = "New Delhi"
-        dateTime      = "5 mins ago"
-        statement     = ""
-        categories    = ["Swift", "iOS", "Android"]
+    class RedefinedStatement: NSObject {
+        var statement:String!
+        var dateTime:Date?
+        var categories:[String]?
+        
+        override init() {
+            super.init()
+        }
+        
+        init?(with response: Dictionary<String, Any>) {
+            // Redefined statements
+            guard let redefinedStatment = response[PostStatementKey.statement] as? String,
+            let createdDate             = (response[PostStatementKey.createdAt] as? String)?.dateFromISOString() else {
+                return nil
+            }
+            statement   = redefinedStatment
+            dateTime    = createdDate
+            categories  = response[PostStatementKey.tags] as? Array<String>
+        }
     }
     
-    static func model() -> [ProblemEvolution] {
-        var problemEvolutions:[ProblemEvolution] = Array()
-        if let problemEvolution = ProblemEvolution.init(with: [:]) {
-            problemEvolutions.append(problemEvolution)
-            problemEvolution.redefinedStatements = [problemEvolution, problemEvolution, problemEvolution, problemEvolution]
+    init?(with response: Dictionary<String, Any>) {
+        // Original Problem Statements
+        super.init(with: response, isRedefined: false)
+        redefinedStatements = Array()
+        
+        // Add the orignal problem statement as redefined one to appear in same tableView
+        let originalStatment        = RedefinedStatement()
+        originalStatment.statement  = problemText
+        originalStatment.dateTime   = time
+        originalStatment.categories = tags
+        redefinedStatements?.append(originalStatment)
+        
+        if let redefinedStatmentsInfo = response[APIKeys.redefinedStatment] as? Array<Dictionary<String, Any>> {
+            // Parse all redefined statements
+            let repostedStatements = redefinedStatmentsInfo.filter {$0[PostStatementKey.isReposted] as? Bool == true}
+            for redefinedStatmentInfo in repostedStatements {
+                // Create models
+                if let redefinedStatement = RedefinedStatement.init(with: redefinedStatmentInfo) {
+                    redefinedStatements?.append(redefinedStatement)
+                }
+            }
         }
-        return problemEvolutions;
     }
 }

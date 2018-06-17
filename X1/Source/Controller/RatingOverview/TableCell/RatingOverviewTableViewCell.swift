@@ -49,7 +49,7 @@ class RatingOverviewTableViewCell: UITableViewCell {
         let (name, _)   = expertLevel.description()
         titleLabel.text = name
         for category in categories {
-            tagCollectionView.addTag(category.name.capitalized, with: textConfig)
+            tagCollectionView.addTag(category.name, with: textConfig)
         }
     }
 

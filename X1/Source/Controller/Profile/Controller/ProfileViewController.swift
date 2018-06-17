@@ -198,7 +198,7 @@ class ProfileViewController: UIViewController {
         
         // 3. Name Validation
         
-        if !user.userId.isEmpty, user.name.isEmpty {
+        if user.userId != nil, user.name.isEmpty {
             // Set error message
             setError(rowIndex: TextFieldRow.name.rawValue, section:ProfileSection.textField.rawValue, message: NSLocalizedString("nameMissing", comment: ""))
             return false
