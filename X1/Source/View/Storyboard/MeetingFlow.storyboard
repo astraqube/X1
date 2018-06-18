@@ -728,8 +728,11 @@
                         <viewLayoutGuide key="safeArea" id="lJd-94-t7j"/>
                     </view>
                     <connections>
+                        <outlet property="addAvailabilityButton" destination="nZU-7R-cUT" id="9N3-9m-aZq"/>
                         <outlet property="availabilityView" destination="rhX-C9-9Jm" id="RiI-KB-YiT"/>
                         <outlet property="detailView" destination="Iha-PM-oMB" id="AUF-nr-iqt"/>
+                        <outlet property="priceQuoteLabel" destination="Shw-GD-anj" id="aBQ-gM-eIg"/>
+                        <outlet property="solveTypeLabel" destination="7fj-FT-Udp" id="bt7-nI-Vec"/>
                         <segue destination="SvS-hd-tFe" kind="presentation" identifier="PrincipalModifiesPopupViewController" modalPresentationStyle="overCurrentContext" id="qHJ-RP-DZw"/>
                         <segue destination="5a8-Zv-dJV" kind="show" identifier="ResourcePricipalConfirmationViewController" id="mt0-Fi-GrG"/>
                         <segue destination="SF0-Nq-Eer" kind="presentation" identifier="PrincipalAvailablityViewController" animates="NO" modalPresentationStyle="overCurrentContext" id="XnN-7Y-z1k"/>
@@ -2234,7 +2237,7 @@
         <image name="star_selected" width="17" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KXi-Wd-vdP"/>
+        <segue reference="mt0-Fi-GrG"/>
         <segue reference="XnN-7Y-z1k"/>
     </inferredMetricsTieBreakers>
 </document>

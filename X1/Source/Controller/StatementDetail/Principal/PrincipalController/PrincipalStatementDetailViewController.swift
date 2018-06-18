@@ -14,6 +14,9 @@ class PrincipalStatementDetailViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var detailView: UIView!
     @IBOutlet var availabilityView: AvailabilityView!
+    @IBOutlet weak var solveTypeLabel: UILabel!
+    @IBOutlet weak var priceQuoteLabel: UILabel!
+    @IBOutlet weak var addAvailabilityButton: UIButton!
     
     //MARK: - Property
     
