@@ -187,6 +187,7 @@ open class Popover: UIView {
 
   @objc open func dismiss() {
     if self.superview != nil {
+      self.tag = -1
       self.willDismissHandler?()
       UIView.animate(withDuration: self.animationOut, delay: 0,
                      options: UIViewAnimationOptions(),

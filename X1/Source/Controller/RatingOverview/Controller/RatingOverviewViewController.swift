@@ -21,6 +21,7 @@ class RatingOverviewViewController: UIViewController {
     var draggedCategories:Dictionary<ExpertLevel, [Category]>!
     var allKeys:Array<ExpertLevel>?
     var user:User!
+    lazy var webManager = WebRequestManager()
     
     // MARK: - Life Cycle
     
@@ -47,8 +48,17 @@ class RatingOverviewViewController: UIViewController {
         guard !activityIndicator.isAnimating else {
             return
         }
-        activityIndicator.startAnimating()
-        perform(#selector(gotToLetsBeginScreen), with: nil, afterDelay: 3)
+        
+        // All Categories are dragged, let's save them
+        var allSkillSets:[[String:Any]] = Array()
+        for (expert, categories) in draggedCategories {
+            let expertId = expert.identifier()
+            for skill in categories {
+                allSkillSets.append([APIKeys.categoryName: skill.name!, APIKeys.expert: expertId])
+            }
+        }
+        let parameters = [APIKeys.skillsDetails: allSkillSets]
+        requestUpdateSkillSet(with: parameters, resource: user.userId)
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -105,6 +115,27 @@ extension RatingOverviewViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+    
+}
+
+extension RatingOverviewViewController {
+    
+    // MARK: - Network Request
+    
+    private func requestUpdateSkillSet(with parameters: Dictionary<String, Any>, resource identifier: String) {
+        // Update Skill Sets wrt expert level
+        activityIndicator.startAnimating()
+        let apiURL = APIURL.url(apiEndPoint: APIEndPoint.updateSkillSet +  identifier)
+        weak var weakSelf = self
+        webManager.httpRequest(method: .post, apiURL: apiURL, body: parameters, completion: { (response) in
+            // Move to next screen when ratings are saved.
+            weakSelf?.activityIndicator.stopAnimating()
+            weakSelf?.gotToLetsBeginScreen()
+        }) { (error) in
+            // Failed to update categories
+            weakSelf?.activityIndicator.stopAnimating()
+        }
     }
     
 }

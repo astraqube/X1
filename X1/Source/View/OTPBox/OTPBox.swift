@@ -215,7 +215,7 @@ extension OTPBox {
     
     fileprivate func requestVerifyOTP(with parameters: Dictionary<String, Any>) {
         // Validate Mobile OTP
-        let apiURL = APIURL.url(apiEndPoint: APIEndPoint.verifyOTP)
+        let apiURL = APIURL.notification(apiEndPoint: APIEndPoint.verifyOTP)
         weak var weakself = self
         webRequestManager.httpRequest(method: .post, apiURL: apiURL, body: parameters, completion: { (response) in
             weakself?.activityIndicator.stopAnimating()

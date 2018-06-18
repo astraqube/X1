@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
     
     var user:User! = User.loggedInUser()
     let webManager = WebRequestManager()
-    var statements:[Statement]?
+    var statements:[ProblemEvolution]?
     
     // MARK: - Life Cycle
     
@@ -63,9 +63,13 @@ class HomeViewController: UIViewController {
         }
         
         // Refresh statements
-       /* if user.type != .principal {
-            requestFetchStatements()
-        } */
+        if user.type == .principal {
+            requestFetchTrendingStatements(with: user.userId)
+        }
+        else {
+            noStatementLabel.isHidden = false
+        }
+        
     }
     
     // MARK: - Customize UI
@@ -76,12 +80,6 @@ class HomeViewController: UIViewController {
         badgeCountLabel.layer.cornerRadius  = 9
         badgeCountLabel.layer.masksToBounds = true
         
-       /* askAnythingButton.layer.borderWidth = 1.0
-        askAnythingButton.layer.borderColor = UIColor.lightTheme().cgColor
-        askAnythingButton.darkShadow(withRadius: 5)
-        answerNowButton.layer.borderWidth = 1.0
-        answerNowButton.layer.borderColor = UIColor.lightTheme().cgColor
-        answerNowButton.darkShadow(withRadius: 5) */
         viewResponseButton.layer.borderWidth = 1.0
         viewResponseButton.layer.borderColor = UIColor.lightTheme().cgColor
         viewResponseButton.darkShadow(withRadius: 5)
@@ -98,11 +96,14 @@ class HomeViewController: UIViewController {
     
     @IBAction func openMenu(_ sender: Any) {
         // Log out user temporarily
+<<<<<<< HEAD
 //        user.delete()
 //        let landingViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.landing)
 //        navigationController?.setViewControllers([landingViewController!], animated: true)
         
         self.moveOnStatementDetail()
+=======
+>>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
         
     }
     
@@ -152,7 +153,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let questionCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableIdentifier.questionCollectionViewCell, for: indexPath) as! QuestionCollectionViewCell
         // Configure cell with data
         if let statement = statements?[indexPath.item] {
-            questionCollectionViewCell.configureCell(with: statement)
+            questionCollectionViewCell.configureRedefinedCell(with: statement)
         }
         return questionCollectionViewCell
     }
@@ -162,10 +163,12 @@ extension HomeViewController {
     
     // MARK: - Network Request
     
-    private func requestFetchStatements() {
+    private func requestFetchTrendingStatements(with principle: String) {
         // Request fetch all statement
-        activityIndicator.startAnimating()
-        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.fetchPosts)
+        if self.statements == nil {
+           activityIndicator.startAnimating()
+        }
+        let apiURL = APIURL.statementUrl(apiEndPoint: APIEndPoint.trendingStatement + principle)
         weak var weakSelf = self
         webManager.httpRequest(method: .get, apiURL: apiURL, body: [:], completion: { (response) in
             weakSelf?.activityIndicator.stopAnimating()
@@ -178,10 +181,11 @@ extension HomeViewController {
     // MARK: - Request Completion
     
     private func didFetch(statements: Dictionary<String, Any>) {
-        if let resultArray = statements[APIKeys.result] as? Array<Dictionary<String, Any>> {
+        if let resultArray = statements[APIKeys.result] as? Array<Dictionary<String, Any>>, resultArray.count > 0 {
             self.statements = Array()
+            noStatementLabel.isHidden = true
             for statementInfo in resultArray {
-                if let statement = Statement.init(with: statementInfo) {
+                if let statement = ProblemEvolution.init(with: statementInfo) {
                     self.statements?.append(statement)
                 }
             }
@@ -189,8 +193,11 @@ extension HomeViewController {
             // Reload collectionview
             questionCollectionView.reloadData()
             if self.statements!.count > 1 {
-                questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
+                questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredHorizontally, animated: false)
             }
+        }
+        else {
+            noStatementLabel.isHidden = false
         }
     }
     

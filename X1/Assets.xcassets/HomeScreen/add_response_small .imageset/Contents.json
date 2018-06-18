@@ -11,6 +11,10 @@
     },
     {
       "idiom" : "universal",
+<<<<<<< HEAD
+=======
+      "filename" : "add_response_small@3x .png",
+>>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
       "scale" : "3x"
     }
   ],

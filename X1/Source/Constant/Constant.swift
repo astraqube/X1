@@ -96,17 +96,20 @@ enum PostUrgency: Int {
     case high
     case medium
     case low
+    case none
     
-    func description () -> (String, String) {
+    func description () -> (String, String, String) {
         switch self {
         case .urgent:
-            return ("Urgent", "Valid for 2 hours")
+            return ("Urgent", "Need Response in: 4 Hours", "Valid for: 1 Day")
         case .high:
-            return ("High", "Valid for 1 day")
+            return ("High", "Need Response in: 24 Hours", "Valid for: 2 Days")
         case .medium:
-            return ("Medium", "Valid fof 1 week")
+            return ("Medium", "Need Response in: 48 Hours", "Valid for: 1 Week")
         case .low:
-            return ("Low", "Valid for 3 weeks")
+            return ("Low", "Need Response in: 1 Week", "Valid for: 2 Weeks")
+        default:
+            return ("None", "Need Response in: 3 Weeks", "Valid for: 3 Weeks")
         }
     }
     
@@ -121,9 +124,29 @@ enum PostUrgency: Int {
             validInterval = 604800 // Seconds in one week
         case .low:
             validInterval = 1814400 // Seconds in 3 weeks
+        default:
+            break
         }
+        
         let expirationTime = (NSDate().timeIntervalSince1970 + validInterval) * 1000 // Converted to milliseconds
         return expirationTime
+    }
+    
+    func name() -> String {
+        var urgency:String! // In seconds
+        switch self {
+        case .urgent:
+            urgency = "urgent"
+        case .high:
+            urgency = "high"
+        case .medium:
+            urgency = "medium"
+        case .low:
+            urgency = "low"
+        default:
+            urgency = "none"
+        }
+        return urgency
     }
 }
 
@@ -140,6 +163,7 @@ struct StoryboardIdentifier {
     static let tabBar            = "HomeTabBarViewController"
     static let letsBegin         = "LetsBeginViewController"
     static let rateInterest      = "RateInterestViewController"
+    static let createStatment    = "PostStatementViewController"
 }
 
 struct ReusableIdentifier {
@@ -159,9 +183,15 @@ struct ReusableIdentifier {
     static let popUpTableCell               = "PopUpCell"
     static let timerTableCell               = "TimerTableCell"
     static let selectImageCollectionCell    = "ImageSelectionCollectionViewCell"
+<<<<<<< HEAD
     static let principalPopupTableCell    = "PrincipalPopupTableCell"
     static let availabilityCollectionCell    = "AvailabilityCollectionCell"
 
+=======
+    static let notificationTableCell        = "NotificationsTableCell"
+    static let sideMenuTableViewCell        = "SideMenuOptionTableViewCell"
+    static let problemEvolutionCell         = "RedefinedStatementTableViewCell"
+>>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
 }
 
 struct APIKeys {
@@ -176,6 +206,9 @@ struct APIKeys {
     static let imageURL             = "image_url"
     static let isMobileVerified     = "verify_mobile"
     static let resource             = "resource"
+    static let expert               = "expert"
+    static let skillsDetails        = "skills_details"
+    static let redefinedStatment    = "re_define"
 }
 
 struct PostStatementKey {
@@ -200,6 +233,7 @@ struct PostStatementKey {
     static let statementId    = "id"
     static let resourceId     = "r_id"
     static let response       = "response_statement"
+    static let isReposted     = "is_active"
     
 }
 
@@ -212,17 +246,23 @@ struct DeviceIdentifier {
 struct APIEndPoint {
     static let signIn               = "login"
     static let signUp               = "register"
+    static let updatUserProfile     = "user/"
     static let linkedInLogin        = "login/linkedin"
     static let category             = "category/levelone"
     static let subcategory          = "category/leveltwo/"
     static let intersts             = "category/levelthree/"
     static let fetchPosts           = "statements"
-    static let verifyOTP            = "mobile/verification"
+    static let verifyOTP            = "notification/otp/check"
     static let resendOTP            = "resend"
     static let createPost           = "statement"
+    static let closeStatement       = "statement/"
+    static let updateStatement      = "statement/"
+    static let trendingStatement    = "statements/principal/"
     static let recordSwipe          = "assign/statement/"
     static let responseSwipe        = "assign/response/"
     static let resourceStatements   = "statements/resource/"
+    static let updateSkillSet       = "skills/user/"
+    static let updateInterest       = "interest/user/"
     
     static func submitResponse(with resourceId: String, statementId: String) -> String {
         let addResponse = "response/resource/" + resourceId + "/statement/" + statementId
@@ -241,8 +281,9 @@ struct APIEndPoint {
 }
 
 struct APIURL {
-    static let baseURL      = "http://35.171.22.162:9004/api/v1/"
-    static let statementURL = "http://35.171.22.162:9002/api/v1/"
+    static let baseURL          = "http://35.171.22.162:9004/api/v1/"
+    static let statementURL     = "http://35.171.22.162:9002/api/v1/"
+    static let notificationURL  = "http://35.171.22.162:9006/api/v1/"
     
     static func url(apiEndPoint endPoint: String) -> String {
         let apiURL = baseURL + endPoint
@@ -251,6 +292,11 @@ struct APIURL {
     
     static func statementUrl(apiEndPoint endPoint: String) -> String {
         let apiURL = statementURL + endPoint
+        return apiURL
+    }
+    
+    static func notification(apiEndPoint endPoint: String) -> String {
+        let apiURL = notificationURL + endPoint
         return apiURL
     }
 }

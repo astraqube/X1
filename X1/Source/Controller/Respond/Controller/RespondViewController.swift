@@ -8,6 +8,7 @@
 
 import UIKit
 import GrowingTextView
+import Whisper
 
 class RespondViewController: UIViewController {
 
@@ -101,9 +102,35 @@ class RespondViewController: UIViewController {
         }
     }
     
+    private func showAlert(with title:String, message: String) {
+        // Show alert to user
+        let announcement = Announcement(title: title, subtitle: message, image: #imageLiteral(resourceName: "info"))
+        Whisper.show(shout: announcement, to: self, completion: {
+            
+        })
+    }
+    
+    private func isValidQuestion(with text: String) -> Bool {
+        let isQuestion = text.contains("?")
+        if isQuestion {
+            if text.components(separatedBy: "?").count > 2 {
+                // Show alert for more than 1 question
+                showAlert(with: NSLocalizedString("multipleQuestionTitle", comment: ""), message: NSLocalizedString("multipleQuestionMessage", comment: ""))
+                return false
+            }
+            return true
+        }
+        else {
+            // Show alert for no question
+            showAlert(with: NSLocalizedString("invalidQuestionTitle", comment: ""), message: NSLocalizedString("invalidQuestionMessage", comment: ""))
+        }
+        return false
+    }
+    
     // MARK: - IB Action
     
     @IBAction func close(_ sender: Any) {
+        view.endEditing(true)
         dismiss(animated: true) {
             
         }
@@ -147,6 +174,9 @@ class RespondViewController: UIViewController {
     @IBAction func addQuestion(_ sender: Any) {
         // Insert a new row for a question
         let text = questionTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard isValidQuestion(with: text) else {
+            return
+        }
         if !text.isEmpty {
             if let editingTextRow = editingResponseIndex {
                 // Edit the text at index path and reload that row

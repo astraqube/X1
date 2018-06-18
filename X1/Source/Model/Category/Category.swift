@@ -21,7 +21,7 @@ class Category: NSObject {
     
     init?(with response: Dictionary<String, Any>) {
         guard let id = response[APIKeys.identifier] as? String,
-        let categoryName     = response[APIKeys.categoryName] as? String
+        let categoryName = response[APIKeys.categoryName] as? String
         else {
             return nil
         }
@@ -31,5 +31,4 @@ class Category: NSObject {
         imageURL        = response[APIKeys.imageURL] as? String
         cellWidth       = name.widthOfString(usingFont: UIFont.robotoFont(wityType: .light, size: 17))
     }
-
 }

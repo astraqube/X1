@@ -29,6 +29,7 @@ class ChooseInterestViewController: UIViewController {
     @IBOutlet weak var categoryContainerView: UIView!
     @IBOutlet weak var heightConstraintSubcategoryView: NSLayoutConstraint!
     @IBOutlet weak var subcategoryContainerView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     // MARK: - Other Property
@@ -106,7 +107,13 @@ class ChooseInterestViewController: UIViewController {
                 showAlert(title: NSLocalizedString("selectSubcategoriesTitle", comment: ""), message: NSLocalizedString("selectSubcategoriesMessage", comment: ""))
             }
             else {
-                gotToLetsBeginScreen()
+                // Update selected interests
+                var selectedInterests:[String] = Array()
+                for subcategory in selectedSubcategories {
+                    selectedInterests.append(subcategory.name)
+                }
+                let parameters = [APIKeys.categoryName: selectedInterests]
+                requestUpdateInterests(with: parameters, principle: user.userId)
             }
             
         }
@@ -200,12 +207,11 @@ extension ChooseInterestViewController: UICollectionViewDataSource, UICollection
         let categoryCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableIdentifier.selectCategoryCell, for: indexPath) as! InterestCategoryCollectionViewCell
         if let category = categories?[indexPath.row] {
             // Configure cell
-            categoryCell.categoryTitleLabel.text = category.name.capitalized
+            categoryCell.categoryTitleLabel.text = category.name
             categoryCell.containerView.layer.cornerRadius = isDisplayingCategoryInFull ? 40 : 2
             if let imageURL = category.imageURL {
                 categoryCell.categoryImageView.setImage(withURL: imageURL, placeholder: nil)
             }
-            
         }
         return categoryCell
     }
@@ -403,6 +409,26 @@ extension ChooseInterestViewController {
             subcategoryView.reloadSubcategory(with: selectedCategory.subcategories)
         }
     }
+    
+}
 
+extension ChooseInterestViewController {
+    
+    // MARK: - Network Request
+    
+    private func requestUpdateInterests(with parameters: Dictionary<String, Any>, principle identifier: String) {
+        // Update Skill Sets wrt expert level
+        activityIndicator.startAnimating()
+        let apiURL = APIURL.url(apiEndPoint: APIEndPoint.updateInterest +  identifier)
+        weak var weakSelf = self
+        webManager.httpRequest(method: .post, apiURL: apiURL, body: parameters, completion: { (response) in
+            // Move to next screen when ratings are saved.
+            weakSelf?.activityIndicator.stopAnimating()
+            weakSelf?.gotToLetsBeginScreen()
+        }) { (error) in
+            // Failed to update categories
+            weakSelf?.activityIndicator.stopAnimating()
+        }
+    }
     
 }

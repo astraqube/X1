@@ -65,7 +65,7 @@ extension PickInterest: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // Set header title
         if let subcategory = subcategories?[section] {
-            return subcategory.name.capitalized
+            return subcategory.name
         }
         return nil
     }
@@ -126,7 +126,7 @@ extension PickInterest  {
             for categoryInfo in subcategories {
                 if let category = Category.init(with: categoryInfo) {
                     subcategory.subcategories?.append(category)
-                    subcategory.tags?.append(category.name.capitalized)
+                    subcategory.tags?.append(category.name)
                 }
             }
         }

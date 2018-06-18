@@ -31,16 +31,24 @@
 "validationPassed"      = "All values are entered correctly";
 "loggedIn"              = "Welcome back buddy!";
 "signedUp"              = "Congratualtions, use Solviant to gain or spread knowledge.";
-"unexpectedErrorTitle"  = "Server Unreachable";
-"unableToProceed"       = "Something Went Wrong";
-"unexpectedErrorMessage" = "Please check your network connection and try again.";
-"underage"               = "Min 13 years required";
-"selectSubcategoriesTitle"    = "Choose Interests";
-"selectSubcategoriesMessage"  = "Select one or more categories.";
-"chooseExpertLevelTitle"      = "Choose Expert Level";
-"chooseExpertLevelMessage"    = "Drag the remaining interests to bucket.";
-"greatJobSolviant"            = "Great job! We'll show more cards\nwhen we have it.";
-"greatJobPrincipal"           = "That's all we had for now. We'll show\nmore responses when we have it.";
+"unexpectedErrorTitle"          = "Server Unreachable";
+"unableToProceed"               = "Something Went Wrong";
+"unexpectedErrorMessage"        = "Please check your network connection and try again.";
+"underage"                      = "Min 13 years required";
+"selectSubcategoriesTitle"      = "Choose Interests";
+"selectSubcategoriesMessage"    = "Select one or more categories.";
+"chooseExpertLevelTitle"        = "Choose Expert Level";
+"chooseExpertLevelMessage"      = "Drag the remaining interests to bucket.";
+"greatJobSolviant"              = "Great job! We'll show more cards\nwhen we have it.";
+"greatJobPrincipal"             = "That's all we had for now. We'll show\nmore responses when we have it.";
+"closeStatmentTitle"            = "Close Statement";
+"closeStatmentMessage"          = "Are you sure, want to close this statment? You won't be able to edit it any further.";
+"invaildProblemStatmentTitle"   = "Questions are now allowed";
+"invaildProblemStatmentMessage" = "Create a problem statment instead. It should not be a question.";
+"invalidQuestionTitle"          = "Question Required";
+"invalidQuestionMessage"        = "Please type questions only.";
+"multipleQuestionTitle"         = "One question per box only";
+"multipleQuestionMessage"       = "For adding multiple questions, please use \"+\" button";
 
 // MARK: - TextField Placeholder
 
@@ -52,6 +60,7 @@
 "state"        = "State";
 "country"      = "Country";
 "addressLine"  = "Address";
+"name"         = "Name";
 
 // MARK: - Gender
 
@@ -64,6 +73,7 @@
 
 "question" = "Question";
 
+<<<<<<< HEAD
 // MARK: - Statement Detail Screen
 
 "solve" = "Solve";
@@ -89,4 +99,25 @@
 "method" = "Method";
 "emailId" = "E-mail ID";
 "timings" = "Timings";
+=======
+// MARK: - Button Actions
+>>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
 
+"dontclose" = "Don't Close";
+"close"     = "Close";
+"done"      = "Done";
+
+// MARK: - Side Menu Items
+
+"home"             = "Home";
+"profile"          = "My Profile";
+"activity"         = "Activity";
+"feedback"         = "Feedback";
+"consult"          = "Consult";
+"requestToBeRated" = "Request to be Rated";
+"paymentDetails"   = "Payment Details";
+"settings"         = "Settings";
+"switchProfile"    = "Switch Profile";
+"logout"           = "Logout";
+
+"editStatement"    = "Edit Statement";
