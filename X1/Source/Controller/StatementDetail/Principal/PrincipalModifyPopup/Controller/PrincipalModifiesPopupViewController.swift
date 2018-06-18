@@ -19,8 +19,8 @@ class PrincipalModifiesPopupViewController: UIViewController {
     
     //MARK: - Property
     
-    var selectPriorityStr = NSLocalizedString("30_minutes", comment: "")
-    var selectLocationStr = NSLocalizedString("30_minutes", comment: "")
+    var selectPriorityStr = "Priority 1"  // dummy data need to change as per need
+    var selectLocationStr = "Location 1"  // dummy data need to change as per need
 
     struct PrincipalPopupOption {
         let title: String!;
@@ -88,6 +88,8 @@ class PrincipalModifiesPopupViewController: UIViewController {
             if error == nil{
                 self.popover?.dismiss()
                 self.selectPriorityStr = (result?.title)!
+                let indexPath = IndexPath(row: 1, section: 0)
+                self.principalPopUpTableView.reloadRows(at: [indexPath], with: .fade)
             }
         }
         
@@ -96,6 +98,8 @@ class PrincipalModifiesPopupViewController: UIViewController {
             if error == nil{
                 self.popover?.dismiss()
                 self.selectLocationStr = (result?.title)!
+                let indexPath = IndexPath(row: 2, section: 0)
+                self.principalPopUpTableView.reloadRows(at: [indexPath], with: .fade)
             }
         }
     }
@@ -184,6 +188,13 @@ extension PrincipalModifiesPopupViewController: UITableViewDataSource {
             cell.optionDropdownButton.tag = indexPath.row
             cell.optionDropdownButton.addTarget(self, action: #selector(self.openDropdown(sender:)), for: UIControlEvents.touchUpInside)
             
+        }
+        
+        if indexPath.row == 1 {
+            cell.optionDropdownButton.setTitle(self.selectPriorityStr, for: UIControlState.normal)
+        }
+        else if(indexPath.row == 2){
+            cell.optionDropdownButton.setTitle(self.selectLocationStr, for: UIControlState.normal)
         }
         
         cell.selectionStyle = .none

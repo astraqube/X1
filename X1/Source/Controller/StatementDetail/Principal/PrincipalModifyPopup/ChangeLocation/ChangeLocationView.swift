@@ -22,12 +22,13 @@ class ChangeLocationView: UIView {
     
     
     //MARK: - initializer
-    
+    // TODO: Change as per need
+
     var locationOptions: [LocationStruct] = [
-        LocationStruct(title: NSLocalizedString("5_minutes", comment: ""), value: 5),
-        LocationStruct(title: NSLocalizedString("10_minutes", comment: ""), value: 10),
-        LocationStruct(title: NSLocalizedString("15_minutes", comment: ""), value: 15),
-        LocationStruct(title: NSLocalizedString("30_minutes", comment: ""), value: 30)
+        LocationStruct(title: "Location 1", value: 5),
+        LocationStruct(title: "Location 2", value: 10),
+        LocationStruct(title: "Location 3", value: 15),
+        LocationStruct(title: "Location 4", value: 30)
         
     ]
     

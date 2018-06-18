@@ -22,12 +22,14 @@ class PriorityView: UIView {
     
     
     //MARK: - initializer
+    // TODO: Change as per need
+
     
     var priorityOptions: [PriorityStruct] = [
-        PriorityStruct(title: NSLocalizedString("5_minutes", comment: ""), value: 5),
-        PriorityStruct(title: NSLocalizedString("10_minutes", comment: ""), value: 10),
-        PriorityStruct(title: NSLocalizedString("15_minutes", comment: ""), value: 15),
-        PriorityStruct(title: NSLocalizedString("30_minutes", comment: ""), value: 30)
+        PriorityStruct(title: "Priority 1", value: 5),
+        PriorityStruct(title: "Priority 2", value: 10),
+        PriorityStruct(title: "Priority 3", value: 15),
+        PriorityStruct(title: "Priority 4", value: 30)
         
     ]
     

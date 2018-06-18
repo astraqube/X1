@@ -1050,6 +1050,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fp-j6-dds">
                                                     <rect key="frame" x="215" y="15" width="140" height="30"/>
                                                     <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" red="0.36470588240000001" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                     <state key="selected" image="selectedCheckBox"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2231,7 +2234,7 @@
         <image name="star_selected" width="17" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mt0-Fi-GrG"/>
+        <segue reference="KXi-Wd-vdP"/>
         <segue reference="XnN-7Y-z1k"/>
     </inferredMetricsTieBreakers>
 </document>
