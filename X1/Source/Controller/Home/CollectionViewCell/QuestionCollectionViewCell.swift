@@ -24,9 +24,11 @@ class QuestionCollectionViewCell: UICollectionViewCell {
     
     var textTagConfig:TTGTextTagConfig  {
         let textConfig = TTGTextTagConfig()
-        textConfig.tagTextColor = UIColor.white
-        textConfig.tagBackgroundColor = UIColor.lightTheme()
+        textConfig.tagTextColor = UIColor.orangeTheme()
+        textConfig.tagBackgroundColor = .clear
         textConfig.tagBorderColor     = .clear
+        textConfig.tagShadowColor     = .clear
+        textConfig.tagExtraSpace      = CGSize.init(width: 2, height: 0)
         return textConfig
     }
     
@@ -90,24 +92,18 @@ extension QuestionCollectionViewCell: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: ReusableIdentifier.problemEvolutionCell, for: indexPath) as! RedefinedStatementTableViewCell
-        if indexPath.row == 0 {
-            // First row is configured for Original Problem Statment
-            tableViewCell.redefinedLabel.isHidden = true
-            tableViewCell.viewLeadingSpaceConstraint.constant = 0
-        }
-        else {
-            // Following rows are configured for Redefined Problem Statments
-            tableViewCell.viewLeadingSpaceConstraint.constant = 10
-            tableViewCell.redefinedLabel.isHidden = false
-        }
-        tableViewCell.containerView.updateConstraints()
+        /*
+           1. First row is configured for Original Problem Statment
+           2.  Following rows are configured for Redefined Problem Statments
+         */
+        
+        let cellReusableIdentfier = indexPath.row == 0 ? ReusableIdentifier.problemEvolutionCell : ReusableIdentifier.trailingStatementCell
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: cellReusableIdentfier, for: indexPath) as! RedefinedStatementTableViewCell
         if let redefinedStatement = redefinedStatements?[indexPath.row] {
             tableViewCell.problemStatementLabel.text = redefinedStatement.statement
             tableViewCell.timeLabel.text             = redefinedStatement.dateTime?.colloquial(to: Date())?.capitalized
-            if let allTags = redefinedStatement.categories {
-                let hashtags = allTags.map{$0};
-                tableViewCell.tagCollectionView.addTags(hashtags, with: textTagConfig)
+            if indexPath.row == 0, let allTags = redefinedStatement.categories {
+                tableViewCell.tagCollectionView.addTags(allTags, with: textTagConfig)
             }
         }
         return tableViewCell

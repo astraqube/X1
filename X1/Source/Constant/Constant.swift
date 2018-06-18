@@ -192,10 +192,10 @@ struct ReusableIdentifier {
     static let selectImageCollectionCell    = "ImageSelectionCollectionViewCell"
     static let principalPopupTableCell      = "PrincipalPopupTableCell"
     static let availabilityCollectionCell   = "AvailabilityCollectionCell"
-
     static let notificationTableCell        = "NotificationsTableCell"
     static let sideMenuTableViewCell        = "SideMenuOptionTableViewCell"
     static let problemEvolutionCell         = "RedefinedStatementTableViewCell"
+    static let trailingStatementCell        = "TrailingStatementTableViewCell"
 }
 
 struct APIKeys {

@@ -20,9 +20,19 @@ extension UIColor {
         return UIColor.init(red: 0.26, green: 0.62, blue: 0.75, alpha: 1.0)
     }
     
+    static func cellBackground() -> UIColor {
+        // 244,245,246
+        return UIColor.init(red: 0.95, green: 0.96, blue: 0.96, alpha: 1.0)
+    }
+    
     static func darkTheme() -> UIColor {
         // 29,103,143 // #1d678f
         return UIColor.init(red: 0.11, green: 0.4, blue: 0.56, alpha: 1.0)
+    }
+    
+    static func orangeTheme() -> UIColor {
+        // 255, 58, 0
+        return UIColor.init(red: 1.0, green: 0.22, blue: 0.0, alpha: 1.0)
     }
     
     static func lightGrayTheme() -> UIColor {

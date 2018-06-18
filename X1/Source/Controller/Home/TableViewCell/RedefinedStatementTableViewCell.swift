@@ -20,15 +20,19 @@ class RedefinedStatementTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        tagCollectionView.enableTagSelection = false
-        tagCollectionView.scrollDirection    = .horizontal
-        tagCollectionView.alignment          = .fillByExpandingWidth
-        tagCollectionView.scrollView.showsHorizontalScrollIndicator = false
+        if tagCollectionView != nil {
+            tagCollectionView.enableTagSelection = false
+            tagCollectionView.scrollDirection    = .horizontal
+            tagCollectionView.alignment          = .fillByExpandingWidth
+            tagCollectionView.scrollView.showsHorizontalScrollIndicator = false
+        }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        tagCollectionView.removeAllTags()
+        if tagCollectionView != nil {
+            tagCollectionView.removeAllTags()
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -21,5 +21,6 @@ target 'Solviant' do
   pod 'Koloda'
   pod 'GrowingTextView', '~> 0.5'
   pod 'SideMenu'
+  pod 'fluid-slider'
 
 end

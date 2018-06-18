@@ -157,6 +157,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTagCollectionView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/fluid-slider/fluid_slider.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -174,6 +175,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTagCollectionView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/fluid-slider/fluid_slider.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

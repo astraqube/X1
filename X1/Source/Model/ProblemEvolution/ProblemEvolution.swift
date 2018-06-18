@@ -40,13 +40,6 @@ class ProblemEvolution: Statement {
         super.init(with: response, isRedefined: false)
         redefinedStatements = Array()
         
-        // Add the orignal problem statement as redefined one to appear in same tableView
-        let originalStatment        = RedefinedStatement()
-        originalStatment.statement  = problemText
-        originalStatment.dateTime   = time
-        originalStatment.categories = tags
-        redefinedStatements?.append(originalStatment)
-        
         if let redefinedStatmentsInfo = response[APIKeys.redefinedStatment] as? Array<Dictionary<String, Any>> {
             // Parse all redefined statements
             let repostedStatements = redefinedStatmentsInfo.filter {$0[PostStatementKey.isReposted] as? Bool == true}
@@ -56,6 +49,22 @@ class ProblemEvolution: Statement {
                     redefinedStatements?.append(redefinedStatement)
                 }
             }
+        }
+        
+        // Add the orignal problem statement as redefined one to appear in same tableView
+        let originalStatment        = RedefinedStatement()
+        originalStatment.statement  = problemText
+        originalStatment.dateTime   = time
+        originalStatment.categories = tags
+        
+        if redefinedStatements!.count > 0 {
+            // Insert the last redefiend statemetn to be shown on the top
+            let lastEditedStatement = redefinedStatements!.last!
+           redefinedStatements?.insert(lastEditedStatement, at: 0)
+           redefinedStatements?.insert(originalStatment, at: 1)
+        }
+        else {
+            redefinedStatements?.append(originalStatment)
         }
     }
 }
