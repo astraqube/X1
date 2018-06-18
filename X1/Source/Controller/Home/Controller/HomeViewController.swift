@@ -101,6 +101,9 @@ class HomeViewController: UIViewController {
 //        navigationController?.setViewControllers([landingViewController!], animated: true)
         
     }
+    @IBAction func openNotification(_ sender: Any) {
+        self.performSegue(withIdentifier: String(describing: NotificationViewController.self), sender: self)
+    }
     
     // MARK: - Navigation
 

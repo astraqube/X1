@@ -38,6 +38,12 @@ class NotificationViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: - Actions
+    @IBAction func openMenu(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
 
 }
 
@@ -50,7 +56,7 @@ extension NotificationViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 15
     }
     
     
@@ -69,10 +75,28 @@ extension NotificationViewController: UITableViewDataSource {
     func configure(cell: NotificationsTableCell, indexPath: IndexPath)  {
         // UI configure
         
+        let fontSize = 14.0
+        
+        let orangefont = [ NSAttributedStringKey.font: UIFont.robotoFont(wityType: .bold, size: CGFloat(fontSize)) , NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1, green: 0.3098039216, blue: 0.02352941176, alpha: 1)] as [NSAttributedStringKey : Any]
+        let blackFont = [NSAttributedStringKey.font : UIFont.robotoFont(wityType: .regular, size: CGFloat(fontSize)) , NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.3960784314, green: 0.3960784314, blue: 0.3960784314, alpha: 1)] as [NSAttributedStringKey : Any]
+        
+
+        let userName = NSMutableAttributedString(string: "@spidy_Kid ", attributes: orangefont)   // change with model
+        let notificationDetail = NSMutableAttributedString(string: "has confirmed the consultation", attributes: blackFont)   // change with model
+       
+        
+        let completeAttributedStr = NSMutableAttributedString();
+        completeAttributedStr.append(userName)
+        completeAttributedStr.append(notificationDetail)
+        cell.titleLabel.attributedText = completeAttributedStr;
+        if indexPath.row > 1 {
+            cell.detailView.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0.8196078431, blue: 0.8235294118, alpha: 1)
+        }
+        else{
+            cell.detailView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
         
         
-        //Update data on cell
-        cell.textLabel?.text = "Cell..."
         
     }
     

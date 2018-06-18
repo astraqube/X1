@@ -9,9 +9,13 @@
 import UIKit
 
 class NotificationsTableCell: UITableViewCell {
-
+    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var updatedTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.detailView.darkShadow(withRadius: 6.0, color: UIColor.black.withAlphaComponent(0.3))
         // Initialization code
     }
 

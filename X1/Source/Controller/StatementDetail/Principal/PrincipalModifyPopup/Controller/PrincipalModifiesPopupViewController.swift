@@ -77,8 +77,6 @@ class PrincipalModifiesPopupViewController: UIViewController {
                 ratingButton.isSelected = sender.tag >= ratingButton.tag
             }
         }
-        
-       
     }
     
     //MARK: - utility
