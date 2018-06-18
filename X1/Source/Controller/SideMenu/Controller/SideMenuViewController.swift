@@ -94,6 +94,24 @@ extension SideMenuViewController {
             
         }
     }
+    
+    private func navigateToConsult() {
+        // Go to User profile screen
+//        dismiss(animated: true) {
+//            
+//        }
+        let storyBoard : UIStoryboard = UIStoryboard(name: StoryboardName.meetingFlow, bundle:nil)
+        var nextViewController : UIViewController?
+        if user?.type == .principal {
+            nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: PrincipalStatementDetailViewController.self)) as! PrincipalStatementDetailViewController
+        }
+        else{
+            nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: StatementDetailViewController.self)) as! StatementDetailViewController
+        }
+        self.present(nextViewController!, animated:true, completion:nil)
+    }
+    
+    
 }
 
 extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
@@ -123,6 +141,9 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
             switch menuInex {
             case .profile:
                 navigateToProfile()
+            case .consult:
+                navigateToConsult()
+                break;
             case .logout:
                 // Clear session and back to Landing Screen
                 logout()

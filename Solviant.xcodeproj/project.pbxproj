@@ -7,38 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
-		380AD71620D26F2000313965 /* DefineStatementAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380AD71520D26F2000313965 /* DefineStatementAlertController.swift */; };
-		3856205A20D276C900912884 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856205920D276C900912884 /* AvailabilityView.swift */; };
-		3856205D20D27FE300912884 /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856205C20D27FE300912884 /* PriorityView.swift */; };
-		3856206020D2802700912884 /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856205F20D2802700912884 /* ChangeLocationView.swift */; };
-		3856206320D2B3D600912884 /* PrincipalAvailablityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856206220D2B3D600912884 /* PrincipalAvailablityViewController.swift */; };
-		3856206720D2C72D00912884 /* AvailabilityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856206620D2C72D00912884 /* AvailabilityCollectionCell.swift */; };
-		38BF6C6120CFCD3D006417AD /* PrincipalStatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */; };
-		38BF6C6620CFF857006417AD /* PrincipalModifiesPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */; };
-		38BF6C6A20D005C4006417AD /* PrincipalPopupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */; };
-		38D0297B20D13DBE0012A8D1 /* ResourcePricipalConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D0297A20D13DBE0012A8D1 /* ResourcePricipalConfirmationViewController.swift */; };
-		38D0298120D142B00012A8D1 /* ConfirmedPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D0298020D142B00012A8D1 /* ConfirmedPopupViewController.swift */; };
-		38E6F1EF20CE5E86003A4240 /* MeetingFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */; };
-		38E6F1F220CE6007003A4240 /* ImageSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */; };
-		38E6F1F720CE6093003A4240 /* ConnectOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F420CE6093003A4240 /* ConnectOptions.swift */; };
-		38E6F1F820CE6093003A4240 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1F620CE6093003A4240 /* Response.swift */; };
-		38E6F1FF20CE60ED003A4240 /* UnresolvedStatementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1FB20CE60EC003A4240 /* UnresolvedStatementViewController.swift */; };
-		38E6F20020CE60ED003A4240 /* RespondCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F1FD20CE60EC003A4240 /* RespondCardView.swift */; };
-		38E6F20120CE60ED003A4240 /* RespondCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F1FE20CE60EC003A4240 /* RespondCardView.xib */; };
-		38E6F20520CE6105003A4240 /* StatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F20420CE6105003A4240 /* StatementDetailViewController.swift */; };
-		38E6F20E20CE6127003A4240 /* ConnectPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F20820CE6127003A4240 /* ConnectPopUpViewController.swift */; };
-		38E6F20F20CE6127003A4240 /* PopUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F20A20CE6127003A4240 /* PopUpCell.swift */; };
-		38E6F21020CE6127003A4240 /* PopUpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F20C20CE6127003A4240 /* PopUpHeader.swift */; };
-		38E6F21120CE6127003A4240 /* PopUpHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E6F20D20CE6127003A4240 /* PopUpHeader.xib */; };
-		38E6F21420CE857F003A4240 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F21320CE857F003A4240 /* TimerView.swift */; };
-		38E6F21620CE8D2C003A4240 /* TimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F21520CE8D2C003A4240 /* TimerTableCell.swift */; };
-		38E6F21920CEB058003A4240 /* SolviantButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F21820CEB058003A4240 /* SolviantButton.swift */; };
-=======
 		38E6F21D20CEC618003A4240 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F21C20CEC618003A4240 /* NotificationViewController.swift */; };
 		38E6F22020CEC817003A4240 /* NotificationsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E6F21F20CEC817003A4240 /* NotificationsTableCell.swift */; };
->>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
+		38F2457A20D7CFBA00897163 /* ConfirmedPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2455320D7CFBA00897163 /* ConfirmedPopupViewController.swift */; };
+		38F2457B20D7CFBA00897163 /* PrincipalStatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2455620D7CFBA00897163 /* PrincipalStatementDetailViewController.swift */; };
+		38F2457C20D7CFBA00897163 /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2455920D7CFBA00897163 /* ChangeLocationView.swift */; };
+		38F2457D20D7CFBA00897163 /* PrincipalModifiesPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2455B20D7CFBA00897163 /* PrincipalModifiesPopupViewController.swift */; };
+		38F2457E20D7CFBA00897163 /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2455D20D7CFBA00897163 /* PriorityView.swift */; };
+		38F2457F20D7CFBA00897163 /* PrincipalPopupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2455F20D7CFBA00897163 /* PrincipalPopupTableCell.swift */; };
+		38F2458020D7CFBA00897163 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2456220D7CFBA00897163 /* AvailabilityView.swift */; };
+		38F2458120D7CFBA00897163 /* ResourcePricipalConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2456420D7CFBA00897163 /* ResourcePricipalConfirmationViewController.swift */; };
+		38F2458220D7CFBA00897163 /* AvailabilityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2456720D7CFBA00897163 /* AvailabilityCollectionCell.swift */; };
+		38F2458320D7CFBA00897163 /* PrincipalAvailablityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2456920D7CFBA00897163 /* PrincipalAvailablityViewController.swift */; };
+		38F2458420D7CFBA00897163 /* ConnectPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2456D20D7CFBA00897163 /* ConnectPopUpViewController.swift */; };
+		38F2458520D7CFBA00897163 /* PopUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2456F20D7CFBA00897163 /* PopUpCell.swift */; };
+		38F2458620D7CFBA00897163 /* TimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2457020D7CFBA00897163 /* TimerTableCell.swift */; };
+		38F2458720D7CFBA00897163 /* PopUpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2457220D7CFBA00897163 /* PopUpHeader.swift */; };
+		38F2458820D7CFBA00897163 /* PopUpHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F2457320D7CFBA00897163 /* PopUpHeader.xib */; };
+		38F2458920D7CFBA00897163 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2457520D7CFBA00897163 /* TimerView.swift */; };
+		38F2458A20D7CFBA00897163 /* DefineStatementAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2457720D7CFBA00897163 /* DefineStatementAlertController.swift */; };
+		38F2458B20D7CFBA00897163 /* StatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2457920D7CFBA00897163 /* StatementDetailViewController.swift */; };
+		38F2458E20D7D02F00897163 /* ConnectOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2458D20D7D02F00897163 /* ConnectOptions.swift */; };
+		38F2459020D7D79500897163 /* MeetingFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F2458F20D7D79500897163 /* MeetingFlow.storyboard */; };
 		5C6BD0E2AB5FE38382F6B048 /* Pods_Solviant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */; };
+		650D317A20CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D317920CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift */; };
+		650D318020CAB4A500A6E4AC /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D317F20CAB4A500A6E4AC /* Response.swift */; };
+		650D318420CAC12C00A6E4AC /* UnresolvedStatementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D318320CAC12C00A6E4AC /* UnresolvedStatementViewController.swift */; };
+		650D318620CAC13B00A6E4AC /* RespondCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D318520CAC13B00A6E4AC /* RespondCardView.swift */; };
+		650D318820CAC15300A6E4AC /* RespondCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 650D318720CAC15200A6E4AC /* RespondCardView.xib */; };
 		651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */; };
 		651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651051FE209716BB00D2C030 /* LinkedIn.swift */; };
 		6512E73F209085D400D2C15D /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512E73C209085D400D2C15D /* SkyFloatingLabelTextField.swift */; };
@@ -47,6 +43,7 @@
 		65157C10209AF11A009C1A1F /* ChooseInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65157C0F209AF11A009C1A1F /* ChooseInterestViewController.swift */; };
 		65157C13209B21C8009C1A1F /* Extension+Boolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65157C12209B21C8009C1A1F /* Extension+Boolean.swift */; };
 		65157C15209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65157C14209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift */; };
+		652034AC20CE7F78004E28AA /* SolviantButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652034AB20CE7F78004E28AA /* SolviantButton.swift */; };
 		6524EA8D20846B720035F2D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524EA8920846B720035F2D2 /* AppDelegate.swift */; };
 		6524EA8F20846B8C0035F2D2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524EA8E20846B8C0035F2D2 /* Constant.swift */; };
 		6524EA98208473600035F2D2 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6524EA97208473600035F2D2 /* LandingViewController.swift */; };
@@ -127,39 +124,35 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
-		380AD71520D26F2000313965 /* DefineStatementAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineStatementAlertController.swift; sourceTree = "<group>"; };
-		3856205920D276C900912884 /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
-		3856205C20D27FE300912884 /* PriorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
-		3856205F20D2802700912884 /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
-		3856206220D2B3D600912884 /* PrincipalAvailablityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalAvailablityViewController.swift; sourceTree = "<group>"; };
-		3856206620D2C72D00912884 /* AvailabilityCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityCollectionCell.swift; sourceTree = "<group>"; };
-		38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalStatementDetailViewController.swift; sourceTree = "<group>"; };
-		38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalModifiesPopupViewController.swift; sourceTree = "<group>"; };
-		38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalPopupTableCell.swift; sourceTree = "<group>"; };
-		38D0297A20D13DBE0012A8D1 /* ResourcePricipalConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcePricipalConfirmationViewController.swift; sourceTree = "<group>"; };
-		38D0298020D142B00012A8D1 /* ConfirmedPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedPopupViewController.swift; sourceTree = "<group>"; };
-		38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetingFlow.storyboard; sourceTree = "<group>"; };
-		38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
-		38E6F1F420CE6093003A4240 /* ConnectOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectOptions.swift; sourceTree = "<group>"; };
-		38E6F1F620CE6093003A4240 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		38E6F1FB20CE60EC003A4240 /* UnresolvedStatementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnresolvedStatementViewController.swift; sourceTree = "<group>"; };
-		38E6F1FD20CE60EC003A4240 /* RespondCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RespondCardView.swift; sourceTree = "<group>"; };
-		38E6F1FE20CE60EC003A4240 /* RespondCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RespondCardView.xib; sourceTree = "<group>"; };
-		38E6F20420CE6105003A4240 /* StatementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatementDetailViewController.swift; sourceTree = "<group>"; };
-		38E6F20820CE6127003A4240 /* ConnectPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectPopUpViewController.swift; sourceTree = "<group>"; };
-		38E6F20A20CE6127003A4240 /* PopUpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpCell.swift; sourceTree = "<group>"; };
-		38E6F20C20CE6127003A4240 /* PopUpHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpHeader.swift; sourceTree = "<group>"; };
-		38E6F20D20CE6127003A4240 /* PopUpHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpHeader.xib; sourceTree = "<group>"; };
-		38E6F21320CE857F003A4240 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		38E6F21520CE8D2C003A4240 /* TimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTableCell.swift; sourceTree = "<group>"; };
-		38E6F21820CEB058003A4240 /* SolviantButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolviantButton.swift; sourceTree = "<group>"; };
-=======
 		38E6F21C20CEC618003A4240 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		38E6F21F20CEC817003A4240 /* NotificationsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableCell.swift; sourceTree = "<group>"; };
->>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
+		38F2455320D7CFBA00897163 /* ConfirmedPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmedPopupViewController.swift; sourceTree = "<group>"; };
+		38F2455620D7CFBA00897163 /* PrincipalStatementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalStatementDetailViewController.swift; sourceTree = "<group>"; };
+		38F2455920D7CFBA00897163 /* ChangeLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
+		38F2455B20D7CFBA00897163 /* PrincipalModifiesPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalModifiesPopupViewController.swift; sourceTree = "<group>"; };
+		38F2455D20D7CFBA00897163 /* PriorityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
+		38F2455F20D7CFBA00897163 /* PrincipalPopupTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalPopupTableCell.swift; sourceTree = "<group>"; };
+		38F2456220D7CFBA00897163 /* AvailabilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
+		38F2456420D7CFBA00897163 /* ResourcePricipalConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcePricipalConfirmationViewController.swift; sourceTree = "<group>"; };
+		38F2456720D7CFBA00897163 /* AvailabilityCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityCollectionCell.swift; sourceTree = "<group>"; };
+		38F2456920D7CFBA00897163 /* PrincipalAvailablityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalAvailablityViewController.swift; sourceTree = "<group>"; };
+		38F2456D20D7CFBA00897163 /* ConnectPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectPopUpViewController.swift; sourceTree = "<group>"; };
+		38F2456F20D7CFBA00897163 /* PopUpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpCell.swift; sourceTree = "<group>"; };
+		38F2457020D7CFBA00897163 /* TimerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableCell.swift; sourceTree = "<group>"; };
+		38F2457220D7CFBA00897163 /* PopUpHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpHeader.swift; sourceTree = "<group>"; };
+		38F2457320D7CFBA00897163 /* PopUpHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpHeader.xib; sourceTree = "<group>"; };
+		38F2457520D7CFBA00897163 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		38F2457720D7CFBA00897163 /* DefineStatementAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefineStatementAlertController.swift; sourceTree = "<group>"; };
+		38F2457920D7CFBA00897163 /* StatementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatementDetailViewController.swift; sourceTree = "<group>"; };
+		38F2458D20D7D02F00897163 /* ConnectOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectOptions.swift; sourceTree = "<group>"; };
+		38F2458F20D7D79500897163 /* MeetingFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeetingFlow.storyboard; sourceTree = "<group>"; };
 		53EE2F80D76B4A835E4EDFBC /* Pods-Solviant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solviant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solviant/Pods-Solviant.debug.xcconfig"; sourceTree = "<group>"; };
 		59E3DEB0D5F63CA7510538AB /* Pods_Solviant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solviant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		650D317920CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		650D317F20CAB4A500A6E4AC /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		650D318320CAC12C00A6E4AC /* UnresolvedStatementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnresolvedStatementViewController.swift; sourceTree = "<group>"; };
+		650D318520CAC13B00A6E4AC /* RespondCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondCardView.swift; sourceTree = "<group>"; };
+		650D318720CAC15200A6E4AC /* RespondCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RespondCardView.xib; sourceTree = "<group>"; };
 		651051FA2096F4F900D2C030 /* SelectRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewController.swift; sourceTree = "<group>"; };
 		651051FE209716BB00D2C030 /* LinkedIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedIn.swift; sourceTree = "<group>"; };
 		651052002097174600D2C030 /* X1-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "X1-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -169,6 +162,7 @@
 		65157C0F209AF11A009C1A1F /* ChooseInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewController.swift; sourceTree = "<group>"; };
 		65157C12209B21C8009C1A1F /* Extension+Boolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Boolean.swift"; sourceTree = "<group>"; };
 		65157C14209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		652034AB20CE7F78004E28AA /* SolviantButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolviantButton.swift; sourceTree = "<group>"; };
 		6524EA8920846B720035F2D2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6524EA8E20846B8C0035F2D2 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		6524EA97208473600035F2D2 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -264,9 +258,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-<<<<<<< HEAD
-		380AD71420D26EB600313965 /* DefineStementProcessAlert */ = {
-=======
 		38E6F21A20CEC5D3003A4240 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,272 +283,263 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		650D317820CA2F5100A6E4AC /* CollectionViewCell */ = {
->>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
+		38F2455020D7CFBA00897163 /* StatementDetail */ = {
 			isa = PBXGroup;
 			children = (
-				380AD71520D26F2000313965 /* DefineStatementAlertController.swift */,
-			);
-			path = DefineStementProcessAlert;
-			sourceTree = "<group>";
-		};
-		3856205820D2769A00912884 /* AvailabilityView */ = {
-			isa = PBXGroup;
-			children = (
-				3856205920D276C900912884 /* AvailabilityView.swift */,
-			);
-			path = AvailabilityView;
-			sourceTree = "<group>";
-		};
-		3856205B20D27FBF00912884 /* PriorityView */ = {
-			isa = PBXGroup;
-			children = (
-				3856205C20D27FE300912884 /* PriorityView.swift */,
-			);
-			path = PriorityView;
-			sourceTree = "<group>";
-		};
-		3856205E20D27FED00912884 /* ChangeLocation */ = {
-			isa = PBXGroup;
-			children = (
-				3856205F20D2802700912884 /* ChangeLocationView.swift */,
-			);
-			path = ChangeLocation;
-			sourceTree = "<group>";
-		};
-		3856206120D2B38900912884 /* PrincipalAvailabilityController */ = {
-			isa = PBXGroup;
-			children = (
-				3856206520D2C6FF00912884 /* CollectionCell */,
-				3856206420D2B3F400912884 /* Controller */,
-			);
-			path = PrincipalAvailabilityController;
-			sourceTree = "<group>";
-		};
-		3856206420D2B3F400912884 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				3856206220D2B3D600912884 /* PrincipalAvailablityViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		3856206520D2C6FF00912884 /* CollectionCell */ = {
-			isa = PBXGroup;
-			children = (
-				3856206620D2C72D00912884 /* AvailabilityCollectionCell.swift */,
-			);
-			path = CollectionCell;
-			sourceTree = "<group>";
-		};
-		38BF6C5F20CFCCEC006417AD /* PrincipalController */ = {
-			isa = PBXGroup;
-			children = (
-				38BF6C6020CFCD3D006417AD /* PrincipalStatementDetailViewController.swift */,
-			);
-			path = PrincipalController;
-			sourceTree = "<group>";
-		};
-		38BF6C6220CFF714006417AD /* Principal */ = {
-			isa = PBXGroup;
-			children = (
-				38BF6C6420CFF73C006417AD /* PrincipalModifyPopup */,
-				38BF6C5F20CFCCEC006417AD /* PrincipalController */,
-			);
-			path = Principal;
-			sourceTree = "<group>";
-		};
-		38BF6C6320CFF728006417AD /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				380AD71420D26EB600313965 /* DefineStementProcessAlert */,
-				38E6F20620CE6127003A4240 /* ConnectPopUp */,
-				38E6F20320CE6105003A4240 /* ResourceController */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		38BF6C6420CFF73C006417AD /* PrincipalModifyPopup */ = {
-			isa = PBXGroup;
-			children = (
-				3856205E20D27FED00912884 /* ChangeLocation */,
-				3856205B20D27FBF00912884 /* PriorityView */,
-				38BF6C6820D00571006417AD /* TableViewCell */,
-				38BF6C6720D00561006417AD /* Controller */,
-			);
-			path = PrincipalModifyPopup;
-			sourceTree = "<group>";
-		};
-		38BF6C6720D00561006417AD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				38BF6C6520CFF857006417AD /* PrincipalModifiesPopupViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		38BF6C6820D00571006417AD /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				38BF6C6920D005C4006417AD /* PrincipalPopupTableCell.swift */,
-			);
-			path = TableViewCell;
-			sourceTree = "<group>";
-		};
-		38D0297820D13D460012A8D1 /* ResourcePrincipalConfirmation */ = {
-			isa = PBXGroup;
-			children = (
-				3856206120D2B38900912884 /* PrincipalAvailabilityController */,
-				3856205820D2769A00912884 /* AvailabilityView */,
-				38D0297920D13D820012A8D1 /* Controller */,
-			);
-			path = ResourcePrincipalConfirmation;
-			sourceTree = "<group>";
-		};
-		38D0297920D13D820012A8D1 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				38D0297A20D13DBE0012A8D1 /* ResourcePricipalConfirmationViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		38D0297C20D142380012A8D1 /* MeetingConfirmation */ = {
-			isa = PBXGroup;
-			children = (
-				38D0297D20D1424B0012A8D1 /* Controller */,
-			);
-			path = MeetingConfirmation;
-			sourceTree = "<group>";
-		};
-		38D0297D20D1424B0012A8D1 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				38D0298020D142B00012A8D1 /* ConfirmedPopupViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		38E6F1F020CE6006003A4240 /* CollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				38E6F1F120CE6006003A4240 /* ImageSelectionCollectionViewCell.swift */,
-			);
-			path = CollectionViewCell;
-			sourceTree = "<group>";
-		};
-		38E6F1F320CE6093003A4240 /* ConnectOptions */ = {
-			isa = PBXGroup;
-			children = (
-				38E6F1F420CE6093003A4240 /* ConnectOptions.swift */,
-			);
-			path = ConnectOptions;
-			sourceTree = "<group>";
-		};
-		38E6F1F520CE6093003A4240 /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				38E6F1F620CE6093003A4240 /* Response.swift */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
-		38E6F1F920CE60EC003A4240 /* UnresolvedStatement */ = {
-			isa = PBXGroup;
-			children = (
-				38E6F1FA20CE60EC003A4240 /* Controller */,
-				38E6F1FC20CE60EC003A4240 /* ResponseCardView */,
-			);
-			path = UnresolvedStatement;
-			sourceTree = "<group>";
-		};
-		38E6F1FA20CE60EC003A4240 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				38E6F1FB20CE60EC003A4240 /* UnresolvedStatementViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		38E6F1FC20CE60EC003A4240 /* ResponseCardView */ = {
-			isa = PBXGroup;
-			children = (
-				38E6F1FD20CE60EC003A4240 /* RespondCardView.swift */,
-				38E6F1FE20CE60EC003A4240 /* RespondCardView.xib */,
-			);
-			path = ResponseCardView;
-			sourceTree = "<group>";
-		};
-		38E6F20220CE6105003A4240 /* StatementDetail */ = {
-			isa = PBXGroup;
-			children = (
-				38D0297C20D142380012A8D1 /* MeetingConfirmation */,
-				38D0297820D13D460012A8D1 /* ResourcePrincipalConfirmation */,
-				38BF6C6320CFF728006417AD /* Resources */,
-				38BF6C6220CFF714006417AD /* Principal */,
+				38F2455120D7CFBA00897163 /* MeetingConfirmation */,
+				38F2455420D7CFBA00897163 /* Principal */,
+				38F2456020D7CFBA00897163 /* ResourcePrincipalConfirmation */,
+				38F2456A20D7CFBA00897163 /* Resources */,
 			);
 			path = StatementDetail;
 			sourceTree = "<group>";
 		};
-		38E6F20320CE6105003A4240 /* ResourceController */ = {
+		38F2455120D7CFBA00897163 /* MeetingConfirmation */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F20420CE6105003A4240 /* StatementDetailViewController.swift */,
+				38F2455220D7CFBA00897163 /* Controller */,
 			);
-			path = ResourceController;
+			path = MeetingConfirmation;
 			sourceTree = "<group>";
 		};
-		38E6F20620CE6127003A4240 /* ConnectPopUp */ = {
+		38F2455220D7CFBA00897163 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F21220CE8554003A4240 /* TimerView */,
-				38E6F20720CE6127003A4240 /* Controller */,
-				38E6F20920CE6127003A4240 /* TableCell */,
-				38E6F20B20CE6127003A4240 /* TableViewHeader */,
-			);
-			path = ConnectPopUp;
-			sourceTree = "<group>";
-		};
-		38E6F20720CE6127003A4240 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				38E6F20820CE6127003A4240 /* ConnectPopUpViewController.swift */,
+				38F2455320D7CFBA00897163 /* ConfirmedPopupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		38E6F20920CE6127003A4240 /* TableCell */ = {
+		38F2455420D7CFBA00897163 /* Principal */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F20A20CE6127003A4240 /* PopUpCell.swift */,
-				38E6F21520CE8D2C003A4240 /* TimerTableCell.swift */,
+				38F2455520D7CFBA00897163 /* PrincipalController */,
+				38F2455720D7CFBA00897163 /* PrincipalModifyPopup */,
+			);
+			path = Principal;
+			sourceTree = "<group>";
+		};
+		38F2455520D7CFBA00897163 /* PrincipalController */ = {
+			isa = PBXGroup;
+			children = (
+				38F2455620D7CFBA00897163 /* PrincipalStatementDetailViewController.swift */,
+			);
+			path = PrincipalController;
+			sourceTree = "<group>";
+		};
+		38F2455720D7CFBA00897163 /* PrincipalModifyPopup */ = {
+			isa = PBXGroup;
+			children = (
+				38F2455820D7CFBA00897163 /* ChangeLocation */,
+				38F2455A20D7CFBA00897163 /* Controller */,
+				38F2455C20D7CFBA00897163 /* PriorityView */,
+				38F2455E20D7CFBA00897163 /* TableViewCell */,
+			);
+			path = PrincipalModifyPopup;
+			sourceTree = "<group>";
+		};
+		38F2455820D7CFBA00897163 /* ChangeLocation */ = {
+			isa = PBXGroup;
+			children = (
+				38F2455920D7CFBA00897163 /* ChangeLocationView.swift */,
+			);
+			path = ChangeLocation;
+			sourceTree = "<group>";
+		};
+		38F2455A20D7CFBA00897163 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38F2455B20D7CFBA00897163 /* PrincipalModifiesPopupViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38F2455C20D7CFBA00897163 /* PriorityView */ = {
+			isa = PBXGroup;
+			children = (
+				38F2455D20D7CFBA00897163 /* PriorityView.swift */,
+			);
+			path = PriorityView;
+			sourceTree = "<group>";
+		};
+		38F2455E20D7CFBA00897163 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				38F2455F20D7CFBA00897163 /* PrincipalPopupTableCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		38F2456020D7CFBA00897163 /* ResourcePrincipalConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456120D7CFBA00897163 /* AvailabilityView */,
+				38F2456320D7CFBA00897163 /* Controller */,
+				38F2456520D7CFBA00897163 /* PrincipalAvailabilityController */,
+			);
+			path = ResourcePrincipalConfirmation;
+			sourceTree = "<group>";
+		};
+		38F2456120D7CFBA00897163 /* AvailabilityView */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456220D7CFBA00897163 /* AvailabilityView.swift */,
+			);
+			path = AvailabilityView;
+			sourceTree = "<group>";
+		};
+		38F2456320D7CFBA00897163 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456420D7CFBA00897163 /* ResourcePricipalConfirmationViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38F2456520D7CFBA00897163 /* PrincipalAvailabilityController */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456620D7CFBA00897163 /* CollectionCell */,
+				38F2456820D7CFBA00897163 /* Controller */,
+			);
+			path = PrincipalAvailabilityController;
+			sourceTree = "<group>";
+		};
+		38F2456620D7CFBA00897163 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456720D7CFBA00897163 /* AvailabilityCollectionCell.swift */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		38F2456820D7CFBA00897163 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456920D7CFBA00897163 /* PrincipalAvailablityViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38F2456A20D7CFBA00897163 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456B20D7CFBA00897163 /* ConnectPopUp */,
+				38F2457620D7CFBA00897163 /* DefineStementProcessAlert */,
+				38F2457820D7CFBA00897163 /* ResourceController */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		38F2456B20D7CFBA00897163 /* ConnectPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456C20D7CFBA00897163 /* Controller */,
+				38F2456E20D7CFBA00897163 /* TableCell */,
+				38F2457120D7CFBA00897163 /* TableViewHeader */,
+				38F2457420D7CFBA00897163 /* TimerView */,
+			);
+			path = ConnectPopUp;
+			sourceTree = "<group>";
+		};
+		38F2456C20D7CFBA00897163 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456D20D7CFBA00897163 /* ConnectPopUpViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38F2456E20D7CFBA00897163 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				38F2456F20D7CFBA00897163 /* PopUpCell.swift */,
+				38F2457020D7CFBA00897163 /* TimerTableCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
 		};
-		38E6F20B20CE6127003A4240 /* TableViewHeader */ = {
+		38F2457120D7CFBA00897163 /* TableViewHeader */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F20C20CE6127003A4240 /* PopUpHeader.swift */,
-				38E6F20D20CE6127003A4240 /* PopUpHeader.xib */,
+				38F2457220D7CFBA00897163 /* PopUpHeader.swift */,
+				38F2457320D7CFBA00897163 /* PopUpHeader.xib */,
 			);
 			path = TableViewHeader;
 			sourceTree = "<group>";
 		};
-		38E6F21220CE8554003A4240 /* TimerView */ = {
+		38F2457420D7CFBA00897163 /* TimerView */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F21320CE857F003A4240 /* TimerView.swift */,
+				38F2457520D7CFBA00897163 /* TimerView.swift */,
 			);
 			path = TimerView;
 			sourceTree = "<group>";
 		};
-		38E6F21720CEB058003A4240 /* UIButton */ = {
+		38F2457620D7CFBA00897163 /* DefineStementProcessAlert */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F21820CEB058003A4240 /* SolviantButton.swift */,
+				38F2457720D7CFBA00897163 /* DefineStatementAlertController.swift */,
 			);
-			path = UIButton;
+			path = DefineStementProcessAlert;
+			sourceTree = "<group>";
+		};
+		38F2457820D7CFBA00897163 /* ResourceController */ = {
+			isa = PBXGroup;
+			children = (
+				38F2457920D7CFBA00897163 /* StatementDetailViewController.swift */,
+			);
+			path = ResourceController;
+			sourceTree = "<group>";
+		};
+		38F2458C20D7D02F00897163 /* ConnectOptions */ = {
+			isa = PBXGroup;
+			children = (
+				38F2458D20D7D02F00897163 /* ConnectOptions.swift */,
+			);
+			path = ConnectOptions;
+			sourceTree = "<group>";
+		};
+		650D317820CA2F5100A6E4AC /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				650D317920CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		650D317B20CA880F00A6E4AC /* UnresolvedStatement */ = {
+			isa = PBXGroup;
+			children = (
+				650D318220CAC12C00A6E4AC /* Controller */,
+				650D318120CAC12C00A6E4AC /* ResponseCardView */,
+			);
+			path = UnresolvedStatement;
+			sourceTree = "<group>";
+		};
+		650D317E20CAB49200A6E4AC /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				650D317F20CAB4A500A6E4AC /* Response.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		650D318120CAC12C00A6E4AC /* ResponseCardView */ = {
+			isa = PBXGroup;
+			children = (
+				650D318520CAC13B00A6E4AC /* RespondCardView.swift */,
+				650D318720CAC15200A6E4AC /* RespondCardView.xib */,
+			);
+			path = ResponseCardView;
+			sourceTree = "<group>";
+		};
+		650D318220CAC12C00A6E4AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				650D318320CAC12C00A6E4AC /* UnresolvedStatementViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		651051F92096F4EA00D2C030 /* SelectRole */ = {
@@ -637,6 +619,14 @@
 			path = Boolean;
 			sourceTree = "<group>";
 		};
+		652034AA20CE7F5F004E28AA /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				652034AB20CE7F78004E28AA /* SolviantButton.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
 		6524EA8220846B720035F2D2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,14 +647,10 @@
 		6524EA8320846B720035F2D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				38E6F20220CE6105003A4240 /* StatementDetail */,
-				38E6F1F920CE60EC003A4240 /* UnresolvedStatement */,
-=======
+				38F2455020D7CFBA00897163 /* StatementDetail */,
 				65A2982020D113EB00F59F87 /* SideMenu */,
 				38E6F21A20CEC5D3003A4240 /* Notifications */,
 				650D317B20CA880F00A6E4AC /* UnresolvedStatement */,
->>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
 				655D79C620C68D2300B110B8 /* ViewResponse */,
 				6579697C20C00531009564E0 /* Respond */,
 				65E47E8D20BBB9B400CAC575 /* OpenStatement */,
@@ -706,13 +692,9 @@
 		6524EA8620846B720035F2D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				38E6F1F320CE6093003A4240 /* ConnectOptions */,
-				38E6F1F520CE6093003A4240 /* Response */,
-=======
+				38F2458C20D7D02F00897163 /* ConnectOptions */,
 				65F7403820D433FC00507620 /* ProblemEvolution */,
 				650D317E20CAB49200A6E4AC /* Response */,
->>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
 				659E9FA520B88D2300FD697A /* Statement */,
 				65D34411209C2F890095749C /* Category */,
 				65C0203520864FFD00971521 /* User */,
@@ -803,7 +785,7 @@
 			children = (
 				65ABA3D320846A0D000A5B42 /* Main.storyboard */,
 				65ABA3D820846A0E000A5B42 /* LaunchScreen.storyboard */,
-				38E6F1EE20CE5E86003A4240 /* MeetingFlow.storyboard */,
+				38F2458F20D7D79500897163 /* MeetingFlow.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -886,7 +868,7 @@
 		657318EC20AF2A2500089B16 /* PostStatement */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F1F020CE6006003A4240 /* CollectionViewCell */,
+				650D317820CA2F5100A6E4AC /* CollectionViewCell */,
 				659E9F9720B80FD700FD697A /* Controller */,
 				659E9F9920B80FD700FD697A /* TableCell */,
 			);
@@ -1033,7 +1015,7 @@
 		65B55E1C20ADEAA900231641 /* Subclass */ = {
 			isa = PBXGroup;
 			children = (
-				38E6F21720CEB058003A4240 /* UIButton */,
+				652034AA20CE7F5F004E28AA /* UIButton */,
 				659E9FA220B8715900FD697A /* UITextField */,
 				65B55E1D20ADEAA900231641 /* Label */,
 			);
@@ -1450,25 +1432,25 @@
 				65C0203A208653AB00971521 /* solviant.db in Resources */,
 				6524EAA6208475A40035F2D2 /* Roboto-Regular.ttf in Resources */,
 				659E9FA120B866C300FD697A /* OTPBox.xib in Resources */,
-				38E6F20120CE60ED003A4240 /* RespondCardView.xib in Resources */,
 				65D34410209C17680095749C /* SubcategoryCollectionViewCell.xib in Resources */,
+				38F2459020D7D79500897163 /* MeetingFlow.storyboard in Resources */,
 				65DB27E32085198D00938B61 /* Localizable.strings in Resources */,
 				6524EAA9208475A40035F2D2 /* Roboto-Italic.ttf in Resources */,
 				65E47E9A20BC2F0100CAC575 /* CardOverlayView.xib in Resources */,
 				65D16ED920B597D800AC5EF6 /* PostStatmentAccessory.xib in Resources */,
-				38E6F1EF20CE5E86003A4240 /* MeetingFlow.storyboard in Resources */,
 				6524EAAA208475A40035F2D2 /* Roboto-Bold.ttf in Resources */,
 				65E389F920A03459002BA860 /* InterestTableViewCell.xib in Resources */,
 				6524EAA4208475A40035F2D2 /* Roboto-Medium.ttf in Resources */,
 				6524EAAB208475A40035F2D2 /* Roboto-Thin.ttf in Resources */,
+				38F2458820D7CFBA00897163 /* PopUpHeader.xib in Resources */,
 				6524EAA8208475A40035F2D2 /* Roboto-BoldItalic.ttf in Resources */,
 				65ABA3DA20846A0E000A5B42 /* LaunchScreen.storyboard in Resources */,
+				650D318820CAC15300A6E4AC /* RespondCardView.xib in Resources */,
 				6524EAA5208475A40035F2D2 /* Roboto-Light.ttf in Resources */,
 				6524EAA7208475A40035F2D2 /* Roboto-MediumItalic.ttf in Resources */,
 				65E389EF20A03377002BA860 /* PickInterest.xib in Resources */,
 				65ABA3D720846A0E000A5B42 /* Assets.xcassets in Resources */,
 				65E47E9720BBE03600CAC575 /* StatementCardView.xib in Resources */,
-				38E6F21120CE6127003A4240 /* PopUpHeader.xib in Resources */,
 				65ABA3D520846A0D000A5B42 /* Main.storyboard in Resources */,
 				65E39E4B20984ED1006087F4 /* KeyboardAccessory.xib in Resources */,
 			);
@@ -1548,77 +1530,71 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-=======
 				38E6F22020CEC817003A4240 /* NotificationsTableCell.swift in Sources */,
+				38F2458520D7CFBA00897163 /* PopUpCell.swift in Sources */,
 				650D318620CAC13B00A6E4AC /* RespondCardView.swift in Sources */,
->>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
 				65DB27E02085178D00938B61 /* Extension+String.swift in Sources */,
 				38E6F21D20CEC618003A4240 /* NotificationViewController.swift in Sources */,
+				38F2458220D7CFBA00897163 /* AvailabilityCollectionCell.swift in Sources */,
 				65A2982620D1228E00F59F87 /* SideMenuViewController.swift in Sources */,
 				65D3440F209C17680095749C /* SubcategoryCollectionViewCell.swift in Sources */,
+				38F2457E20D7CFBA00897163 /* PriorityView.swift in Sources */,
 				6524EA8D20846B720035F2D2 /* AppDelegate.swift in Sources */,
 				65C0201A20864E6900971521 /* LocationManager.swift in Sources */,
-				38E6F20F20CE6127003A4240 /* PopUpCell.swift in Sources */,
 				65C0203420864E8200971521 /* Extension+Date.swift in Sources */,
-				3856206320D2B3D600912884 /* PrincipalAvailablityViewController.swift in Sources */,
 				653BDFA82084B92000B3CAC7 /* SignUpViewController.swift in Sources */,
 				65F7403720D42EAF00507620 /* RedefinedStatementTableViewCell.swift in Sources */,
 				659E9F9C20B80FF000FD697A /* PostUrgencyTableViewCell.swift in Sources */,
 				657318E920AF053900089B16 /* RatingOverviewViewController.swift in Sources */,
 				6579698020C0056B009564E0 /* RespondViewController.swift in Sources */,
+				38F2458420D7CFBA00897163 /* ConnectPopUpViewController.swift in Sources */,
 				65E47E9C20BC2F1400CAC575 /* CardOverlayView.swift in Sources */,
 				65D34413209C2F990095749C /* Category.swift in Sources */,
-				38E6F1FF20CE60ED003A4240 /* UnresolvedStatementViewController.swift in Sources */,
 				65D16ED720B597C700AC5EF6 /* PostStatmentAccessory.swift in Sources */,
 				65C0202520864E7900971521 /* FileOperation.swift in Sources */,
 				659E9F9F20B866B000FD697A /* OTPBox.swift in Sources */,
-				38E6F21620CE8D2C003A4240 /* TimerTableCell.swift in Sources */,
-				38E6F21920CEB058003A4240 /* SolviantButton.swift in Sources */,
 				65E39E3F20983DFF006087F4 /* ProfileViewController.swift in Sources */,
-				38E6F1F220CE6007003A4240 /* ImageSelectionCollectionViewCell.swift in Sources */,
-				38BF6C6A20D005C4006417AD /* PrincipalPopupTableCell.swift in Sources */,
+				650D317A20CA2F7500A6E4AC /* ImageSelectionCollectionViewCell.swift in Sources */,
 				65E389F820A03459002BA860 /* InterestTableViewCell.swift in Sources */,
 				65C0201B20864E6900971521 /* AutoLogin.swift in Sources */,
 				65D3440A209C14680095749C /* Subcategory.swift in Sources */,
-				3856205A20D276C900912884 /* AvailabilityView.swift in Sources */,
 				651051FF209716BB00D2C030 /* LinkedIn.swift in Sources */,
+				38F2458320D7CFBA00897163 /* PrincipalAvailablityViewController.swift in Sources */,
 				65B55E1B20ADBF3E00231641 /* SubcategoryContainer.swift in Sources */,
 				65E47E9520BBE02200CAC575 /* StatementCardView.swift in Sources */,
-				38BF6C6620CFF857006417AD /* PrincipalModifiesPopupViewController.swift in Sources */,
-				38E6F21020CE6127003A4240 /* PopUpHeader.swift in Sources */,
-				38D0297B20D13DBE0012A8D1 /* ResourcePricipalConfirmationViewController.swift in Sources */,
 				65157C13209B21C8009C1A1F /* Extension+Boolean.swift in Sources */,
 				6524EA8F20846B8C0035F2D2 /* Constant.swift in Sources */,
+				38F2458A20D7CFBA00897163 /* DefineStatementAlertController.swift in Sources */,
+				38F2457C20D7CFBA00897163 /* ChangeLocationView.swift in Sources */,
 				657318EB20AF05F200089B16 /* RatingOverviewTableViewCell.swift in Sources */,
-				38E6F20E20CE6127003A4240 /* ConnectPopUpViewController.swift in Sources */,
 				65C0203020864E8200971521 /* Extenstion+UIView.swift in Sources */,
 				6524EA98208473600035F2D2 /* LandingViewController.swift in Sources */,
 				65F7403A20D4341100507620 /* ProblemEvolution.swift in Sources */,
 				6512E740209085D400D2C15D /* UITextField+fixCaretPosition.swift in Sources */,
 				65E389ED20A03361002BA860 /* PickInterest.swift in Sources */,
 				65E39E4520983E3B006087F4 /* ProfileDoneButtonTableViewCell.swift in Sources */,
-				380AD71620D26F2000313965 /* DefineStatementAlertController.swift in Sources */,
+				38F2458920D7CFBA00897163 /* TimerView.swift in Sources */,
 				65E39E4320983E2E006087F4 /* ProfileTextFieldTableViewCell.swift in Sources */,
-				3856206720D2C72D00912884 /* AvailabilityCollectionCell.swift in Sources */,
+				38F2458120D7CFBA00897163 /* ResourcePricipalConfirmationViewController.swift in Sources */,
+				650D318420CAC12C00A6E4AC /* UnresolvedStatementViewController.swift in Sources */,
 				65157C10209AF11A009C1A1F /* ChooseInterestViewController.swift in Sources */,
 				65B55E1920AD99F900231641 /* RateInterestViewController.swift in Sources */,
-				38E6F1F820CE6093003A4240 /* Response.swift in Sources */,
-				38E6F1F720CE6093003A4240 /* ConnectOptions.swift in Sources */,
-				38D0298120D142B00012A8D1 /* ConfirmedPopupViewController.swift in Sources */,
+				650D318020CAB4A500A6E4AC /* Response.swift in Sources */,
 				65D34416209C5AEA0095749C /* LetsBeginViewController.swift in Sources */,
-				38BF6C6120CFCD3D006417AD /* PrincipalStatementDetailViewController.swift in Sources */,
+				38F2458B20D7CFBA00897163 /* StatementDetailViewController.swift in Sources */,
+				38F2457B20D7CFBA00897163 /* PrincipalStatementDetailViewController.swift in Sources */,
 				65E38A0220A0531D002BA860 /* Extension+UICollectionView.swift in Sources */,
+				652034AC20CE7F78004E28AA /* SolviantButton.swift in Sources */,
 				65C0202420864E7900971521 /* DBOperation.swift in Sources */,
+				38F2457F20D7CFBA00897163 /* PrincipalPopupTableCell.swift in Sources */,
 				651051FB2096F4F900D2C030 /* SelectRoleViewController.swift in Sources */,
 				65A2982820D122A200F59F87 /* SideMenuOptionTableViewCell.swift in Sources */,
+				38F2458620D7CFBA00897163 /* TimerTableCell.swift in Sources */,
 				65C0203220864E8200971521 /* Extension+UIImageView.swift in Sources */,
 				65C0203120864E8200971521 /* Extension+UIFont.swift in Sources */,
 				65E0DA0C20A607F0005AE0E5 /* QuestionCollectionViewCell.swift in Sources */,
 				659E9F9A20B80FD700FD697A /* PostStatementViewController.swift in Sources */,
 				655D79C820C68D3600B110B8 /* ViewResponseViewController.swift in Sources */,
-				3856206020D2802700912884 /* ChangeLocationView.swift in Sources */,
-				38E6F20520CE6105003A4240 /* StatementDetailViewController.swift in Sources */,
 				658C23CB20A5A04E001E8A74 /* HomeTabBarViewController.swift in Sources */,
 				65157C15209B3288009C1A1F /* InterestCategoryCollectionViewCell.swift in Sources */,
 				6524EAAD208480BD0035F2D2 /* SignInViewController.swift in Sources */,
@@ -1626,19 +1602,21 @@
 				6512E741209085D400D2C15D /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				65C0203320864E8200971521 /* Extension+UIImage.swift in Sources */,
 				659E9FA720B88D3400FD697A /* Statement.swift in Sources */,
+				38F2458020D7CFBA00897163 /* AvailabilityView.swift in Sources */,
 				65E39E4C20984ED1006087F4 /* KeyboardAccessory.swift in Sources */,
 				65E0DA0A20A607BD005AE0E5 /* HomeViewController.swift in Sources */,
-				38E6F21420CE857F003A4240 /* TimerView.swift in Sources */,
-				3856205D20D27FE300912884 /* PriorityView.swift in Sources */,
+				38F2458720D7CFBA00897163 /* PopUpHeader.swift in Sources */,
 				6512E73F209085D400D2C15D /* SkyFloatingLabelTextField.swift in Sources */,
 				65E39E4720983F50006087F4 /* ProfileUserImageTableViewCell.swift in Sources */,
+				38F2458E20D7D02F00897163 /* ConnectOptions.swift in Sources */,
 				65C0203C208654E700971521 /* WebRequestManager.swift in Sources */,
 				65E47E9320BBDF9300CAC575 /* OpenStatementViewController.swift in Sources */,
 				65B55E1F20ADEAB700231641 /* PaddedLabel.swift in Sources */,
 				653BDFA6208496EC00B3CAC7 /* Extesnion+UIColor.swift in Sources */,
-				38E6F20020CE60ED003A4240 /* RespondCardView.swift in Sources */,
 				6579698220C00582009564E0 /* AddResponseTableViewCell.swift in Sources */,
 				659E9FA420B8716B00FD697A /* OTPTextField.swift in Sources */,
+				38F2457D20D7CFBA00897163 /* PrincipalModifiesPopupViewController.swift in Sources */,
+				38F2457A20D7CFBA00897163 /* ConfirmedPopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,7 @@ class PrincipalModifiesPopupViewController: UIViewController {
     let popupTableHeaderHeight = 50.0;
     var popover:Popover?
     var popupOptions: [PrincipalPopupOption] = [
-        PrincipalPopupOption(title: NSLocalizedString("changeRating", comment: ""), iconImage: #imageLiteral(resourceName: "star")),
+        PrincipalPopupOption(title: NSLocalizedString("changeRating", comment: ""), iconImage: #imageLiteral(resourceName: "star_selected")),
         PrincipalPopupOption(title: NSLocalizedString("changePriority", comment: ""), iconImage: #imageLiteral(resourceName: "clock")),
         PrincipalPopupOption(title: NSLocalizedString("changeLocation", comment: ""), iconImage: #imageLiteral(resourceName: "location"))
         

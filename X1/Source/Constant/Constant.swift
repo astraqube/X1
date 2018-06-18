@@ -152,6 +152,13 @@ enum PostUrgency: Int {
 
 // MARK: - Struct Constant
 
+struct StoryboardName {
+    static let main              = "Main"
+    static let meetingFlow              = "MeetingFlow"
+
+}
+
+
 struct StoryboardIdentifier {
     static let home              = "HomeViewController"
     static let landing           = "LandingViewController"
@@ -183,15 +190,12 @@ struct ReusableIdentifier {
     static let popUpTableCell               = "PopUpCell"
     static let timerTableCell               = "TimerTableCell"
     static let selectImageCollectionCell    = "ImageSelectionCollectionViewCell"
-<<<<<<< HEAD
-    static let principalPopupTableCell    = "PrincipalPopupTableCell"
-    static let availabilityCollectionCell    = "AvailabilityCollectionCell"
+    static let principalPopupTableCell      = "PrincipalPopupTableCell"
+    static let availabilityCollectionCell   = "AvailabilityCollectionCell"
 
-=======
     static let notificationTableCell        = "NotificationsTableCell"
     static let sideMenuTableViewCell        = "SideMenuOptionTableViewCell"
     static let problemEvolutionCell         = "RedefinedStatementTableViewCell"
->>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
 }
 
 struct APIKeys {

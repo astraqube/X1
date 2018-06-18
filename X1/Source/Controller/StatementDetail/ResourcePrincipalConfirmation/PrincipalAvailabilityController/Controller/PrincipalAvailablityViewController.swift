@@ -54,7 +54,7 @@ class PrincipalAvailablityViewController: UIViewController {
     
     @IBAction func confirm(_ sender: Any) {
         
-        
+        self.dismiss(animated: false, completion: nil)
         
     }
     

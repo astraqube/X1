@@ -96,14 +96,9 @@ class HomeViewController: UIViewController {
     
     @IBAction func openMenu(_ sender: Any) {
         // Log out user temporarily
-<<<<<<< HEAD
 //        user.delete()
 //        let landingViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIdentifier.landing)
 //        navigationController?.setViewControllers([landingViewController!], animated: true)
-        
-        self.moveOnStatementDetail()
-=======
->>>>>>> d1af92187d5c887e17e40250dde12b6192731edf
         
     }
     
@@ -118,26 +113,6 @@ class HomeViewController: UIViewController {
             destinationController.user = user
         }
     }
-    
-    // TODO: remove code from here
-
-    //MARK: - This is temporary whenever storybord link with main Storyboard it will remove from code
-    
-    func moveOnStatementDetail(){
-        
-        
-        let storyBoard : UIStoryboard = UIStoryboard(name: "MeetingFlow", bundle:nil)
-        var nextViewController : UIViewController?
-        if user.type == .principal {
-            nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: PrincipalStatementDetailViewController.self)) as! PrincipalStatementDetailViewController
-        }
-        else{
-            nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: StatementDetailViewController.self)) as! StatementDetailViewController
-        }
-        self.present(nextViewController!, animated:true, completion:nil)
-
-    }
-    
     
 }
 
