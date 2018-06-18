@@ -13,11 +13,20 @@ class PrincipalAvailablityViewController: UIViewController {
     //MARK: - Outlets
    
     @IBOutlet weak var datePickerView: UIDatePicker!
-    @IBOutlet weak var timeSlotPickerView: UIPickerView!
     @IBOutlet weak var timeSlotCollectionView: UICollectionView!
     
+    //MARK: - Property
+    var durationValue = 15 //static need to change as per requiremnet
+    var selectedDate : Date?
+    var timeSlots = [String]()
     
     //MARK: - View Life Cycle
+    
+    override func loadView() {
+        super.loadView()
+        configureUI()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +53,9 @@ class PrincipalAvailablityViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func confirm(_ sender: Any) {
+        
+        
+        
     }
     
     
@@ -52,7 +64,7 @@ class PrincipalAvailablityViewController: UIViewController {
     func configureUI(){
           datePickerView.timeZone = NSTimeZone.local
           datePickerView.backgroundColor = UIColor.white
-          datePickerView.datePickerMode = .date
+          datePickerView.datePickerMode = .dateAndTime
           datePickerView.addTarget(self, action: #selector(PrincipalAvailablityViewController.datePickerValueChanged(_:)), for: .valueChanged)
     }
     
@@ -60,57 +72,77 @@ class PrincipalAvailablityViewController: UIViewController {
     //MARK: - Date Picker
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker){
-        
-        // Create date formatter
-        let dateFormatter: DateFormatter = DateFormatter()
-        
-        // Set date format
-        dateFormatter.dateFormat = "MMM-dd-yyyy"
-        
-        // Apply date format
-        let selectedDate: String = dateFormatter.string(from: sender.date)
-        
-        print("Selected value \(selectedDate)")
+        selectedDate = sender.date
     }
     
-}
+    
+    //MARK: - actions
+    
+    @IBAction func selectDate(_ sender: Any) {
+        if selectedDate != nil {
+            // Create date formatter
+            let dateFormatter: DateFormatter = DateFormatter()
+            
+            // Set date format
+            dateFormatter.dateFormat = "E, MMM d, h:mm a"
+            
+            // Apply date format
+            let startDate: String = dateFormatter.string(from: selectedDate!)
+            let endDate = selectedDate?.addingTimeInterval(TimeInterval(durationValue * 60))
+            let timeFormat : DateFormatter = DateFormatter()
+            timeFormat.dateFormat = "h:mm a"
+            let endTimeStr: String = timeFormat.string(from: endDate!)
+            let timeSlotStr = "\(startDate) - \(endTimeStr)"
+            print("end date \(timeSlotStr)")
+            
+            var isExist = false
+            for timeStr in timeSlots {
+                if timeStr == timeSlotStr {
+                    isExist = true
+                    break
+                }
+            }
+            if !isExist {
+                timeSlots.append(timeSlotStr)
+            }
+            
+            self.timeSlotCollectionView.reloadData()
+        }
 
-extension PrincipalAvailablityViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 24
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(describing: (row+1));
-    }
-    
-}
-extension PrincipalAvailablityViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-    }
 }
 
 extension PrincipalAvailablityViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.timeSlots.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let availabilityCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReusableIdentifier.availabilityCollectionCell, for: indexPath) as! AvailabilityCollectionCell
+        if self.timeSlots.count > 0 {
+            availabilityCell.availabilityTimeLabel.text = self.timeSlots[indexPath.item]
+            availabilityCell.removeButton.tag = indexPath.item
+             availabilityCell.removeButton.addTarget(self, action: #selector(removeItem(sender:)), for: UIControlEvents.touchUpInside)
+        }
+        
         return availabilityCell
     }
     
+    @objc func removeItem(sender : UIButton) {
+        self.timeSlots.remove(at: sender.tag)
+        self.timeSlotCollectionView.reloadData()
+
+    }
+}
+
+extension PrincipalAvailablityViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: 100, height: 30)
+        return CGSize.init(width: (self.timeSlotCollectionView.frame.size.width - 10)/2, height: (self.timeSlotCollectionView.frame.size.height - 10)/2)
     }
     
-    
 }
+
 extension PrincipalAvailablityViewController: UICollectionViewDelegate {
     
 }
