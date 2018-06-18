@@ -3668,7 +3668,7 @@ Add a new one to get started </string>
                         <outlet property="separatorView" destination="qjF-OF-fV4" id="ecw-6g-uBz"/>
                         <outlet property="stackView" destination="zdn-JN-TNY" id="X4R-qx-QWI"/>
                         <outlet property="viewResponseButton" destination="W13-PE-cwh" id="0fA-y0-dJx"/>
-                        <segue destination="Ezd-hX-I27" kind="show" identifier="NotificationViewController" id="tfi-UK-OfK"/>
+                        <segue destination="Ezd-hX-I27" kind="presentation" identifier="NotificationViewController" animates="NO" id="tfi-UK-OfK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFW-d7-8co" userLabel="First Responder" sceneMemberID="firstResponder"/>

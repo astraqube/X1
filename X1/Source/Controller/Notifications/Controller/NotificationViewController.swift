@@ -13,7 +13,9 @@ class NotificationViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var notificationsTableView: UITableView!
     
-    
+    //MARK: - Property
+    private var user = User.loggedInUser()
+
     
     // MARK: - View Life Cycle
 
@@ -42,9 +44,24 @@ class NotificationViewController: UIViewController {
     //MARK: - Actions
     @IBAction func openMenu(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
+        
     }
     
 
+    private func navigateToConsult() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: StoryboardName.meetingFlow, bundle:nil)
+        var nextViewController : UIViewController?
+        if user?.type == .principal {
+            nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: PrincipalStatementDetailViewController.self)) as! PrincipalStatementDetailViewController
+        }
+        else{
+            nextViewController = storyBoard.instantiateViewController(withIdentifier: String(describing: StatementDetailViewController.self)) as! StatementDetailViewController
+        }
+        self.present(nextViewController!, animated:true, completion:nil)
+    }
+    
+    
+    
 }
 
 
@@ -107,8 +124,7 @@ extension NotificationViewController: UITableViewDataSource {
 extension NotificationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+        navigateToConsult()
     }
     
 }
