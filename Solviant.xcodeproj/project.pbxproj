@@ -382,7 +382,6 @@
 				6524EA8A20846B720035F2D2 /* Extenstion */,
 				6524EA8B20846B720035F2D2 /* Store */,
 				65C0201C20864E7200971521 /* Library */,
-				6524EA8C20846B720035F2D2 /* Utility */,
 				65B55E1C20ADEAA900231641 /* Subclass */,
 			);
 			path = Source;
@@ -486,13 +485,6 @@
 				65C0202220864E7900971521 /* FileOperation */,
 			);
 			path = Store;
-			sourceTree = "<group>";
-		};
-		6524EA8C20846B720035F2D2 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utility;
 			sourceTree = "<group>";
 		};
 		6524EA93208473430035F2D2 /* SignUp */ = {

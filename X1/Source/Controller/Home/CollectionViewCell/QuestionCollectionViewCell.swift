@@ -18,6 +18,7 @@ class QuestionCollectionViewCell: UICollectionViewCell {
     @IBOutlet var statmentRatingImageViews: [UIImageView]!
     @IBOutlet weak var tagCollectionView: TTGTextTagCollectionView!
     @IBOutlet weak var statementLabel: UILabel!
+    @IBOutlet weak var statementTableView: UITableView!
     
     var redefinedStatements:[ProblemEvolution.RedefinedStatement]?
     
@@ -75,6 +76,7 @@ class QuestionCollectionViewCell: UICollectionViewCell {
         usernameLabel.text       = statement.name
         cityLabel.text           = statement.city?.capitalized
         redefinedStatements      = statement.redefinedStatements
+        statementTableView.reloadData()
     }
 }
 

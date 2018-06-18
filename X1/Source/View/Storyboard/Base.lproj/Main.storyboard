@@ -3504,6 +3504,7 @@ Add a new one to get started </string>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="cityLabel" destination="35L-zI-4bA" id="Udx-qf-o9C"/>
+                                            <outlet property="statementTableView" destination="ibJ-U1-ZL6" id="F6u-X9-XK9"/>
                                             <outlet property="userImageView" destination="zAQ-Us-dpT" id="Eut-FV-2m2"/>
                                             <outlet property="usernameLabel" destination="CgU-e3-pPf" id="E2N-Re-wme"/>
                                         </connections>

@@ -165,7 +165,7 @@ extension HomeViewController {
             // Reload collectionview
             questionCollectionView.reloadData()
             if self.statements!.count > 1 {
-                questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredVertically, animated: false)
+                questionCollectionView.scrollToItem(at: IndexPath.init(row: 1, section: 0), at: .centeredHorizontally, animated: false)
             }
         }
         else {
